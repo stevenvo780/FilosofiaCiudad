@@ -4,44 +4,88 @@ from __future__ import annotations
 
 import json
 import math
-import random
 import struct
 import zlib
+from collections import Counter
 from pathlib import Path
 
-WIDTH = 1200
-HEIGHT = 900
-CELL = 24
-SEED = 23
+WIDTH = 1600
+HEIGHT = 1100
+CELL = 8
+SEED_NOTE = 23
 
 ROOT = Path('/workspace')
 OUT_DIR = ROOT / 'Material'
 PNG_PATH = OUT_DIR / 'distribucion_urbana_physarum.png'
+JSON_PATH = OUT_DIR / 'distribucion_urbana_physarum.json'
 
-COLORS = {
-    'core': '#cf4d34',
-    'mixed': '#f08a4b',
-    'residential': '#f6d68a',
-    'productive': '#7aa6c2',
-    'green': '#bfd8a6',
-    'road': '#2f3640',
-    'transit': '#0e7490',
-    'water': '#9fd3f4',
-    'background': '#f8f6ef',
+COLORS_HEX = {
+    'background': '#f3efe6',
+    'water': '#76b7e5',
+    'floodplain': '#d9efd7',
+    'park': '#9fc98b',
+    'cbd': '#af3d2e',
+    'mixed': '#d06f3d',
+    'res_high': '#efb366',
+    'res_low': '#f3ddb0',
+    'industrial': '#7b8fa6',
+    'arterial': '#373d45',
+    'ring': '#5f6770',
+    'transit': '#0d7288',
+    'rail': '#6b7280',
     'label': '#1f2933',
-    'white': '#ffffff',
-    'light_water': '#dff2ff',
-    'light_transit': '#d8f5fb',
     'panel': '#fffdf8',
+    'white': '#ffffff',
 }
 
 
 def hex_to_rgb(value: str) -> tuple[int, int, int]:
     value = value.lstrip('#')
-    return tuple(int(value[i:i+2], 16) for i in (0, 2, 4))
+    return tuple(int(value[i:i + 2], 16) for i in (0, 2, 4))
 
 
-RGB = {k: hex_to_rgb(v) for k, v in COLORS.items()}
+RGB = {k: hex_to_rgb(v) for k, v in COLORS_HEX.items()}
+
+FONT = {
+    'A': ['01110', '10001', '10001', '11111', '10001', '10001', '10001'],
+    'B': ['11110', '10001', '11110', '10001', '10001', '10001', '11110'],
+    'C': ['01111', '10000', '10000', '10000', '10000', '10000', '01111'],
+    'D': ['11110', '10001', '10001', '10001', '10001', '10001', '11110'],
+    'E': ['11111', '10000', '11110', '10000', '10000', '10000', '11111'],
+    'F': ['11111', '10000', '11110', '10000', '10000', '10000', '10000'],
+    'G': ['01111', '10000', '10000', '10111', '10001', '10001', '01110'],
+    'H': ['10001', '10001', '10001', '11111', '10001', '10001', '10001'],
+    'I': ['11111', '00100', '00100', '00100', '00100', '00100', '11111'],
+    'J': ['00111', '00010', '00010', '00010', '00010', '10010', '01100'],
+    'K': ['10001', '10010', '11100', '10010', '10001', '10001', '10001'],
+    'L': ['10000', '10000', '10000', '10000', '10000', '10000', '11111'],
+    'M': ['10001', '11011', '10101', '10001', '10001', '10001', '10001'],
+    'N': ['10001', '11001', '10101', '10011', '10001', '10001', '10001'],
+    'O': ['01110', '10001', '10001', '10001', '10001', '10001', '01110'],
+    'P': ['11110', '10001', '10001', '11110', '10000', '10000', '10000'],
+    'R': ['11110', '10001', '10001', '11110', '10100', '10010', '10001'],
+    'S': ['01111', '10000', '10000', '01110', '00001', '00001', '11110'],
+    'T': ['11111', '00100', '00100', '00100', '00100', '00100', '00100'],
+    'U': ['10001', '10001', '10001', '10001', '10001', '10001', '01110'],
+    'V': ['10001', '10001', '10001', '10001', '10001', '01010', '00100'],
+    'X': ['10001', '10001', '01010', '00100', '01010', '10001', '10001'],
+    'Y': ['10001', '10001', '01010', '00100', '00100', '00100', '00100'],
+    ' ': ['000', '000', '000', '000', '000', '000', '000'],
+    '-': ['000', '000', '000', '111', '000', '000', '000'],
+    '/': ['00001', '00010', '00100', '01000', '10000', '00000', '00000'],
+    ':': ['0', '1', '0', '0', '1', '0', '0'],
+}
+
+ZONE_COLORS = {
+    'cbd': RGB['cbd'],
+    'mixed': RGB['mixed'],
+    'res_high': RGB['res_high'],
+    'res_low': RGB['res_low'],
+    'industrial': RGB['industrial'],
+    'park': RGB['park'],
+    'floodplain': RGB['floodplain'],
+    'water': RGB['water'],
+}
 
 
 class Canvas:
@@ -65,8 +109,13 @@ class Canvas:
         x1 = min(self.width, x + w)
         y1 = min(self.height, y + h)
         for yy in range(y0, y1):
+            row = yy * self.width * 3
             for xx in range(x0, x1):
-                self.blend_pixel(xx, yy, color, alpha)
+                idx = row + xx * 3
+                inv = 1.0 - alpha
+                self.pixels[idx] = int(self.pixels[idx] * inv + color[0] * alpha)
+                self.pixels[idx + 1] = int(self.pixels[idx + 1] * inv + color[1] * alpha)
+                self.pixels[idx + 2] = int(self.pixels[idx + 2] * inv + color[2] * alpha)
 
     def line(self, a: tuple[float, float], b: tuple[float, float], color: tuple[int, int, int], width: int, alpha: float = 1.0) -> None:
         ax, ay = a
@@ -91,6 +140,10 @@ class Canvas:
                 if math.hypot(xx - nx, yy - ny) <= half:
                     self.blend_pixel(xx, yy, color, alpha)
 
+    def polyline(self, points: list[tuple[float, float]], color: tuple[int, int, int], width: int, alpha: float = 1.0) -> None:
+        for a, b in zip(points, points[1:]):
+            self.line(a, b, color, width, alpha)
+
     def circle(self, center: tuple[float, float], radius: float, color: tuple[int, int, int], alpha: float = 1.0, stroke: tuple[int, int, int] | None = None, stroke_width: int = 0) -> None:
         cx, cy = center
         min_x = max(0, int(cx - radius - stroke_width - 2))
@@ -109,7 +162,8 @@ class Canvas:
 
     def save_png(self, path: Path) -> None:
         def chunk(tag: bytes, data: bytes) -> bytes:
-            return struct.pack('!I', len(data)) + tag + data + struct.pack('!I', zlib.crc32(tag + data) & 0xffffffff)
+            crc = zlib.crc32(tag + data) & 0xffffffff
+            return struct.pack('!I', len(data)) + tag + data + struct.pack('!I', crc)
 
         raw = bytearray()
         stride = self.width * 3
@@ -117,11 +171,27 @@ class Canvas:
             raw.append(0)
             start = y * stride
             raw.extend(self.pixels[start:start + stride])
+
         png = bytearray(b'\x89PNG\r\n\x1a\n')
         png.extend(chunk(b'IHDR', struct.pack('!IIBBBBB', self.width, self.height, 8, 2, 0, 0, 0)))
         png.extend(chunk(b'IDAT', zlib.compress(bytes(raw), 9)))
         png.extend(chunk(b'IEND', b''))
         path.write_bytes(png)
+
+
+def draw_text(canvas: Canvas, x: int, y: int, text: str, color: tuple[int, int, int], scale: int = 2) -> None:
+    cursor = x
+    for ch in text.upper():
+        glyph = FONT.get(ch)
+        if glyph is None:
+            cursor += 4 * scale
+            continue
+        width = len(glyph[0])
+        for gy, row in enumerate(glyph):
+            for gx, bit in enumerate(row):
+                if bit == '1':
+                    canvas.rect(cursor + gx * scale, y + gy * scale, scale, scale, color)
+        cursor += (width + 1) * scale
 
 
 def dist(a: tuple[float, float], b: tuple[float, float]) -> float:
@@ -154,138 +224,216 @@ def prim_mst(nodes: list[dict[str, object]]) -> list[tuple[int, int]]:
                 if best is None or value < best:
                     best = value
                     best_pair = (i, j)
+        if best_pair is None:
+            break
         edges.append(best_pair)
         connected.add(best_pair[1])
     return edges
 
 
-def draw_label_block(canvas: Canvas, x: int, y: int, text: str, color: tuple[int, int, int], scale: int = 2) -> None:
-    patterns = {
-        'A': ['01110','10001','10001','11111','10001','10001','10001'],
-        'B': ['11110','10001','11110','10001','10001','10001','11110'],
-        'C': ['01111','10000','10000','10000','10000','10000','01111'],
-        'D': ['11110','10001','10001','10001','10001','10001','11110'],
-        'E': ['11111','10000','11110','10000','10000','10000','11111'],
-        'G': ['01111','10000','10000','10111','10001','10001','01110'],
-        'I': ['11111','00100','00100','00100','00100','00100','11111'],
-        'L': ['10000','10000','10000','10000','10000','10000','11111'],
-        'M': ['10001','11011','10101','10101','10001','10001','10001'],
-        'N': ['10001','11001','10101','10011','10001','10001','10001'],
-        'O': ['01110','10001','10001','10001','10001','10001','01110'],
-        'R': ['11110','10001','10001','11110','10100','10010','10001'],
-        'S': ['01111','10000','10000','01110','00001','00001','11110'],
-        'T': ['11111','00100','00100','00100','00100','00100','00100'],
-        'U': ['10001','10001','10001','10001','10001','10001','01110'],
-        'V': ['10001','10001','10001','10001','10001','01010','00100'],
-        ' ': ['000','000','000','000','000','000','000'],
-    }
-    cursor = x
-    for ch in text.upper():
-        glyph = patterns.get(ch)
-        if glyph is None:
-            cursor += 4 * scale
-            continue
-        for gy, row in enumerate(glyph):
-            for gx, bit in enumerate(row):
-                if bit == '1':
-                    canvas.rect(cursor + gx * scale, y + gy * scale, scale, scale, color)
-        cursor += (len(glyph[0]) + 1) * scale
+def terrain_height(x: float, y: float) -> float:
+    return (
+        0.38 * math.sin(x * 0.0082)
+        + 0.19 * math.cos(y * 0.0104)
+        + 0.14 * math.sin((x + y) * 0.0048)
+        + 0.10 * math.cos((x - 1.8 * y) * 0.0035)
+    )
 
 
-def main() -> None:
-    random.seed(SEED)
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    canvas = Canvas(WIDTH, HEIGHT, RGB['background'])
+def terrain_slope(x: float, y: float) -> float:
+    dx = (
+        0.38 * 0.0082 * math.cos(x * 0.0082)
+        + 0.14 * 0.0048 * math.cos((x + y) * 0.0048)
+        - 0.10 * 0.0035 * math.sin((x - 1.8 * y) * 0.0035)
+    )
+    dy = (
+        -0.19 * 0.0104 * math.sin(y * 0.0104)
+        + 0.14 * 0.0048 * math.cos((x + y) * 0.0048)
+        + 0.10 * 1.8 * 0.0035 * math.sin((x - 1.8 * y) * 0.0035)
+    )
+    return math.hypot(dx, dy)
+
+
+def river_y(x: float) -> float:
+    return 245 + 58 * math.sin(x * 0.0068) + 42 * math.sin(x * 0.015)
+
+
+def build_zone_map() -> tuple[list[list[str]], dict[str, int], list[dict[str, object]], list[tuple[float, float]], list[tuple[int, int]], list[tuple[int, int]]]:
+    cols = WIDTH // CELL
+    rows = HEIGHT // CELL
 
     centers = [
-        {'name': 'CBD', 'pos': (560.0, 450.0), 'weight': 1.00},
-        {'name': 'Nodo Norte', 'pos': (560.0, 250.0), 'weight': 0.70},
-        {'name': 'Nodo Este', 'pos': (820.0, 420.0), 'weight': 0.72},
-        {'name': 'Nodo Oeste', 'pos': (320.0, 500.0), 'weight': 0.66},
-        {'name': 'Nodo Sur', 'pos': (610.0, 680.0), 'weight': 0.62},
-        {'name': 'Logistica', 'pos': (930.0, 690.0), 'weight': 0.52},
-    ]
-    spine_a = (140.0, 470.0)
-    spine_b = (1060.0, 410.0)
-    freight_a = (770.0, 780.0)
-    freight_b = (1090.0, 640.0)
-    river_points = [
-        (70.0, 140.0),(180.0, 210.0),(280.0, 260.0),(370.0, 335.0),
-        (520.0, 380.0),(700.0, 395.0),(880.0, 370.0),(1070.0, 300.0),
+        {'name': 'CBD', 'pos': (760.0, 560.0), 'weight': 1.00},
+        {'name': 'NORTE', 'pos': (760.0, 330.0), 'weight': 0.70},
+        {'name': 'OESTE', 'pos': (500.0, 610.0), 'weight': 0.60},
+        {'name': 'ESTE', 'pos': (1080.0, 560.0), 'weight': 0.66},
+        {'name': 'SUR', 'pos': (820.0, 820.0), 'weight': 0.58},
+        {'name': 'LOGISTICA', 'pos': (1280.0, 835.0), 'weight': 0.54},
     ]
 
-    for a, b in zip(river_points, river_points[1:]):
-        canvas.line(a, b, RGB['water'], 28, 0.9)
-        canvas.line(a, b, RGB['light_water'], 14, 0.8)
+    river_points = [(x, river_y(x)) for x in range(0, WIDTH + 40, 40)]
+    transit_spine = [(120.0, 590.0), (1480.0, 520.0)]
+    north_south = [(820.0, 220.0), (860.0, 980.0)]
+    freight_axis = [(930.0, 980.0), (1490.0, 770.0)]
 
-    for y in range(80, HEIGHT - 80, CELL):
-        for x in range(80, WIDTH - 80, CELL):
-            cx = x + CELL / 2
-            cy = y + CELL / 2
-            attraction = 0.0
-            nearest_cbd = dist((cx, cy), centers[0]['pos'])
-            nearest_any = min(dist((cx, cy), c['pos']) for c in centers)
+    zones: list[list[str]] = []
+    for gy in range(rows):
+        row: list[str] = []
+        for gx in range(cols):
+            x = gx * CELL + CELL / 2
+            y = gy * CELL + CELL / 2
+
+            h = terrain_height(x, y)
+            slope = terrain_slope(x, y)
+            ry = river_y(x)
+            river_dist = abs(y - ry)
+            flood_dist = abs(y - (ry + 25))
+            flood_risk = max(0.0, 1.0 - flood_dist / 72.0)
+            water_band = river_dist < 16
+
+            centrality = 0.0
             for center in centers:
-                d = dist((cx, cy), center['pos'])
-                attraction += center['weight'] / ((d / 130.0) ** 2 + 1.0)
-            transit_bonus = max(0.0, 1.0 - point_segment_distance(cx, cy, *spine_a, *spine_b) / 190.0) * 0.48
-            freight_bonus = max(0.0, 1.0 - point_segment_distance(cx, cy, *freight_a, *freight_b) / 130.0) * 0.38
-            water_penalty = 0.0
-            for a, b in zip(river_points, river_points[1:]):
-                river_d = point_segment_distance(cx, cy, *a, *b)
-                water_penalty = max(water_penalty, max(0.0, 1.0 - river_d / 70.0))
-            edge_penalty = ((abs(cx - WIDTH / 2) / (WIDTH / 2)) + (abs(cy - HEIGHT / 2) / (HEIGHT / 2))) * 0.12
-            noise = random.uniform(-0.04, 0.04)
-            score = attraction + transit_bonus + freight_bonus * 0.65 - water_penalty * 0.38 - edge_penalty + noise
-            if water_penalty > 0.58 and nearest_cbd > 180:
-                zone = 'green'
-            elif nearest_cbd < 120 and score > 0.80:
-                zone = 'core'
-            elif score > 0.63 or nearest_any < 95:
+                d = dist((x, y), center['pos'])
+                centrality += center['weight'] / ((d / 175.0) ** 2 + 1.0)
+
+            east_west_bonus = max(0.0, 1.0 - point_segment_distance(x, y, *transit_spine[0], *transit_spine[1]) / 165.0) * 0.45
+            north_south_bonus = max(0.0, 1.0 - point_segment_distance(x, y, *north_south[0], *north_south[1]) / 150.0) * 0.28
+            freight_bonus = max(0.0, 1.0 - point_segment_distance(x, y, *freight_axis[0], *freight_axis[1]) / 125.0) * 0.52
+            river_amenity = max(0.0, 1.0 - abs(river_dist - 70.0) / 120.0) * 0.12
+            edge_penalty = ((abs(x - WIDTH / 2) / (WIDTH / 2)) + (abs(y - HEIGHT / 2) / (HEIGHT / 2))) * 0.10
+            hill_penalty = max(0.0, slope - 0.0048) * 42.0
+            south_plateau = max(0.0, (y - 760.0) / 260.0) * 0.08
+
+            urban_score = centrality + east_west_bonus + north_south_bonus + river_amenity - flood_risk * 0.60 - hill_penalty - edge_penalty - south_plateau
+
+            if water_band:
+                zone = 'water'
+            elif flood_risk > 0.62 or slope > 0.0105:
+                zone = 'floodplain' if flood_risk > 0.62 else 'park'
+            elif dist((x, y), centers[0]['pos']) < 120 and urban_score > 0.93:
+                zone = 'cbd'
+            elif freight_bonus > 0.28 and x > 940 and y > 610 and flood_risk < 0.25:
+                zone = 'industrial'
+            elif urban_score > 0.73 or min(dist((x, y), c['pos']) for c in centers) < 88:
                 zone = 'mixed'
-            elif freight_bonus > 0.18 and cx > 700:
-                zone = 'productive'
-            elif score > 0.30:
-                zone = 'residential'
+            elif urban_score > 0.49:
+                zone = 'res_high'
+            elif urban_score > 0.25:
+                zone = 'res_low'
             else:
-                zone = 'green'
-            canvas.rect(x, y, CELL - 1, CELL - 1, RGB[zone], 0.92)
+                zone = 'park'
 
-    canvas.line(spine_a, spine_b, RGB['transit'], 16, 0.92)
-    canvas.line(spine_a, spine_b, RGB['light_transit'], 6, 0.8)
-    canvas.line(freight_a, freight_b, RGB['road'], 10, 0.45)
+            if zone in {'res_high', 'res_low'} and h > 0.45 and y < 260:
+                zone = 'park'
+            row.append(zone)
+        zones.append(row)
 
-    for i, j in prim_mst(centers):
-        canvas.line(centers[i]['pos'], centers[j]['pos'], RGB['road'], 9, 0.88)
-    for i, j in [(1,3),(3,4),(4,5),(5,2),(2,1)]:
-        canvas.line(centers[i]['pos'], centers[j]['pos'], RGB['road'], 4, 0.44)
+    immutable = {'water', 'floodplain'}
+    buildable = {'cbd', 'mixed', 'res_high', 'res_low', 'industrial', 'park'}
+    for _ in range(3):
+        refined = [r[:] for r in zones]
+        for y in range(1, rows - 1):
+            for x in range(1, cols - 1):
+                current = zones[y][x]
+                if current in immutable:
+                    continue
+                neighbors = []
+                for yy in range(y - 1, y + 2):
+                    for xx in range(x - 1, x + 2):
+                        if xx == x and yy == y:
+                            continue
+                        neighbors.append(zones[yy][xx])
+                counts = Counter(n for n in neighbors if n in buildable)
+                if not counts:
+                    continue
+                dominant, amount = counts.most_common(1)[0]
+                if amount >= 5 and dominant != current:
+                    refined[y][x] = dominant
+        zones = refined
+
+    counts: dict[str, int] = Counter()
+    for row in zones:
+        counts.update(row)
+
+    mst_edges = prim_mst(centers)
+    ring_edges = [(1, 2), (2, 4), (4, 5), (5, 3), (3, 1)]
+    return zones, dict(counts), centers, river_points, mst_edges, ring_edges
+
+
+def render() -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    zones, counts, centers, river_points, mst_edges, ring_edges = build_zone_map()
+    canvas = Canvas(WIDTH, HEIGHT, RGB['background'])
+
+    for gy, row in enumerate(zones):
+        for gx, zone in enumerate(row):
+            canvas.rect(gx * CELL, gy * CELL, CELL, CELL, ZONE_COLORS[zone], 0.96)
+
+    canvas.polyline(river_points, RGB['water'], 24, 0.95)
+    canvas.polyline(river_points, RGB['white'], 8, 0.16)
+
+    transit_spine = [(120.0, 590.0), (1480.0, 520.0)]
+    north_south = [(820.0, 220.0), (860.0, 980.0)]
+    freight_axis = [(930.0, 980.0), (1490.0, 770.0)]
+    bridges = [420, 760, 1120]
+    for x in bridges:
+        y = river_y(x)
+        canvas.line((x - 24, y - 42), (x + 24, y + 42), RGB['arterial'], 8, 0.95)
+
+    canvas.line(transit_spine[0], transit_spine[1], RGB['transit'], 18, 0.90)
+    canvas.line(north_south[0], north_south[1], RGB['transit'], 14, 0.82)
+    canvas.line(freight_axis[0], freight_axis[1], RGB['rail'], 12, 0.74)
+
+    for i, j in mst_edges:
+        canvas.line(centers[i]['pos'], centers[j]['pos'], RGB['arterial'], 11, 0.88)
+    for i, j in ring_edges:
+        canvas.line(centers[i]['pos'], centers[j]['pos'], RGB['ring'], 6, 0.58)
 
     for center in centers:
-        radius = 17 if center['name'] == 'CBD' else 12
-        canvas.circle(center['pos'], radius + 6, RGB['white'], 0.8)
-        canvas.circle(center['pos'], radius, RGB['road'])
-        canvas.circle(center['pos'], radius, RGB['road'], 1.0, stroke=RGB['white'], stroke_width=2)
+        radius = 18 if center['name'] == 'CBD' else 12
+        canvas.circle(center['pos'], radius + 7, RGB['white'], 0.72)
+        canvas.circle(center['pos'], radius, RGB['arterial'], 1.0, stroke=RGB['white'], stroke_width=2)
 
-    canvas.rect(865, 80, 270, 285, RGB['panel'], 0.95)
-    legend = [('core', 180), ('mixed', 218), ('residential', 256), ('productive', 294), ('green', 332)]
-    for key, yy in legend:
-        canvas.rect(895, yy - 18, 26, 26, RGB[key])
-    canvas.line((895, 380), (930, 380), RGB['road'], 7, 0.9)
-    canvas.line((895, 418), (930, 418), RGB['transit'], 10, 0.9)
+    canvas.rect(1110, 90, 400, 250, RGB['panel'], 0.94)
+    draw_text(canvas, 1135, 118, 'DISTRIBUCION URBANA', RGB['label'], 3)
+    draw_text(canvas, 1135, 155, 'MODELO BIOINSPIRADO', RGB['label'], 2)
+    draw_text(canvas, 1135, 188, 'PHYSARUM / CENTRALIDADES', RGB['label'], 2)
 
-    draw_label_block(canvas, 80, 40, 'MAPA DEMO', RGB['label'], 3)
-    draw_label_block(canvas, 895, 100, 'DISTRIBUCION URBANA', RGB['label'], 2)
-    draw_label_block(canvas, 895, 126, 'MODELO SIMPLE', RGB['label'], 2)
-    draw_label_block(canvas, 540, 425, 'CBD', RGB['white'], 2)
-    draw_label_block(canvas, 510, 220, 'NORTE', RGB['label'], 2)
-    draw_label_block(canvas, 790, 390, 'ESTE', RGB['label'], 2)
-    draw_label_block(canvas, 270, 470, 'OESTE', RGB['label'], 2)
-    draw_label_block(canvas, 590, 650, 'SUR', RGB['label'], 2)
-    draw_label_block(canvas, 885, 660, 'LOGISTICA', RGB['label'], 2)
+    legend_items = [
+        ('cbd', 'CBD'),
+        ('mixed', 'MIXTO'),
+        ('res_high', 'RESID ALTA'),
+        ('res_low', 'RESID BAJA'),
+        ('industrial', 'INDUSTRIA'),
+        ('park', 'PARQUE'),
+        ('floodplain', 'BORDE HIDRICO'),
+    ]
+    yy = 228
+    for key, label in legend_items:
+        canvas.rect(1138, yy, 22, 22, RGB[key])
+        draw_text(canvas, 1175, yy + 4, label, RGB['label'], 2)
+        yy += 28
+
+    draw_text(canvas, 80, 74, 'MAPA URBANO MULTICRITERIO', RGB['label'], 3)
+    draw_text(canvas, 80, 106, 'SALIDA PNG ACTUALIZADA', RGB['label'], 2)
+    draw_text(canvas, 705, 525, 'CBD', RGB['white'], 2)
+    draw_text(canvas, 705, 290, 'NORTE', RGB['label'], 2)
+    draw_text(canvas, 455, 575, 'OESTE', RGB['label'], 2)
+    draw_text(canvas, 1040, 525, 'ESTE', RGB['label'], 2)
+    draw_text(canvas, 785, 785, 'SUR', RGB['label'], 2)
+    draw_text(canvas, 1195, 800, 'LOGISTICA', RGB['label'], 2)
 
     canvas.save_png(PNG_PATH)
-    print(json.dumps({'png': str(PNG_PATH)}, ensure_ascii=True))
+
+    metadata = {
+        'seed_note': SEED_NOTE,
+        'canvas': {'width': WIDTH, 'height': HEIGHT, 'cell': CELL},
+        'theory': 'Modelo multicriterio bioinspirado: centralidades, conectividad minima, hidrologia, pendiente y corredor logistico.',
+        'zone_counts': counts,
+        'output_png': str(PNG_PATH),
+    }
+    JSON_PATH.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
 
 
 if __name__ == '__main__':
-    main()
+    render()

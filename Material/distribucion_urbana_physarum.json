@@ -1,135 +1,20 @@
 {
-  "seed": 23,
+  "seed_note": 23,
   "canvas": {
-    "width": 1200,
-    "height": 900,
-    "cell": 24
+    "width": 1600,
+    "height": 1100,
+    "cell": 8
   },
-  "theory": "Modelo bioinspirado en Physarum polycephalum para conectividad eficiente y zonificacion por campos de atraccion.",
-  "centers": [
-    {
-      "name": "CBD",
-      "pos": [
-        560.0,
-        450.0
-      ],
-      "weight": 1.0
-    },
-    {
-      "name": "Nodo Norte",
-      "pos": [
-        560.0,
-        250.0
-      ],
-      "weight": 0.7
-    },
-    {
-      "name": "Nodo Este",
-      "pos": [
-        820.0,
-        420.0
-      ],
-      "weight": 0.72
-    },
-    {
-      "name": "Nodo Oeste",
-      "pos": [
-        320.0,
-        500.0
-      ],
-      "weight": 0.66
-    },
-    {
-      "name": "Nodo Sur",
-      "pos": [
-        610.0,
-        680.0
-      ],
-      "weight": 0.62
-    },
-    {
-      "name": "Logistica",
-      "pos": [
-        930.0,
-        690.0
-      ],
-      "weight": 0.52
-    }
-  ],
-  "network": {
-    "mst_edges": [
-      [
-        0,
-        1
-      ],
-      [
-        0,
-        4
-      ],
-      [
-        0,
-        3
-      ],
-      [
-        0,
-        2
-      ],
-      [
-        2,
-        5
-      ]
-    ],
-    "ring_edges": [
-      [
-        1,
-        3
-      ],
-      [
-        3,
-        4
-      ],
-      [
-        4,
-        5
-      ],
-      [
-        5,
-        2
-      ],
-      [
-        2,
-        1
-      ]
-    ],
-    "transit_spine": [
-      [
-        140.0,
-        470.0
-      ],
-      [
-        1060.0,
-        410.0
-      ]
-    ],
-    "freight_axis": [
-      [
-        770.0,
-        780.0
-      ],
-      [
-        1090.0,
-        640.0
-      ]
-    ]
-  },
+  "theory": "Modelo multicriterio bioinspirado: centralidades, conectividad minima, hidrologia, pendiente y corredor logistico.",
   "zone_counts": {
-    "core": 80,
-    "mixed": 623,
-    "residential": 291,
-    "productive": 33,
-    "green": 337
+    "park": 8063,
+    "res_low": 5181,
+    "res_high": 3057,
+    "mixed": 7549,
+    "water": 800,
+    "floodplain": 905,
+    "cbd": 716,
+    "industrial": 1129
   },
-  "outputs": {
-    "svg": "/workspace/Material/distribucion_urbana_physarum.svg"
-  }
+  "output_png": "/workspace/Material/distribucion_urbana_physarum.png"
 }
