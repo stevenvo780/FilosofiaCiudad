@@ -1,0 +1,27 @@
+# ── .syncignore ──────────────────────────────────────────────
+# Archivos y carpetas listados aquí NO se sincronizan con la nube.
+# Uno por línea. Líneas vacías y comentarios (#) se ignoran.
+# Usa nombre/ para carpetas, *.ext para extensiones.
+# ──────────────────────────────────────────────────────────────
+
+# Carpeta de repositorios locales (nunca sincronizar)
+repos
+
+# ST guide (auto-generated, available via UI too)
+.st-guide.md
+
+# Build artifacts & caches
+__pycache__
+*.pyc
+*.o
+*.so
+dist
+build
+target
+*.class
+*.jar
+
+# Paquetes pesados (ya están en IGNORE_LIST por defecto)
+# node_modules
+# .git
+# .next
