@@ -1,0 +1,17 @@
+# ── Entorno y artefactos Python ─────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# ── Builds / empaquetado ────────────────────────────────────────
+dist/
+build/
+target/
+
+# ── Sistema operativo ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Estado de sincronización de la nube (auto-generado) ─────────
+.agora-host-sync.json

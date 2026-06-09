@@ -14,8 +14,8 @@ HEIGHT = 1100
 CELL = 8
 SEED_NOTE = 23
 
-ROOT = Path('/workspace')
-OUT_DIR = ROOT / 'Material'
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / 'clases' / 'clase-01-fundamentos' / 'recursos' / 'distribucion-urbana'
 PNG_PATH = OUT_DIR / 'distribucion_urbana_physarum.png'
 JSON_PATH = OUT_DIR / 'distribucion_urbana_physarum.json'
 
