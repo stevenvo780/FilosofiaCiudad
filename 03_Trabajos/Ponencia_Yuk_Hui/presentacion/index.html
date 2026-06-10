@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El límite de la IA y el objeto epistémico del urbanismo computacional — Yuk Hui</title>
+
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="css/theme.css">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230d1117'/%3E%3Crect x='3' y='3' width='4' height='10' fill='%232dd4bf'/%3E%3Crect x='9' y='6' width='4' height='7' fill='%23e0a44e'/%3E%3C/svg%3E">
+  <style>
+    /* Salvaguardas mínimas por si el tema aún no está cargado */
+    .sim-stage { position: relative; width: 100%; min-height: 58vh; }
+    .sim-missing { color: #8a93a3; font: 14px 'Inter', system-ui, sans-serif; padding: 1rem; }
+    /* FIX crítico: impedir que el bitmap del canvas infle el contenedor (bucle de
+       realimentación con aspect-ratio + flex min-width:auto que disparaba canvas de ~12000px). */
+    .sim-stage { overflow: hidden; min-width: 0; }
+    .cols, .cols-sim, .col, .col-text, .col-sim { min-width: 0; }
+    .sim-stage canvas, .sim-stage svg {
+      width: 100% !important; height: 100% !important;
+      max-width: 100% !important; max-height: 100% !important; display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ===================== 1 · PORTADA ===================== -->
+    <section class="slide-cover" data-background-color="#0d1117">
+      <div class="kicker">Filosofía de la Ciudad · Unidad Urban AI</div>
+      <h1>El límite de la IA<br><span class="accent-cian">y el objeto epistémico</span><br>del urbanismo computacional</h1>
+      <p class="cover-sub">Una lectura de <em>Yuk Hui</em> — “Sobre el límite de la inteligencia artificial”<br>
+        <span class="muted">en <em>Fragmentar el futuro. Ensayos sobre tecnodiversidad</em> (Caja Negra, 2020), pp. 163-191</span></p>
+      <p class="cover-meta">Steven Vallejo · 12 de junio de 2026</p>
+      <aside class="notes">
+        Arranque (30 s). "Voy a defender una tesis incómoda para una clase sobre IA: que la IA
+        NO es el objeto epistémico interesante del urbanismo. Es asombrosa como asistente, pero
+        el conocimiento urbano real lo producen otros cálculos. Y para sostenerlo voy a apoyarme
+        en Yuk Hui y su idea del *límite* — y en seis modelos corriendo en vivo." No leer la diapo.
+      </aside>
+    </section>
+
+    <!-- ===================== 2 · LA IA ES ASOMBROSA ===================== -->
+    <section>
+      <div class="kicker accent-cian">Concedamos lo evidente</div>
+      <h2>La IA es asombrosa —<br>como <span class="accent-cian">asistente</span></h2>
+      <div class="card-grid">
+        <div class="concept-card">
+          <h3>Aplana curvas de aprendizaje</h3>
+          <p>Lo que antes exigía meses de oficio (programar un modelo, leer un paper denso, montar una visualización) hoy toma horas.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Acelera la creación</h3>
+          <p>Prototipa, traduce, depura, documenta. Es un <em>multiplicador</em> de productividad intelectual.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Democratiza el acceso</h3>
+          <p>Baja la barrera de entrada a técnicas que antes pertenecían a especialistas.</p>
+        </div>
+      </div>
+      <p class="pullquote">No vengo a negar su poder. Vengo a preguntar <span class="accent-cian">qué clase de poder es</span>.</p>
+      <aside class="notes">
+        (~45 s) Sé honesto y generoso con la IA primero — desarma al público técnico. Confiesa:
+        "Esta misma presentación, y los seis modelos que verán correr, los monté con ayuda de IA en
+        un fin de semana. Habría tardado meses. Eso es real." Pero deja la pregunta abierta: ¿qué
+        TIPO de poder es? ¿Es un poder *epistémico* o un poder *instrumental*? Ahí va la ponencia.
+      </aside>
+    </section>
+
+    <!-- ===================== 3 · PERO ESTO ES FILOSOFÍA DE LA CIUDAD ===================== -->
+    <section>
+      <div class="kicker accent-amber">El giro de la pregunta</div>
+      <h2>Pero esto es <span class="accent-amber">Filosofía</span> de la Ciudad</h2>
+      <p class="lead">La pregunta del ingeniero es <em>¿qué puede hacer la IA?</em><br>
+         La pregunta del filósofo es otra:</p>
+      <p class="pullquote accent-amber">¿Cuál es el <strong>objeto epistémico</strong> del urbanismo?<br>
+        ¿Qué es lo que realmente <em>produce conocimiento</em> sobre la ciudad?</p>
+      <p class="lead">La trampa contemporánea es confundir el <span class="accent-cian">acelerador</span>
+        (la IA) con el <span class="accent-amber">objeto</span> (el modelo del mundo urbano).</p>
+      <aside class="notes">
+        (~45 s) Este es el pivote retórico de toda la charla. El error de época: tomar la herramienta
+        que acelera el conocimiento por la fuente del conocimiento. Un telescopio mejor no es el objeto
+        de la astronomía; las estrellas lo son. La IA es telescopio. ¿Qué son las estrellas del urbanismo?
+        Eso lo respondo en la segunda mitad. Pero antes necesito una teoría del *límite* — y ahí entra Hui.
+      </aside>
+    </section>
+
+    <!-- ===================== 4 · YUK HUI / EL LÍMITE ===================== -->
+    <section>
+      <div class="kicker">El texto</div>
+      <h2>Yuk Hui y la pregunta por el <span class="accent-cian">límite</span></h2>
+      <div class="cols">
+        <div class="col">
+          <p>Hui <strong>no</strong> pregunta <em>qué no puede hacer</em> la IA — esa pregunta envejece
+            con cada modelo nuevo.</p>
+          <p>Pregunta cómo <strong>pensar el límite</strong> de una inteligencia que parece expandirse,
+            mutar y absorber toda función humana cuantificable.</p>
+          <p class="pullquote">El límite no es una <em>frontera técnica fija</em>:<br>
+            es un límite <span class="accent-cian">político y cosmológico</span>.</p>
+        </div>
+        <div class="col">
+          <div class="concept-card">
+            <h3>La pregunta decisiva</h3>
+            <p>¿Qué tipo de <strong>mundo</strong> produce la IA cuando convierte la ciudad en
+              <em>datos computables</em>?</p>
+          </div>
+          <p class="muted small">“Sobre el límite de la inteligencia artificial”, en <em>Fragmentar el
+            futuro</em> (2020). Hui es filósofo de la técnica; su programa es la <em>cosmotécnica</em>
+            y la <em>tecnodiversidad</em>.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        (~1 min) Clave: el límite NO es "hay tareas que la IA no logra" (eso es contingente y temporal).
+        El límite es estructural y normativo: tiene que ver con qué clase de realidad se produce al
+        computarlo todo. Hui viene de la filosofía de la técnica (Simondon, Heidegger, el pensamiento chino).
+        "Fragmentar el futuro" = romper la idea de UN solo futuro tecnológico universal. Guarda los términos
+        cosmotécnica y tecnodiversidad: vuelven al final.
+      </aside>
+    </section>
+
+    <!-- ===================== 5 · BERGSON + CIBERNÉTICA ===================== -->
+    <section>
+      <div class="kicker">Genealogía del límite · I</div>
+      <h2>Inteligencia exteriorizada y <span class="accent-cian">recursividad</span></h2>
+      <div class="card-grid">
+        <div class="concept-card">
+          <h3 class="accent-amber">Bergson</h3>
+          <p>La inteligencia es <em>homo faber</em>: fabrica herramientas, <strong>exterioriza</strong>.
+            Tensión entre lo mecánico (automatismo) y lo vital (la duración, el impulso creador).
+            La IA es exteriorización que <em>desborda</em> la intención humana.</p>
+        </div>
+        <div class="concept-card">
+          <h3 class="accent-cian">Cibernética (Wiener)</h3>
+          <p>Ciencia del control y la comunicación. La <strong>retroalimentación</strong> hace que la
+            máquina se regule a sí misma. La información como principio organizador. Nace la
+            <strong>máquina recursiva</strong>: la herramienta que se aplica a sí misma.</p>
+        </div>
+      </div>
+      <p class="lead">De la herramienta pasiva al <span class="accent-cian">sistema autónomo</span>
+        que se corrige solo. Pero, ¿basta la recursividad para tener <em>fines propios</em>?</p>
+      <aside class="notes">
+        (~1 min) Condensa: Bergson da el marco — inteligencia = fabricar y exteriorizar; pero la vida
+        (duración) excede al mecanismo. La cibernética da el salto: con retroalimentación la máquina
+        se autorregula → recursividad. Esto explica por qué la IA "parece no tener límite": se reescribe.
+        Pero ojo con la trampa: autorregularse hacia una meta DADA no es lo mismo que DARSE la meta.
+        Esa distinción es la siguiente diapositiva y es el corazón del límite.
+      </aside>
+    </section>
+
+    <!-- ===================== 6 · KANT/SIMONDON + DREYFUS/HEIDEGGER ===================== -->
+    <section>
+      <div class="kicker">Genealogía del límite · II — el núcleo</div>
+      <h2>Lo que a la IA le <span class="accent-rojo">falta</span></h2>
+      <div class="cols">
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-violeta">Kant / Simondon — juicio reflexionante</h3>
+            <p>Juicio <em>determinante</em>: dada la regla, subsumir el caso (lo que la IA hace de
+              maravilla). Juicio <em>reflexionante</em>: dado el caso, <strong>inventar la regla</strong>
+              y darse el propio fin. La IA optimiza fines <em>dados</em>; no se los <strong>da</strong>.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-amber">Dreyfus / Heidegger — mundo</h3>
+            <p>El <strong>mundo</strong> no es un conjunto de datos: es un horizonte de
+              <em>significatividad</em>. Comprender es captar <strong>relevancia y contexto</strong>,
+              no calcular. Lo que la IA no hace: <em>tener mundo</em>.</p>
+          </div>
+        </div>
+      </div>
+      <p class="pullquote accent-rojo">El límite: la IA computa dentro de un mundo y unos fines que
+        <strong>no</strong> son suyos. Calcula; no significa.</p>
+      <aside class="notes">
+        (~1 min) ESTA es la diapositiva más importante de la primera mitad. Dos carencias:
+        (1) Juicio reflexionante (Kant, releído por Simondon): la IA va de regla→caso, no de caso→regla;
+        no se da sus propios fines, los recibe. (2) Mundo (Heidegger vía Dreyfus): el mundo es
+        significatividad, no datos; la IA no "habita" un mundo, opera sobre representaciones.
+        Conclusión que prepara el giro: si la IA no tiene mundo ni fines propios, no puede ser el SUJETO
+        ni el OBJETO del conocimiento urbano — a lo sumo, su instrumento. Quién SÍ porta esos fines y ese
+        mundo: los MODELOS que los urbanistas construyen. Ahí vamos.
+      </aside>
+    </section>
+
+    <!-- ===================== 7 · EL GIRO EMPÍRICO ===================== -->
+    <section data-background-color="#0b0e14">
+      <div class="kicker accent-cian">El giro empírico</div>
+      <h2>Los cálculos <span class="accent-amber">de verdad</span> del urbanismo<br>no se hacen con súper-IAs</h2>
+      <p class="lead">Se hacen con <strong>modelos de cómputo sistémico</strong>: reglas locales,
+        teoría de grafos, optimización, dinámica de agentes. Décadas anteriores a la IA generativa.</p>
+      <p class="lead">Lo que sigue son <span class="accent-cian">seis modelos reales corriendo en vivo</span>.
+        Ninguno es IA. Cada uno es un <em>objeto epistémico</em>: produce conocimiento sobre la ciudad.</p>
+      <p class="muted small">La IA, a lo sumo, me ayudó a <em>montarlos más rápido</em>. Eso es justamente la tesis.</p>
+      <aside class="notes">
+        (~40 s) Transición teatral. Baja las luces mentales y sube las de la pantalla. "A partir de aquí
+        dejo de hablar de IA y pongo a correr el urbanismo de verdad. Seis modelos. Miren qué los hace
+        conocimiento." Anuncia que son interactivos. Si vas corta de tiempo, este bloque es flexible:
+        puedes mostrar 4 de los 6 modelos y mencionar los otros dos.
+      </aside>
+    </section>
+
+    <!-- ===================== 8 · AUTÓMATA CELULAR ===================== -->
+    <section data-sim="cellular-automata" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 1 · Emergencia</div>
+      <h2>Autómata celular — <span class="accent-amber">crecimiento urbano</span></h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>La mancha urbana <strong>emerge</strong> de reglas locales: difusión en bordes,
+            chispazos espontáneos, atracción por vías. Sin plan central, sin IA.</p>
+          <p class="muted small">Familia SLEUTH — usado en planeación real para proyectar expansión.</p>
+          <p class="tag">ontología: ciudad como <em>proceso celular</em></p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~55 s) Déjalo correr mientras hablas. Punto epistémico: aquí no hay "inteligencia" en ningún
+        lado, y sin embargo el modelo PREDICE morfología urbana real. El conocimiento está en las reglas,
+        no en un cerebro. SLEUTH se usa de verdad para proyectar expansión metropolitana. Toca el slider
+        de tasa de crecimiento para mostrar que el modelo es un instrumento de exploración, no una caja negra.
+      </aside>
+    </section>
+
+    <!-- ===================== 9 · SCHELLING ===================== -->
+    <section data-sim="schelling" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 2 · Micro → Macro</div>
+      <h2>Segregación de <span class="accent-cian">Schelling</span></h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>Preferencias locales <em>leves</em> producen segregación <strong>macro</strong>. Nadie
+            la diseña: emerge. El modelo <em>revela</em> una verdad estructural invisible a la intuición.</p>
+          <p class="muted small">Schelling, 1971 — Nobel de Economía. Cero IA, puro razonamiento sobre reglas.</p>
+          <p class="tag">epistemología: el modelo como <em>experimento mental ejecutable</em></p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~55 s) El golpe aquí: baja el umbral de tolerancia a 30% (¡la gente acepta ser minoría!) y AÚN
+        ASÍ la ciudad se segrega. Eso es contraintuitivo y es PRECISAMENTE lo que el modelo enseña que
+        ninguna IA "descubriría" como objeto: el conocimiento es la dinámica regla→emergencia. Schelling
+        ganó el Nobel con lápiz y tablero. El modelo es el objeto epistémico, no el computador.
+      </aside>
+    </section>
+
+    <!-- ===================== 10 · SINTAXIS ESPACIAL ===================== -->
+    <section data-sim="space-syntax" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 3 · Teoría de grafos</div>
+      <h2>Sintaxis espacial — <span class="accent-rojo">centralidad</span> de la red</h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>La calle como <strong>grafo</strong>. La <em>intermediación</em> (betweenness) predice
+            dónde habrá comercio, flujo, vida urbana. La estructura, no la apariencia, manda.</p>
+          <p class="muted small">Hillier &amp; Hanson, <em>The Social Logic of Space</em>. Matemática pura.</p>
+          <p class="tag">ontología: ciudad como <em>red de relaciones</em></p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~55 s) Space syntax es de las herramientas más usadas por urbanistas reales (Foster, gobiernos,
+        retail). La idea: la centralidad topológica de una calle predice su vitalidad. Es teoría de grafos
+        de los años 80, sin nada de IA. Señala las calles que el modelo marca como "integradoras": ahí
+        pondrías la plaza, el comercio. El objeto epistémico es la métrica de red.
+      </aside>
+    </section>
+
+    <!-- ===================== 11 · PHYSARUM ===================== -->
+    <section data-sim="physarum" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 4 · Optimización distribuida</div>
+      <h2>Physarum — <span class="accent-cian">red de transporte</span> emergente</h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>Miles de agentes-feromona conectan centros urbanos en una red casi-óptima. Un <em>moho</em>
+            reproduce la red ferroviaria de Tokio. <strong>Cómputo sin cerebro.</strong></p>
+          <p class="muted small">Tero et al., <em>Science</em> 2010. Inspira algoritmos de routing reales.</p>
+          <p class="tag">ontología: ciudad como <em>organismo / flujo</em></p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~55 s) El momento "wow". Un organismo unicelular, sin sistema nervioso, resuelve un problema de
+        diseño de redes que a ingenieros les cuesta. El famoso experimento de Tokio (Science, 2010).
+        Punto filosófico fuerte para Hui: la inteligencia/optimización NO requiere mente ni IA — es
+        distribuida, material, encarnada. El objeto epistémico es el proceso físico-químico, modelado.
+      </aside>
+    </section>
+
+    <!-- ===================== 12 · TRÁFICO BASADO EN AGENTES ===================== -->
+    <section data-sim="agent-traffic" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 5 · Microsimulación</div>
+      <h2>Tráfico basado en <span class="accent-amber">agentes</span></h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>Cada vehículo enruta y avanza; la <strong>congestión emerge</strong> de la interacción.
+            Así se evalúan semáforos, peajes y trazados — antes de construirlos.</p>
+          <p class="muted small">MATSim, SUMO — estándar en planeación de transporte. Sin IA generativa.</p>
+          <p class="tag">técnica: ciudad como <em>sistema dinámico</em></p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~50 s) Sube la tasa de aparición y muestra cómo se forma el atasco rojo. Las agencias de
+        transporte del mundo corren MATSim/SUMO (modelos basados en agentes) para decidir inversiones de
+        miles de millones. No es IA: es microsimulación + teoría de colas. El conocimiento accionable
+        está en el modelo, no en una red neuronal.
+      </aside>
+    </section>
+
+    <!-- ===================== 13 · MODELO GRAVITACIONAL ===================== -->
+    <section data-sim="gravity" data-background-color="#0b0e14">
+      <div class="kicker">Modelo 6 · Geografía cuantitativa</div>
+      <h2>Modelo <span class="accent-violeta">gravitacional</span> de interacción</h2>
+      <div class="cols cols-sim">
+        <div class="col col-text">
+          <p>El flujo entre dos centros ∝ masas / distancia<sup>β</sup>. Arrastra un centro: los flujos
+            se recalculan. Modela migración, comercio, viajes.</p>
+          <p class="muted small">Wilson, 1970 — geografía cuantitativa clásica. Pura física social.</p>
+          <p class="tag">epistemología: la <em>fórmula</em> como objeto de conocimiento</p>
+        </div>
+        <div class="col col-sim"><div class="sim-stage"></div></div>
+      </div>
+      <aside class="notes">
+        (~50 s) Interactivo: arrastra una ciudad y muestra cómo cambian los flujos; mueve β (fricción de
+        la distancia). Es el modelo más "viejo" (analogía newtoniana, siglo XIX-XX) y sigue siendo
+        operativo. El objeto epistémico literalmente es una ECUACIÓN. Cierra el bloque empírico: seis
+        modelos, seis ontologías de ciudad, cero IA en el centro.
+      </aside>
+    </section>
+
+    <!-- ===================== 14 · ANÁLISIS ONTOLÓGICO ===================== -->
+    <section>
+      <div class="kicker accent-amber">Análisis · I</div>
+      <h2>Ontológico: cada modelo <span class="accent-amber">funda un mundo</span></h2>
+      <p class="lead">Ningún modelo es neutral. Cada uno <strong>enuncia una ontología</strong> de la ciudad:</p>
+      <table class="concept-table">
+        <thead><tr><th>Modelo</th><th>La ciudad <em>es</em>…</th><th>Lo que ilumina / oculta</th></tr></thead>
+        <tbody>
+          <tr><td>Autómata celular</td><td>proceso / mancha</td><td>morfología · borra al habitante</td></tr>
+          <tr><td>Schelling</td><td>agregado de decisiones</td><td>segregación · simplifica el deseo</td></tr>
+          <tr><td>Sintaxis espacial</td><td>red de relaciones</td><td>flujo · ignora el sentido</td></tr>
+          <tr><td>Physarum / gravedad</td><td>organismo / campo de fuerzas</td><td>eficiencia · naturaliza lo político</td></tr>
+        </tbody>
+      </table>
+      <p class="pullquote accent-amber">Esto es exactamente la <strong>cosmotécnica</strong> de Hui:
+        toda técnica produce un cosmos. El modelo no describe la ciudad: la <em>instaura</em>.</p>
+      <aside class="notes">
+        (~1 min) Aquí elevas todo a filosofía. Cada modelo trae metido un supuesto de qué ES una ciudad
+        — y por tanto qué cuenta como problema y como solución. Eso es cosmotécnica: la técnica no es
+        neutral, fabrica un mundo. Un automata celular hace ver la ciudad como mancha (y al habitante lo
+        borra). Gravedad la hace ver como física (y naturaliza decisiones que son políticas). El modelo
+        INSTAURA, no solo describe. Este es el aporte filosófico central de tu lectura de Hui aplicada.
+      </aside>
+    </section>
+
+    <!-- ===================== 15 · ANÁLISIS TÉCNICO ===================== -->
+    <section>
+      <div class="kicker accent-cian">Análisis · II</div>
+      <h2>Técnico: ¿qué <span class="accent-cian">son</span>, en rigor, estos cálculos?</h2>
+      <div class="cols">
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-cian">Los modelos urbanos</h3>
+            <p>Sistemas dinámicos discretos · teoría de grafos · optimización · emergencia.
+              <strong>Mecanismos transparentes</strong>: la regla ES la explicación.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-rojo">La IA / ML</h3>
+            <p>Aproximación estadística de funciones sobre datos. <strong>Correlación opaca</strong>:
+              predice sin explicar. Acelera, ajusta, genera código.</p>
+          </div>
+        </div>
+      </div>
+      <p class="pullquote accent-cian">La IA <strong>construye</strong> el modelo más rápido.
+        El modelo <strong>es</strong> el conocimiento. No confundas al albañil con la casa.</p>
+      <aside class="notes">
+        (~1 min) Distinción técnica honesta: los modelos urbanos son mecanismos — explican porque
+        exhiben el proceso (regla local → patrón). La IA/ML es aproximación estadística — predice por
+        correlación, opaca, sin mecanismo. Ambas valiosas, pero distintas en estatuto epistémico. La IA
+        es excelente para *ayudarme a programar y calibrar* estos modelos rápido (volvemos a "aplana
+        curvas de aprendizaje"). Pero el conocimiento causal sobre la ciudad está en el mecanismo.
+      </aside>
+    </section>
+
+    <!-- ===================== 16 · ANÁLISIS EPISTÉMICO ===================== -->
+    <section>
+      <div class="kicker accent-violeta">Análisis · III — la tesis</div>
+      <h2>Epistémico: la IA es <span class="accent-violeta">acelerador</span>, no <span class="accent-violeta">sujeto</span></h2>
+      <div class="card-grid card-grid-3">
+        <div class="concept-card">
+          <h3>Objeto epistémico</h3>
+          <p>El <strong>modelo</strong> de cómputo sistémico. Lo que porta fines, ontología y mundo.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Rol de la IA</h3>
+          <p><strong>Acelerador epistémico</strong>: aplana la curva de construir esos modelos. Instrumento, no fuente.</p>
+        </div>
+        <div class="concept-card">
+          <h3>El límite (Hui)</h3>
+          <p>Sin <em>mundo</em> ni <em>juicio reflexionante</em>, la IA no puede ser el objeto: no se da los fines del urbanismo.</p>
+        </div>
+      </div>
+      <p class="pullquote accent-violeta">El objeto epistémico del urbanismo no es la IA.<br>
+        Son los <strong>cálculos de orden sistémico</strong> — y la IA solo ayuda a parirlos ágilmente.</p>
+      <aside class="notes">
+        (~1 min) El cierre del argumento. Enlaza las tres capas: el objeto epistémico es el modelo
+        (capa 1); la IA es acelerador, no sujeto (capa 2 técnica); y esto es precisamente el LÍMITE de
+        Hui (capa 3): porque a la IA le falta mundo y juicio reflexionante, no puede darse los fines del
+        urbanismo — solo puede servir a fines dados. Por eso es instrumento, jamás objeto. Repite tu
+        frase-tesis tal cual. Este es el clímax intelectual.
+      </aside>
+    </section>
+
+    <!-- ===================== 17 · COSMOTÉCNICA / TECNODIVERSIDAD ===================== -->
+    <section>
+      <div class="kicker">Hui, hasta el final</div>
+      <h2>¿Qué ciudad produce <span class="accent-amber">cada</span> cálculo?</h2>
+      <p class="lead">Si cada modelo instaura un cosmos, entonces elegir modelo es un acto
+        <strong>político y cosmológico</strong> — no técnico.</p>
+      <div class="cols">
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-cian">Tecnodiversidad</h3>
+            <p>Frente a la monocultura del "optimizar todo": <strong>pluralidad</strong> de modelos,
+              de cosmotécnicas, de mundos urbanos posibles.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="concept-card">
+            <h3 class="accent-amber">Desde el Sur</h3>
+            <p>¿Cómo se ven nuestras ciudades latinoamericanas — informales, vivas — bajo modelos
+              pensados para otra cosmología? ¿Qué modelos <em>nos</em> faltan?</p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        (~50 s) Recoge cosmotécnica/tecnodiversidad del inicio. Si cada modelo trae un mundo, escoger
+        modelo es decidir qué ciudad queremos — eso es político, no neutral. Tecnodiversidad = no aceptar
+        UN solo modo (la optimización universal de Silicon Valley). Aterriza en Latinoamérica: nuestras
+        ciudades informales no caben bien en modelos pensados para la ciudad-máquina europea. Pregunta
+        productiva: ¿qué cosmotécnicas urbanas propias nos faltan?
+      </aside>
+    </section>
+
+    <!-- ===================== 18 · PREGUNTAS / CIERRE ===================== -->
+    <section data-background-color="#0d1117">
+      <div class="kicker accent-cian">Para discutir</div>
+      <h2>Tres preguntas</h2>
+      <ol class="big-questions">
+        <li>Si la IA no tiene <em>mundo</em>, ¿qué mundo produce al gobernar la ciudad por datos?</li>
+        <li>¿El “límite” en Hui es técnico o <span class="accent-cian">político</span>?</li>
+        <li>¿Qué <em>cosmotécnica urbana</em> latinoamericana estamos dejando de computar?</li>
+      </ol>
+      <p class="pullquote">La IA aplana la curva de aprendizaje.<br>
+        Pero <span class="accent-cian">elegir qué ciudad calcular</span> sigue siendo, y será, nuestro.</p>
+      <p class="cover-meta muted">Gracias. · Steven Vallejo · Filosofía de la Ciudad · 2026</p>
+      <aside class="notes">
+        (~40 s + discusión) Cierra con fuerza y abre el debate. Repite la frase final como remate:
+        la IA aplana la curva, pero ELEGIR qué ciudad calcular es un acto humano, político, cosmológico
+        — y eso es exactamente el límite que Hui defiende. Deja las tres preguntas en pantalla para la
+        ronda. Si te sobra tiempo, vuelve a cualquier modelo en vivo: están todos navegables.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<!-- reveal core (build global, funciona offline) -->
+<script src="node_modules/reveal.js/dist/reveal.js"></script>
+<!-- modelos de computo urbano (se registran en window.PonenciaSims) -->
+<script src="js/sims/cellular-automata.js"></script>
+<script src="js/sims/schelling.js"></script>
+<script src="js/sims/space-syntax.js"></script>
+<script src="js/sims/physarum.js"></script>
+<script src="js/sims/agent-traffic.js"></script>
+<script src="js/sims/gravity.js"></script>
+<!-- motor de la ponencia -->
+<script src="js/deck.js"></script>
+</body>
+</html>

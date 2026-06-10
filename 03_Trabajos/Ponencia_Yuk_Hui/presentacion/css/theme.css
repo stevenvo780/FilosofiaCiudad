@@ -1,0 +1,904 @@
+/* ============================================================
+   TEMA: El limite de la IA y el objeto epistemico del
+         urbanismo computacional — Yuk Hui / Filosofia de la Ciudad
+   Reveal.js 5 — Editorial Cientifica / Data-Viz Urbanista
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&display=swap');
+
+/* ── Tokens ───────────────────────────────────────────────── */
+:root {
+  --bg:         #0d1117;
+  --bg2:        #161b26;
+  --grid:       #222b3a;
+  --ink:        #e8e6df;
+  --muted:      #8a93a3;
+  --line:       #2a3344;
+
+  --agua:       #3b82c4;
+  --verde:      #5cab73;
+  --amber:      #e0a44e;
+  --rojo:       #e0524a;
+  --mixto:      #d97a3d;
+  --industrial: #7b8fa6;
+  --cian:       #2dd4bf;
+  --violeta:    #a78bfa;
+  --calle:      #cdd6e3;
+
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+
+  --space-xs:   0.4rem;
+  --space-sm:   0.8rem;
+  --space-md:   1.6rem;
+  --space-lg:   3.2rem;
+  --space-xl:   5.6rem;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset base Reveal ────────────────────────────────────── */
+.reveal {
+  font-family:      var(--font-sans);
+  font-size:        clamp(18px, 2.2vw, 28px);
+  font-weight:      400;
+  color:            var(--ink);
+  background-color: var(--bg);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+/* ── Secciones: alineacion arriba-izquierda ───────────────── */
+.reveal section {
+  display:        flex;
+  flex-direction: column;
+  align-items:    flex-start;
+  justify-content: flex-start;
+  padding:        5vh 7vw;
+  box-sizing:     border-box;
+  height:         100%;
+}
+
+/* ── Tipografia: Titulos (Fraunces) ───────────────────────── */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--font-serif);
+  color:       var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin:      0 0 var(--space-md) 0;
+  font-weight: 600;
+}
+
+.reveal h1 {
+  font-size:   clamp(2.6rem, 6vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.reveal h2 {
+  font-size:   clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 600;
+}
+
+.reveal h3 {
+  font-size:   clamp(1.3rem, 2.8vw, 2.2rem);
+  font-weight: 400;
+  color:       var(--calle);
+}
+
+.reveal h4 {
+  font-family: var(--font-sans);
+  font-size:   clamp(0.9rem, 1.6vw, 1.3rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color:       var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Tipografia: Cuerpo (Inter) ───────────────────────────── */
+.reveal p {
+  font-family: var(--font-sans);
+  font-size:   clamp(1rem, 1.9vw, 1.5rem);
+  line-height: 1.7;
+  color:       var(--ink);
+  margin:      0 0 var(--space-md) 0;
+  max-width:   72ch;
+}
+
+.reveal ul,
+.reveal ol {
+  font-family:   var(--font-sans);
+  font-size:     clamp(1rem, 1.8vw, 1.45rem);
+  line-height:   1.65;
+  color:         var(--ink);
+  margin:        0 0 var(--space-md) 1.6em;
+  padding-left:  0;
+}
+
+.reveal li {
+  margin-bottom: 0.5em;
+}
+
+.reveal ul li::marker {
+  color: var(--cian);
+}
+
+.reveal ol li::marker {
+  color:       var(--muted);
+  font-weight: 600;
+}
+
+.reveal strong {
+  color:       var(--calle);
+  font-weight: 600;
+}
+
+.reveal em {
+  color:         var(--amber);
+  font-style:    normal;
+  font-weight:   500;
+}
+
+.reveal code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size:   0.82em;
+  color:       var(--cian);
+  background:  var(--grid);
+  padding:     0.1em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+/* ── PORTADA (.slide-cover) ───────────────────────────────── */
+.reveal section.slide-cover {
+  background:      var(--bg);
+  justify-content: center;
+  padding:         6vh 8vw;
+  gap:             var(--space-md);
+  position:        relative;
+  overflow:        hidden;
+}
+
+.slide-cover::before {
+  content:          '';
+  position:         absolute;
+  top:              0;
+  left:             0;
+  right:            0;
+  bottom:           0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      var(--grid) 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      var(--grid) 60px
+    );
+  opacity:          0.25;
+  pointer-events:   none;
+  z-index:          0;
+}
+
+.slide-cover::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0;
+  left:       0;
+  right:      0;
+  height:     3px;
+  background: linear-gradient(90deg, var(--cian), var(--violeta), var(--agua));
+  z-index:    1;
+}
+
+.slide-cover > * {
+  position: relative;
+  z-index:  2;
+}
+
+.slide-cover .cover-kicker {
+  font-family:    var(--font-sans);
+  font-size:      clamp(0.65rem, 1.1vw, 0.9rem);
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color:          var(--cian);
+  margin-bottom:  var(--space-sm);
+}
+
+.slide-cover h1 {
+  font-size:      clamp(2.8rem, 6.5vw, 5.8rem);
+  font-weight:    700;
+  line-height:    1.0;
+  letter-spacing: -0.035em;
+  color:          var(--ink);
+  max-width:      18ch;
+  margin-bottom:  var(--space-md);
+}
+
+.slide-cover .cover-subtitle {
+  font-family:  var(--font-serif);
+  font-size:    clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight:  300;
+  color:        var(--muted);
+  margin-bottom: var(--space-lg);
+  max-width:    55ch;
+}
+
+.slide-cover .cover-meta {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.3em;
+  font-family:    var(--font-sans);
+  font-size:      clamp(0.75rem, 1.3vw, 1rem);
+  font-weight:    400;
+  color:          var(--industrial);
+  border-top:     1px solid var(--line);
+  padding-top:    var(--space-md);
+  margin-top:     auto;
+}
+
+.slide-cover .cover-meta strong {
+  color:       var(--calle);
+  font-weight: 500;
+}
+
+/* ── Kicker / Etiqueta de seccion ─────────────────────────── */
+.kicker {
+  font-family:    var(--font-sans);
+  font-size:      clamp(0.6rem, 1vw, 0.82rem);
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color:          var(--cian);
+  margin-bottom:  var(--space-sm);
+  display:        block;
+}
+
+.kicker-violeta { color: var(--violeta); }
+.kicker-amber   { color: var(--amber);   }
+.kicker-verde   { color: var(--verde);   }
+.kicker-rojo    { color: var(--rojo);    }
+
+/* ── Tarjetas de concepto ─────────────────────────────────── */
+.concept-card {
+  background:    var(--bg2);
+  border:        1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding:       var(--space-md) var(--space-md);
+  display:       flex;
+  flex-direction: column;
+  gap:           var(--space-xs);
+  transition:    border-color var(--transition),
+                 box-shadow   var(--transition);
+}
+
+.concept-card:hover {
+  border-color: var(--cian);
+  box-shadow:   0 0 0 1px var(--cian), 0 8px 32px rgba(45, 212, 191, 0.08);
+}
+
+.concept-card .card-label {
+  font-family:    var(--font-sans);
+  font-size:      0.72em;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color:          var(--cian);
+}
+
+.concept-card .card-title {
+  font-family: var(--font-serif);
+  font-size:   clamp(1rem, 2vw, 1.6rem);
+  font-weight: 600;
+  color:       var(--ink);
+  margin:      0;
+  line-height: 1.2;
+}
+
+.concept-card .card-body {
+  font-family: var(--font-sans);
+  font-size:   clamp(0.8rem, 1.4vw, 1.1rem);
+  color:       var(--muted);
+  line-height: 1.55;
+  margin:      0;
+}
+
+.concept-card .card-accent {
+  width:         32px;
+  height:        3px;
+  border-radius: 2px;
+  background:    var(--cian);
+  margin-top:    var(--space-xs);
+}
+
+.concept-card.card-amber  .card-label,
+.concept-card.card-amber  .card-accent { color: var(--amber); background: var(--amber); }
+.concept-card.card-violeta .card-label,
+.concept-card.card-violeta .card-accent { color: var(--violeta); background: var(--violeta); }
+.concept-card.card-verde  .card-label,
+.concept-card.card-verde  .card-accent { color: var(--verde); background: var(--verde); }
+.concept-card.card-rojo   .card-label,
+.concept-card.card-rojo   .card-accent { color: var(--rojo); background: var(--rojo); }
+
+/* ── Rejilla de tarjetas ──────────────────────────────────── */
+.card-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:                   var(--space-md);
+  width:                 100%;
+  margin-top:            var(--space-md);
+}
+
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ── Layout dos columnas ──────────────────────────────────── */
+.cols {
+  display:     grid;
+  gap:         var(--space-lg);
+  width:       100%;
+  align-items: start;
+}
+
+.cols-half    { grid-template-columns: 1fr 1fr; }
+.cols-60-40   { grid-template-columns: 3fr 2fr; }
+.cols-40-60   { grid-template-columns: 2fr 3fr; }
+.cols-sim     { grid-template-columns: 1fr 1.8fr; }
+
+.col {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-md);
+}
+
+/* ── Simulacion: Escenario ────────────────────────────────── */
+.sim-stage {
+  position:      relative;
+  width:         100%;
+  aspect-ratio:  16 / 9;
+  min-height:    320px;
+  background:    var(--bg);
+  border:        1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow:      hidden;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+}
+
+.sim-stage canvas,
+.sim-stage svg {
+  width:  100%;
+  height: 100%;
+  display: block;
+}
+
+.sim-stage .sim-overlay {
+  position: absolute;
+  inset:    0;
+  pointer-events: none;
+}
+
+/* ── Simulacion: Controles ────────────────────────────────── */
+.sim-controls {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--space-sm);
+  align-items: center;
+  margin-top:  var(--space-sm);
+}
+
+.sim-btn {
+  font-family:     var(--font-sans);
+  font-size:       clamp(0.7rem, 1.2vw, 0.9rem);
+  font-weight:     500;
+  color:           var(--ink);
+  background:      var(--bg2);
+  border:          1px solid var(--line);
+  border-radius:   999px;
+  padding:         0.4em 1.1em;
+  cursor:          pointer;
+  transition:      background var(--transition),
+                   border-color var(--transition),
+                   color var(--transition);
+  user-select:     none;
+  outline:         none;
+  letter-spacing:  0.03em;
+}
+
+.sim-btn:hover {
+  background:   var(--grid);
+  border-color: var(--cian);
+  color:        var(--cian);
+}
+
+.sim-btn.active,
+.sim-btn:active {
+  background:   rgba(45, 212, 191, 0.12);
+  border-color: var(--cian);
+  color:        var(--cian);
+  box-shadow:   0 0 0 1px var(--cian);
+}
+
+.sim-btn.danger       { color: var(--rojo); }
+.sim-btn.danger:hover { border-color: var(--rojo); color: var(--rojo); background: rgba(224, 82, 74, 0.1); }
+
+/* ── Simulacion: Slider ───────────────────────────────────── */
+.sim-range-group {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+}
+
+.sim-range-label {
+  font-family: var(--font-sans);
+  font-size:   clamp(0.65rem, 1vw, 0.82rem);
+  font-weight: 500;
+  color:       var(--muted);
+  white-space: nowrap;
+  min-width:   5ch;
+}
+
+.sim-range {
+  -webkit-appearance: none;
+  appearance:         none;
+  width:              140px;
+  height:             4px;
+  background:         var(--grid);
+  border-radius:      999px;
+  outline:            none;
+  accent-color:       var(--cian);
+  cursor:             pointer;
+  transition:         opacity var(--transition);
+}
+
+.sim-range:hover { opacity: 0.9; }
+
+.sim-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width:              14px;
+  height:             14px;
+  border-radius:      50%;
+  background:         var(--cian);
+  cursor:             pointer;
+  border:             2px solid var(--bg);
+  box-shadow:         0 0 0 1px var(--cian);
+  transition:         transform var(--transition);
+}
+
+.sim-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.sim-range::-moz-range-thumb {
+  width:        14px;
+  height:       14px;
+  border-radius: 50%;
+  background:   var(--cian);
+  cursor:       pointer;
+  border:       2px solid var(--bg);
+}
+
+/* ── Simulacion: Leyenda ──────────────────────────────────── */
+.sim-legend {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--space-sm) var(--space-md);
+  margin-top:  var(--space-xs);
+}
+
+.sim-legend-item {
+  display:     flex;
+  align-items: center;
+  gap:         0.4em;
+  font-family: var(--font-sans);
+  font-size:   clamp(0.6rem, 0.9vw, 0.78rem);
+  color:       var(--muted);
+}
+
+.sim-legend-chip {
+  width:         10px;
+  height:        10px;
+  border-radius: 3px;
+  flex-shrink:   0;
+}
+
+/* ── Simulacion: Readout / Metricas ───────────────────────── */
+.sim-readout {
+  position:    absolute;
+  bottom:      var(--space-sm);
+  right:       var(--space-sm);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size:   clamp(0.55rem, 0.85vw, 0.72rem);
+  color:       var(--muted);
+  background:  rgba(13, 17, 23, 0.75);
+  backdrop-filter: blur(8px);
+  padding:     0.35em 0.7em;
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+  pointer-events: none;
+}
+
+.sim-readout .val {
+  color:       var(--cian);
+  font-weight: 600;
+}
+
+/* ── Pullquote / Cita destacada ───────────────────────────── */
+.pullquote {
+  font-family:  var(--font-serif);
+  font-size:    clamp(1.2rem, 2.5vw, 2rem);
+  font-weight:  300;
+  font-style:   italic;
+  line-height:  1.45;
+  color:        var(--ink);
+  border-left:  3px solid var(--cian);
+  padding-left: var(--space-md);
+  margin:       var(--space-md) 0;
+  max-width:    62ch;
+}
+
+.pullquote cite {
+  display:     block;
+  margin-top:  var(--space-sm);
+  font-family: var(--font-sans);
+  font-style:  normal;
+  font-size:   0.55em;
+  font-weight: 500;
+  color:       var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pullquote.amber-quote  { border-color: var(--amber); }
+.pullquote.violeta-quote { border-color: var(--violeta); }
+
+/* ── Enfasis de color ─────────────────────────────────────── */
+.accent-cian    { color: var(--cian);    }
+.accent-amber   { color: var(--amber);   }
+.accent-rojo    { color: var(--rojo);    }
+.accent-violeta { color: var(--violeta); }
+.accent-verde   { color: var(--verde);   }
+.accent-agua    { color: var(--agua);    }
+.accent-mixto   { color: var(--mixto);   }
+.accent-muted   { color: var(--muted);   }
+
+/* ── Chips / Tags ─────────────────────────────────────────── */
+.tag {
+  display:        inline-flex;
+  align-items:    center;
+  font-family:    var(--font-sans);
+  font-size:      clamp(0.6rem, 0.9vw, 0.75rem);
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color:          var(--cian);
+  background:     rgba(45, 212, 191, 0.1);
+  border:         1px solid rgba(45, 212, 191, 0.3);
+  border-radius:  999px;
+  padding:        0.2em 0.75em;
+  line-height:    1.4;
+  white-space:    nowrap;
+}
+
+.tag-amber   { color: var(--amber);   background: rgba(224, 164,  78, 0.1); border-color: rgba(224, 164,  78, 0.3); }
+.tag-violeta { color: var(--violeta); background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.3); }
+.tag-rojo    { color: var(--rojo);    background: rgba(224,  82,  74, 0.1); border-color: rgba(224,  82,  74, 0.3); }
+.tag-verde   { color: var(--verde);   background: rgba( 92, 171, 115, 0.1); border-color: rgba( 92, 171, 115, 0.3); }
+.tag-muted   { color: var(--muted);   background: rgba(138, 147, 163, 0.1); border-color: rgba(138, 147, 163, 0.3); }
+
+/* ── Tablas (conceptos Yuk Hui) ───────────────────────────── */
+.reveal table {
+  width:          100%;
+  border-collapse: collapse;
+  font-family:    var(--font-sans);
+  font-size:      clamp(0.78rem, 1.3vw, 1.05rem);
+  color:          var(--ink);
+  margin:         var(--space-md) 0;
+}
+
+.reveal thead th {
+  font-family:    var(--font-sans);
+  font-weight:    600;
+  font-size:      0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color:          var(--muted);
+  border-bottom:  1px solid var(--cian);
+  padding:        var(--space-sm) var(--space-md);
+  text-align:     left;
+  background:     var(--bg2);
+}
+
+.reveal tbody tr {
+  border-bottom: 1px solid var(--line);
+  transition:    background var(--transition);
+}
+
+.reveal tbody tr:hover {
+  background: var(--bg2);
+}
+
+.reveal tbody td {
+  padding:     var(--space-sm) var(--space-md);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.reveal tbody tr:last-child {
+  border-bottom: none;
+}
+
+.reveal tfoot td {
+  font-size:   0.8em;
+  color:       var(--muted);
+  padding-top: var(--space-sm);
+  border-top:  1px solid var(--line);
+}
+
+/* ── Separador / Divisor ──────────────────────────────────── */
+.divider {
+  width:        100%;
+  height:       1px;
+  background:   var(--line);
+  margin:       var(--space-md) 0;
+  border:       none;
+  flex-shrink:  0;
+}
+
+.divider-cian   { background: linear-gradient(90deg, var(--cian), transparent); }
+.divider-violeta { background: linear-gradient(90deg, var(--violeta), transparent); }
+
+/* ── Numero de diapositiva / Progreso ─────────────────────── */
+.reveal .progress {
+  height:     2px;
+  background: var(--line);
+}
+
+.reveal .progress span {
+  background: linear-gradient(90deg, var(--cian), var(--violeta));
+  transition: width 0.4s ease;
+}
+
+.reveal .slide-number {
+  font-family:   var(--font-sans);
+  font-size:     0.72em;
+  font-weight:   500;
+  color:         var(--industrial);
+  background:    transparent;
+  padding:       0.3em 0.6em;
+  border-radius: var(--radius-sm);
+  bottom:        16px;
+  right:         18px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Controles de navegacion ──────────────────────────────── */
+.reveal .controls {
+  color: var(--muted);
+}
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+  color: var(--muted);
+  opacity: 0.5;
+  transition: color var(--transition), opacity var(--transition);
+}
+
+.reveal .controls .navigate-left:hover,
+.reveal .controls .navigate-right:hover,
+.reveal .controls .navigate-up:hover,
+.reveal .controls .navigate-down:hover {
+  color:   var(--cian);
+  opacity: 1;
+}
+
+/* ── Utilidades de espaciado ──────────────────────────────── */
+.mt-sm  { margin-top: var(--space-sm);  }
+.mt-md  { margin-top: var(--space-md);  }
+.mt-lg  { margin-top: var(--space-lg);  }
+.mb-sm  { margin-bottom: var(--space-sm);  }
+.mb-md  { margin-bottom: var(--space-md);  }
+.mb-lg  { margin-bottom: var(--space-lg);  }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+
+/* ── Stat / Dato destacado ────────────────────────────────── */
+.stat-block {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.2em;
+}
+
+.stat-block .stat-value {
+  font-family: var(--font-serif);
+  font-size:   clamp(2rem, 5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color:       var(--cian);
+}
+
+.stat-block .stat-label {
+  font-family: var(--font-sans);
+  font-size:   clamp(0.7rem, 1.1vw, 0.9rem);
+  font-weight: 500;
+  color:       var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.stat-block.amber-stat   .stat-value { color: var(--amber);   }
+.stat-block.violeta-stat .stat-value { color: var(--violeta); }
+
+/* ── Callout / Alerta ─────────────────────────────────────── */
+.callout {
+  background:    var(--bg2);
+  border:        1px solid var(--line);
+  border-left:   3px solid var(--cian);
+  border-radius: var(--radius-md);
+  padding:       var(--space-md);
+  font-family:   var(--font-sans);
+  font-size:     clamp(0.85rem, 1.4vw, 1.1rem);
+  line-height:   1.6;
+  color:         var(--muted);
+  margin:        var(--space-sm) 0;
+}
+
+.callout strong {
+  color:       var(--ink);
+  font-weight: 600;
+}
+
+.callout.amber-callout   { border-left-color: var(--amber);   }
+.callout.violeta-callout { border-left-color: var(--violeta); }
+.callout.rojo-callout    { border-left-color: var(--rojo);    }
+.callout.verde-callout   { border-left-color: var(--verde);   }
+
+/* ── Timeline / Lista de pasos ────────────────────────────── */
+.timeline {
+  display:        flex;
+  flex-direction: column;
+  gap:            0;
+  position:       relative;
+  padding-left:   var(--space-lg);
+}
+
+.timeline::before {
+  content:    '';
+  position:   absolute;
+  left:       10px;
+  top:        8px;
+  bottom:     8px;
+  width:      1px;
+  background: var(--line);
+}
+
+.timeline-item {
+  position:     relative;
+  padding:      0 0 var(--space-md) var(--space-md);
+}
+
+.timeline-item::before {
+  content:       '';
+  position:      absolute;
+  left:          -22px;
+  top:           6px;
+  width:         9px;
+  height:        9px;
+  border-radius: 50%;
+  background:    var(--cian);
+  border:        2px solid var(--bg);
+  box-shadow:    0 0 0 1px var(--cian);
+}
+
+.timeline-item .tl-label {
+  font-family:    var(--font-sans);
+  font-size:      0.7em;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color:          var(--cian);
+  margin-bottom:  0.2em;
+}
+
+.timeline-item .tl-title {
+  font-family:   var(--font-serif);
+  font-size:     clamp(1rem, 1.8vw, 1.4rem);
+  font-weight:   600;
+  color:         var(--ink);
+  margin-bottom: 0.3em;
+}
+
+.timeline-item .tl-body {
+  font-family: var(--font-sans);
+  font-size:   clamp(0.8rem, 1.2vw, 1rem);
+  color:       var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Transparencia / Overlay de fondo ─────────────────────── */
+.glass {
+  background:      rgba(22, 27, 38, 0.72);
+  backdrop-filter: blur(16px);
+  border:          1px solid var(--line);
+  border-radius:   var(--radius-md);
+  padding:         var(--space-md);
+}
+
+/* ── Secciones de titulo intermedio (.slide-section) ─────── */
+.reveal section.slide-section {
+  justify-content: center;
+  align-items:     center;
+  text-align:      center;
+  background:      var(--bg);
+  position:        relative;
+  overflow:        hidden;
+}
+
+.reveal section.slide-section::before {
+  content:        '';
+  position:       absolute;
+  top:            50%;
+  left:           50%;
+  transform:      translate(-50%, -50%);
+  width:          600px;
+  height:         600px;
+  border-radius:  50%;
+  background:     radial-gradient(circle, rgba(45, 212, 191, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.reveal section.slide-section h2 {
+  font-size:   clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align:  center;
+}
+
+/* ── Transiciones Reveal ──────────────────────────────────── */
+.reveal .slides section .fragment {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity:   1;
+  transform: none;
+}
+
+/* ── Scrollbar discreta ───────────────────────────────────── */
+* {
+  scrollbar-width:       thin;
+  scrollbar-color:       var(--line) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius:    999px;
+}
+
+/* ── Fin del tema ─────────────────────────────────────────── */

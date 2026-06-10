@@ -1,0 +1,14 @@
+{
+  "name": "ponencia-yuk-hui-urban-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ponencia: Yuk Hui, el limite de la IA y el objeto epistemico del urbanismo computacional",
+  "scripts": {
+    "pptx": "node scripts/build-pptx.mjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0",
+    "reveal.js": "^5.2.1"
+  }
+}
