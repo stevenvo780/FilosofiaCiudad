@@ -1,0 +1,41 @@
+# ── .syncignore ──────────────────────────────────────────────
+# Archivos y carpetas listados aquí NO se sincronizan con la nube.
+# Uno por línea. Líneas vacías y comentarios (#) se ignoran.
+# Usa nombre/ para carpetas, *.ext para extensiones.
+# ──────────────────────────────────────────────────────────────
+
+# Carpeta de repositorios locales (nunca sincronizar)
+repos
+
+# ST guide (auto-generated, available via UI too)
+.st-guide.md
+
+# Build artifacts & caches
+__pycache__
+*.pyc
+*.o
+*.so
+dist
+build
+target
+*.class
+*.jar
+
+# Carpetas de dependencias y build (pesadas, no sincronizar)
+node_modules
+.next
+
+# Rutas retiradas al consolidar la Clase 1
+filosofiaDeLaCiudad/Clase 1
+filosofiaDeLaCiudad/AGENTS.md
+01_Clases/Clase_01/02_borradores_y_transcripciones
+01_Clases/Clase_01/03_recursos_visuales
+01_Clases/Clase_01/02_fuentes/apuntes_crudos
+01_Clases/Clase_01/01_notas_finales/ciudad_griega_vs_ciudad_romana_dos_ontologias_urbanas.md
+01_Clases/Clase_01/01_notas_finales/ciudad_griega_vs_ciudad_romana_dos_ontologias_urbanas.md.st
+01_Clases/Clase_01/01_notas_finales/diferencias_ciudades_griegas_romanas.md
+01_Clases/Clase_01/01_notas_finales/ontologia_teleologica_de_la_ciudad_antigua.md
+01_Clases/Clase_01/01_notas_finales/cite_y_ville_glosario.md
+
+# Virtualenv Python (regenerable, no sincronizar)
+.venv

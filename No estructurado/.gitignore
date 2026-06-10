@@ -1,0 +1,12 @@
+# .gitignore — reglas para excluir archivos del commit Git.
+# Una regla por línea, formato gitignore estándar.
+# Ejemplos (descomenta los que apliquen):
+
+# node_modules/
+# .next/
+# dist/
+# build/
+# *.log
+# .env
+# .env.local
+# .DS_Store
