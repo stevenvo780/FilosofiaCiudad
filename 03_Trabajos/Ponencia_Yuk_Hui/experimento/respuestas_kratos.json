@@ -1,0 +1,389 @@
+{
+  "qwen2.5:3b|t1_multiplicacion|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 1,
+    "respuesta_final": "337783171400000000000000",
+    "nota": "",
+    "raw": "Para resolver esto necesito realizar una multiplicación exacta de dos números muy grandes:\n\n387465129847 x 902341765893 = 337783171400000000000000\n\nRespuesta final: 337783171400000000000000",
+    "elapsed_s": 5.2
+  },
+  "qwen2.5:3b|t1_multiplicacion|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 2,
+    "respuesta_final": "336403254580724477483177",
+    "nota": "",
+    "raw": "Para resolver esto necesito realizar una multiplicación exacta de dos números muy grandes:\n\n387465129847 x 902341765893 = 336403254580724477483177\n\nRespuesta final: 336403254580724477483177",
+    "elapsed_s": 3.4
+  },
+  "qwen2.5:3b|t2_camino_corto|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 1,
+    "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Yarumal, Zafiro",
+    "nota": "",
+    "raw": "Para encontrar el camino de menor distancia total desde Altavista hasta Zafiro en este grafo no dirigido, debemos considerar todas las posibles rutas entre estos dos puntos. Para ello, podemos utilizar algoritmos como Dijkstra o A*. Sin embargo, dado que estamos trabajando por razones lógicas y sin la ayuda de herramientas computacionales, vamos a explorar las opciones manuales.\n\nComenzamos desde Altavista:\n\n1. Altavista - Bellavista (4 minutos)\n2. Altavista - Cumbres (7 minutos)\n\nDesde Altavista hasta Zafiro no hay directamente una ruta, por lo que debemos considerar rutas a través de otros barrios.\n\nComenzamos con la ruta más corta desde Altavista:\n\n1. Altavista -> Bellavista (4)\n2. Desde Bellavista podemos ir a:\n   - Cumbres (2), total 6 minutos\n   - Dorado (9), total 13 minutos\n\nAhora considerando las rutas que pueden llevarnos al Zafiro desde estos puntos:\n\nDesde Altavista -> Bellavista -> Cumbres -> Esmeralda -> Horizonte -> Jacaranda -> Yarumal -> Zafiro: \n   Total = 6 + 3 + 9 + 10 + 7 + 2 + 2 = 39 minutos\n\nDesde Altavista -> Bellavista -> Dorado -> Esmeralda -> Horizonte -> Jacaranda -> Yarumal -> Zafiro:\n   Total = 4 + 9 + 9 + 10 + 7 + 2 + 2 = 43 minutos\n\nLa ruta con la menor distancia total es:\n\nAltavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Yarumal, Zafiro.\n\nRespuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Yarumal, Zafiro",
+    "elapsed_s": 5.3
+  },
+  "qwen2.5:3b|t2_camino_corto|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 2,
+    "respuesta_final": "Altavista, Bellavista, Dorado",
+    "nota": "",
+    "raw": "Para encontrar el camino de menor distancia total desde Altavista hasta Zafiro en este grafo no dirigido, debemos explorar todas las posibles posibles de manera exhaustiva o utilizar algoritmos como Dijkstra para encontrar la ruta más corta. Sin embargo, dado que se pide una explicación razonada sin usar herramientas ni código, vamos a analizar el problema de forma manual.\n\nPrimero, identificamos los barrios y las distancias entre ellos:\n\n- Altavista-Bellavista=4\n- Altavista-Cumbres=7\n- Bellavista-Dorado=9\n- Cumbres-Esmeralda=3\n- Dorado-Esmeralda=6\n- Esmeralda-Girasol=8\n- Farallon-Girasol=1\n- Girasol-Horizonte=2\n- Horizonte-Jacaranda=3\n- Jacaranda-Lagos=5\n- Lagos-Nogal=3\n- Nogal-Palermo=6\n- Palermo-Quinta=4\n- Quinta-Roble=3\n- Roble-Sauce=2\n- Sauce-Tejar=5\n- Tejar-Urapan=4\n- Urapan-Veranda=2\n- Veranda-Ximena=6\n- Ximena-Yarumal=3\n- Yarumal-Zafiro=2\n\nA partir de Altavista, las opciones iniciales son:\nAltavista-Bellavista (4), Altavista-Cumbres (7).\n\nSi tomamos la opción más corta inicialmente, nos lleva a Bellavista. Desde Bellavista tenemos varias opciones: \n- Bellavista-Dorado (9)\n- Cumbres-Esmeralda (2) que es el camino con menor distancia.\n\nTomando la opción de menor distancia desde Altavista hasta Zafiro, seguimos:\n\n1. Alternativa 1: Altavista -> Bellavista -> Dorado\n   Distancia total = 4 + 9 = 13\n\n2. Alternativa 2: Altavista -> Cumbres -> Esmeralda -> Horizonte -> Jacaranda -> Lagos -> Nogal -> Palermo -> Quinta -> Roble -> Sauce -> Tejar -> Urapan -> Veranda -> Ximena -> Yarumal -> Zafiro\n   Distancia total = 7 + 3 + 2 + 5 + 6 + 5 + 4 + 8 + 3 + 2 = 39\n\nComparando ambas alternativas, la primera opción (Altavista -> Bellavista -> Dorado) tiene una distancia menor que la segunda.\n\nPor lo tanto, el camino de menor distancia total desde Altavista hasta Zafiro es: Altavista, Bellavista, Dorado. \n\nRespuesta final: Altavista, Bellavista, Dorado",
+    "elapsed_s": 6.6
+  },
+  "qwen2.5:3b|t3_conteo_reticula|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 1,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "En esta situación, el repartidor debe recorrer 12 cuadras hacia el este y 12 cuadras hacia el norte para llegar desde la esquina inferior izquierda hasta la superior derecha. Esto significa que en total tendrá que realizar 24 movimientos (12 de ellos hacia el este y 12 hacia el norte).\n\nEl problema se reduce a encontrar una secuencia de estos 24 movimientos, donde cada uno puede ser \"E\" (movimiento hacia el este) o \"N\" (movimiento hacia el norte). \n\nLa cantidad de diferentes secuencias que pueden existir es la combinación total de seleccionar 12 posiciones para los \"E\" en una lista de 24 movimientos, lo cual se calcula con la fórmula binomial:\n\n\\[ \\binom{24}{12} = \\frac{24!}{12!(24-12)!} \\]\n\nCalculando esto:\n\n\\[ \\binom{24}{12} = \\frac{24!}{12!12!} \\]\n\nPara simplificar, podemos usar una calculadora o software matemático para obtener el valor exacto de esta expresión. El resultado es:\n\n\\[ \\binom{24}{12} = 2704156\n\nRespuesta final: 2704156",
+    "elapsed_s": 4.2
+  },
+  "qwen2.5:3b|t3_conteo_reticula|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 2,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "En este problema estamos buscando las combinaciones de movimientos hacia el norte (N) y hacia el este (E). El repartidor debe moverse 12 veces al norte para llegar a la esquina superior derecha desde la inferior izquierda. Esto implica que cada ruta distinta será una secuencia de 12 N's seguidos por 12 E's.\n\nEl número total de rutas distintas puede ser calculado usando el principio fundamental del conteo, que dice que si hay k maneras de hacer un primer paso y m maneras de hacer un segundo paso, entonces hay k*m maneras de fazer ambos pasos. En este caso:\n\n- Hay 12 posiciones para N's en la secuencia.\n- Después de haber elegido las 12 posiciones para los N's, el resto de la secuencia es automáticamente ocupada por E's.\n\nEl número total de rutas distintas es entonces el número de formas de seleccionar 12 posiciones (o movimientos) entre 24 posibles (12 N + 12 E), lo cual se calcula usando el coeficiente binomial:\n\n\\[ \\binom{24}{12} = \\frac{24!}{12!(24-12)!} \\]\n\nCalculando esto de manera manual puede ser tedioso, pero sabemos que:\n\n\\[ \\binom{24}{12} = 2704156\n\nRespuesta final: 2704156",
+    "elapsed_s": 4.6
+  },
+  "qwen2.5:3b|t4_recursion_afin|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 1,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "₆₀ = f(359)\n= (137 * 359 + 991) mod 100000\n= (4,862 + 991) mod 100000\n= 5,853 mod 100000 = 5,853\n\nContinuamos con x₆₁:\nx₆₁ = f(5,853)\n= (137 * 5,853 + 991) mod 100000\n= (8,942,61 + 991) mod 100000\n= 8",
+    "raw": "Empieza con x₀ = 42.\n\nPrimero calculamos f(x₀):\nf(42) = (137 * 42 + 991) mod 100000\n\nCalculando el valor interno:\n137 * 42 = 5,674\n5,674 + 991 = 6,665\nf(42) = 6,665 mod 100000 = 6,665\n\nAhora tenemos x₁ = 6,665.\n\nPara calcular x₂ usamos f(x₁):\nx₂ = f(6,665)\n= (137 * 6,665 + 991) mod 100000\n= (892,405 + 991) mod 100000\n= 893,396 mod 100000 = 89,336\n\nContinuamos con x₃:\nx₃ = f(89,336)\n= (137 * 89,336 + 991) mod 100000\n= (12,245,472 + 991) mod 100000\n= 12,246,463 mod 100000 = 24,643\n\nContinuamos con x₄:\nx₄ = f(24,643)\n= (137 * 24,643 + 991) mod 100000\n= (3,385,491 + 991) mod 100000\n= 3,386,482 mod 100000 = 86,482\n\nContinuamos con x₅:\nx₅ = f(86,482)\n= (137 * 86,482 + 991) mod 100000\n= (1,195,493 + 991) mod 100000\n= 1,196,484 mod 100000 = 196,484\n\nContinuamos con x₆:\nx₆ = f(196,484)\n= (137 * 196,484 + 991) mod 100000\n= (26,952,828 + 991) mod 100000\n= 26,953,819 mod 100000 = 53,819\n\nContinuamos con x₇:\nx₇ = f(53,819)\n= (137 * 53,819 + 991) mod 100000\n= (726,472 + 991) mod 100000\n= 727,463 mod 100000 = 27,463\n\nContinuamos con x₈:\nx₈ = f(27,463)\n= (137 * 27,463 + 991) mod 100000\n= (3,785,171 + 991) mod 100000\n= 3,786,162 mod 100000 = 786,162\n\nContinuamos con x₉:\nx₉ = f(786,162)\n= (137 * 786,162 + 991) mod 100000\n= (10,845,434 + 991) mod 100000\n= 10,846,425 mod 100000 = 425\n\nContinuamos con x₁₀:\nx₁₀ = f(425)\n= (137 * 425 + 991) mod 100000\n= (5,682 + 991) mod 100000\n= 6,673 mod 100000 = 6,673\n\nContinuamos con x₁₁:\nx₁₁ = f(6,673)\n= (137 * 6,673 + 991) mod 100000\n= (892,401 + 991) mod 100000\n= 893,392 mod 100000 = 89,392\n\nContinuamos con x₁₂:\nx₁₂ = f(89,392)\n= (137 * 89,392 + 991) mod 100000\n= (1,245,688 + 991) mod 100000\n= 1,246,679 mod 100000 = 46,679\n\nContinuamos con x₁₃:\nx₁₃ = f(46,679)\n= (137 * 46,679 + 991) mod 100000\n= (6,285,223 + 991) mod 100000\n= 6,286,214 mod 100000 = 214\n\nContinuamos con x₁₄:\nx₁₄ = f(214)\n= (137 * 214 + 991) mod 100000\n= (29,158 + 991) mod 100000\n= 30,149 mod 100000 = 30,149\n\nContinuamos con x₁₅:\nx₁₅ = f(30,149)\n= (137 * 30,149 + 991) mod 100000\n= (4",
+    "elapsed_s": 28.4
+  },
+  "qwen2.5:3b|t4_recursion_afin|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "1\n5861 + 991 = 6,852 (como estamos en módulo 100,000)\n6,852 mod 100,000 = 6,852\n\nPor lo tanto:\nx₃₄ = f(43) ≈ 6,852 (como estamos en módulo 100,000)\n\nContinuamos con x₃₅ = f(x₃₄):\nf(6,852) = (137 * 6,8",
+    "raw": "Empieza con x₀ = 42.\n\nPrimero calculamos f(x₀):\nf(42) = (137 * 42 + 991) mod 100000\n\nPara simplificar:\n137 * 42 = 5,674\n5,674 + 991 = 6,665\n\nEntonces:\nf(42) = (6,665) mod 100,000 = 6,665\n\nAhora x₁ = f(x₀) = 6,665. Aplicamos la función nuevamente:\n\nCalculamos f(6,665):\nf(6,665) = (137 * 6,665 + 991) mod 100,000\n\nPara simplificar:\n137 * 6,665 = 8,92405\n8,92405 + 991 = 8,92405 + 0.991 ≈ 8,92405 (como estamos en módulo 100,000, solo consideramos el entero)\n8,92405 mod 100,000 = 8,92405\n\nPor lo tanto:\nx₁ = f(6,665) = 8,92405 ≈ 8,92405 (como estamos en módulo 100,000)\n\nContinuamos con x₂ = f(x₁):\nf(8,92405) = (137 * 8,92405 + 991) mod 100,000\n\nPara simplificar:\n137 * 8,92405 = 122,6207\n122,6207 + 991 ≈ 1,226,207 (como estamos en módulo 100,000)\n1,226,207 mod 100,000 = 2,26207\n\nPor lo tanto:\nx₂ = f(8,92405) ≈ 2,26207 (como estamos en módulo 100,000)\n\nContinuamos con x₃ = f(x₂):\nf(2,26207) = (137 * 2,26207 + 991) mod 100,000\n\nPara simplificar:\n137 * 2,26207 ≈ 308.549\n308.549 + 991 = 309,540 (como estamos en módulo 100,000)\n309,540 mod 100,000 = 309,540\n\nPor lo tanto:\nx₃ = f(2,26207) ≈ 309,540 (como estamos en módulo 100,000)\n\nContinuamos con x₄ = f(x₃):\nf(309,540) = (137 * 309,540 + 991) mod 100,000\n\nPara simplificar:\n137 * 309,540 ≈ 42,689.38\n42,689.38 + 991 = 42,780.38 (como estamos en módulo 100,000)\n42,780.38 mod 100,000 = 42,780.38\n\nPor lo tanto:\nx₄ = f(309,540) ≈ 42,780.38 (como estamos en módulo 100,000)\n\nContinuamos con x₅ = f(x₄):\nf(42,780.38) = (137 * 42,780.38 + 991) mod 100,000\n\nPara simplificar:\n137 * 42,780.38 ≈ 5,869,748\n5,869,748 + 991 = 5,869,839 (como estamos en módulo 100,000)\n5,869,839 mod 100,000 = 869,839\n\nPor lo tanto:\nx₅ = f(42,780.38) ≈ 869,839 (como estamos en módulo 100,000)\n\nContinuamos con x₆ = f(x₅):\nf(869,839) = (137 * 869,839 + 991) mod 100,000\n\nPara simplificar:\n137 * 869,839 ≈ 12,044,589\n12,044,589 + 991 = 12,044,680 (como estamos en módulo 100,000)\n12,044,680 mod 100,000 = 440\n\nPor lo tanto:\nx₆ = f(869,839) ≈ 440 (como estamos en módulo 10",
+    "elapsed_s": 27.9
+  },
+  "qwen2.5:3b|t5_calculo_exteriorizado|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 1,
+    "respuesta_final": "1000000000",
+    "nota": "",
+    "raw": "Primero sumamos todas las lecturas dadas:\n4821 + 3990 + 5172 + 4408 + 3765 + 6011 + 2987 + 5540 + 4123 + 3876 + 5298 + 4710 + 3654 + 6102 + 2890 + 5471 + 4019 + 3788 + 5630 + 4255 + 3912 + 6044 + 2976 + 5388 + 4187 + 3801 + 5519 + 4630 + 3745 + 6088 = 100000\n\nLuego elevamos cada lectura a la cuadrada y sumamos:\n(4821)² + (3990)² + (5172)² + (4408)² + (3765)² + (6011)² + (2987)² + (5540)² + (4123)² + (3876)² + (5298)² + (4710)² + (3654)² + (6102)² + (2890)² + (5471)² + (4019)² + (3788)² + (5630)² + (4255)² + (3912)² + (6044)² + (2976)² + (5388)² + (4187)² + (3801)² + (5519)² + (4630)² + (3745)² + (6088)² = 1000000000\n\nRespuesta final: 1000000000",
+    "elapsed_s": 6.2
+  },
+  "qwen2.5:3b|t5_calculo_exteriorizado|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 2,
+    "respuesta_final": "100360",
+    "nota": "",
+    "raw": "Primero sumamos todas las lecturas dadas:\n4821 + 3990 + 5172 + 4408 + 3765 + 6011 + 2987 + 5540 + 4123 + 3876 + 5298 + 4710 + 3654 + 6102 + 2890 + 5471 + 4019 + 3788 + 5630 + 4255 + 3912 + 6044 + 2976 + 5388 + 4187 + 3801 + 5519 + 4630 + 3745 + 6088 = 100360\n\nLuego elevamos cada número a la cuadrada y sumamos:\n4821² + 3990² + 5172² + 4408² + 3765² + 6011² + 2987² + 5540² + 4123² + 3876² + 5298² + 4710² + 3654² + 6102² + 2890² + 5471² + 4019² + 3788² + 5630² + 4255² + 3912² + 6044² + 2976² + 5388² + 4187² + 3801² + 5519² + 4630² + 3745² + 6088² = 100360\n\nFinalmente sumamos todos estos cuadrados:\n4821² + 3990² + 5172² + 4408² + 3765² + 6011² + 2987² + 5540² + 4123² + 3876² + 5298² + 4710² + 3654² + 6102² + 2890² + 5471² + 4019² + 3788² + 5630² + 4255² + 3912² + 6044² + 2976² + 5388² + 4187² + 3801² + 5519² + 4630² + 3745² + 6088² = 100360\n\nLa suma de los cuadrados es exactamente: Respuesta final: 100360",
+    "elapsed_s": 6.3
+  },
+  "qwen2.5:3b|t6_relevancia_escena|1": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 1,
+    "respuesta_final": "Alertar a las personas en el cruce para evitar posibles choques.",
+    "nota": "",
+    "raw": "La alerta debería dirigirse a las personas en el cruce, ya que es un punto de alta concentración donde pueden surgir peligros si no toman precauciones. Esto incluye al niño que acaba de dar un paso hacia la calzada y al repartidor en moto que acelera al ver el cambio de luz. La alerta a este grupo podría prevenir una colisión entre los tres individuos.\nRespuesta final: Alertar a las personas en el cruce para evitar posibles choques.",
+    "elapsed_s": 3.8
+  },
+  "qwen2.5:3b|t6_relevancia_escena|2": {
+    "modelo": "qwen2.5:3b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 2,
+    "respuesta_final": "<alertar al niño>",
+    "nota": "",
+    "raw": "La alerta debería dirigirse al niño que da un paso hacia la calzada, ya que su acción podría llevarlo directamente en contra del flujo de peatones y vehículos, lo cual puede resultar en una situación peligrosa. Respuesta final: <alertar al niño>",
+    "elapsed_s": 2.8
+  },
+  "qwen3:14b|t1_multiplicacion|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 1,
+    "respuesta_final": "34962209758543162489373",
+    "nota": "",
+    "raw": "Respuesta final: 34962209758543162489373",
+    "elapsed_s": 21.2
+  },
+  "qwen3:14b|t1_multiplicacion|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 2,
+    "respuesta_final": "349623619854859461437377",
+    "nota": "",
+    "raw": "Respuesta final: 349623619854859461437377",
+    "elapsed_s": 4.8
+  },
+  "qwen3:14b|t2_camino_corto|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 1,
+    "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Dorado, Farallon, Girasol, Horizonte, Jacaranda, Iguazu, Kennedy, Lagos, Nogal, Palermo, Olivos, Roble, Quinta, Urapan, Zafiro",
+    "nota": "",
+    "raw": "Para encontrar el camino de menor distancia desde **Altavista** hasta **Zafiro**, usaremos un enfoque similar al algoritmo de Dijkstra, explorando las rutas más cortas paso a paso.\n\n**Paso 1: Identificar los nodos conectados directamente a Altavista.**  \n- **Altavista - Bellavista = 4**  \n- **Altavista - Cumbres = 7**  \n- **Altavista - Dorado = 12**\n\nLa distancia más corta desde **Altavista** es a **Bellavista** (4 minutos).\n\n**Paso 2: Desde Bellavista, explorar sus conexiones.**  \n- **Bellavista - Altavista = 4** (ya visitado)  \n- **Bellavista - Cumbres = 2**  \n- **Bellavista - Dorado = 9**\n\nDesde **Bellavista**, la distancia más corta es a **Cumbres** (2 minutos).  \nDistancia total desde **Altavista** a **Cumbres** = 4 + 2 = **6**.\n\n**Paso 3: Desde Cumbres, explorar sus conexiones.**  \n- **Cumbres - Altavista = 7** (ya visitado)  \n- **Cumbres - Bellavista = 2** (ya visitado)  \n- **Cumbres - Esmeralda = 3**\n\nDesde **Cumbres**, la distancia más corta es a **Esmeralda** (3 minutos).  \nDistancia total desde **Altavista** a **Esmeralda** = 6 + 3 = **9**.\n\n**Paso 4: Desde Esmeralda, explorar sus conexiones.**  \n- **Esmeralda - Cumbres = 3** (ya visitado)  \n- **Esmeralda - Dorado = 6**  \n- **Esmeralda - Girasol = 8**  \n- **Esmeralda - Horizonte = 9**\n\nDesde **Esmeralda**, la distancia más corta es a **Dorado** (6 minutos).  \nDistancia total desde **Altavista** a **Dorado** = 9 + 6 = **15**.\n\n**Paso 5: Desde Dorado, explorar sus conexiones.**  \n- **Dorado - Bellavista = 9** (ya visitado)  \n- **Dorado - Esmeralda = 6** (ya visitado)  \n- **Dorado - Farallon = 5**\n\nDesde **Dorado**, la distancia más corta es a **Farallon** (5 minutos).  \nDistancia total desde **Altavista** a **Farallon** = 15 + 5 = **20**.\n\n**Paso 6: Desde Farallon, explorar sus conexiones.**  \n- **Farallon - Dorado = 5** (ya visitado)  \n- **Farallon - Girasol = 1**  \n- **Farallon - Horizonte = 4**\n\nDesde **Farallon**, la distancia más corta es a **Girasol** (1 minuto).  \nDistancia total desde **Altavista** ",
+    "elapsed_s": 30.7
+  },
+  "qwen3:14b|t2_camino_corto|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 2,
+    "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Iguazu, Yarumal, Zafiro",
+    "nota": "",
+    "raw": "Para encontrar el camino de menor distancia desde **Altavista** hasta **Zafiro**, usaremos un enfoque similar al algoritmo de Dijkstra, ya que el grafo es no dirigido y los pesos son positivos.\n\n### Paso 1: Identificar los nodos conectados a **Altavista**\n- **Altavista - Bellavista = 4**\n- **Altavista - Cumbres = 7**\n- **Altavista - Dorado = 12**\n\n### Paso 2: Explorar desde **Altavista**\n- Desde **Altavista**, la distancia más corta es a **Bellavista** (4 minutos).\n\n### Paso 3: Desde **Bellavista**\n- **Bellavista - Cumbres = 2** → distancia acumulada: 4 + 2 = 6\n- **Bellavista - Dorado = 9** → distancia acumulada: 4 + 9 = 13\n\n### Paso 4: Desde **Cumbres** (distancia acumulada 6)\n- **Cumbres - Esmeralda = 3** → distancia acumulada: 6 + 3 = 9\n- **Cumbres - Farallon = 10** → distancia acumulada: 6 + 10 = 16\n\n### Paso 5: Desde **Esmeralda** (distancia acumulada 9)\n- **Esmeralda - Girasol = 8** → distancia acumulada: 9 + 8 = 17\n- **Esmeralda - Horizonte = 9** → distancia acumulada: 9 + 9 = 18\n\n### Paso 6: Desde **Girasol** (distancia acumulada 17)\n- **Girasol - Farallon = 1** → distancia acumulada: 17 + 1 = 18\n- **Girasol - Horizonte = 2** → distancia acumulada: 17 + 2 = 19\n- **Girasol - Iguazu = 7** → distancia acumulada: 17 + 7 = 24\n\n### Paso 7: Desde **Farallon** (distancia acumulada 16)\n- **Farallon - Girasol = 1** → ya visitado\n- **Farallon - Horizonte = 4** → distancia acumulada: 16 + 4 = 20\n- **Farallon - Horizonte** ya se consideró desde **Girasol** (distancia 19)\n\n### Paso 8: Desde **Horizonte** (distancia acumulada 18)\n- **Horizonte - Jacaranda = 3** → distancia acumulada: 18 + 3 = 21\n- **Horizonte - Girasol = 2** → ya visitado\n\n### Paso 9: Desde **Jacaranda** (distancia acumulada 21)\n- **Jacaranda - Iguazu = 2** → distancia acumulada: 21 + 2 = 23\n- **Jacaranda - Lagos = 5** → distancia acumulada: 21 + 5 = 26\n\n### Paso 10: Desde **Iguazu** (distancia acumulada 23)\n- **Iguazu - Jacaranda = 2** → ya visitado\n- **Iguazu - Kennedy = 6** → distancia acumulada: 23 + 6",
+    "elapsed_s": 23.8
+  },
+  "qwen3:14b|t3_conteo_reticula|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 1,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Para resolver este problema, consideramos que el repartidor debe moverse desde la esquina inferior izquierda hasta la esquina superior derecha en una cuadrícula de 12 × 12. Esto significa que debe hacer un total de 12 movimientos hacia el este (E) y 12 movimientos hacia el norte (N), en cualquier orden.\n\nEl problema se reduce a calcular el número de maneras de organizar 12 movimientos E y 12 movimientos N en una secuencia de 24 movimientos. Esto es un problema de combinaciones, donde elegimos 12 posiciones (de un total de 24) para los movimientos hacia el este (o equivalentemente, para los movimientos hacia el norte).\n\nLa fórmula es:\n\n$$\n\\binom{24}{12} = \\frac{24!}{12! \\cdot 12!}\n$$\n\nCalculando este valor:\n\n$$\n\\binom{24}{12} = 2704156\n$$\n\nRespuesta final: 2704156",
+    "elapsed_s": 5.9
+  },
+  "qwen3:14b|t3_conteo_reticula|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 2,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Para resolver este problema, imaginemos que el repartidor debe moverse desde la esquina inferior izquierda hasta la superior derecha en una cuadrícula de 12×12. Esto significa que debe hacer un total de 12 movimientos hacia el este (E) y 12 movimientos hacia el norte (N), en cualquier orden.\n\nEl problema se reduce a calcular el número de maneras distintas de organizar 12 movimientos \"E\" y 12 movimientos \"N\" en una secuencia de 24 movimientos.\n\nEsto es un problema de **combinaciones**. El número total de rutas distintas es igual al número de combinaciones de 24 elementos tomados de 12 en 12 (o equivalentemente, de 12 en 12):\n\n$$\n\\binom{24}{12} = \\frac{24!}{12! \\cdot 12!}\n$$\n\nCalculando este valor:\n\n$$\n\\binom{24}{12} = 2704156\n$$\n\nRespuesta final: 2704156",
+    "elapsed_s": 5.5
+  },
+  "qwen3:14b|t4_recursion_afin|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 1,
+    "respuesta_final": "37521",
+    "nota": "",
+    "raw": "Comenzamos con $ x_0 = 42 $, y aplicamos la función $ f(x) = (137 \\cdot x + 991) \\mod 100000 $, iterativamente 40 veces.\n\nVamos a calcular los primeros pasos para identificar patrones o simplificar el cálculo:\n\n- $ x_0 = 42 $\n- $ x_1 = (137 \\cdot 42 + 991) \\mod 100000 = (5754 + 991) \\mod 100000 = 6745 $\n- $ x_2 = (137 \\cdot 6745 + 991) \\mod 100000 $\n\nPara evitar cálculos muy grandes, notamos que la operación $ f(x) $ es lineal módulo 100000, y por lo tanto, podemos representar la iteración como:\n\n$$\nx_n = (137^n \\cdot x_0 + 991 \\cdot \\sum_{k=0}^{n-1} 137^k) \\mod 100000\n$$\n\nAhora, calculamos $ x_{40} $ usando esta fórmula.\n\nPrimero, calculamos $ 137^{40} \\mod 100000 $ y $ \\sum_{k=0}^{39} 137^k \\mod 100000 $.\n\nEstos cálculos se pueden hacer usando propiedades de módulo y exponenciación modular, pero como no usamos herramientas, procedemos de forma iterativa:\n\n- $ x_0 = 42 $\n- $ x_1 = 6745 $\n- $ x_2 = (137 \\cdot 6745 + 991) \\mod 100000 = (923, 915 + 991) \\mod 100000 = 924, 906 \\mod 100000 = 24906 $\n- $ x_3 = (137 \\cdot 24906 + 991) \\mod 100000 = (3, 422, 162 + 991) \\mod 100000 = 3, 423, 153 \\mod 100000 = 43153 $\n- $ x_4 = (137 \\cdot 43153 + 991) \\mod 100000 = (5, 913, 861 + 991) \\mod 100000 = 5, 914, 852 \\mod 100000 = 14852 $\n- $ x_5 = (137 \\cdot 14852 + 991) \\mod 100000 = (2, 030, 604 + 991) \\mod 100000 = 2, 031, 595 \\mod 100000 = 31595 $\n\nContinuando este proceso 40 veces, se obtiene:\n\n$$\nx_{40} = 37521\n$$\n\nRespuesta final: 37521",
+    "elapsed_s": 13.6
+  },
+  "qwen3:14b|t4_recursion_afin|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": " $ 137 \\cdot 1053 = 144, 261 $ (aproximación mental)\n- $ 144,261 + 991 = 145,252 $\n- $ 145,252 \\mod 100000 = 45252 $\n\nEntonces, $ x_{40} = 45252 $\n\n**Paso 41:**\n$ x_{41} = (137 \\cdot 45252 + 991) \\mod",
+    "raw": "Comenzamos con $ x_0 = 42 $, y aplicamos la función $ f(x) = (137 \\cdot x + 991) \\mod 100000 $, repetidamente, 40 veces.\n\nVamos a calcular los primeros pasos para identificar si hay un patrón o ciclo, lo cual nos ayudará a acelerar el cálculo.\n\n**Paso 1:**\n$ x_1 = (137 \\cdot 42 + 991) \\mod 100000 = (5754 + 991) \\mod 100000 = 6745 \\mod 100000 = 6745 $\n\n**Paso 2:**\n$ x_2 = (137 \\cdot 6745 + 991) \\mod 100000 $\n\nPrimero calculamos $ 137 \\cdot 6745 $:\n- $ 137 \\cdot 6745 = 923, 165 $ (aproximación mental)\n- $ 923,165 + 991 = 924,156 $\n- $ 924,156 \\mod 100000 = 24156 $\n\nEntonces, $ x_2 = 24156 $\n\n**Paso 3:**\n$ x_3 = (137 \\cdot 24156 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 24156 = 3,313, 972 $ (aproximación mental)\n- $ 3,313,972 + 991 = 3,314,963 $\n- $ 3,314,963 \\mod 100000 = 14963 $\n\nEntonces, $ x_3 = 14963 $\n\n**Paso 4:**\n$ x_4 = (137 \\cdot 14963 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 14963 = 2,046, 671 $ (aproximación mental)\n- $ 2,046,671 + 991 = 2,047,662 $\n- $ 2,047,662 \\mod 100000 = 47662 $\n\nEntonces, $ x_4 = 47662 $\n\n**Paso 5:**\n$ x_5 = (137 \\cdot 47662 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 47662 = 6,527, 994 $ (aproximación mental)\n- $ 6,527,994 + 991 = 6,528,985 $\n- $ 6,528,985 \\mod 100000 = 28985 $\n\nEntonces, $ x_5 = 28985 $\n\n**Paso 6:**\n$ x_6 = (137 \\cdot 28985 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 28985 = 3,973, 645 $ (aproximación mental)\n- $ 3,973,645 + 991 = 3,974,636 $\n- $ 3,974,636 \\mod 100000 = 4636 $\n\nEntonces, $ x_6 = 4636 $\n\n**Paso 7:**\n$ x_7 = (137 \\cdot 4636 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 4636 = 635, 332 $ (aproximación mental)\n- $ 635,332 + 991 = 636,323 $\n- $ 636,323 \\mod 100000 = 36323 $\n\nEntonces, $ x_7 = 36323 $\n\n**Paso 8:**\n$ x_8 = (137 \\cdot 36323 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 36323 = 4,981, 151 $ (aproximación mental)\n- $ 4,981,151 + 991 = 4,982,142 $\n- $ 4,982,142 \\mod 100000 = 82142 $\n\nEntonces, $ x_8 = 82142 $\n\n**Paso 9:**\n$ x_9 = (137 \\cdot 82142 + 991) \\mod 100000 $\n\n- $ 137 \\cdot 82142 = 11,263, 154 $ (aproximación mental)\n- $ 11,263,154",
+    "elapsed_s": 83.5
+  },
+  "qwen3:14b|t5_calculo_exteriorizado|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 1,
+    "respuesta_final": "501581288",
+    "nota": "",
+    "raw": "Calcular la suma de los cuadrados de las 30 lecturas implica elevar cada valor al cuadrado y luego sumar todos los resultados. A continuación, se calcula el cuadrado de cada lectura y se suman:\n\n- $4821^2 = 23244041$\n- $3990^2 = 15920100$\n- $5172^2 = 26750884$\n- $4408^2 = 19430464$\n- $3765^2 = 14175225$\n- $6011^2 = 36132121$\n- $2987^2 = 8922169$\n- $5540^2 = 30691600$\n- $4123^2 = 16999129$\n- $3876^2 = 15023376$\n- $5298^2 = 28071204$\n- $4710^2 = 22184100$\n- $3654^2 = 13351716$\n- $6102^2 = 37234404$\n- $2890^2 = 8352100$\n- $5471^2 = 29931841$\n- $4019^2 = 16152361$\n- $3788^2 = 14348944$\n- $5630^2 = 317068900$\n- $4255^2 = 18105025$\n- $3912^2 = 15303744$\n- $6044^2 = 36530336$\n- $2976^2 = 8856576$\n- $5388^2 = 29030544$\n- $4187^2 = 17531969$\n- $3801^2 = 14447601$\n- $5519^2 = 30459361$\n- $4630^2 = 21436900$\n- $3745^2 = 14025025$\n- $6088^2 = 37065744$\n\nSumando todos estos valores:\n\n$23244041 + 15920100 + 26750884 + 19430464 + 14175225 + 36132121 + 8922169 + 30691600 + 16999129 + 15023376 + 28071204 + 22184100 + 13351716 + 37234404 + 8352100 + 29931841 + 16152361 + 14348944 + 317068900 + 18105025 + 15303744 + 36530336 + 8856576 + 29030544 + 17531969 + 14447601 + 30459361 + 21436900 + 14025025 + 37065744 = 501581288$\n\nRespuesta final: 501581288",
+    "elapsed_s": 15.3
+  },
+  "qwen3:14b|t5_calculo_exteriorizado|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 2,
+    "respuesta_final": "740766323",
+    "nota": "",
+    "raw": "Calcular la suma de los cuadrados de las 30 lecturas implica elevar cada valor al cuadrado y luego sumar todos los resultados. A continuación, se calcula el cuadrado de cada lectura y se suman:\n\n1. $4821^2 = 23244041$  \n2. $3990^2 = 15920100$  \n3. $5172^2 = 26750884$  \n4. $4408^2 = 19430464$  \n5. $3765^2 = 14175225$  \n6. $6011^2 = 36132121$  \n7. $2987^2 = 8922169$  \n8. $5540^2 = 30691600$  \n9. $4123^2 = 16999129$  \n10. $3876^2 = 15023376$  \n11. $5298^2 = 28071204$  \n12. $4710^2 = 22184100$  \n13. $3654^2 = 13351716$  \n14. $6102^2 = 37234404$  \n15. $2890^2 = 8352100$  \n16. $5471^2 = 29931841$  \n17. $4019^2 = 16152361$  \n18. $3788^2 = 14348944$  \n19. $5630^2 = 31706890$  \n20. $4255^2 = 18105025$  \n21. $3912^2 = 15305744$  \n22. $6044^2 = 36530336$  \n23. $2976^2 = 8856576$  \n24. $5388^2 = 29034544$  \n25. $4187^2 = 17531969$  \n26. $3801^2 = 14447601$  \n27. $5519^2 = 30459361$  \n28. $4630^2 = 21436900$  \n29. $3745^2 = 14025025$  \n30. $6088^2 = 37065744$  \n\nSumando todos los valores:\n\n$23244041 + 15920100 + 26750884 + 19430464 + 14175225 + 36132121 + 8922169 + 30691600 + 16999129 + 15023376 + 28071204 + 22184100 + 13351716 + 37234404 + 8352100 + 29931841 + 16152361 + 14348944 + 31706890 + 18105025 + 15305744 + 36530336 + 8856576 + 29034544 + 17531969 + 14447601 + 30459361 + 21436900 + 14025025 + 37065744 = 740766323$\n\nRespuesta final: 740766323",
+    "elapsed_s": 16.6
+  },
+  "qwen3:14b|t6_relevancia_escena|1": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 1,
+    "respuesta_final": "La alerta debe dirigirse a la mujer mayor para evitar un posible accidente.",
+    "nota": "",
+    "raw": "La situación más crítica en la escena es la de la mujer mayor que está detenida en mitad del cruce, mirando hacia ambos lados sin avanzar, mientras el semáforo peatonal se pone en rojo y un repartidor en moto acelera. Esto aumenta el riesgo de un accidente, especialmente dado el estado de la calle mojada y la posible lentitud de reacción de la mujer. Por lo tanto, la alerta debe dirigirse a la mujer mayor para que se mueva con precaución hacia un lugar seguro.  \nRespuesta final: La alerta debe dirigirse a la mujer mayor para evitar un posible accidente.",
+    "elapsed_s": 3.7
+  },
+  "qwen3:14b|t6_relevancia_escena|2": {
+    "modelo": "qwen3:14b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 2,
+    "respuesta_final": "Al repartidor en moto.",
+    "nota": "",
+    "raw": "La situación más crítica en la escena es la de la mujer mayor que está detenida en mitad del cruce, mirando hacia ambos lados sin avanzar, en un momento en que el semáforo peatonal acaba de ponerse en rojo y un repartidor en moto acelera al ver el cambio de luz. Esto aumenta el riesgo de un accidente, especialmente considerando que la mujer mayor podría no reaccionar rápidamente. Por lo tanto, la alerta debe dirigirse al repartidor en moto para que reduzca la velocidad y evite un posible choque.  \nRespuesta final: Al repartidor en moto.",
+    "elapsed_s": 3.8
+  },
+  "gpt-oss:20b|t1_multiplicacion|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 1,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 79.2
+  },
+  "gpt-oss:20b|t1_multiplicacion|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 108.5
+  },
+  "gpt-oss:20b|t2_camino_corto|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 1,
+    "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+    "nota": "",
+    "raw": "Respuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+    "elapsed_s": 42.7
+  },
+  "gpt-oss:20b|t2_camino_corto|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 87.6
+  },
+  "gpt-oss:20b|t3_conteo_reticula|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 1,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Respuesta final: 2704156",
+    "elapsed_s": 18.9
+  },
+  "gpt-oss:20b|t3_conteo_reticula|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 2,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Respuesta final: 2704156",
+    "elapsed_s": 38.8
+  },
+  "gpt-oss:20b|t4_recursion_afin|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 1,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 95.5
+  },
+  "gpt-oss:20b|t4_recursion_afin|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 95.0
+  },
+  "gpt-oss:20b|t5_calculo_exteriorizado|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 1,
+    "respuesta_final": "651396404",
+    "nota": "",
+    "raw": "Respuesta final: 651396404",
+    "elapsed_s": 41.2
+  },
+  "gpt-oss:20b|t5_calculo_exteriorizado|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t5_calculo_exteriorizado",
+    "intento": 2,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 77.6
+  },
+  "gpt-oss:20b|t6_relevancia_escena|1": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 1,
+    "respuesta_final": "Alerta al niño que está cruzando la calle",
+    "nota": "",
+    "raw": "Respuesta final: Alerta al niño que está cruzando la calle",
+    "elapsed_s": 10.2
+  },
+  "gpt-oss:20b|t6_relevancia_escena|2": {
+    "modelo": "gpt-oss:20b",
+    "tarea_id": "t6_relevancia_escena",
+    "intento": 2,
+    "respuesta_final": "Alerta al niño que está cruzando la calle.",
+    "nota": "",
+    "raw": "Respuesta final: Alerta al niño que está cruzando la calle.",
+    "elapsed_s": 9.1
+  },
+  "qwen3:32b|t1_multiplicacion|1": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 1,
+    "respuesta_final": "349686784924678492491",
+    "nota": "",
+    "raw": "Respuesta final: 349686784924678492491",
+    "elapsed_s": 21.5
+  },
+  "qwen3:32b|t1_multiplicacion|2": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t1_multiplicacion",
+    "intento": 2,
+    "respuesta_final": "34972277298969722772981",
+    "nota": "",
+    "raw": "Respuesta final: 34972277298969722772981",
+    "elapsed_s": 7.0
+  },
+  "qwen3:32b|t2_camino_corto|1": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 1,
+    "respuesta_final": "ERROR",
+    "nota": "timed out",
+    "raw": "",
+    "elapsed_s": 605.2
+  },
+  "qwen3:32b|t2_camino_corto|2": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t2_camino_corto",
+    "intento": 2,
+    "respuesta_final": "Altavista, Bellavista, Dorado, Farallon, Girasol, Iguazu, Jaguar, Zafiro**",
+    "nota": "",
+    "raw": "Para encontrar el camino de menor distancia total desde **Altavista** hasta **Zafiro**, aplicaré el algoritmo de **Dijkstra** de forma manual, paso a paso, considerando que el grafo es no dirigido.\n\n---\n\n### **Paso 1: Inicialización**\n- Nodo de inicio: **Altavista**\n- Distancia inicial a todos los demás: **∞**\n- Distancia a **Altavista**: **0**\n- Conjunto de nodos no visitados: todos los barrios\n- Predecesores: todos son `None` inicialmente\n\n---\n\n### **Paso 2: Iteraciones del algoritmo de Dijkstra**\n\n#### **Iteración 1: Desde Altavista**\n- Vecinos de **Altavista**: **Bellavista (4)**, **Cumbres (7)**, **Dorado (12)**\n- Actualizamos distancias:\n  - **Bellavista**: 4\n  - **Cumbres**: 7\n  - **Dorado**: 12\n- Nodo con menor distancia: **Bellavista (4)** → lo marcamos como visitado\n\n#### **Iteración 2: Desde Bellavista**\n- Vecinos: **Altavista (4)**, **Cumbres (2)**, **Dorado (9)**\n- Desde **Bellavista**:\n  - **Cumbres**: 4 + 2 = 6 (mejor que 7)\n  - **Dorado**: 4 + 9 = 13 (mejor que 12)\n- Actualizamos:\n  - **Cumbres**: 6\n  - **Dorado**: 13\n- Nodo con menor distancia: **Cumbres (6)** → lo marcamos como visitado\n\n#### **Iteración 3: Desde Cumbres**\n- Vecinos: **Altavista (7)**, **Bellavista (2)**, **Esmeralda (3)**\n- Desde **Cumbres**:\n  - **Esmeralda**: 6 + 3 = 9\n- Actualizamos:\n  - **Esmeralda**: 9\n- Nodo con menor distancia: **Esmeralda (9)** → lo marcamos como visitado\n\n#### **Iteración 4: Desde Esmeralda**\n- Vecinos: **Cumbres (3)**, **Dorado (6)**, **Girasol (8)**, **Horizonte (9)**\n- Desde **Esmeralda**:\n  - **Dorado**: 9 + 6 = 15 (mejor que 13)\n  - **Girasol**: 9 + 8 = 17\n  - **Horizonte**: 9 + 9 = 18\n- Actualizamos:\n  - **Dorado**: 15\n  - **Girasol**: 17\n  - **Horizonte**: 18\n- Nodo con menor distancia: **Dorado (15)** → lo marcamos como visitado\n\n#### **Iteración 5: Desde Dorado**\n- Vecinos: **Bellavista (9)**, **Esmeralda (6)**, **Farallon (5)**, **Girasol (6)**\n- Desde **Dorado**:\n  - **Farallon**: 15 + 5 = 20\n  - **Girasol**: 15 + 6 = 21 (mejor que 17)\n- Actual",
+    "elapsed_s": 222.0
+  },
+  "qwen3:32b|t3_conteo_reticula|1": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 1,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Para resolver este problema, debemos calcular cuántas rutas distintas existen para ir desde la esquina inferior izquierda hasta la esquina superior derecha de una cuadrícula de 12 cuadras de ancho por 12 cuadras de alto, moviéndose solo hacia el este (derecha) o hacia el norte (arriba).\n\n### Razonamiento:\n- El repartidor debe moverse 12 veces hacia el este (E) y 12 veces hacia el norte (N), para un total de 24 movimientos.\n- El problema se reduce a encontrar de cuántas maneras se pueden organizar 12 E y 12 N en una secuencia de 24 pasos.\n- Esto es un problema de combinaciones: elegir 12 pasos de los 24 para ser \"hacia el este\", y los restantes serán \"hacia el norte\".\n\nLa fórmula para calcular esto es el coeficiente binomial:\n\n$$\n\\binom{24}{12} = \\frac{24!}{12! \\cdot 12!}\n$$\n\n### Cálculo:\n- $24! = 620448401733239439360000$\n- $12! = 479001600$\n- $12! \\cdot 12! = 479001600 \\cdot 479001600 = 229442522572800000$\n\n$$\n\\binom{24}{12} = \\frac{620448401733239439360000}{229442522572800000} = 2704156\n$$\n\n### Respuesta final:\n2704156",
+    "elapsed_s": 61.4
+  },
+  "qwen3:32b|t3_conteo_reticula|2": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t3_conteo_reticula",
+    "intento": 2,
+    "respuesta_final": "2704156",
+    "nota": "",
+    "raw": "Para resolver este problema, imaginemos que el repartidor debe moverse desde la esquina inferior izquierda hasta la esquina superior derecha de una cuadrícula de 12 cuadras de ancho por 12 cuadras de alto. Esto significa que debe hacer un total de 12 movimientos hacia el este (E) y 12 movimientos hacia el norte (N), en cualquier orden.\n\nAsí que el problema se reduce a encontrar de cuántas maneras se pueden ordenar 12 E y 12 N en una secuencia de 24 movimientos.\n\nEsto es un problema clásico de combinaciones. El número de rutas distintas es igual al número de maneras de elegir 12 posiciones para los movimientos E (o N) en una secuencia de 24 pasos. Matemáticamente, esto se calcula como el coeficiente binomial:\n\n$$\n\\binom{24}{12} = \\frac{24!}{12! \\cdot 12!}\n$$\n\nAhora calculamos este valor paso a paso:\n\n- $24! = 620448401733239439360000$\n- $12! = 479001600$\n- $12! \\cdot 12! = 479001600 \\cdot 479001600 = 229442522457600000$\n\nAhora dividimos:\n\n$$\n\\binom{24}{12} = \\frac{620448401733239439360000}{229442522457600000} = 2704156\n$$\n\nRespuesta final: 2704156",
+    "elapsed_s": 55.7
+  },
+  "qwen3:32b|t4_recursion_afin|1": {
+    "modelo": "qwen3:32b",
+    "tarea_id": "t4_recursion_afin",
+    "intento": 1,
+    "respuesta_final": "ERROR",
+    "nota": "timed out",
+    "raw": "",
+    "elapsed_s": 604.5
+  }
+}

@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Yuk Hui — Sobre el límite de la inteligencia artificial</title>
+
+  <!-- reveal.js 5.x desde CDN (jsdelivr) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+  <style>
+    /* ===== Tema oscuro personalizado: azul noche + acento ámbar ===== */
+    :root {
+      --fondo:        #0e1a2b;   /* azul noche */
+      --fondo-grad:   #0a121e;
+      --texto:        #e8e6e1;   /* hueso cálido */
+      --texto-tenue:  #9aa3af;
+      --acento:       #e0a458;   /* ámbar / ocre */
+      --acento-suave: #efc88a;
+      --linea:        #243248;
+      --verde:        #3ecf9a;   /* acierto / cómputo */
+      --rojo:         #e07a68;   /* fallo */
+      --azul:         #5fa8e0;   /* frontera / API */
+      --serif:        Georgia, 'Times New Roman', 'Iowan Old Style', serif;
+      --sans:         'Helvetica Neue', Arial, system-ui, sans-serif;
+    }
+
+    .reveal {
+      font-family: var(--sans);
+      font-size: 30px;
+      color: var(--texto);
+    }
+
+    html, .reveal-viewport {
+      background: radial-gradient(ellipse at 28% -5%, #16263c 0%, var(--fondo) 45%, var(--fondo-grad) 100%);
+    }
+
+    /* ===== Títulos serif ===== */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: var(--serif);
+      color: var(--texto);
+      font-weight: 600;
+      letter-spacing: 0.005em;
+      text-transform: none;
+      line-height: 1.12;
+      text-shadow: none;
+    }
+    .reveal h1 { font-size: 2.1em; }
+    .reveal h2 {
+      font-size: 1.5em;
+      border-bottom: 1px solid var(--linea);
+      padding-bottom: 0.3em;
+      margin-bottom: 0.55em;
+    }
+    .reveal h3 { font-size: 1.0em; color: var(--acento-suave); }
+
+    .reveal .slides section { text-align: left; top: 0 !important; }
+    .reveal .slides section.centrado { text-align: center; }
+
+    /* ===== Listas mínimas ===== */
+    .reveal ul { list-style: none; margin-left: 0; }
+    .reveal ul li {
+      position: relative;
+      padding-left: 1.25em;
+      margin-bottom: 0.5em;
+      line-height: 1.35;
+    }
+    .reveal ul li::before {
+      content: "—";
+      position: absolute; left: 0;
+      color: var(--acento); font-weight: 700;
+    }
+
+    .reveal em { color: var(--acento-suave); font-style: italic; }
+    .reveal strong { color: var(--texto); font-weight: 700; }
+
+    /* Etiqueta de eje/sección superior */
+    .eje-label {
+      font-family: var(--sans);
+      font-size: 0.5em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 0.15em;
+    }
+
+    /* Badge concepto clave */
+    .concepto {
+      display: inline-block;
+      margin-top: 0.55em;
+      padding: 0.3em 0.85em;
+      border: 1px solid var(--acento);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.7em;
+      letter-spacing: 0.03em;
+      color: var(--acento-suave);
+      background: rgba(224, 164, 88, 0.07);
+    }
+    .concepto .et {
+      color: var(--texto-tenue);
+      text-transform: uppercase;
+      font-size: 0.82em;
+      letter-spacing: 0.12em;
+      margin-right: 0.5em;
+    }
+    .concepto b { color: var(--acento-suave); font-weight: 700; }
+
+    /* ===== Portada ===== */
+    .portada h1 { margin-bottom: 0.2em; }
+    .portada .autor {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--acento-suave);
+      font-size: 1.05em;
+      margin-bottom: 0.1em;
+    }
+    .portada .subtitulo {
+      color: var(--texto-tenue);
+      font-size: 0.8em;
+      margin-bottom: 1.2em;
+    }
+    .portada .subtitulo .paginas { color: var(--acento); }
+
+    .pregunta-guia {
+      border-left: 3px solid var(--acento);
+      padding: 0.4em 0 0.4em 1em;
+      margin: 0 auto 1.2em auto;
+      max-width: 82%;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05em;
+      color: var(--texto);
+      text-align: left;
+    }
+    .pregunta-guia .et {
+      display: block;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 0.5em;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--texto-tenue);
+      margin-bottom: 0.3em;
+    }
+    .contexto-curso {
+      font-family: var(--sans);
+      font-size: 0.6em;
+      letter-spacing: 0.06em;
+      color: var(--texto-tenue);
+      text-transform: uppercase;
+      border-top: 1px solid var(--linea);
+      padding-top: 0.9em;
+      margin-top: 0.4em;
+    }
+    .contexto-curso .sep { color: var(--acento); margin: 0 0.5em; }
+
+    /* Cita destacada */
+    .reveal blockquote.cita {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1em;
+      color: var(--texto);
+      border-left: 3px solid var(--acento);
+      background: rgba(255,255,255,0.02);
+      padding: 0.6em 1em;
+      margin: 0.4em 0;
+      width: auto; box-shadow: none;
+    }
+
+    /* ===== Número gigante animado (contador) ===== */
+    .num-gigante {
+      font-family: var(--serif);
+      font-size: 5.2em;
+      line-height: 0.95;
+      color: var(--acento-suave);
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    .num-gigante.verde { color: var(--verde); }
+    .num-gigante.rojo  { color: var(--rojo); }
+    .num-gigante .u { font-size: 0.42em; color: var(--texto-tenue); }
+    .num-pie {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.72em;
+      color: var(--texto-tenue);
+      letter-spacing: 0.04em;
+      margin-top: 0.3em;
+      line-height: 1.4;
+    }
+
+    /* Trío de cifras grandes */
+    .cifras {
+      display: flex; gap: 1.1em;
+      justify-content: center;
+      margin: 0.4em 0 0.5em 0;
+      flex-wrap: wrap;
+    }
+    .cifra {
+      text-align: center;
+      padding: 0.55em 0.9em;
+      border: 1px solid var(--linea);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      min-width: 4.4em;
+    }
+    .cifra .n {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2em; line-height: 1;
+      color: var(--acento-suave);
+    }
+    .cifra .n.verde { color: var(--verde); }
+    .cifra .n.rojo  { color: var(--rojo); }
+    .cifra .n.azul  { color: var(--azul); }
+    .cifra .l {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.42em;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--texto-tenue);
+      margin-top: 0.55em; line-height: 1.35;
+    }
+
+    /* ===== Imágenes que llenan ===== */
+    .reveal .r-stretch { object-fit: contain; }
+    .figura-full {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #0c1622;
+      border: 1px solid var(--linea);
+    }
+    .grafico-fila { display: flex; gap: 1.2em; align-items: center; }
+    .grafico-fila img {
+      flex: 0 1 auto;
+      max-height: 400px; width: auto; max-width: 60%;
+      border-radius: 10px;
+      border: 1px solid var(--linea);
+      background: #0c1622;
+    }
+    .grafico-lectura {
+      flex: 1 1 38%;
+      min-width: 300px;
+      font-family: var(--sans);
+      font-size: 0.62em;
+      color: var(--texto);
+      line-height: 1.45;
+      max-width: 40%;
+    }
+    .grafico-lectura .destaca { color: var(--acento-suave); font-weight: 700; }
+
+    .pie-fuente {
+      font-family: var(--sans);
+      font-size: 0.52em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--texto-tenue);
+      margin-top: 0.55em;
+    }
+
+    /* Slide compacto: gana espacio vertical sin tocar contenido */
+    .reveal .slides section.compacto h2 { margin-bottom: 0.3em; }
+    .reveal .slides section.compacto ul { margin: 0.2em 0; }
+    .reveal .slides section.compacto ul li { margin-bottom: 0.22em; line-height: 1.28; }
+    .reveal .slides section.compacto table.tareas { margin-top: 0.1em; }
+    .reveal .slides section.compacto table.tareas td,
+    .reveal .slides section.compacto table.tareas th { padding-top: 0.2em; padding-bottom: 0.2em; }
+    .reveal .slides section.compacto .pie-fuente { margin-top: 0.35em; }
+    .reveal .slides section.compacto .concepto { margin-top: 0.4em; }
+
+    /* ===== Galería de teorías ===== */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5em 0.7em;
+      margin-top: 0.2em;
+    }
+    .galeria figure { margin: 0; }
+    .galeria img {
+      width: 100%;
+      height: 144px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+      border: 1px solid var(--linea);
+      background: #0c1622;
+    }
+    .galeria figcaption {
+      font-family: var(--sans);
+      font-size: 0.42em;
+      color: var(--texto-tenue);
+      letter-spacing: 0.04em;
+      margin-top: 0.3em;
+      line-height: 1.3;
+    }
+    .galeria figcaption b { color: var(--acento-suave); font-weight: 700; }
+
+    /* ===== Grilla de iconos de teorías (slide 7) ===== */
+    .teorias-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.55em 0.7em;
+      margin-top: 0.4em;
+      font-family: var(--sans);
+      font-size: 0.5em;
+    }
+    .teorias-grid .t-chip {
+      border: 1px solid var(--linea);
+      border-radius: 8px;
+      padding: 0.5em 0.6em;
+      background: rgba(255,255,255,0.02);
+    }
+    .teorias-grid .t-chip .t-n { color: var(--acento); font-weight: 700; }
+    .teorias-grid .t-chip .t-a { display:block; color: var(--texto-tenue); font-size: 0.85em; margin-top: 0.15em; }
+
+    /* ===== Tablas ===== */
+    .reveal table.tareas {
+      font-family: var(--sans);
+      font-size: 0.5em;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.2em;
+    }
+    .reveal table.tareas th {
+      text-align: left;
+      color: var(--acento);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-size: 0.85em;
+      border-bottom: 1px solid var(--acento);
+      padding: 0.32em 0.5em;
+    }
+    .reveal table.tareas td {
+      border-bottom: 1px solid var(--linea);
+      padding: 0.32em 0.5em;
+      vertical-align: top;
+      color: var(--texto);
+    }
+    .reveal table.tareas td.autor { color: var(--acento-suave); font-style: italic; white-space: nowrap; }
+    .reveal table.tareas tr.inversa td { color: var(--acento-suave); }
+
+    .anexo-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.42em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fondo);
+      background: var(--acento);
+      padding: 0.2em 0.7em;
+      border-radius: 4px;
+      margin-bottom: 0.35em;
+    }
+
+    .ok  { color: var(--verde); font-weight: 700; }
+    .no  { color: var(--rojo);  font-weight: 700; }
+    .na  { color: var(--texto-tenue); }
+
+    /* Enlace tesis / banco */
+    .reveal a.enlace-tesis {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55em;
+      font-family: var(--sans);
+      font-size: 0.62em;
+      letter-spacing: 0.05em;
+      color: var(--fondo);
+      background: var(--acento);
+      padding: 0.5em 1.1em;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .reveal a.enlace-tesis:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(224,164,88,0.25); }
+    .reveal a.enlace-tesis.fantasma {
+      color: var(--acento-suave);
+      background: transparent;
+      border: 1px solid var(--acento);
+    }
+    .enlaces-fila { display:flex; gap: 0.9em; flex-wrap: wrap; margin-top: 0.6em; }
+
+    /* Pregunta de discusión */
+    .discusion {
+      margin-top: 0.6em;
+      border-top: 1px solid var(--linea);
+      padding-top: 0.6em;
+    }
+    .discusion .et {
+      font-family: var(--sans);
+      font-size: 0.52em;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acento);
+      display: block;
+      margin-bottom: 0.3em;
+    }
+    .discusion .q {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95em;
+    }
+
+    /* ===== Controles, progreso, numeración ===== */
+    .reveal .progress { color: var(--acento); height: 4px; }
+    .reveal .controls { color: var(--acento); }
+    .reveal .slide-number {
+      background: transparent;
+      color: var(--texto-tenue);
+      font-family: var(--serif);
+      font-size: 16px;
+      right: auto;       /* mover a la izquierda: el botón de tesis ocupa la esquina derecha */
+      left: 12px;
+    }
+    .reveal .slide-number .slide-number-delimiter { margin: 0 0.2em; }
+    .reveal aside.notes { font-family: var(--sans); }
+
+    /* ===== Animaciones de entrada ===== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
+    @keyframes countPulse { 0% { opacity: 0; transform: scale(0.7); } 60% { transform: scale(1.06); } 100% { opacity: 1; transform: scale(1); } }
+
+    .reveal section.present .anim-fadeup { animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; }
+    .reveal section.present .anim-scalein { animation: scaleIn 0.7s cubic-bezier(.2,.7,.2,1) both; }
+    .reveal section.present .num-gigante { animation: countPulse 0.85s cubic-bezier(.2,.8,.2,1) both; }
+    .reveal section.present .cifra { animation: fadeUp 0.6s cubic-bezier(.2,.7,.2,1) both; }
+    .reveal section.present .cifra:nth-child(2) { animation-delay: 0.12s; }
+    .reveal section.present .cifra:nth-child(3) { animation-delay: 0.24s; }
+    .reveal section.present .cifra:nth-child(4) { animation-delay: 0.36s; }
+    .reveal section.present .galeria figure { animation: scaleIn 0.6s ease both; }
+    .reveal section.present .galeria figure:nth-child(2) { animation-delay: 0.08s; }
+    .reveal section.present .galeria figure:nth-child(3) { animation-delay: 0.16s; }
+    .reveal section.present .galeria figure:nth-child(4) { animation-delay: 0.24s; }
+    .reveal section.present .galeria figure:nth-child(5) { animation-delay: 0.32s; }
+    .reveal section.present .galeria figure:nth-child(6) { animation-delay: 0.40s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal section.present .anim-fadeup,
+      .reveal section.present .anim-scalein,
+      .reveal section.present .num-gigante,
+      .reveal section.present .cifra,
+      .reveal section.present .galeria figure {
+        animation: none !important;
+      }
+    }
+
+    /* ===== Slide de costos: imagen ancla grande ===== */
+    .reveal .slides section .img-costo {
+      display: block;
+      margin: 0.2em auto 0;
+      max-height: 60vh;
+      max-width: 84%;
+      width: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid var(--linea);
+      background: #0c1622;
+    }
+
+    /* Anexo: imagen que llena el slide */
+    .reveal .slides section img.anexo-full {
+      display: block;
+      margin: 0.2em auto 0;
+      max-height: 85vh;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid var(--linea);
+      background: #0c1622;
+    }
+
+    /* ===== Botón global de tesis (persiste entre slides) ===== */
+    .tesis-btn {
+      position: fixed;
+      bottom: 14px;
+      right: 16px;
+      z-index: 60;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--acento-suave);
+      background: rgba(224, 164, 88, 0.08);
+      border: 1px solid var(--acento);
+      border-radius: 999px;
+      padding: 0.34em 0.85em;
+      text-decoration: none;
+      opacity: 0.62;
+      transition: opacity 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+    .tesis-btn:hover {
+      opacity: 1;
+      background: rgba(224, 164, 88, 0.16);
+      transform: translateY(-1px);
+    }
+    .tesis-btn .flecha { font-size: 0.9em; }
+    @media (max-width: 700px) { .tesis-btn { bottom: 10px; right: 10px; font-size: 11px; } }
+    @media (prefers-reduced-motion: reduce) { .tesis-btn { transition: none; } .tesis-btn:hover { transform: none; } }
+
+    /* ===== Callout flotante en espacios muertos ===== */
+    .callout {
+      position: absolute;
+      max-width: 15em;
+      font-family: var(--sans);
+      font-size: 0.5em;
+      line-height: 1.3;
+      color: var(--texto);
+      background: rgba(14, 26, 43, 0.82);
+      border: 1px solid var(--acento);
+      border-radius: 8px;
+      padding: 0.55em 0.75em;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+    .callout::before {
+      content: "·";
+      color: var(--acento);
+      font-weight: 700;
+      margin-right: 0.4em;
+    }
+    .callout b { color: var(--acento-suave); font-weight: 700; }
+    .callout em { color: var(--acento-suave); font-style: italic; }
+    /* La entrada fade-up la provee reveal vía .fragment.fade-up; reduced-motion lo respeta reveal */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal .fragment.fade-up { transform: none !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       VISUALIZACIONES VIVAS (window.VIZ + deck-bridge.js)
+       ═══════════════════════════════════════════════════════════════════ */
+
+    /* ── Galería viva: grilla 2×2 de viz montadas ───────────────────────── */
+    .galeria-viva {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.55em 0.7em;
+      margin-top: 0.2em;
+      /* Altura fija en unidades lógicas de reveal (slide = 700px). 70vh medía
+         contra el viewport REAL escalado y desbordaba la lámina, recortando la
+         fila inferior (christaller/braess) en 1920×1080. 462px deja la galería
+         completa dentro de la lámina con margen para el pie de fuente. */
+      height: 462px;
+    }
+    .galeria-viva .viva-celda {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+    }
+    .galeria-viva .viva-lienzo {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      border-radius: 8px;
+      border: 1px solid var(--linea);
+      background: #0c1622;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .galeria-viva .viva-lienzo canvas { display: block; }
+    .galeria-viva .viva-pie {
+      font-family: var(--sans);
+      font-size: 0.42em;
+      color: var(--texto-tenue);
+      letter-spacing: 0.04em;
+      margin-top: 0.32em;
+      line-height: 1.3;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5em;
+    }
+    .galeria-viva .viva-pie b { color: var(--acento-suave); font-weight: 700; }
+    .galeria-viva .viva-pie .pista {
+      flex-shrink: 0;
+      color: var(--acento);
+      opacity: 0.72;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.92em;
+      white-space: nowrap;
+    }
+
+    /* ── Chips de teorías clicables (los 8 con viz) ─────────────────────── */
+    .teorias-grid .t-chip.con-viz {
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+    .teorias-grid .t-chip.con-viz::after {
+      content: "▸";
+      float: right;
+      color: var(--acento);
+      opacity: 0.5;
+      font-size: 0.9em;
+      margin-left: 0.3em;
+    }
+    .teorias-grid .t-chip.con-viz:hover {
+      border-color: var(--acento);
+      background: rgba(224, 164, 88, 0.08);
+      transform: translateY(-1px);
+    }
+    .teorias-grid .t-chip.con-viz:hover::after { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .teorias-grid .t-chip.con-viz { transition: none; }
+      .teorias-grid .t-chip.con-viz:hover { transform: none; }
+    }
+
+    /* ── Overlay del deck para viz a pantalla completa ──────────────────── */
+    .viz-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: #0e1a2bf2;
+      flex-direction: column;
+      backdrop-filter: blur(3px);
+    }
+    .viz-overlay.active { display: flex; }
+    .viz-overlay-head {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 1.1rem;
+      border-bottom: 1px solid var(--linea);
+      flex-shrink: 0;
+    }
+    .viz-overlay-title {
+      flex: 1;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--acento-suave);
+      letter-spacing: 0.01em;
+    }
+    .viz-overlay-close {
+      background: rgba(224, 164, 88, 0.08);
+      border: 1px solid var(--acento);
+      color: var(--acento-suave);
+      font-size: 1rem;
+      line-height: 1;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .viz-overlay-close:hover { background: rgba(224, 164, 88, 0.2); color: var(--texto); }
+    .viz-overlay-body {
+      flex: 1 1 auto;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* ── Fondo vivo de portada ──────────────────────────────────────────── */
+    .portada .viva-fondo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.16;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .portada > *:not(.viva-fondo) { position: relative; z-index: 1; }
+
+    /* ── Enlace móvil discreto en el cierre ─────────────────────────────── */
+    .enlace-movil {
+      font-family: var(--sans);
+      font-size: 0.58em;
+      letter-spacing: 0.06em;
+      color: var(--texto-tenue);
+      text-transform: uppercase;
+      margin-top: 0.9em;
+    }
+    .enlace-movil .ruta { color: var(--acento); font-weight: 700; letter-spacing: 0.08em; }
+    .enlace-movil #qr-movil:not(:empty) { display: block; margin-top: 0.5em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============ 1 — APERTURA (1 min) ============ -->
+      <section class="centrado portada" data-auto-animate>
+        <!-- Fondo vivo sutil (DLA fractal) a ~0.16; estático bajo prefers-reduced-motion -->
+        <div class="viva-fondo" data-viz="dla" aria-hidden="true"></div>
+        <p class="autor anim-fadeup">Yuk Hui</p>
+        <h1 class="anim-fadeup" data-id="titulo">Fragmentar el futuro</h1>
+        <p class="subtitulo anim-fadeup">
+          «Sobre el límite de la inteligencia artificial»
+          <span class="paginas">(pp.&nbsp;163–191)</span>
+        </p>
+        <div class="pregunta-guia anim-fadeup">
+          <span class="et">Pregunta guía</span>
+          ¿Dónde está el límite de la IA —y por qué ese límite no es técnico?
+        </div>
+        <p class="contexto-curso anim-fadeup">
+          Filosofía de la Ciudad
+          <span class="sep">·</span> Unidad Urban AI
+          <span class="sep">·</span> 12 de junio de 2026
+        </p>
+
+        <aside class="notes">
+          [1 min] Hui no pregunta qué no puede hacer la IA, sino cómo pensar el límite de una
+          inteligencia artificial que parece expandirse, mutar y absorber funciones humanas
+          cuantificables. La tesis que defenderé hoy: ese límite no es una frontera técnica que
+          más cómputo termine cruzando, sino un límite político y cosmológico. El texto ancla es
+          «Fragmentar el futuro. Ensayos sobre tecnodiversidad» (Caja Negra, 2020), de Yuk Hui,
+          filósofo chino. El recorrido de hoy: seis pensadores que arman el concepto de inteligencia
+          —Bergson, Wiener, Simondon, Kant, Dreyfus y Heidegger—, más Hui que reformula el problema;
+          dos experimentos propios que ponen ese concepto a prueba sobre la ciudad, y una tesis con
+          consecuencias políticas. Empecemos por el primer eslabón: ¿qué es, para Bergson, la
+          inteligencia?
+        </aside>
+      </section>
+
+      <!-- ============ 2 — BERGSON (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="flujo_vital"
+        data-ambient-opts='{"opacidad":0.14,"opReticula":0.05,"densidad":28,"velocidad":0.25}'>
+        <p class="eje-label">Eje filosófico · 1 · Bergson</p>
+        <h2>La inteligencia exteriorizada</h2>
+        <div class="cifras">
+          <div class="cifra"><span class="n">homo<br>faber</span><span class="l">fabricar<br>herramientas</span></div>
+          <div class="cifra"><span class="n rojo">mecánico</span><span class="l">automatismo<br>repetición</span></div>
+          <div class="cifra"><span class="n verde">vital</span><span class="l">duración<br>impulso creador</span></div>
+        </div>
+        <p class="anim-fadeup" style="text-align:center; font-size:0.78em; color:var(--texto-tenue); max-width:80%; margin:0.5em auto 0;">
+          La IA <strong>exterioriza</strong> la inteligencia y <em>desborda la intención</em> — pero exteriorizar no es <em>entender</em>.
+        </p>
+        <p class="concepto anim-fadeup" style="display:block;text-align:center;max-width:78%;margin:0.7em auto 0;"><span class="et">Concepto</span> <b>inteligencia fabricadora</b> vs. <b>impulso vital</b> (élan vital) <span style="font-size:0.85em;color:var(--texto-tenue);">— marco del presentador; Hui trabaja la tensión mecánico/vital sin citar el élan vital en este capítulo</span></p>
+
+        <aside class="notes">
+          [1.5 min] Para Bergson la inteligencia es ante todo capacidad de fabricar herramientas:
+          el homo faber exterioriza su pensamiento en objetos técnicos. El élan vital —término
+          técnico de L’Évolution créatrice (1907); lo uso aquí en sentido amplio de impulso vital
+          creador, con la advertencia de que Hui no lo cita explícitamente en este capítulo— es la
+          fuerza creadora de la vida, opuesta al polo mecánico de la inteligencia instrumental. Hay
+          una tensión irreductible: lo mecánico —el automatismo, la repetición— frente a lo vital
+          —la duración, el impulso creador. La IA es el caso límite de esa exteriorización: una
+          herramienta que se desprende y desborda la intención que la creó. Subrayo la frase que
+          volverá al final: exteriorizar la inteligencia no es lo mismo que entender. Una IA puede
+          ejecutar la operación sin habitar su sentido. — Pero si la herramienta se desborda, ¿qué
+          pasa cuando empieza a regularse sola? Eso lo piensa la cibernética.
+        </aside>
+      </section>
+
+      <!-- ============ 3 — WIENER / SIMONDON / KANT (2 min) ============ -->
+      <section data-auto-animate
+        data-ambient="bucle"
+        data-ambient-opts='{"opPath":0.06,"opPunto":0.22,"numPuntos":2,"periodo":7}'>
+        <p class="eje-label">Eje filosófico · 2 · Cibernética · Simondon · Kant</p>
+        <h2>Retroalimentación, individuación y juicio</h2>
+        <div class="cifras">
+          <div class="cifra"><span class="n azul">Wiener</span><span class="l"><b style="color:var(--acento-suave)">retroalimentación</b><br>la salida vuelve como entrada</span></div>
+          <div class="cifra"><span class="n azul">Simondon</span><span class="l"><b style="color:var(--acento-suave)">individuación técnica</b><br>concretización de funciones</span></div>
+          <div class="cifra"><span class="n azul">Kant</span><span class="l"><b style="color:var(--acento-suave)">juicio reflexionante</b><br>la regla desde el caso</span></div>
+        </div>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.78em;color:var(--texto-tenue);max-width:84%;margin:0.5em auto 0;">
+          La IA aplica reglas (<em>juicio determinante</em>) pero no las <strong>genera desde el caso</strong> ni se da sus <strong>fines</strong>.
+        </p>
+
+        <aside class="notes">
+          [2 min] Con Wiener la cibernética se define como la ciencia del control y la comunicación
+          en el animal y la máquina; su mecanismo central es la retroalimentación —feedback—: un
+          sistema que toma su propio resultado como entrada y se regula a sí mismo. Como dice Wiener,
+          la información es información, no materia ni energía —es decir, organiza sin reducirse a
+          sustrato físico. — Simondon radicaliza esto: el objeto técnico moderno no es un
+          agregado de funciones yuxtapuestas sino un concreto que se constituye por la convergencia
+          de sus funciones; eso es la concretización, condición de la individuación técnica. — Kant
+          aporta el diagnóstico fino: dos tipos de juicio. El determinante aplica la regla al caso
+          dado —hacer una suma siguiendo el algoritmo. El reflexionante debe encontrar la regla
+          desde el caso, sin que nadie la fije de antemano —decidir qué es urgente en una escena
+          desconocida. La IA aplica patrones (determinante) pero no puede darse sus propios fines ni
+          hallar la regla desde el caso (reflexionante). Guarden esta distinción: la pondré a prueba
+          en un minuto, primero con cómputo, luego con una escena urbana. — Antes, la objeción más
+          dura: Dreyfus.
+        </aside>
+      </section>
+
+      <!-- ============ 4 — DREYFUS / HEIDEGGER (1 min) ============ -->
+      <section data-auto-animate
+        data-ambient="horizonte"
+        data-ambient-opts='{"opNodos":0.16,"opLineas":0.13,"numNodos":20}'>
+        <p class="eje-label">Eje filosófico · 3 · Dreyfus · Heidegger</p>
+        <h2>Mundo y relevancia</h2>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.95em;font-style:italic;max-width:84%;margin:0.5em auto;color:var(--texto);">
+          El <em>mundo</em> —en clave heideggeriana, según la lectura de Dreyfus— es un horizonte de <strong>significatividad</strong>, no un conjunto de datos.
+        </p>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.8em;max-width:82%;margin:0.4em auto 0;">
+          Lo que la IA <strong>no puede</strong> es decidir qué es <em>relevante</em> — y la relevancia <strong>no se programa de antemano</strong>.
+        </p>
+        <p class="concepto anim-fadeup" style="display:block;text-align:center;max-width:60%;margin:0.7em auto 0;"><span class="et">Concepto</span> <b>Dasein</b> · ser-en-el-mundo</p>
+
+        <aside class="notes">
+          [1 min] Dreyfus, leyendo a Heidegger, lanza la crítica más fuerte: la inteligencia no se
+          agota en el cálculo. El mundo, en sentido heideggeriano, es un horizonte de
+          significatividad, no un conjunto de datos: es aquello desde lo cual algo se vuelve
+          relevante. Lo que la IA no puede hacer es captar contexto y relevancia, porque carece de
+          Dasein, de ese ser-en-el-mundo desde el que las cosas adquieren sentido. — Tenemos ahora
+          dos tesis enfrentadas e ilustrables experimentalmente: el cálculo (Bergson/Kant) por un
+          lado, la relevancia (Dreyfus) por otro. Así que diseñé un caso que hiciera visible la
+          distinción en lugar de seguir en lo abstracto: interrogué a seis modelos de IA con tareas
+          de cómputo exacto y una tarea inversa de relevancia. El resultado no fue el que esperaba
+          —y eso, lejos de romper el argumento, lo afila.
+        </aside>
+      </section>
+
+      <!-- ============ 5 — EXP. 1 · PROTOCOLO (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.07,"opPico":0.18,"pistas":4,"periodo":5,"alto":0.10}'>
+        <p class="eje-label" data-id="lbl1">Experimento 1 · Protocolo</p>
+        <h2 data-id="t1">LLM vs. cómputo puro — gradiente de escala</h2>
+        <div class="callout fragment fade-up" style="right:3%;top:18%;">
+          El 32B tardó <b>3683 s</b>: timeouts <em>&gt;600 s</em> en T2 y T4.
+        </div>
+        <div class="cifras">
+          <div class="cifra"><span class="n">6</span><span class="l">sujetos<br>3B → Opus</span></div>
+          <div class="cifra"><span class="n">5+1</span><span class="l">tareas computables<br>+ 1 inversa</span></div>
+          <div class="cifra"><span class="n">0</span><span class="l">herramientas<br>solo razonamiento</span></div>
+        </div>
+        <table class="tareas">
+          <thead><tr><th>Tarea</th><th>Qué exige</th><th>Autor</th></tr></thead>
+          <tbody>
+          <tr class="fragment"><td>T1 · Multiplicar 2 enteros de 12 dígitos</td><td>precisión dígito a dígito</td><td class="autor">Bergson</td></tr>
+          <tr class="fragment"><td>T2 · Camino más corto (grafo de 25 barrios)</td><td>óptimo global determinístico</td><td class="autor">óptimo global</td></tr>
+          <tr class="fragment"><td>T3 · Conteo de rutas en retícula 12×12</td><td>combinatoria explosiva</td><td class="autor">Bergson</td></tr>
+          <tr class="fragment"><td>T4 · Recursión afín modular (40 pasos)</td><td>fidelidad iteración a iteración</td><td class="autor">Wiener</td></tr>
+          <tr class="fragment"><td>T5 · Suma de cuadrados de 30 sensores</td><td>agregado aritmético exacto</td><td class="autor">Bergson</td></tr>
+          <tr class="fragment inversa"><td>T6 · Juicio de relevancia en escena urbana</td><td><em>tarea inversa</em>: ¿qué es relevante?</td><td class="autor">Dreyfus</td></tr>
+          </tbody>
+        </table>
+        <p class="pie-fuente">4 locales en hardware propio (kratos · RTX 5070 Ti · Ollama) + 2 de frontera (Sonnet, Opus) · verdad de referencia: Python en el mismo equipo · 2 intentos/modelo</p>
+
+        <aside class="notes">
+          [1.5 min — cada fila aparece con un clic al nombrarla] Seis sujetos en gradiente de
+          tamaño: cuatro modelos abiertos —de 3 mil millones a 32 mil millones de parámetros— y dos
+          de frontera, Sonnet y Opus, vía API. Lo decisivo: los cuatro locales no corrieron en la
+          nube de nadie, corrieron en mi propia workstation, en una GPU de consumo, con Ollama. Eso
+          no es un detalle técnico: es el argumento de Hui hecho hardware. «¿Quién posee el cómputo,
+          quién fija la infraestructura?» deja de ser abstracto cuando uno pone cuatro modelos a
+          razonar en su escritorio. Tecnodiversidad y soberanía técnica empiezan en la posibilidad
+          material de no depender de una sola nube. Mismas tareas, mismos datos literales, sin
+          herramientas, dos intentos. En paralelo, Python calcula la verdad exacta. Cinco tareas de
+          cómputo puro, cada una atada a un autor; la sexta es la trampa, la tarea inversa de
+          Dreyfus. La hipótesis de escala es explícita: si el límite fuera cuantitativo, debería
+          disolverse subiendo de 3B a Opus. Veamos. — Las respuestas se consolidaron en
+          experimento/resultados.json; el gráfico que sigue se genera de ese JSON.
+        </aside>
+      </section>
+
+      <!-- ============ 6 — EXP. 1 · RESULTADOS (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.06,"opPico":0.16,"pistas":3,"periodo":6,"alto":0.09}'>
+        <p class="eje-label" data-id="lbl1">Experimento 1 · Resultados</p>
+        <h2 data-id="t1">La escala no cruza el límite</h2>
+        <div class="callout fragment fade-up" style="left:3%;bottom:14%;">
+          El <b>20B local</b> supera al <b>32B</b>: la escala <em>no es monótona</em>.
+        </div>
+        <div class="grafico-fila">
+          <img class="anim-scalein" src="assets/escala_vs_exactitud.png" alt="Exactitud vs. escala: 3B 20%, 14B 20%, 20B 40%, 32B 20%, Sonnet 90%, Opus 70%; cómputo puro 100%">
+          <div class="grafico-lectura">
+            <p class="fragment">El 3B y el 32B empatan en <span class="destaca">20%</span>, y el 20B (40%) supera al 32B. <span class="destaca">La curva no es monótona.</span></p>
+            <p class="fragment">El salto es <strong>local → frontera</strong> (Sonnet 90%, Opus 70%) — pero ni el mayor toca el <strong>100% trivial</strong> de Python; y Opus &lt; Sonnet.</p>
+            <p class="fragment"><strong>Matiz:</strong> el conteo combinatorio T3 lo resuelven <span class="destaca">los seis</span> (2/2) — es memorizable. La escala compra precisión en <em>algunos regímenes</em>, no cruza el umbral.</p>
+          </div>
+        </div>
+        <p class="pie-fuente">Fuente: experimento/resultados.json · 2026-06-10 · 6 modelos · sin herramientas · 2 intentos/modelo</p>
+
+        <aside class="notes">
+          [1.5 min] El argumento sale de los datos. Eje horizontal: escala creciente, de 3B a Opus.
+          Línea punteada arriba: el 100% trivial de Python. Primer hecho, el más fuerte: subir
+          parámetros NO sube la exactitud. El de 3 mil millones y el de 32 mil millones empatan en
+          20%; y el de 20B, más pequeño que el 32B, le gana con 40%. La curva no es monótona: si el
+          límite fuera solo tamaño, esto no debería pasar. El salto de verdad no es de tamaño sino
+          de régimen: local a frontera, Sonnet 90%, Opus 70%. Pero —segundo hecho— ni la frontera
+          toca el 100% del cómputo puro, y el mayor, Opus, es menos fiable que Sonnet. Opus falló la
+          suma de cuadrados en los dos intentos: 651.397.404 y 651.400.404 frente al exacto
+          651.396.404 —error de un dígito, consistente con producir el token plausible en vez de
+          ejecutar el algoritmo. Tercer hecho, el matiz honesto: T3, esa retícula de 2.704.156
+          rutas, la aciertan los seis, 3B incluido, 2 de 2 —porque es un coeficiente binomial
+          memorizable. Eso no refuta nada: la escala mejora la imitación estadística en bolsillos
+          concretos, pero sigue siendo estadística, no cálculo. Por eso el cero estructural —T6, la
+          tarea inversa— no se mueve con ningún tamaño. Ese cero es el corazón del argumento.
+          — [Respaldo si la imagen no carga: 3B=20%, 14B=20%, 20B=40%, 32B=20%; Sonnet=90%,
+          Opus=70%; Python=100%. T3 lo resuelven los seis 2/2.]
+        </aside>
+      </section>
+
+      <!-- ============ 7 — LO QUE YA SABEMOS COMPUTAR (1.5 min) ============ -->
+      <section data-auto-animate>
+        <p class="eje-label" data-id="lbl2">Lo que ya sabemos computar</p>
+        <h2 data-id="t2">13 teorías urbanas clásicas — validadas, exactas</h2>
+        <div class="callout fragment fade-up" style="right:2%;top:68%;">
+          Un portátil corre las <b>13</b> en <b>64,7 s</b>: <em>$6,9×10⁻⁶</em> por respuesta.
+        </div>
+        <div class="teorias-grid">
+          <div class="t-chip con-viz" data-viz-chip="von_thunen" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">von Thünen</span><span class="t-a">anillos de renta · 1826</span></div>
+          <div class="t-chip"><span class="t-n">Alonso</span><span class="t-a">bid-rent · 1964</span></div>
+          <div class="t-chip con-viz" data-viz-chip="christaller" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Christaller</span><span class="t-a">lugares centrales · 1933</span></div>
+          <div class="t-chip"><span class="t-n">Reilly–Huff</span><span class="t-a">gravitación comercial · 1931</span></div>
+          <div class="t-chip con-viz" data-viz-chip="schelling" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Schelling</span><span class="t-a">segregación · 1971</span></div>
+          <div class="t-chip"><span class="t-n">Duncan</span><span class="t-a">disimilitud · 1955</span></div>
+          <div class="t-chip con-viz" data-viz-chip="zipf" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Zipf</span><span class="t-a">rango-tamaño · 1949</span></div>
+          <div class="t-chip"><span class="t-n">Bettencourt–West</span><span class="t-a">escalamiento · 2007</span></div>
+          <div class="t-chip con-viz" data-viz-chip="automata" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Autómata celular</span><span class="t-a">crecimiento · 1993</span></div>
+          <div class="t-chip con-viz" data-viz-chip="dla" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">DLA · Batty</span><span class="t-a">fractal urbano · 1994</span></div>
+          <div class="t-chip"><span class="t-n">Hillier–Hanson</span><span class="t-a">sintaxis espacial · 1984</span></div>
+          <div class="t-chip con-viz" data-viz-chip="braess" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Braess–Wardrop</span><span class="t-a">equilibrio · 1968</span></div>
+          <div class="t-chip con-viz" data-viz-chip="gravitacional" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">Gravitacional</span><span class="t-a">flujos · 1948</span></div>
+        </div>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.8em;margin-top:0.7em;">
+          Un portátil las corre <strong>todas, exactas, en minutos.</strong> El conocimiento urbano clásico <em>ya está disponible.</em>
+          <span style="display:block;font-size:0.78em;color:var(--texto-tenue);margin-top:0.25em;">8 de las 13 abren su simulación viva — <span style="color:var(--acento);">click ▸</span></span>
+        </p>
+
+        <aside class="notes">
+          [1.5 min] Antes de juzgar a la IA, recordemos lo que la ciudad SÍ sabe computar desde hace
+          un siglo. Trece teorías urbanas clásicas, de von Thünen (1826) a Bettencourt-West (2007):
+          economía espacial, dinámica social, leyes estadísticas, morfología, redes. Las implementé
+          todas como simulaciones reproducibles, con semillas fijas, y cada una pasa su criterio de
+          validación: Schelling converge en 14 iteraciones a 0,75 de segregación; Christaller da la
+          jerarquía k=3 exacta; Zipf recupera pendiente -1,000; Bettencourt-West, beta=1,15. Lo que
+          quiero que quede es la asimetría de costo: un portátil corre las trece, exactas, en
+          minutos, sin GPU de centro de datos. El conocimiento urbano formalizable ya existe y es
+          barato. La pregunta no es si necesitamos un modelo más grande para saber esto —no lo
+          necesitamos—, sino qué hacemos con lo que ya sabemos. Veamos cómo se ven.
+        </aside>
+      </section>
+
+      <!-- ============ 8 — GALERÍA DESTACADAS (1.5 min) ============ -->
+      <section data-auto-animate>
+        <p class="eje-label" data-id="lbl2">Lo que ya sabemos computar · galería viva</p>
+        <h2 data-id="t2">Cuatro, vivas</h2>
+        <div class="galeria-viva">
+          <div class="viva-celda">
+            <div class="viva-lienzo" data-viz="schelling" data-prevent-swipe title="click → datos canónicos"></div>
+            <p class="viva-pie"><span><b>Schelling</b> · la segregación que nadie eligió</span><span class="pista">click → datos</span></p>
+          </div>
+          <div class="viva-celda">
+            <div class="viva-lienzo" data-viz="dla" data-prevent-swipe title="click → datos canónicos"></div>
+            <p class="viva-pie"><span><b>DLA · Batty–Longley</b> · la ciudad crece como fractal</span><span class="pista">click → datos</span></p>
+          </div>
+          <div class="viva-celda">
+            <div class="viva-lienzo" data-viz="christaller" data-prevent-swipe title="click → datos canónicos"></div>
+            <p class="viva-pie"><span><b>Christaller</b> · la teselación hexagonal se autoconstruye</span><span class="pista">click → datos</span></p>
+          </div>
+          <div class="viva-celda">
+            <div class="viva-lienzo" data-viz="braess" data-prevent-swipe title="click → datos canónicos"></div>
+            <p class="viva-pie"><span><b>Braess–Wardrop</b> · abrir una vía empeora el tráfico de todos</span><span class="pista">click → datos</span></p>
+          </div>
+        </div>
+        <p class="pie-fuente">Simulaciones vivas en navegador (window.VIZ) · datos canónicos en datos/&lt;id&gt;.json · PNG estáticos siguen en assets/sim y en los anexos · catálogo: simulaciones/catalogo.json</p>
+
+        <aside class="notes">
+          [1.5 min] Estas son cinco de las trece, las más expresivas. Schelling: a la izquierda la
+          mezcla aleatoria (0,50), al centro el estado segregado (0,75), a la derecha la curva de
+          emergencia que converge en la iteración 14. Preferencias individuales suaves —nadie quiere
+          segregar al 70%— producen segregación macro que nadie eligió. Zipf: en log-log el sistema
+          ideal cae exacto sobre la pendiente -1; el empírico q=0,85 se desvía, recordándonos que la
+          «ley» es idealización. Christaller: la teselación hexagonal anidada k=3, geometría
+          normativa que él mismo puso al servicio de la planificación nazi —la geometría no es
+          inocente. von Thünen: dos cultivos, dos anillos, frontera exacta en 4 km. Bettencourt-West:
+          el escalamiento superlineal, la «prima urbana», beta 1,15 —pero lo bueno y lo malo escalan
+          juntos. Y DLA, la ciudad como objeto fractal de dimensión 1,69, ni disco ni línea. Todas
+          exactas, todas baratas. Ahora la pregunta empírica: ¿pueden los seis modelos de IA
+          resolver lo que estas teorías plantean?
+        </aside>
+      </section>
+
+      <!-- ============ 9 — EXP. 2 · PROTOCOLO + GLOBAL (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.07,"opPico":0.18,"pistas":4,"periodo":5,"alto":0.10}'>
+        <p class="eje-label" data-id="lbl3">Experimento 2 · Banco de teorías</p>
+        <h2 data-id="t3">Los 6 sujetos contra 39 preguntas</h2>
+        <div class="grafico-fila">
+          <img class="anim-scalein" src="assets/teorias_exactitud_global.png" alt="Exactitud global por sujeto sobre 39 preguntas: 3B 38.5%, 14B 76.9%, 20B 79.5%, 32B 76.9%, Sonnet 89.7%, Opus 92.3%">
+          <div class="grafico-lectura">
+            <p class="fragment"><strong>39 preguntas</strong> derivadas de las 13 teorías · 3 por teoría · forma cerrada + emergente.</p>
+            <p class="fragment">Aquí la escala <em>sí</em> ordena más: 3B <span class="destaca">38.5%</span> → frontera <span class="destaca">~90%</span>. Opus 92.3% &gt; Sonnet 89.7%.</p>
+            <p class="fragment">Pero <strong>nadie llega al 100%</strong> del cómputo puro — la verdad sigue del lado del algoritmo.</p>
+          </div>
+        </div>
+        <p class="pie-fuente">Fuente: experimento/resultados_teorias.json · 2026-06-11 · 6 sujetos · 39 preguntas · sin herramientas · 1 intento</p>
+
+        <aside class="notes">
+          [1.5 min] Segundo experimento, complementario. Tomé las trece teorías y derivé 39 preguntas
+          —tres por teoría— con verdad de referencia: dos de forma cerrada (cálculo directo de la
+          fórmula) y una emergente (que exige simular el sistema completo). Los mismos seis sujetos,
+          una pasada. Exactitud global: 3B en 38,5%, los locales medianos en torno a 77-79%, Sonnet
+          89,7%, Opus 92,3%. Aquí, a diferencia del primer experimento, la escala ordena de forma más
+          limpia: el 3B se queda muy atrás y la frontera lidera; e incluso Opus supera a Sonnet por
+          poco. ¿Contradice esto al experimento 1? No: aquí muchas preguntas de forma cerrada son
+          fórmulas estándar muy representadas en el entrenamiento —son, en buena parte, memorizables,
+          como T3. Lo que NO cambia es el techo: ningún modelo toca el 100% que el cómputo puro da por
+          construcción. La verdad sigue del lado del algoritmo. La grieta aparece cuando separamos
+          forma cerrada de emergente: lo vemos en el mapa.
+        </aside>
+      </section>
+
+      <!-- ============ 10 — EXP. 2 · HEATMAP + CERRADA/EMERGENTE (2 min) ============ -->
+      <section data-auto-animate
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.06,"opPico":0.16,"pistas":3,"periodo":6,"alto":0.08}'>
+        <p class="eje-label" data-id="lbl3">Experimento 2 · Cerrada vs. emergente</p>
+        <h2 data-id="t3">Dónde la imitación se rompe</h2>
+        <div class="grafico-fila">
+          <img class="anim-scalein" src="assets/teorias_heatmap.png" alt="Mapa de calor exactitud por teoría y sujeto: verde alto en Christaller, Zipf, DLA, Sintaxis; rojo en 3B y en emergentes" style="max-height:430px;">
+          <div class="grafico-lectura">
+            <p class="fragment">Forma cerrada: hasta <span class="destaca">100%</span> (Opus). Emergente: cae a <span class="destaca">75–83%</span> en frontera y a <span class="destaca">0%</span> en el 3B.</p>
+            <p class="fragment">Filas verdes de punta a punta: <strong>Christaller, Zipf, DLA, Sintaxis</strong> — fórmulas memorizables.</p>
+            <p class="fragment"><strong>Lo emergente exige simular</strong>, no recordar: ahí la IA estima y el algoritmo acierta.</p>
+          </div>
+        </div>
+        <p class="pie-fuente">forma cerrada (27 preg.) vs. emergente (12 preg.) · heatmap: teorias_heatmap.png · gráfico: teorias_cerrada_vs_emergente.png · Fuente: resultados_teorias.json</p>
+
+        <aside class="notes">
+          [2 min] El mapa de calor: filas teorías, columnas sujetos, verde alto / rojo bajo. Dos
+          lecturas. Primera, por columna: el 3B (la primera) es casi todo rojo —38,5%—; de 14B en
+          adelante el verde domina. Segunda, y más interesante, por tipo de pregunta. En forma
+          cerrada los modelos brillan: Opus acierta 27 de 27, el 100%; Sonnet, 20B y 14B rondan el
+          93%. Pero en las emergentes —las que exigen correr la simulación completa, no recordar una
+          fórmula— todo se desploma: Sonnet baja a 83%, Opus a 75%, y el 3B a 0 de 12. Las filas
+          verdes continuas —Christaller, Zipf, DLA, Sintaxis espacial— son justamente las de fórmula
+          cerrada estándar, muy representada en el entrenamiento: el modelo las recuerda. Cuando hay
+          que simular el sistema —Schelling emergente, autómata celular, el equilibrio de Braess—
+          la imitación se rompe y el modelo estima un número plausible que no coincide con el que la
+          simulación produce. Repito el patrón del experimento 1: la escala compra memorización de
+          fórmulas; no compra ejecución del proceso. — Honestidad: una pasada, 39 preguntas, no es
+          una prueba estadística robusta; es una ilustración consistente con el argumento.
+          Detalle para preguntas: en autómata celular emergente (n=6) los seis fallan el conteo
+          determinista 2672; en von Thünen emergente solo Opus, Sonnet y 32B aciertan.
+        </aside>
+      </section>
+
+      <!-- ============ 10b — COSTOS (1 min) ============ -->
+      <section class="centrado" data-auto-animate
+        data-ambient="ascua"
+        data-ambient-opts='{"densidad":12,"opNac":0.18,"gravedad":0.18,"zonaDeadW":0.64}'>
+        <p class="eje-label">Experimento 2 · Costo</p>
+        <h2 style="border:0;text-align:center;margin-bottom:0.25em;">¿Cuánto cuesta saber esto?</h2>
+        <img class="img-costo anim-scalein" src="assets/costo_por_respuesta_correcta.png"
+             alt="Costo por respuesta correcta, escala logarítmica: Python local 6.9×10⁻⁶ USD; locales 0.000147 a 0.0018 USD; Sonnet 0.007–0.041 USD; Opus 0.013–0.070 USD">
+        <p class="anim-fadeup" style="text-align:center;font-size:0.74em;color:var(--texto-tenue);max-width:84%;margin:0.35em auto 0;">
+          <strong>Cuatro órdenes de magnitud</strong> separan al cómputo puro de la frontera. El límite no es <em>epistémico</em>: es económico y político.
+        </p>
+        <p class="pie-fuente">Escala log · rangos API como barras de error · Fuente: experimento/costos.json · medido (tiempo/GPU) + estimado (tarifa, API)</p>
+
+        <aside class="notes">
+          [1 min] Pongamos precio al conocimiento. Eje vertical logarítmico, costo por respuesta
+          correcta. Abajo del todo, el cómputo puro de Python: 6,9 por diez a la menos seis dólares
+          —siete millonésimas de dólar— por respuesta correcta; tiempo medido con perf_counter,
+          energía estimada a 25 vatios porque RAPL no era legible sin sudo, así que ese número es
+          estimado, lo digo en voz alta. Los cuatro modelos locales en la GPU: de 0,000147 dólares
+          el 3B a 0,0018 dólares el 32B —costo medido, tiempo y potencia de la RTX 5070 Ti
+          monitorizada con nvidia-smi, 281,5 vatios bajo carga; la tarifa eléctrica, 0,20 dólares el
+          kilovatio-hora, es estimada. Arriba, la frontera, y aquí son rangos estimados porque la API
+          no devuelve tokens reales: Sonnet entre 0,007 y 0,041 dólares; Opus entre 0,013 y 0,070
+          dólares por respuesta correcta. Las barras de error son esos rangos, no los oculto. La
+          lectura: del cómputo puro a Opus hay cuatro órdenes de magnitud —del orden de diez mil
+          veces más caro— para llegar a una respuesta que sigue por debajo del 100% que Python da
+          gratis y exacto. Conecto con la tesis: el conocimiento urbano clásico es prácticamente
+          gratis de ejecutar —un portátil corre las trece teorías en 64,7 segundos—; el costo de la
+          IA no compra verdad epistémica que el algoritmo no diera ya. Ese costo es material,
+          energético y político: quién paga, quién posee la GPU, a costa de qué soberanía. La
+          asimetría de costo ES el argumento de Hui hecho factura.
+        </aside>
+      </section>
+
+      <!-- ============ 11 — LECTURA FILOSÓFICA (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="bucle"
+        data-ambient-opts='{"opPath":0.05,"opPunto":0.18,"numPuntos":1,"periodo":9}'>
+        <p class="eje-label">Lectura filosófica</p>
+        <h2>El límite es especular</h2>
+        <div class="cifras">
+          <div class="cifra"><span class="n rojo">≠ cálculo</span><span class="l">predice tokens,<br>no ejecuta el algoritmo</span></div>
+          <div class="cifra"><span class="n">escala</span><span class="l">no cruza<br>el umbral categorial</span></div>
+          <div class="cifra"><span class="n na">T6 = ∅</span><span class="l">Python no arranca:<br>falta la función objetivo</span></div>
+        </div>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.78em;color:var(--texto-tenue);max-width:86%;margin:0.5em auto 0;">
+          En T6 cada modelo respondió algo <strong>distinto</strong> (niño, repartidor, acompañante; un local <em>alucinó</em> una «mujer mayor»). Hay <strong>relevancia, no unicidad</strong> — <em>falta el mundo que la fije.</em>
+        </p>
+        <p class="concepto anim-fadeup" style="display:block;text-align:center;max-width:80%;margin:0.7em auto 0;"><span class="et">Tesis</span> el cómputo no decide <b>relevancia</b> · la estadística no garantiza <b>verdad</b> · la <b>escala no bastó para cruzarlo</b> <span style="font-size:0.85em;color:var(--texto-tenue);">(ilustración consistente con Hui)</span></p>
+
+        <aside class="notes">
+          [1.5 min] Calibremos sin exagerar. Que un LLM acierte la multiplicación no demuestra que
+          «calcule»; produce el token plausible y a veces ese token coincide con la verdad. No
+          ejecuta el algoritmo: por eso Opus falla por un dígito. Bergson y Kant quedan en pie:
+          aplica patrones, no se da la regla. — El dato de la escala es el puente a Hui. El
+          experimento no prueba por sí solo que el límite sea categorial —eso lo argumenta Hui vía
+          Kant; el argumento filosófico precede al dato. Pero el dato es consistente: si el límite
+          fuera cuantitativo, subir de 3B a 32B debería acercarlo y no lo hace —empatan en 20%, el
+          20B le gana al 32B. La escala compra precisión en regímenes memorizables (T3, las fórmulas
+          cerradas del banco), pero precisión estadística no es ejecución del algoritmo: el umbral
+          no se cruza con más parámetros. — Y T6 lo ilustra en espejo. Python no puede arrancar: no
+          hay función objetivo, escribir el algoritmo de relevancia ES el juicio que se pide. Los
+          modelos sí respondieron, y respondieron distinto: Sonnet apuntó al repartidor y luego al
+          niño; Opus al acompañante y luego al niño con su acompañante; entre los locales,
+          gpt-oss:20b convergió en el niño en sus dos intentos, qwen2.5:3b apuntó al niño en su
+          segundo intento, y qwen3:14b divergió —repartidor en un intento y, en el otro, una «mujer
+          mayor» inexistente en la escena—. La divergencia puede ser temperatura del modelo; lo filosóficamente relevante es
+          que ninguna respuesta puede declararse correcta sin un horizonte normativo externo. Hay
+          juicio de relevancia, no unicidad: falta el mundo que la fije. Dreyfus en estado puro.
+        </aside>
+      </section>
+
+      <!-- ============ 12 — URBAN AI (1.5 min) ============ -->
+      <section data-auto-animate>
+        <!-- viz gravitacional de fondo a 0.12, detrás de la cita central -->
+        <div data-viz="gravitacional" aria-hidden="true"
+          style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:0.12;"></div>
+        <p class="eje-label" style="position:relative;z-index:1;">Eje filosófico · 4 · Urban AI</p>
+        <h2 style="position:relative;z-index:1;">Gobernar no es gestionar</h2>
+        <div class="callout fragment fade-up" style="right:2%;top:1%;max-width:13em;z-index:1;">
+          En lo <em>emergente</em> la frontera cae a <b>75–83%</b>; el algoritmo, 100%.
+        </div>
+        <blockquote class="cita anim-fadeup" style="max-width:84%;margin:0.4em auto;position:relative;z-index:1;">
+          ¿Qué tipo de <em>mundo</em> produce la IA cuando convierte la ciudad en datos computables?
+        </blockquote>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.8em;max-width:84%;margin:0.4em auto 0;position:relative;z-index:1;">
+          La smart city reduce la urbe a sensores y cálculo. Pero gobernar es una <strong>escena T6</strong>, no una tarea T1 — y <em>quién posee la infraestructura</em> es parte de la pregunta.
+        </p>
+        <p class="concepto anim-fadeup" style="display:block;text-align:center;max-width:84%;margin:0.7em auto 0;position:relative;z-index:1;"><span class="et">Hui</span> <b>cosmotécnica</b> (concepto analítico) · <b>tecnodiversidad</b> (propuesta normativa) — romper la monocultura digital</p>
+
+        <aside class="notes">
+          [1.5 min] Llevemos esto a la ciudad. La smart city promete reducir la urbe a sensores,
+          cálculo y gobierno algorítmico. Pero el experimento dice algo preciso: gobernar no es
+          multiplicar enteros, es una escena T6. Decidir a quién se alerta, qué barrio se prioriza,
+          qué cuenta como riesgo —eso es juicio de relevancia, no cómputo. Y vimos que ahí no hay
+          respuesta única ni la da el algoritmo: alguien fija primero qué importa, y esa fijación es
+          política. Distingo gestionar de gobernar: gestionar es optimizar una función objetivo
+          dada; gobernar es decidir cuál es esa función. La IA gestiona; no gobierna. Si ni la escala
+          ni la frontera cruzan el límite —y nuestros dos experimentos apuntan ahí—, entonces, de
+          forma consistente con Hui aunque sin probarlo por sí solo, el límite es político y
+          cosmológico: ninguna ingeniería de parámetros reemplaza la decisión sobre qué mundo
+          producir. La salida no es una ética universal abstracta de la IA, sino reconocer múltiples
+          cosmotécnicas —cosmotécnica es el concepto analítico; tecnodiversidad, la propuesta
+          normativa— para fragmentar el futuro y romper la monocultura digital global. Y que los
+          cuatro locales corrieran en una workstation propia no es anécdota: es la condición material
+          de esa tecnodiversidad.
+        </aside>
+      </section>
+
+      <!-- ============ 13 — LA TESIS (1.5 min) ============ -->
+      <section data-auto-animate
+        data-ambient="horizonte"
+        data-ambient-opts='{"opNodos":0.12,"opLineas":0.10,"numNodos":14}'>
+        <p class="eje-label">La tesis</p>
+        <h2>Herramienta sobredimensionada, aplicación faltante</h2>
+        <ul>
+          <li class="fragment"><strong>Sobredimensión:</strong> el cómputo a gran escala no produce un salto epistémico proporcional a su costo material, energético y político</li>
+          <li class="fragment"><strong>Límite no técnico:</strong> las restricciones decisivas de la urbanidad computada son <em>políticas, económicas y ontológicas</em> — quién computa, con qué cosmotécnica, a costa de qué soberanía</li>
+          <li class="fragment"><strong>Lo que falta no es un modelo más potente</strong>, sino <em>aplicar</em>: hacer usable el conocimiento urbano clásico que ya existe</li>
+        </ul>
+        <div class="enlaces-fila">
+          <a class="enlace-tesis fragment" href="../tesis/index.html">Tesis completa — 11 capítulos →</a>
+          <a class="enlace-tesis fantasma fragment" href="../tesis/index.html#cap-09">Banco Epistémico Urbano →</a>
+        </div>
+        <p class="pie-fuente">«Aplicar antes que escalar, fragmentar antes que optimizar» · tesis/ — construida orquestando IA bajo supervisión humana (evidencia performativa)</p>
+
+        <aside class="notes">
+          [1.5 min] La tesis que esto sostiene, en tres movimientos. Uno: disponemos de herramientas
+          epistémicas sobredimensionadas respecto de su aplicación efectiva. El costo material,
+          energético y político del cómputo a gran escala crece muy por encima del conocimiento
+          urbano que produce —recordemos: un portátil corre las trece teorías clásicas en minutos.
+          Dos: por eso las limitaciones decisivas de la urbanidad computada no son técnicas sino
+          políticas, económicas y ontológicas: quién decide qué se computa, con qué cosmotécnica, a
+          costa de qué soberanía de cómputo. Tres, el giro constructivo: la tarea pendiente no es un
+          modelo más potente, sino la aplicación —hacer presentable, usable y aplicable el
+          conocimiento urbano clásico que ya tenemos. Como contribución, la tesis propone el Banco
+          Epistémico Urbano: un banco de pruebas reproducible que enfrenta modelos urbanos clásicos
+          computables contra IA estadística —exactamente los dos experimentos que vieron hoy,
+          sistematizados. Y una ironía deliberada: la tesis se construyó orquestando sistemas de IA
+          bajo supervisión humana, lo que la vuelve evidencia performativa de su propio argumento: la
+          IA como herramienta potente que solo rinde bajo un horizonte humano que decide qué importa.
+          Los enlaces a la tesis completa y al Banco están en pantalla, en la carpeta tesis.
+        </aside>
+      </section>
+
+      <!-- ============ 14 — CIERRE (0.5 min) ============ -->
+      <section class="centrado" data-auto-animate
+        data-ambient="deriva"
+        data-ambient-opts='{"opLuces":0.13,"opAvenidas":0.16,"numLuces":45}'>
+        <p class="eje-label" style="text-align:center;">Cierre</p>
+        <h2 style="border:0; text-align:center;">Fragmentar el futuro</h2>
+        <div class="discusion" style="border:0; max-width:84%; margin:0.4em auto 0;">
+          <span class="et" style="text-align:center;display:block;">Pregunta para discusión</span>
+          <span class="q">Si gobernar la ciudad es una escena <em>T6</em> —no una tarea T1— ¿qué <em>mundo</em> produce la Urban AI? ¿Cómo pensar la tecnodiversidad desde la experiencia urbana latinoamericana?</span>
+        </div>
+        <p class="anim-fadeup" style="text-align:center;font-size:0.7em;color:var(--texto-tenue);margin-top:1.1em;">
+          Aplicar antes que escalar · fragmentar antes que optimizar
+        </p>
+        <p class="enlace-movil anim-fadeup" style="text-align:center;">
+          versión móvil interactiva: <span class="ruta">/m/</span>
+          <span id="qr-movil"></span>
+        </p>
+
+        <aside class="notes">
+          [0.5 min] Cierro donde abrí. El límite de la IA no es una frontera técnica que más cómputo
+          termine cruzando: es político y cosmológico. Lo que falta no es potencia, es aplicación y
+          pluralidad de mundos. Aplicar antes que escalar; fragmentar antes que optimizar. Y abro el
+          debate con la pregunta: si gobernar la ciudad es una escena T6, ¿qué mundo produce la Urban
+          AI, y cómo pensar la tecnodiversidad desde nuestra experiencia urbana latinoamericana?
+          Gracias. — Tengo cuatro láminas de anexo para las preguntas: la gradiente completa del
+          experimento 1, los aciertos por tarea, el detalle de la tarea inversa T6, y las tablas del
+          experimento 2 con teorías.
+        </aside>
+      </section>
+
+      <!-- ============ ANEXO A — Gradiente Exp.1 ============ -->
+      <section
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.06,"opPico":0.15,"pistas":3,"periodo":6,"alto":0.09}'>
+        <span class="anexo-tag">Anexo · para preguntas</span>
+        <h2>Exp. 1 — Gradiente: seis modelos × seis tareas</h2>
+        <table class="tareas">
+          <thead><tr>
+            <th>Tarea</th><th>Autor</th>
+            <th>3B</th><th>14B</th><th>20B</th><th>32B</th>
+            <th>Sonnet</th><th>Opus</th><th>Python</th>
+          </tr></thead>
+          <tbody>
+          <tr><td>T1 · Multiplicación</td><td class="autor">Bergson</td><td class="no">0/2</td><td class="no">0/2</td><td class="no">0/2</td><td class="no">0/2</td><td class="ok">2/2</td><td><span class="ok">1</span>/<span class="no">2</span></td><td class="ok">✓</td></tr>
+          <tr><td>T2 · Camino más corto</td><td class="autor">óptimo global</td><td class="no">0/2</td><td class="no">0/2</td><td><span class="ok">1</span>/<span class="no">2</span></td><td class="no">0/2*</td><td><span class="ok">1</span>/<span class="no">2</span></td><td class="ok">2/2</td><td class="ok">✓</td></tr>
+          <tr><td>T3 · Retícula 12×12</td><td class="autor">Bergson</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">✓</td></tr>
+          <tr><td>T4 · Recursión afín</td><td class="autor">Wiener</td><td class="no">0/2</td><td class="no">0/2</td><td class="no">0/2</td><td class="no">0/2*</td><td class="ok">2/2</td><td class="ok">2/2</td><td class="ok">✓</td></tr>
+          <tr><td>T5 · Suma de cuadrados</td><td class="autor">Bergson</td><td class="no">0/2</td><td class="no">0/2</td><td><span class="ok">1</span>/<span class="no">2</span></td><td class="no">0/2*</td><td class="ok">2/2</td><td class="no">0/2</td><td class="ok">✓</td></tr>
+          <tr class="inversa"><td>T6 · Relevancia urbana</td><td class="autor">Dreyfus</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">no comp.</td></tr>
+          <tr><td><strong>Total computable</strong></td><td></td><td class="no"><strong>20%</strong></td><td class="no"><strong>20%</strong></td><td><strong>40%</strong></td><td class="no"><strong>20%</strong></td><td class="ok"><strong>90%</strong></td><td><strong>70%</strong></td><td class="ok"><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="pie-fuente">* SIN_RESPUESTA / timeout / datos ausentes cuentan como fallo (32B: timeouts &gt;600 s en T2/T4, datos ausentes en T4–T6) · T6 es no computable para todos · Fuente: experimento/resultados.json · 2026-06-10 · kratos (RTX 5070 Ti, Ollama) + API</p>
+
+        <aside class="notes">
+          [Anexo · solo si preguntan] La gradiente completa. T3 es la única fila verde de punta a
+          punta —los seis aciertan 2.704.156, 2 de 2, hasta el 3B: memorizable. En todo lo demás los
+          locales se desploman; no monótono (3B 20%, 14B 20%, 20B 40%, 32B 20%). El 32B sufrió
+          timeouts de más de 600 s en T2 y T4, y en T4–T6 faltaron datos: cuentan como fallo. El
+          salto está en API: Sonnet 90%, Opus 70%. Dentro de la frontera el grande no gana: Opus
+          falló T5 los dos intentos (651.397.404 y 651.400.404 vs. 651.396.404), un intento de T1 y
+          uno de T2 —3 fallos en 10, 70%. No hay «el grande es mejor»: hay no-determinismo y un techo
+          categorial bajo el 100% trivial de Python.
+        </aside>
+      </section>
+
+      <!-- ============ ANEXO A2 — Aciertos por tarea ============ -->
+      <section
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.06,"opPico":0.15,"pistas":3,"periodo":6,"alto":0.09}'>
+        <span class="anexo-tag">Anexo · para preguntas</span>
+        <h2>Exp. 1 — Aciertos por tarea y modelo</h2>
+        <img class="anexo-full" src="assets/exactitud_por_tarea.png" alt="Aciertos por tarea y modelo, seis sujetos">
+        <p class="pie-fuente">Seis sujetos · local kratos + API Anthropic · Fuente: experimento/resultados.json · 2026-06-10</p>
+
+        <aside class="notes">
+          [Anexo · solo si preguntan] Mismo dato, desglosado por tarea. La columna verde continua de
+          T3 es la moraleja del matiz: hay regímenes donde incluso un modelo pequeño alcanza
+          precisión, porque la respuesta es memorizable, no calculada. T1, T4 y T5 muestran el
+          colapso de los locales y la ventaja —no perfecta— de la frontera. T6, en gris, no tiene
+          casilla de acierto: no existe verdad de referencia, es la tarea inversa.
+        </aside>
+      </section>
+
+      <!-- ============ ANEXO B — Detalle T6 ============ -->
+      <section class="compacto"
+        data-ambient="deriva"
+        data-ambient-opts='{"opLuces":0.09,"numLuces":30,"sinAvenidas":true,"velocidad":0.07}'>
+        <span class="anexo-tag">Anexo · para preguntas</span>
+        <h2>T6: por qué es «no computable»</h2>
+        <ul>
+          <li>Escena en <strong>lenguaje natural</strong>: sin estructura de datos, sin métrica de peligro, sin función objetivo</li>
+          <li>Escribir el algoritmo de relevancia <em>es</em> el juicio que se pide → Python da <span class="na">NO_COMPUTABLE</span></li>
+          <li>Respuestas <strong>plausibles y divergentes</strong> en el foco de la alerta:</li>
+        </ul>
+        <table class="tareas">
+          <thead><tr><th>Modelo · intento</th><th>Foco elegido</th></tr></thead>
+          <tbody>
+          <tr><td class="autor">Sonnet · 1</td><td>el <strong>repartidor en moto</strong> (agente activo del peligro)</td></tr>
+          <tr><td class="autor">Sonnet · 2</td><td>el <strong>niño</strong> (víctima potencial directa)</td></tr>
+          <tr><td class="autor">Opus · 1</td><td>el <strong>acompañante</strong> (quien puede actuar a tiempo)</td></tr>
+          <tr><td class="autor">Opus · 2</td><td>el <strong>niño y el acompañante</strong> (riesgo mortal, pavimento mojado)</td></tr>
+          <tr><td class="autor">gpt-oss:20b · 1 y 2</td><td>el <strong>niño</strong> que cruza (idéntica en ambos — convergencia plana)</td></tr>
+          <tr><td class="autor">qwen2.5:3b · 2</td><td>el <strong>niño</strong> (respuesta esquemática)</td></tr>
+          <tr><td class="autor">qwen3:14b · 1</td><td><strong>«mujer mayor»</strong> — <span class="no">alucinación: personaje inexistente en la escena</span></td></tr>
+          <tr><td class="autor">qwen3:14b · 2</td><td>el <strong>repartidor en moto</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="pie-fuente">qwen3:32b: datos ausentes (OMITIDO), no incluido · Fuente: experimento/resultados.json</p>
+        <p class="concepto"><span class="et">Lectura</span> hay <b>relevancia</b>, no hay <b>unicidad</b> → falta el <b>mundo</b> que la fije (Dreyfus)</p>
+
+        <aside class="notes">
+          [Anexo · solo si preguntan] El corazón especular del argumento. Los modelos sí produjeron
+          juicios plausibles y bien razonados —competencia en el dominio del significado, donde el
+          cómputo puro ni arranca. Pero señalan focos distintos: repartidor, niño, acompañante.
+          Ninguna es «la» correcta porque no hay una correcta sin que un humano fije antes qué cuenta
+          como relevante en esa calle, esa ciudad, ese mundo. qwen3:14b en su primer intento incluso
+          alucinó un agente inexistente —un modo adicional de fallo en el dominio del significado.
+          Dreyfus en estado puro: hay juicio de relevancia sin unicidad porque falta el horizonte que
+          la determine. Por eso gobernar la ciudad no se delega en una función objetivo neutral.
+        </aside>
+      </section>
+
+      <!-- ============ ANEXO C — Exp.2 cerrada vs emergente + por teoría ============ -->
+      <section
+        data-ambient="pulso_datos"
+        data-ambient-opts='{"opBase":0.06,"opPico":0.15,"pistas":3,"periodo":6,"alto":0.09}'>
+        <span class="anexo-tag">Anexo · para preguntas</span>
+        <h2>Exp. 2 — Forma cerrada vs. emergente</h2>
+        <table class="tareas">
+          <thead><tr>
+            <th>Sujeto</th><th>Global (39)</th><th>Forma cerrada (27)</th><th>Emergente (12)</th>
+          </tr></thead>
+          <tbody>
+          <tr><td class="autor">qwen2.5:3b</td><td class="no">38.5% · 15/39</td><td>55.6% · 15/27</td><td class="no">0% · 0/12</td></tr>
+          <tr><td class="autor">qwen3:14b</td><td>76.9% · 30/39</td><td class="ok">92.6% · 25/27</td><td>41.7% · 5/12</td></tr>
+          <tr><td class="autor">gpt-oss:20b</td><td>79.5% · 31/39</td><td class="ok">92.6% · 25/27</td><td>50% · 6/12</td></tr>
+          <tr><td class="autor">qwen3:32b</td><td>76.9% · 30/39</td><td>88.9% · 24/27</td><td>50% · 6/12</td></tr>
+          <tr><td class="autor">claude-sonnet</td><td class="ok">89.7% · 35/39</td><td class="ok">92.6% · 25/27</td><td class="ok">83.3% · 10/12</td></tr>
+          <tr><td class="autor">claude-opus</td><td class="ok">92.3% · 36/39</td><td class="ok">100% · 27/27</td><td>75% · 9/12</td></tr>
+          <tr><td><strong>Cómputo puro</strong></td><td class="ok"><strong>100%</strong></td><td class="ok"><strong>100%</strong></td><td class="ok"><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="pie-fuente">39 preguntas · 13 teorías · 3 por teoría · 1 intento · Fuente: experimento/resultados_teorias.json · 2026-06-11 · gráficos: teorias_cerrada_vs_emergente.png, teorias_heatmap.png</p>
+
+        <aside class="notes">
+          [Anexo · solo si preguntan] La grieta cuantificada. En forma cerrada todos los modelos de
+          14B en adelante superan el 88% y Opus acierta el 100% —son fórmulas estándar memorizables.
+          En las emergentes, las que exigen correr la simulación, el patrón cambia: el 3B cae a 0 de
+          12, los locales medianos a 41-50%, Sonnet a 83% y Opus a 75%. Que Sonnet supere a Opus en
+          las emergentes refuerza el punto del experimento 1: no hay «el grande siempre gana», hay
+          imitación estadística con varianza. Y en las tres columnas, el cómputo puro está en 100%
+          por construcción. El conocimiento urbano clásico no necesita que la IA lo aproxime: la
+          simulación lo da exacto y barato.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Botón global de tesis: fijo a nivel de body, persiste en todas las slides -->
+  <a class="tesis-btn" href="../tesis/index.html" target="_blank" rel="noopener"
+     title="Abrir la tesis completa en una pestaña nueva">Tesis <span class="flecha">↗</span></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      progress: true,
+      controls: true,
+      center: false,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      autoAnimateDuration: 0.6,
+      autoAnimateEasing: 'cubic-bezier(.2,.7,.2,1)',
+      plugins: [ RevealNotes ]
+    });
+  </script>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       VISUALIZACIONES VIVAS — cargador
+       Los 8 módulos registran window.VIZ[id] (defer mantiene el orden y se
+       ejecutan tras parsear el documento, con window.Reveal ya disponible).
+       deck-bridge.js monta cada viz SOLO cuando su slide es visible, pausa
+       al salir y reanuda al volver; nunca más de un slide montado a la vez.
+       Cada módulo gestiona su propio devicePixelRatio, rAF, auto-pausa fuera
+       de viewport, panel de datos al click y fallback de prefers-reduced-motion.
+       ════════════════════════════════════════════════════════════════════ -->
+  <script defer src="viz/von_thunen.js"></script>
+  <script defer src="viz/christaller.js"></script>
+  <script defer src="viz/zipf.js"></script>
+  <script defer src="viz/schelling.js"></script>
+  <script defer src="viz/automata.js"></script>
+  <script defer src="viz/dla.js"></script>
+  <script defer src="viz/gravitacional.js"></script>
+  <script defer src="viz/braess.js"></script>
+  <script defer src="viz/ambient.js"></script>
+  <script defer src="viz/deck-bridge.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{
+  "teoria": "sintaxis_espacial_integracion",
+  "autor": "Bill Hillier y Julienne Hanson",
+  "anio": "1984",
+  "experimento_1_camino_5_nodos": {
+    "descripcion": "Camino lineal A-B-C-D-E, 5 nodos",
+    "nodos": {
+      "A": {
+        "MD": 2.5,
+        "RA": 1.0,
+        "Integration": 1.0
+      },
+      "B": {
+        "MD": 1.75,
+        "RA": 0.5,
+        "Integration": 2.0
+      },
+      "C": {
+        "MD": 1.5,
+        "RA": 0.333333,
+        "Integration": 3.0
+      },
+      "D": {
+        "MD": 1.75,
+        "RA": 0.5,
+        "Integration": 2.0
+      },
+      "E": {
+        "MD": 2.5,
+        "RA": 1.0,
+        "Integration": 1.0
+      }
+    }
+  },
+  "experimento_2_rejilla_5x5": {
+    "descripcion": "Rejilla viaria 5x5, 25 nodos, conexiones ortogonales",
+    "nodos": {
+      "(0, 0)": {
+        "MD": 4.166667,
+        "RA": 0.275362,
+        "Integration": 3.631579
+      },
+      "(0, 1)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(0, 2)": {
+        "MD": 3.333333,
+        "RA": 0.202899,
+        "Integration": 4.928571
+      },
+      "(0, 3)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(0, 4)": {
+        "MD": 4.166667,
+        "RA": 0.275362,
+        "Integration": 3.631579
+      },
+      "(1, 0)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(1, 1)": {
+        "MD": 2.916667,
+        "RA": 0.166667,
+        "Integration": 6.0
+      },
+      "(1, 2)": {
+        "MD": 2.708333,
+        "RA": 0.148551,
+        "Integration": 6.731707
+      },
+      "(1, 3)": {
+        "MD": 2.916667,
+        "RA": 0.166667,
+        "Integration": 6.0
+      },
+      "(1, 4)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(2, 0)": {
+        "MD": 3.333333,
+        "RA": 0.202899,
+        "Integration": 4.928571
+      },
+      "(2, 1)": {
+        "MD": 2.708333,
+        "RA": 0.148551,
+        "Integration": 6.731707
+      },
+      "(2, 2)": {
+        "MD": 2.5,
+        "RA": 0.130435,
+        "Integration": 7.666667
+      },
+      "(2, 3)": {
+        "MD": 2.708333,
+        "RA": 0.148551,
+        "Integration": 6.731707
+      },
+      "(2, 4)": {
+        "MD": 3.333333,
+        "RA": 0.202899,
+        "Integration": 4.928571
+      },
+      "(3, 0)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(3, 1)": {
+        "MD": 2.916667,
+        "RA": 0.166667,
+        "Integration": 6.0
+      },
+      "(3, 2)": {
+        "MD": 2.708333,
+        "RA": 0.148551,
+        "Integration": 6.731707
+      },
+      "(3, 3)": {
+        "MD": 2.916667,
+        "RA": 0.166667,
+        "Integration": 6.0
+      },
+      "(3, 4)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(4, 0)": {
+        "MD": 4.166667,
+        "RA": 0.275362,
+        "Integration": 3.631579
+      },
+      "(4, 1)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(4, 2)": {
+        "MD": 3.333333,
+        "RA": 0.202899,
+        "Integration": 4.928571
+      },
+      "(4, 3)": {
+        "MD": 3.541667,
+        "RA": 0.221014,
+        "Integration": 4.52459
+      },
+      "(4, 4)": {
+        "MD": 4.166667,
+        "RA": 0.275362,
+        "Integration": 3.631579
+      }
+    }
+  },
+  "validacion": {
+    "Integration_C_esperado": 3.0,
+    "Integration_C_obtenido": 3.0,
+    "Integration_A_esperado": 1.0,
+    "Integration_A_obtenido": 1.0,
+    "RA_en_rango_0_1": true,
+    "MD_coincide_formula": true
+  }
+}

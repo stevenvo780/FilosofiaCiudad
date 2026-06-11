@@ -1,0 +1,174 @@
+{
+  "teoria": "christaller_lugares_centrales",
+  "nombre": "Teoria de los lugares centrales (jerarquia k=3)",
+  "autor": "Walter Christaller",
+  "anio": "1933",
+  "parametros": {
+    "k": 3,
+    "niveles": 4,
+    "r_base_km": 10.0
+  },
+  "areas_por_nivel_km2": {
+    "1": 259.807621,
+    "2": 779.422863,
+    "3": 2338.26859,
+    "4": 7014.805771
+  },
+  "num_lugares_por_nivel": {
+    "1": 18,
+    "2": 6,
+    "3": 2,
+    "4": 1
+  },
+  "radios_por_nivel_km": {
+    "1": 10.0,
+    "2": 17.320508,
+    "3": 30.0,
+    "4": 51.961524
+  },
+  "razones_areas_consecutivas": [
+    3.0,
+    3.0,
+    3.0
+  ],
+  "razones_lugares_consecutivos": [
+    3.0,
+    3.0,
+    2.0
+  ],
+  "validacion": {
+    "area_base_calculada_km2": 259.807621,
+    "area_base_esperada_km2": 259.807621,
+    "error_area_km2": 0.0,
+    "error_area_OK": true,
+    "razon_areas_OK": true,
+    "razon_lugares_OK": true,
+    "nota_razon_lugares": "Las razones correctas de lugares son 18/6=3, 6/2=3, 2/1=2. El factor 2 en el tope (niveles 3->4) es correcto para Christaller k=3 con 4 niveles segun la secuencia 1,2,6,18 (factores 2,3,3,3).",
+    "hexagonos_n3_dentro_n4": true,
+    "dist_max_vertices_n3_km": 50.23408,
+    "todos_criterios_OK": true
+  },
+  "respuestas": {
+    "p1_lugares_orden1": 18,
+    "p2_area_base_km2": 259.8076,
+    "p3_area_nivel4_km2": 7014.8058
+  },
+  "centros_generados": {
+    "nivel_4": [
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "nivel_3": [
+      [
+        21.9615,
+        0.0
+      ],
+      [
+        -21.9615,
+        0.0
+      ]
+    ],
+    "nivel_2": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -30.0,
+        0.0
+      ],
+      [
+        -15.0,
+        25.9808
+      ],
+      [
+        -15.0,
+        -25.9808
+      ],
+      [
+        15.0,
+        25.9808
+      ],
+      [
+        15.0,
+        -25.9808
+      ]
+    ],
+    "nivel_1": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -17.3205,
+        0.0
+      ],
+      [
+        -8.6603,
+        15.0
+      ],
+      [
+        -8.6603,
+        -15.0
+      ],
+      [
+        8.6603,
+        15.0
+      ],
+      [
+        8.6603,
+        -15.0
+      ],
+      [
+        17.3205,
+        0.0
+      ],
+      [
+        -25.9808,
+        15.0
+      ],
+      [
+        -25.9808,
+        -15.0
+      ],
+      [
+        25.9808,
+        15.0
+      ],
+      [
+        25.9808,
+        -15.0
+      ],
+      [
+        0.0,
+        30.0
+      ],
+      [
+        0.0,
+        -30.0
+      ],
+      [
+        -34.641,
+        0.0
+      ],
+      [
+        -17.3205,
+        30.0
+      ],
+      [
+        -17.3205,
+        -30.0
+      ],
+      [
+        17.3205,
+        30.0
+      ],
+      [
+        17.3205,
+        -30.0
+      ]
+    ]
+  }
+}

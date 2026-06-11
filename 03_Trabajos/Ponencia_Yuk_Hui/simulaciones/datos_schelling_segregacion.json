@@ -1,0 +1,63 @@
+{
+  "teoria": "schelling_segregacion",
+  "nombre": "Modelo de segregación de Schelling",
+  "autor": "Thomas Schelling",
+  "anio": "1971",
+  "parametros": {
+    "n": 50,
+    "frac_rojo": 0.45,
+    "frac_azul": 0.45,
+    "frac_vacio": 0.10000000000000003,
+    "umbral_T": 0.3,
+    "max_iter": 200,
+    "seed": 42
+  },
+  "resultados": {
+    "fraccion_inicial": 0.5011539682539682,
+    "fraccion_final": 0.7506830687830688,
+    "iteracion_convergencia": 14,
+    "iteraciones_totales": 14,
+    "pct_insatisfechos_final": 0.0,
+    "n_insatisfechos_final": 0,
+    "total_agentes": 2250
+  },
+  "historial_frac_mismo_grupo": [
+    0.5011539682539682,
+    0.590558201058201,
+    0.6496534391534391,
+    0.6906841269841271,
+    0.7130021164021164,
+    0.7311910052910052,
+    0.7394074074074074,
+    0.7465153439153439,
+    0.7486227513227514,
+    0.7491613756613756,
+    0.7497862433862433,
+    0.7499772486772486,
+    0.7502920634920635,
+    0.7506830687830688,
+    0.7506830687830688
+  ],
+  "historial_n_insatisfechos": [
+    383,
+    227,
+    142,
+    79,
+    55,
+    27,
+    17,
+    6,
+    3,
+    3,
+    2,
+    1,
+    1,
+    0
+  ],
+  "validacion": {
+    "criterio": "fraccion_final > 0.70 AND convergencia == cero_insatisfechos AND iteracion_convergencia <= 200",
+    "fraccion_final_supera_0.70": true,
+    "convergencia_en_200_pasos": true,
+    "n_insatisfechos_final_es_cero": true
+  }
+}

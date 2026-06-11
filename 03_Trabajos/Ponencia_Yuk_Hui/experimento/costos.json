@@ -1,0 +1,328 @@
+{
+  "supuestos_globales": {
+    "tarifa_electrica": "~800 COP/kWh = 0.20 USD/kWh (residencial Colombia, jun-2026; estimado)",
+    "potencia_laptop_w": "25.0 W (estimado; RAPL no legible sin sudo en este sistema)",
+    "potencia_gpu_rtx5070ti_idle_w": "63.0 W (medido con nvidia-smi, 5 muestras)",
+    "potencia_gpu_rtx5070ti_carga_w": "281.5 W (medido con nvidia-smi, 8 muestras durante generacion qwen3:14b)",
+    "estimacion_tokens": "chars/3.5 para texto en español (declarado; sin tokenizer real)",
+    "precios_api": "Anthropic pricing oficial jun-2026: Sonnet 4.6 $3/$15 por Mtok in/out; Opus 4.8 $5/$25",
+    "python_aciertos": "13/13 simulaciones = 100% por construcción determinista"
+  },
+  "vias": {
+    "python_local": {
+      "descripcion": "13 simulaciones clásicas en este portátil",
+      "tiempo_total_s": {
+        "valor": 70.786,
+        "metodo": "medido (time.perf_counter)"
+      },
+      "energia_J": {
+        "valor": 1769.65,
+        "metodo": "estimado (25.0W × tiempo; RAPL no legible sin sudo)"
+      },
+      "costo_usd": {
+        "valor": 9.831e-05,
+        "metodo": "estimado (energia × tarifa)"
+      },
+      "aciertos": {
+        "valor": 13,
+        "total": 13,
+        "metodo": "determinista por construcción"
+      },
+      "costo_por_resp_correcta_usd": {
+        "valor": 7.5626e-06,
+        "metodo": "estimado"
+      },
+      "desglose_sims": [
+        {
+          "sim": "sim_alonso_bid_rent",
+          "elapsed_s": 1.0523,
+          "energia_J": 26.3085,
+          "costo_usd": 1.4616e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_automata_celular_crecimiento_urbano",
+          "elapsed_s": 1.3496,
+          "energia_J": 33.7395,
+          "costo_usd": 1.8744e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_bettencourt_west_escalamiento",
+          "elapsed_s": 2.239,
+          "energia_J": 55.976,
+          "costo_usd": 3.1098e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_braess_wardrop_equilibrio",
+          "elapsed_s": 0.9076,
+          "energia_J": 22.6896,
+          "costo_usd": 1.2605e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_christaller_lugares_centrales",
+          "elapsed_s": 0.972,
+          "energia_J": 24.3006,
+          "costo_usd": 1.35e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_dla_batty_longley_fractal",
+          "elapsed_s": 56.8046,
+          "energia_J": 1420.1154,
+          "costo_usd": 7.88953e-05,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_duncan_disimilitud",
+          "elapsed_s": 1.0315,
+          "energia_J": 25.7867,
+          "costo_usd": 1.4326e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_modelo_gravitacional_flujos",
+          "elapsed_s": 1.0434,
+          "energia_J": 26.0841,
+          "costo_usd": 1.4491e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_reilly_huff_gravitacion_comercial",
+          "elapsed_s": 0.8005,
+          "energia_J": 20.0131,
+          "costo_usd": 1.1118e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_schelling_segregacion",
+          "elapsed_s": 1.0337,
+          "energia_J": 25.8437,
+          "costo_usd": 1.4358e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_sintaxis_espacial_integracion",
+          "elapsed_s": 0.6803,
+          "energia_J": 17.0069,
+          "costo_usd": 9.448e-07,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_von_thunen_anillos",
+          "elapsed_s": 1.123,
+          "energia_J": 28.0743,
+          "costo_usd": 1.5597e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        },
+        {
+          "sim": "sim_zipf_rank_size",
+          "elapsed_s": 1.7483,
+          "energia_J": 43.7075,
+          "costo_usd": 2.4282e-06,
+          "ok": true,
+          "metodo_tiempo": "medido (time.perf_counter)",
+          "metodo_energia": "estimado (25 W constante, RAPL no legible sin sudo)"
+        }
+      ]
+    },
+    "qwen2.5:3b": {
+      "descripcion": "Modelo local Ollama en kratos (RTX 5070 Ti)",
+      "tiempo_total_s": {
+        "valor": 159.8,
+        "desglose": {
+          "teorias_s": 61.7,
+          "clasico_s": 98.1
+        },
+        "metodo": "medido (elapsed_s en JSON de respuestas)"
+      },
+      "energia_J": {
+        "valor": 44983.7,
+        "metodo": "medido GPU (nvidia-smi 281.5W bajo carga × tiempo medido)"
+      },
+      "costo_usd": {
+        "valor": 0.002499,
+        "metodo": "medido tiempo × potencia medida × tarifa estimada"
+      },
+      "aciertos": {
+        "valor": 17,
+        "total": 49,
+        "aciertos_teorias": 15,
+        "aciertos_clasico": 2
+      },
+      "costo_por_resp_correcta_usd": {
+        "valor": 0.000147,
+        "metodo": "medido tiempo/potencia, tarifa estimada"
+      }
+    },
+    "qwen3:14b": {
+      "descripcion": "Modelo local Ollama en kratos (RTX 5070 Ti)",
+      "tiempo_total_s": {
+        "valor": 483.9,
+        "desglose": {
+          "teorias_s": 263.0,
+          "clasico_s": 220.9
+        },
+        "metodo": "medido (elapsed_s en JSON de respuestas)"
+      },
+      "energia_J": {
+        "valor": 136217.9,
+        "metodo": "medido GPU (nvidia-smi 281.5W bajo carga × tiempo medido)"
+      },
+      "costo_usd": {
+        "valor": 0.007568,
+        "metodo": "medido tiempo × potencia medida × tarifa estimada"
+      },
+      "aciertos": {
+        "valor": 32,
+        "total": 49,
+        "aciertos_teorias": 30,
+        "aciertos_clasico": 2
+      },
+      "costo_por_resp_correcta_usd": {
+        "valor": 0.000236,
+        "metodo": "medido tiempo/potencia, tarifa estimada"
+      }
+    },
+    "gpt-oss:20b": {
+      "descripcion": "Modelo local Ollama en kratos (RTX 5070 Ti)",
+      "tiempo_total_s": {
+        "valor": 1111.1,
+        "desglose": {
+          "teorias_s": 426.1,
+          "clasico_s": 685.0
+        },
+        "metodo": "medido (elapsed_s en JSON de respuestas)"
+      },
+      "energia_J": {
+        "valor": 312774.7,
+        "metodo": "medido GPU (nvidia-smi 281.5W bajo carga × tiempo medido)"
+      },
+      "costo_usd": {
+        "valor": 0.017376,
+        "metodo": "medido tiempo × potencia medida × tarifa estimada"
+      },
+      "aciertos": {
+        "valor": 35,
+        "total": 49,
+        "aciertos_teorias": 31,
+        "aciertos_clasico": 4
+      },
+      "costo_por_resp_correcta_usd": {
+        "valor": 0.000496,
+        "metodo": "medido tiempo/potencia, tarifa estimada"
+      }
+    },
+    "qwen3:32b": {
+      "descripcion": "Modelo local Ollama en kratos (RTX 5070 Ti)",
+      "tiempo_total_s": {
+        "valor": 3682.6,
+        "desglose": {
+          "teorias_s": 2105.3,
+          "clasico_s": 1577.3
+        },
+        "metodo": "medido (elapsed_s en JSON de respuestas)"
+      },
+      "energia_J": {
+        "valor": 1036651.9,
+        "metodo": "medido GPU (nvidia-smi 281.5W bajo carga × tiempo medido)"
+      },
+      "costo_usd": {
+        "valor": 0.057592,
+        "metodo": "medido tiempo × potencia medida × tarifa estimada"
+      },
+      "aciertos": {
+        "valor": 32,
+        "total": 49,
+        "aciertos_teorias": 30,
+        "aciertos_clasico": 2
+      },
+      "costo_por_resp_correcta_usd": {
+        "valor": 0.0018,
+        "metodo": "medido tiempo/potencia, tarifa estimada"
+      }
+    },
+    "claude-sonnet": {
+      "descripcion": "Modelo API Anthropic (claude-sonnet-4.6)",
+      "tiempo_total_s": {
+        "valor": "no_medido",
+        "nota": "API no retorna tiempo de pared del servidor"
+      },
+      "energia_J": {
+        "valor": "no_medido",
+        "nota": "Infraestructura Anthropic; no accesible externamente"
+      },
+      "costo_usd": {
+        "rango_min": 0.3241,
+        "rango_max": 1.81,
+        "metodo": "estimado (tokens=chars/3.5; precios Anthropic oficiales jun-2026)",
+        "supuesto_tokens_salida": "500–3000 tokens por respuesta (banda declarada, no medido)"
+      },
+      "aciertos": {
+        "valor": 44,
+        "total": 49,
+        "aciertos_teorias": 35,
+        "aciertos_clasico": 9
+      },
+      "costo_por_resp_correcta_usd": {
+        "rango_min": 0.00737,
+        "rango_max": 0.04114,
+        "metodo": "estimado"
+      }
+    },
+    "claude-opus": {
+      "descripcion": "Modelo API Anthropic (claude-opus-4)",
+      "tiempo_total_s": {
+        "valor": "no_medido",
+        "nota": "API no retorna tiempo de pared del servidor"
+      },
+      "energia_J": {
+        "valor": "no_medido",
+        "nota": "Infraestructura Anthropic; no accesible externamente"
+      },
+      "costo_usd": {
+        "rango_min": 0.5402,
+        "rango_max": 3.0167,
+        "metodo": "estimado (tokens=chars/3.5; precios Anthropic oficiales jun-2026)",
+        "supuesto_tokens_salida": "500–3000 tokens por respuesta (banda declarada, no medido)"
+      },
+      "aciertos": {
+        "valor": 43,
+        "total": 49,
+        "aciertos_teorias": 36,
+        "aciertos_clasico": 7
+      },
+      "costo_por_resp_correcta_usd": {
+        "rango_min": 0.01256,
+        "rango_max": 0.07016,
+        "metodo": "estimado"
+      }
+    }
+  }
+}

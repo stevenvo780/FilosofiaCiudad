@@ -1,0 +1,29 @@
+{
+  "teoria": "alonso_bid_rent",
+  "nombre": "Bid-rent urbano de Alonso (funciones de puja residencial)",
+  "autor": "William Alonso",
+  "anio": "1964",
+  "preguntas": [
+    {
+      "q": "Dadas las funciones de puja lineales R_pobre(d)=500-20d y R_rico(d)=300-5d (con d en km), calcula la distancia d* (km) al CBD donde ambos grupos pujan exactamente lo mismo. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "13.3333",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.01 (13.33)",
+      "como_computar": "500-20d=300-5d => 200=15d => d*=200/15=13.3333 km"
+    },
+    {
+      "q": "Con R_rico(d)=300-5d, calcula la puja de renta del grupo rico a d=20 km del CBD. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "200.0000",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (200)",
+      "como_computar": "R_rico(20)=300-5*20=300-100=200"
+    },
+    {
+      "q": "Ejecuta la asignacion por mejor postor con R_pobre(d)=500-20d y R_rico(d)=300-5d en d=0..30 km (paso 0.1). Reporta la fraccion del intervalo [0,30] km que termina ocupada por el grupo pobre (mejor postor). Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.4452",
+      "tipo": "emergente",
+      "tolerancia": "±0.02 en torno a 0.44",
+      "como_computar": "Los pobres ganan en d < 13.3333 km; n_pobre=134 de 301 puntos; fraccion=134/301=0.4452"
+    }
+  ]
+}

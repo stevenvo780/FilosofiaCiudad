@@ -1,0 +1,29 @@
+{
+  "teoria": "bettencourt_west_escalamiento",
+  "nombre": "Escalamiento urbano superlineal de Bettencourt-West",
+  "autor": "Bettencourt, Lobo, Helbing, Kuhnert y West",
+  "anio": "2007",
+  "preguntas": [
+    {
+      "q": "Con escalamiento Y=Y_0*N^beta, Y_0=1 y beta=1.15, calcula la magnitud Y para una ciudad de N=1,000,000 habitantes. Da el resultado redondeado al entero. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "7943282",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±1% (7943282)",
+      "como_computar": "Y = 1,000,000^1.15 = 10^(6*1.15) = 10^6.9 = 7943282.347 -> redondeado: 7943282"
+    },
+    {
+      "q": "Bajo escalamiento superlineal con beta=1.15, por que factor se multiplica la magnitud socioeconomica Y cuando la poblacion de una ciudad se DUPLICA? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "2.2191",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.01 (2.219)",
+      "como_computar": "Factor = 2^1.15 = 2.219139"
+    },
+    {
+      "q": "Genera 50 ciudades con poblaciones N espaciadas logaritmicamente entre 10,000 y 5,000,000 y magnitud Y=N^1.15 (sin ruido), ajusta por minimos cuadrados log10(Y)=a+b*log10(N) y reporta el exponente b recuperado. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "1.1500",
+      "tipo": "emergente",
+      "tolerancia": "±0.02 en torno a 1.150",
+      "como_computar": "Datos sin ruido generados con beta=1.15 exacto -> el ajuste por minimos cuadrados recupera b=1.150000; R^2=1.0000000000"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "teoria": "braess_wardrop_equilibrio",
+  "nombre": "Paradoja de Braess y equilibrio de Wardrop en redes de transito",
+  "autor": "Dietrich Braess / John Glen Wardrop",
+  "anio": "1968/1952",
+  "preguntas": [
+    {
+      "q": "En la red de Braess sin atajo, 4000 vehiculos se reparten simetricamente 2000 por la ruta superior y 2000 por la inferior. La ruta superior tiene tiempo t = x/100 + 45 donde x es su flujo. Calcula el tiempo de viaje de la ruta superior en equilibrio. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "65",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (65)",
+      "como_computar": "t = 2000/100 + 45 = 20 + 45 = 65"
+    },
+    {
+      "q": "Con el atajo A->B de coste 0 anadido, en equilibrio los 4000 vehiculos usan la ruta Inicio->A->B->Fin, cuyo tiempo es x_A/100 + 0 + x_B/100 con x_A=x_B=4000. Calcula el tiempo de viaje de equilibrio con el atajo. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "80",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (80)",
+      "como_computar": "t = 4000/100 + 0 + 4000/100 = 40 + 0 + 40 = 80"
+    },
+    {
+      "q": "Resuelve el equilibrio de Wardrop de la red de Braess con atajo para N=4000 (asignando flujo iterativamente o por mejor respuesta hasta que ningun vehiculo mejore cambiando de ruta). Reporta el aumento del tiempo de viaje de equilibrio respecto a la red sin atajo (tiempo_con - tiempo_sin). Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "15",
+      "tipo": "emergente",
+      "tolerancia": "±1 en torno a 15",
+      "como_computar": "Equilibrio con atajo = 80, sin atajo = 65; aumento = 80 - 65 = 15. Confirmado por MSA iterativo (5000 iteraciones) que converge a flujo_R3=4000, tiempo=80.00."
+    }
+  ]
+}

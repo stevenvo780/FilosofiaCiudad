@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e1a2b">
+<title>Fragmentar el futuro — Yuk Hui · versión móvil</title>
+<!-- favicon inline (evita un 404 cosmético; punto ámbar sobre azul noche) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1a2b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1a2b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<!--
+  ════════════════════════════════════════════════════════════════════════
+  VERSIÓN MÓVIL — scrollytelling vertical táctil de la ponencia
+  «Sobre el límite de la inteligencia artificial» (Yuk Hui).
+
+  No es el deck encogido: es un recorrido que baja por la historia, y las
+  simulaciones cobran vida al entrar en pantalla.
+
+  RUTAS (decisión documentada):
+  El document root del servidor = carpeta presentacion/. Esta página vive en
+  /m/. Los módulos de viz (../viz/<id>.js) RESUELVEN la ruta de su JSON
+  localizando su propio <script src> y reemplazando 'viz/<id>.js' por
+  'datos/<id>.json'. Como los cargamos vía ../viz/<id>.js, su .src absoluto
+  termina en 'viz/<id>.js' y el fetch apunta a /datos/<id>.json — correcto,
+  sin necesidad de <base href>. (Un <base href="../"> habría roto los anchors
+  y rutas relativas de ESTA página, así que se descarta a propósito.)
+  Imágenes via ../assets/ ; tesis via ../tesis/ .
+
+  Sin librerías externas. CountUp e IntersectionObserver a mano. Bajo
+  prefers-reduced-motion no hay animaciones y las viz caen a PNG estático.
+  ════════════════════════════════════════════════════════════════════════
+-->
+<style>
+:root{
+  --fondo:#0e1a2b; --fondo-2:#0a121e; --texto:#e8e6e1; --tenue:#9aa3af;
+  --acento:#e0a458; --acento-2:#efc88a; --linea:#243248;
+  --verde:#3ecf9a; --rojo:#e07a68; --azul:#5fa8e0;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:'Helvetica Neue',Arial,system-ui,sans-serif;
+  --pad:max(18px,env(safe-area-inset-left)) ;
+  --tap:44px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0; color:var(--texto); font-family:var(--sans); font-size:17px; line-height:1.5;
+  background:radial-gradient(ellipse at 30% -8%,#16263c 0%,var(--fondo) 42%,var(--fondo-2) 100%);
+  background-attachment:fixed;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:.005em;margin:0;}
+em{color:var(--acento-2);font-style:italic;}
+strong{color:var(--texto);font-weight:700;}
+a{color:var(--acento-2);}
+
+/* ── Estructura de secciones ─────────────────────────────────────────── */
+section{
+  position:relative;
+  padding:11vh max(20px,env(safe-area-inset-left)) 11vh max(20px,env(safe-area-inset-right));
+  max-width:680px; margin:0 auto;
+}
+.eje{
+  font-family:var(--sans); font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--acento); margin:0 0 .5em;
+}
+.lead{font-size:1.05em;color:var(--texto);}
+.tenue{color:var(--tenue);}
+.dim{font-size:.9em;color:var(--tenue);}/* .9×17=15.3px → texto legible ≥15px */
+
+/* ── Revelado al entrar (IO) ─────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;}
+.reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
+
+/* ════════ HERO ════════ */
+#hero{
+  min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+  padding-top:8vh; padding-bottom:6vh; max-width:720px;
+}
+#hero .fondo{position:absolute;inset:0;z-index:0;opacity:.18;pointer-events:none;overflow:hidden;}
+#hero .fondo canvas{display:block;}
+#hero > *:not(.fondo){position:relative;z-index:1;}
+#hero .autor{font-family:var(--serif);font-style:italic;color:var(--acento-2);font-size:1.1em;margin:0 0 .15em;}
+#hero h1{font-size:2.5em;margin:.05em 0 .35em;}
+#hero .sub{color:var(--tenue);font-size:.95em;margin:0 0 1.4em;}
+#hero .sub .pp{color:var(--acento);}
+#hero .pregunta{
+  border-left:3px solid var(--acento); padding:.4em 0 .4em 1em; margin:0 0 1.6em;
+  font-family:var(--serif); font-style:italic; font-size:1.18em; color:var(--texto);
+}
+#hero .pregunta .et{display:block;font-family:var(--sans);font-style:normal;font-size:.5em;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--tenue);margin-bottom:.5em;}
+#hero .curso{font-family:var(--sans);font-size:.72em;letter-spacing:.06em;color:var(--tenue);
+  text-transform:uppercase;border-top:1px solid var(--linea);padding-top:1em;}
+#hero .curso .s{color:var(--acento);margin:0 .5em;}
+.scroll-cue{
+  display:flex;flex-direction:column;align-items:center;gap:.3em;margin-top:2.2em;
+  color:var(--tenue);font-family:var(--sans);font-size:.7em;letter-spacing:.14em;text-transform:uppercase;
+}
+.scroll-cue .arw{font-size:1.5em;color:var(--acento);animation:bob 1.8s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.6;}50%{transform:translateY(7px);opacity:1;}}
+
+/* ════════ La pregunta / tesis ════════ */
+#pregunta h2{font-size:1.9em;margin-bottom:.5em;}
+#pregunta .tesis-2{font-size:1.12em;margin-top:1em;}
+.regla{height:1px;background:var(--linea);border:0;margin:0;}
+
+/* ════════ Ejes filosóficos — cards expandibles ════════ */
+.cards{display:flex;flex-direction:column;gap:14px;margin-top:.4em;}
+.card{
+  border:1px solid var(--linea); border-radius:14px; background:rgba(255,255,255,.02);
+  overflow:hidden;
+}
+.card > summary{
+  list-style:none; cursor:pointer; padding:18px 20px; min-height:var(--tap);
+  display:flex; align-items:center; gap:14px;
+}
+.card > summary::-webkit-details-marker{display:none;}
+.card .num{font-family:var(--serif);font-size:1.5em;color:var(--acento);flex:0 0 auto;width:1.4em;text-align:center;}
+.card .head{flex:1 1 auto;min-width:0;}
+.card .head .t{font-family:var(--serif);font-size:1.12em;color:var(--texto);display:block;}
+.card .head .one{font-size:.82em;color:var(--tenue);display:block;margin-top:.2em;line-height:1.35;}
+.card .chev{flex:0 0 auto;color:var(--acento);font-size:1.1em;transition:transform .3s ease;opacity:.7;}
+.card[open] .chev{transform:rotate(90deg);}
+.card .body{padding:0 20px 20px;border-top:1px solid var(--linea);margin-top:-2px;animation:expand .35s ease;}
+.card .body p{margin:.85em 0 0;font-size:.92em;}
+.card .body .badge{
+  display:inline-block;margin-top:1em;padding:.35em .9em;border:1px solid var(--acento);border-radius:999px;
+  font-size:.78em;color:var(--acento-2);background:rgba(224,164,88,.07);
+}
+.card .body .badge .et{color:var(--tenue);text-transform:uppercase;font-size:.82em;letter-spacing:.12em;margin-right:.5em;}
+.card .trio{display:flex;gap:10px;margin-top:1em;flex-wrap:wrap;}
+.card .trio .c{flex:1 1 0;min-width:90px;border:1px solid var(--linea);border-radius:10px;padding:.7em .6em;background:rgba(255,255,255,.02);text-align:center;}
+.card .trio .c b{display:block;font-family:var(--serif);color:var(--acento-2);font-size:1.05em;}
+.card .trio .c.verde b{color:var(--verde);} .card .trio .c.rojo b{color:var(--rojo);} .card .trio .c.azul b{color:var(--azul);}
+.card .trio .c span{display:block;font-size:.7em;color:var(--tenue);margin-top:.4em;line-height:1.3;}
+@keyframes expand{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+
+/* ════════ Cifras grandes con CountUp ════════ */
+.nums{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0;}
+.nums .n{flex:1 1 calc(33% - 12px);min-width:96px;text-align:center;
+  border:1px solid var(--linea);border-radius:14px;padding:1em .5em;background:rgba(255,255,255,.02);}
+.nums .n .v{font-family:var(--serif);font-size:2.5em;line-height:.95;color:var(--acento-2);display:block;}
+.nums .n .v.verde{color:var(--verde);} .nums .n .v.rojo{color:var(--rojo);} .nums .n .v.azul{color:var(--azul);}
+.nums .n .v .u{font-size:.42em;color:var(--tenue);}
+.nums .n .l{display:block;font-size:.66em;letter-spacing:.05em;text-transform:uppercase;color:var(--tenue);margin-top:.7em;line-height:1.35;}
+
+/* ════════ Figura con lightbox ════════ */
+figure.fig{margin:1.4em 0 .6em;}
+figure.fig button.imgbtn{
+  display:block;width:100%;padding:0;border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  background:#0c1622;cursor:zoom-in;min-height:var(--tap);
+}
+figure.fig img{display:block;width:100%;height:auto;}
+figure.fig figcaption{font-size:.78em;color:var(--tenue);margin-top:.7em;line-height:1.4;}
+figure.fig figcaption .zoom{color:var(--acento);letter-spacing:.06em;text-transform:uppercase;font-size:.86em;}
+.fuente{font-size:.66em;letter-spacing:.04em;text-transform:uppercase;color:var(--tenue);margin-top:1em;}
+
+.lectura p{font-size:.92em;margin:.7em 0;}
+.lectura .destaca{color:var(--acento-2);font-weight:700;}
+
+/* ════════ Teorías — grilla de cards con viz viva ════════ */
+.teorias{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:.4em;}
+.teoria{
+  border:1px solid var(--linea);border-radius:14px;background:rgba(255,255,255,.02);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.teoria .lienzo{
+  position:relative;width:100%;aspect-ratio:1/1;background:#0c1622;border-bottom:1px solid var(--linea);
+  cursor:pointer;overflow:hidden;
+}
+.teoria .lienzo canvas,.teoria .lienzo img{display:block;width:100%;height:100%;object-fit:cover;}
+.teoria .lienzo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--tenue);font-size:.7em;letter-spacing:.1em;text-transform:uppercase;}
+.teoria .lienzo .vivo{position:absolute;top:7px;right:8px;font-size:.6em;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--acento);background:rgba(14,26,43,.7);border:1px solid var(--acento);border-radius:999px;padding:.15em .6em;}
+.teoria .meta{padding:.7em .8em;}
+.teoria .meta .t{font-family:var(--serif);font-size:.96em;color:var(--texto);display:block;}
+.teoria .meta .a{font-size:.7em;color:var(--tenue);display:block;margin-top:.2em;letter-spacing:.03em;}
+.teoria .meta .tap{font-size:.62em;color:var(--acento);text-transform:uppercase;letter-spacing:.08em;margin-top:.4em;display:block;}
+.teoria.full{grid-column:1/-1;}
+
+/* ════════ Barras horizontales animadas (Exp.2) ════════ */
+.barras{margin:1.4em 0;display:flex;flex-direction:column;gap:12px;}
+.barra{display:grid;grid-template-columns:84px 1fr 54px;align-items:center;gap:10px;font-size:.82em;}
+.barra .nom{color:var(--texto);text-align:right;font-variant-numeric:tabular-nums;}
+.barra .track{height:16px;border-radius:8px;background:rgba(255,255,255,.05);overflow:hidden;}
+.barra .fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,var(--azul),var(--acento));
+  transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+.barra.front .fill{background:linear-gradient(90deg,var(--acento),var(--verde));}
+.barra .pct{color:var(--acento-2);text-align:left;font-variant-numeric:tabular-nums;}
+.barra .nom small{color:var(--tenue);font-size:.82em;}
+
+.dos-cifras{display:flex;gap:14px;margin:1.4em 0;flex-wrap:wrap;}
+.dos-cifras .c{flex:1 1 0;min-width:130px;border:1px solid var(--linea);border-radius:14px;padding:1.1em .8em;text-align:center;background:rgba(255,255,255,.02);}
+.dos-cifras .c .v{font-family:var(--serif);font-size:2.3em;color:var(--acento-2);display:block;line-height:1;}
+.dos-cifras .c .v.rojo{color:var(--rojo);}
+.dos-cifras .c .l{display:block;font-size:.74em;color:var(--tenue);margin-top:.7em;line-height:1.35;}
+
+/* ════════ Costos ════════ */
+#costos .asesina{text-align:center;margin:.4em 0 1em;}
+#costos .asesina .big{font-family:var(--serif);font-size:2.7em;color:var(--acento-2);line-height:1.05;display:block;}
+#costos .asesina .sub{font-size:.92em;color:var(--tenue);margin-top:.5em;}
+details.nota{margin-top:1em;border:1px solid var(--linea);border-radius:12px;background:rgba(255,255,255,.02);}
+details.nota summary{cursor:pointer;list-style:none;padding:.9em 1em;min-height:var(--tap);font-size:.82em;color:var(--acento-2);display:flex;align-items:center;gap:.5em;}
+details.nota summary::-webkit-details-marker{display:none;}
+details.nota summary .ic{color:var(--acento);}
+details.nota .cont{padding:0 1em 1em;font-size:.82em;color:var(--tenue);line-height:1.5;}
+details.nota[open] summary .ic{transform:rotate(90deg);}
+details.nota summary .ic{display:inline-block;transition:transform .25s;}
+
+/* ════════ Cierre ════════ */
+#cierre{text-align:center;min-height:90svh;display:flex;flex-direction:column;justify-content:center;}
+#cierre h2{font-size:2em;margin-bottom:.6em;}
+#cierre .tesis-fin{font-size:1.05em;max-width:36ch;margin:0 auto 1.4em;}
+#cierre .lema{font-style:italic;color:var(--acento-2);font-family:var(--serif);font-size:1.1em;margin:1em 0 1.6em;}
+#cierre .disc{border-top:1px solid var(--linea);padding-top:1.4em;margin-top:.6em;}
+#cierre .disc .et{font-size:.7em;letter-spacing:.16em;text-transform:uppercase;color:var(--acento);display:block;margin-bottom:.6em;}
+#cierre .disc .q{font-family:var(--serif);font-style:italic;font-size:1.05em;}
+.cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:54px;
+  margin:1.8em auto 0;padding:.9em 1.8em;border-radius:12px;
+  background:var(--acento);color:var(--fondo);font-weight:700;font-size:1em;text-decoration:none;
+  box-shadow:0 8px 26px rgba(224,164,88,.22);
+}
+.cta.fantasma{background:transparent;color:var(--acento-2);border:1px solid var(--acento);box-shadow:none;margin-top:1em;}
+.credito{font-size:.72em;color:var(--tenue);margin-top:2.4em;line-height:1.5;letter-spacing:.03em;}
+.credito a{color:var(--acento);}
+
+/* ── Progreso de scroll ── */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--acento);z-index:90;transition:width .1s linear;
+  margin-top:env(safe-area-inset-top);}
+
+/* ── Lightbox ── */
+#lb{position:fixed;inset:0;z-index:100;display:none;background:rgba(10,18,30,.96);
+  align-items:center;justify-content:center;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  flex-direction:column;}
+#lb.on{display:flex;}
+#lb img{max-width:100%;max-height:82vh;border-radius:10px;border:1px solid var(--linea);}
+#lb .cap{color:var(--tenue);font-size:.78em;margin-top:.9em;text-align:center;max-width:40ch;line-height:1.4;}
+#lb .x{position:absolute;top:calc(env(safe-area-inset-top) + 12px);right:14px;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--acento);background:rgba(224,164,88,.08);color:var(--acento-2);font-size:1.2em;cursor:pointer;}
+
+@media (min-width:560px){ body{font-size:18px;} #hero h1{font-size:2.9em;} }
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  .scroll-cue .arw{animation:none;}
+  .barra .fill{transition:none;}
+  .card .body{animation:none;}
+}
+
+/* ════════ Áreas de tap de los paneles de datos de las viz ════════
+   Cada módulo window.VIZ pinta su panel a nivel de <body> con un botón
+   de cierre de ~22px (solo el glifo) — demasiado pequeño para tocar en
+   móvil. Ampliamos el área tocable a 44px sin alterar el tamaño visual
+   del glifo, centrándolo. Vale para los 7 nombres de clase de cierre que
+   usan los módulos (vt/chr/vz/dla/braess/automata + close-btn genérico de
+   schelling y gravitacional). El glifo queda igual; crece solo el hit. */
+.vt-close,.chr-close,.vz-close,.dla-panel-close,.__braess_close,
+.viz-automata-panel .vap-close-btn,
+.__sch-panel .close-btn,.grav-panel .close-btn{
+  min-width:var(--tap)!important;min-height:var(--tap)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:0!important;margin:-8px -8px 0 0!important;
+}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+
+<!-- ════════════════ 1 · HERO ════════════════ -->
+<section id="hero">
+  <div class="fondo" data-viz="dla" data-bg aria-hidden="true"></div>
+  <p class="autor reveal in">Yuk Hui</p>
+  <h1 class="reveal in d1">Fragmentar el futuro</h1>
+  <p class="sub reveal in d2">«Sobre el límite de la inteligencia artificial» <span class="pp">(pp.&nbsp;163–191)</span></p>
+  <div class="pregunta reveal in d3">
+    <span class="et">Pregunta guía</span>
+    ¿Dónde está el límite de la IA —y por qué ese límite no es técnico?
+  </div>
+  <p class="curso reveal in d4">Filosofía de la Ciudad <span class="s">·</span> Unidad Urban AI <span class="s">·</span> 12 de junio de 2026</p>
+  <div class="scroll-cue reveal in d4"><span>desliza</span><span class="arw">↓</span></div>
+</section>
+
+<!-- ════════════════ 2 · LA PREGUNTA / TESIS ════════════════ -->
+<section id="pregunta">
+  <p class="eje reveal">La tesis</p>
+  <h2 class="reveal d1">El límite de la IA no es una frontera técnica que más cómputo termine cruzando.</h2>
+  <p class="tesis-2 reveal d2">Es un límite <strong>político y cosmológico</strong>: la cuestión no es <em>cuánta</em> potencia, sino <em>quién</em> computa, con qué cosmotécnica y a costa de qué soberanía.</p>
+</section>
+
+<!-- ════════════════ 3 · TRES EJES FILOSÓFICOS ════════════════ -->
+<section id="ejes">
+  <p class="eje reveal">Tres ejes filosóficos</p>
+  <h2 class="reveal d1">Seis pensadores arman el concepto de inteligencia</h2>
+  <p class="dim reveal d2" style="margin:.7em 0 0;">Toca cada eje para abrirlo.</p>
+  <div class="cards">
+
+    <details class="card reveal d1">
+      <summary>
+        <span class="num">1</span>
+        <span class="head">
+          <span class="t">Bergson — la inteligencia exteriorizada</span>
+          <span class="one">La IA exterioriza la inteligencia, pero exteriorizar no es entender.</span>
+        </span>
+        <span class="chev">▸</span>
+      </summary>
+      <div class="body">
+        <div class="trio">
+          <div class="c"><b>homo faber</b><span>fabricar herramientas</span></div>
+          <div class="c rojo"><b>mecánico</b><span>automatismo, repetición</span></div>
+          <div class="c verde"><b>vital</b><span>duración, impulso creador</span></div>
+        </div>
+        <p>Para Bergson la inteligencia es ante todo capacidad de <strong>fabricar herramientas</strong>: el homo faber exterioriza su pensamiento en objetos técnicos. La IA es el caso límite de esa exteriorización —una herramienta que se desprende y <em>desborda la intención</em> que la creó—. Pero ejecutar la operación no es habitar su sentido.</p>
+        <span class="badge"><span class="et">Concepto</span> inteligencia fabricadora vs. impulso vital</span>
+      </div>
+    </details>
+
+    <details class="card reveal d2">
+      <summary>
+        <span class="num">2</span>
+        <span class="head">
+          <span class="t">Wiener · Simondon · Kant</span>
+          <span class="one">Retroalimentación, individuación técnica y juicio.</span>
+        </span>
+        <span class="chev">▸</span>
+      </summary>
+      <div class="body">
+        <div class="trio">
+          <div class="c azul"><b>Wiener</b><span>retroalimentación: la salida vuelve como entrada</span></div>
+          <div class="c azul"><b>Simondon</b><span>individuación técnica: concretización de funciones</span></div>
+          <div class="c azul"><b>Kant</b><span>juicio reflexionante: la regla desde el caso</span></div>
+        </div>
+        <p>Wiener define la <strong>cibernética</strong> como ciencia del control y la comunicación; su núcleo es el <em>feedback</em>. Simondon radicaliza: el objeto técnico se constituye por la convergencia de sus funciones. Kant aporta la distinción fina: el juicio <strong>determinante</strong> aplica la regla al caso; el <strong>reflexionante</strong> halla la regla desde el caso.</p>
+        <p class="dim">La IA aplica reglas (determinante), pero no las genera desde el caso ni se da sus propios fines.</p>
+      </div>
+    </details>
+
+    <details class="card reveal d3">
+      <summary>
+        <span class="num">3</span>
+        <span class="head">
+          <span class="t">Dreyfus · Heidegger — mundo y relevancia</span>
+          <span class="one">La relevancia no se programa de antemano.</span>
+        </span>
+        <span class="chev">▸</span>
+      </summary>
+      <div class="body">
+        <p>El <em>mundo</em> —en clave heideggeriana, según la lectura de Dreyfus— es un horizonte de <strong>significatividad</strong>, no un conjunto de datos: es aquello desde lo cual algo se vuelve relevante.</p>
+        <p>Lo que la IA <strong>no puede</strong> es decidir qué es relevante, porque carece de <em>Dasein</em>, de ese ser-en-el-mundo desde el que las cosas adquieren sentido.</p>
+        <span class="badge"><span class="et">Concepto</span> Dasein · ser-en-el-mundo</span>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ════════════════ 4 · EXPERIMENTO 1 ════════════════ -->
+<section id="exp1">
+  <p class="eje reveal">Experimento 1 · LLM vs. cómputo puro</p>
+  <h2 class="reveal d1">La escala no cruza el límite</h2>
+  <p class="lead reveal d2" style="margin-top:.7em;">Seis modelos en gradiente —de 3B a Opus— contra cinco tareas computables y una inversa, sin herramientas. En paralelo, Python calcula la verdad exacta.</p>
+
+  <div class="nums reveal d2" data-countup>
+    <div class="n"><span class="v rojo" data-to="20" data-suf="%">0%</span><span class="l">3B local</span></div>
+    <div class="n"><span class="v rojo" data-to="20" data-suf="%">0%</span><span class="l">14B local</span></div>
+    <div class="n"><span class="v" data-to="40" data-suf="%">0%</span><span class="l">20B local</span></div>
+    <div class="n"><span class="v rojo" data-to="20" data-suf="%">0%</span><span class="l">32B local</span></div>
+    <div class="n"><span class="v verde" data-to="90" data-suf="%">0%</span><span class="l">Sonnet</span></div>
+    <div class="n"><span class="v" data-to="70" data-suf="%">0%</span><span class="l">Opus</span></div>
+  </div>
+  <div class="nums reveal d3" data-countup style="margin-top:-2px;">
+    <div class="n" style="flex:1 1 100%;"><span class="v verde" data-to="100" data-suf="%">0%</span><span class="l">cómputo puro (Python) — el techo trivial que ningún modelo toca</span></div>
+  </div>
+
+  <figure class="fig reveal d2">
+    <button class="imgbtn" data-lightbox="../assets/escala_vs_exactitud.png"
+      data-cap="Exactitud vs. escala. 3B 20%, 14B 20%, 20B 40%, 32B 20%; Sonnet 90%, Opus 70%; cómputo puro 100%.">
+      <img src="../assets/escala_vs_exactitud.png" loading="lazy"
+        alt="Exactitud vs. escala: 3B 20%, 14B 20%, 20B 40%, 32B 20%, Sonnet 90%, Opus 70%, cómputo puro 100%">
+    </button>
+    <figcaption>Exactitud sobre 5 tareas computables · <span class="zoom">toca para ampliar</span></figcaption>
+  </figure>
+
+  <div class="lectura reveal d3">
+    <p>El 3B y el 32B empatan en <span class="destaca">20%</span>, y el 20B (40%) supera al 32B: <span class="destaca">la curva no es monótona</span>. El salto es local → frontera, pero ni el mayor toca el 100% de Python —y Opus &lt; Sonnet.</p>
+    <p><strong>Matiz honesto:</strong> el conteo combinatorio (2.704.156 rutas) lo aciertan los seis, 2 de 2 —es memorizable—. La escala compra precisión en algunos regímenes; no cruza el umbral.</p>
+  </div>
+  <p class="fuente reveal">Fuente: experimento/resultados.json · 2026-06-10 · 6 modelos · sin herramientas · 2 intentos/modelo</p>
+</section>
+
+<!-- ════════════════ 5 · LAS 13 TEORÍAS ════════════════ -->
+<section id="teorias">
+  <p class="eje reveal">Lo que ya sabemos computar</p>
+  <h2 class="reveal d1">13 teorías urbanas clásicas — validadas, exactas</h2>
+  <p class="lead reveal d2" style="margin-top:.7em;">Un portátil las corre todas, exactas, en <strong>64,7 s</strong> y a <strong>$6,9×10⁻⁶</strong> por respuesta. Ocho abren su simulación viva: toca para que arranque, y vuelve a tocar la simulación para ver sus datos canónicos.</p>
+
+  <div class="teorias reveal d2">
+    <div class="teoria" data-viz="von_thunen" data-titulo="von Thünen" data-sub="anillos de renta · 1826">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">von Thünen</span><span class="a">anillos de renta · 1826</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="christaller" data-titulo="Christaller" data-sub="lugares centrales · 1933">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Christaller</span><span class="a">lugares centrales · 1933</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="schelling" data-titulo="Schelling" data-sub="segregación · 1971">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Schelling</span><span class="a">segregación · 1971</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="zipf" data-titulo="Zipf" data-sub="rango-tamaño · 1949">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Zipf</span><span class="a">rango-tamaño · 1949</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="automata" data-titulo="Autómata celular" data-sub="crecimiento · 1993">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Autómata celular</span><span class="a">crecimiento · 1993</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="dla" data-titulo="DLA · Batty" data-sub="fractal urbano · 1994">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">DLA · Batty</span><span class="a">fractal urbano · 1994</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="braess" data-titulo="Braess–Wardrop" data-sub="equilibrio · 1968">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Braess–Wardrop</span><span class="a">equilibrio · 1968</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+    <div class="teoria" data-viz="gravitacional" data-titulo="Gravitacional" data-sub="flujos · 1948">
+      <div class="lienzo"><span class="ph">tocar para animar</span><span class="vivo">viva</span></div>
+      <div class="meta"><span class="t">Gravitacional</span><span class="a">flujos · 1948</span><span class="tap">simulación viva ▸</span></div>
+    </div>
+
+    <!-- 5 sin viz: PNG + datos al tap (lightbox) -->
+    <div class="teoria" data-png="../assets/sim/sim_alonso_bid_rent_1.png" data-titulo="Alonso · bid-rent (1964)" data-cap="Bid-rent de Alonso: los pobres pujan más cerca del CBD; frontera de mejor postor en d*=13,33 km. El grupo pobre ocupa 0,44 del corredor.">
+      <div class="lienzo"><img src="../assets/sim/sim_alonso_bid_rent_1.png" loading="lazy" alt="Bid-rent de Alonso"></div>
+      <div class="meta"><span class="t">Alonso</span><span class="a">bid-rent · 1964</span><span class="tap">gráfico + datos ▸</span></div>
+    </div>
+    <div class="teoria" data-png="../assets/sim/sim_reilly_huff_gravitacion_comercial_1.png" data-titulo="Reilly–Huff · gravitación comercial (1931)" data-cap="Punto de ruptura de Reilly a 10 km de B; Huff con atractivos iguales da 0,5/0,5. La tienda 4× más atractiva captura 0,776 de la rejilla.">
+      <div class="lienzo"><img src="../assets/sim/sim_reilly_huff_gravitacion_comercial_1.png" loading="lazy" alt="Gravitación comercial Reilly-Huff"></div>
+      <div class="meta"><span class="t">Reilly–Huff</span><span class="a">gravitación comercial · 1931</span><span class="tap">gráfico + datos ▸</span></div>
+    </div>
+    <div class="teoria" data-png="../assets/sim/sim_duncan_disimilitud_1.png" data-titulo="Duncan · índice de disimilitud (1955)" data-cap="Índice de disimilitud D = 0,5·Σ|aᵢ/A − bᵢ/B|. Para [40,30,20,10] vs [10,20,30,40] da D = 0,40. Agregando Schelling en 25 tracts: D≈0,246.">
+      <div class="lienzo"><img src="../assets/sim/sim_duncan_disimilitud_1.png" loading="lazy" alt="Índice de disimilitud de Duncan"></div>
+      <div class="meta"><span class="t">Duncan</span><span class="a">disimilitud · 1955</span><span class="tap">gráfico + datos ▸</span></div>
+    </div>
+    <div class="teoria" data-png="../assets/sim/sim_bettencourt_west_escalamiento_1.png" data-titulo="Bettencourt–West · escalamiento (2007)" data-cap="Escalamiento superlineal Y = Y₀·N^1,15. Una ciudad de 1.000.000 → Y = 7.943.282; al duplicar la población, Y crece ×2,219. La prima urbana.">
+      <div class="lienzo"><img src="../assets/sim/sim_bettencourt_west_escalamiento_1.png" loading="lazy" alt="Escalamiento urbano de Bettencourt-West"></div>
+      <div class="meta"><span class="t">Bettencourt–West</span><span class="a">escalamiento · 2007</span><span class="tap">gráfico + datos ▸</span></div>
+    </div>
+    <div class="teoria" data-png="../assets/sim/sim_sintaxis_espacial_integracion_1.png" data-titulo="Hillier–Hanson · sintaxis espacial (1984)" data-cap="Integración = 1/RA sobre el grafo viario. En un camino de 5 nodos, el centro C integra 3,0 y el extremo A, 1,0: el centro topológico atrae el movimiento.">
+      <div class="lienzo"><img src="../assets/sim/sim_sintaxis_espacial_integracion_1.png" loading="lazy" alt="Sintaxis espacial de Hillier-Hanson"></div>
+      <div class="meta"><span class="t">Hillier–Hanson</span><span class="a">sintaxis espacial · 1984</span><span class="tap">gráfico + datos ▸</span></div>
+    </div>
+  </div>
+  <p class="fuente reveal">Simulaciones vivas en navegador (window.VIZ) · datos canónicos en datos/&lt;id&gt;.json · catálogo: simulaciones/catalogo.json</p>
+</section>
+
+<!-- ════════════════ 6 · EXPERIMENTO 2 ════════════════ -->
+<section id="exp2">
+  <p class="eje reveal">Experimento 2 · Banco de teorías</p>
+  <h2 class="reveal d1">Los 6 sujetos contra 39 preguntas</h2>
+  <p class="lead reveal d2" style="margin-top:.7em;">39 preguntas derivadas de las 13 teorías —3 por teoría— con verdad de referencia. Aquí la escala <em>sí</em> ordena más limpio… pero nadie llega al 100%.</p>
+
+  <div class="barras reveal d2" data-bars>
+    <div class="barra"><span class="nom">qwen2.5 <small>3B</small></span><div class="track"><div class="fill" data-w="38.5"></div></div><span class="pct">38,5%</span></div>
+    <div class="barra"><span class="nom">qwen3 <small>14B</small></span><div class="track"><div class="fill" data-w="76.9"></div></div><span class="pct">76,9%</span></div>
+    <div class="barra"><span class="nom">gpt-oss <small>20B</small></span><div class="track"><div class="fill" data-w="79.5"></div></div><span class="pct">79,5%</span></div>
+    <div class="barra"><span class="nom">qwen3 <small>32B</small></span><div class="track"><div class="fill" data-w="76.9"></div></div><span class="pct">76,9%</span></div>
+    <div class="barra front"><span class="nom">Sonnet</span><div class="track"><div class="fill" data-w="89.7"></div></div><span class="pct">89,7%</span></div>
+    <div class="barra front"><span class="nom">Opus</span><div class="track"><div class="fill" data-w="92.3"></div></div><span class="pct">92,3%</span></div>
+    <div class="barra"><span class="nom">Python</span><div class="track"><div class="fill" data-w="100" style="background:var(--verde)"></div></div><span class="pct">100%</span></div>
+  </div>
+  <p class="dim reveal d3">Exactitud global por sujeto sobre 39 preguntas. La verdad sigue del lado del algoritmo.</p>
+
+  <h3 class="reveal d1" style="font-size:1.15em;color:var(--acento-2);margin-top:1.8em;">Dónde la imitación se rompe</h3>
+  <p class="lead reveal d2" style="margin-top:.6em;">Al separar las preguntas de <strong>forma cerrada</strong> (fórmulas memorizables) de las <strong>emergentes</strong> (exigen simular el sistema), aparece la grieta:</p>
+  <div class="dos-cifras reveal d2" data-countup>
+    <div class="c"><span class="v" data-to="100" data-suf="%">0%</span><span class="l">forma cerrada — Opus acierta 27/27</span></div>
+    <div class="c"><span class="v rojo" data-to="75" data-suf="%">0%</span><span class="l">emergente — Opus cae a 9/12 (Sonnet 83%; el 3B, 0/12)</span></div>
+  </div>
+  <p class="lectura reveal d3"><span class="destaca">Lo emergente exige simular, no recordar.</span> Ahí la IA estima un número plausible y el algoritmo acierta. La escala compra memorización de fórmulas; no compra ejecución del proceso.</p>
+  <p class="fuente reveal">Fuente: experimento/resultados_teorias.json · 2026-06-11 · 6 sujetos · 39 preguntas · sin herramientas · 1 intento</p>
+</section>
+
+<!-- ════════════════ 7 · COSTOS ════════════════ -->
+<section id="costos">
+  <p class="eje reveal">Experimento 2 · Costo</p>
+  <h2 class="reveal d1" style="text-align:center;border:0;">¿Cuánto cuesta saber esto?</h2>
+  <div class="asesina reveal d2">
+    <span class="big">Cuatro órdenes<br>de magnitud</span>
+    <span class="sub">separan al cómputo puro de la frontera. El límite no es <em>epistémico</em>: es económico y político.</span>
+  </div>
+
+  <figure class="fig reveal d2">
+    <button class="imgbtn" data-lightbox="../assets/costo_por_respuesta_correcta.png"
+      data-cap="Costo por respuesta correcta (escala log). Python local 6,9×10⁻⁶ USD; locales 0,000147–0,0018 USD; Sonnet 0,007–0,041 USD; Opus 0,013–0,070 USD.">
+      <img src="../assets/costo_por_respuesta_correcta.png" loading="lazy"
+        alt="Costo por respuesta correcta en escala logarítmica: Python 6,9e-6, locales hasta 0,0018, Sonnet 0,007-0,041, Opus 0,013-0,070 USD">
+    </button>
+    <figcaption>Costo por respuesta correcta, escala logarítmica · <span class="zoom">toca para ampliar</span></figcaption>
+  </figure>
+
+  <div class="lectura reveal d3">
+    <p>Abajo, el cómputo puro de Python: <span class="destaca">$6,9×10⁻⁶</span> por respuesta correcta. Arriba, Opus: <span class="destaca">$0,013–$0,070</span>. Del orden de diez mil veces más caro —para una respuesta que sigue por debajo del 100% que Python da gratis y exacto.</p>
+  </div>
+
+  <details class="nota reveal">
+    <summary><span class="ic">▸</span> Qué es medido y qué es estimado</summary>
+    <div class="cont">
+      <strong>Medido:</strong> tiempos (perf_counter) y potencia de la GPU RTX 5070 Ti con nvidia-smi (281,5 W bajo carga). Python: 13 simulaciones en 70,8 s.
+      <br><strong>Estimado:</strong> energía del portátil a 25 W (RAPL no legible sin sudo), tarifa eléctrica $0,20/kWh, y los rangos de la API —Sonnet $0,007–$0,041, Opus $0,013–$0,070— porque la API no devuelve tokens reales (banda 500–3000 tokens/respuesta). Las barras de error del gráfico son esos rangos.
+    </div>
+  </details>
+  <p class="fuente reveal">Fuente: experimento/costos.json · medido (tiempo/GPU) + estimado (tarifa, API)</p>
+</section>
+
+<!-- ════════════════ 8 · CIERRE ════════════════ -->
+<section id="cierre">
+  <p class="eje reveal" style="text-align:center;">Cierre</p>
+  <h2 class="reveal d1">Fragmentar el futuro</h2>
+  <p class="tesis-fin reveal d2">Lo que falta no es un modelo más potente, sino <strong>aplicar</strong>: hacer usable el conocimiento urbano clásico que ya existe. El límite es <em>político, económico y ontológico</em> —quién computa, con qué cosmotécnica, a costa de qué soberanía—.</p>
+  <p class="lema reveal d2">Aplicar antes que escalar · fragmentar antes que optimizar</p>
+
+  <div class="disc reveal d3">
+    <span class="et">Pregunta para discusión</span>
+    <span class="q">Si gobernar la ciudad es una escena <em>T6</em> —no una tarea T1— ¿qué <em>mundo</em> produce la Urban AI? ¿Cómo pensar la tecnodiversidad desde la experiencia urbana latinoamericana?</span>
+  </div>
+
+  <a class="cta reveal d3" href="../tesis/index.html">Tesis completa — 11 capítulos →</a>
+  <a class="cta fantasma reveal d4" href="../tesis/index.html#cap-09">Banco Epistémico Urbano →</a>
+
+  <p class="credito reveal d4">Construido orquestando IA bajo supervisión humana —evidencia performativa de su propio argumento: la IA rinde solo bajo un horizonte humano que decide qué importa.<br>· versión móvil de la <a href="../index.html">ponencia completa</a> ·</p>
+</section>
+
+<!-- ── Lightbox ── -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="x" aria-label="Cerrar">✕</button>
+  <img id="lb-img" alt="">
+  <p class="cap" id="lb-cap"></p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Módulos de viz: cargados como ../viz/<id>.js para que su .src resuelva
+     a /viz/<id>.js y su fetch interno apunte a /datos/<id>.json (root =
+     carpeta presentacion). NO usamos deck-bridge.js (acoplado a reveal.js):
+     el controlador propio de abajo monta/desmonta con IntersectionObserver.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer src="../viz/von_thunen.js"></script>
+<script defer src="../viz/christaller.js"></script>
+<script defer src="../viz/zipf.js"></script>
+<script defer src="../viz/schelling.js"></script>
+<script defer src="../viz/automata.js"></script>
+<script defer src="../viz/dla.js"></script>
+<script defer src="../viz/gravitacional.js"></script>
+<script defer src="../viz/braess.js"></script>
+
+<script>
+/* Controlador del scrollytelling. NOTA DE TIEMPOS: este script inline corre
+   en el parse, ANTES de que los <script defer src="../viz/*.js"> ejecuten y
+   poblen window.VIZ. Por eso la parte de viz (paso 6) se difiere a
+   whenReady() — que espera a DOMContentLoaded (tras todos los defer) — y solo
+   recurre al PNG estático si window.VIZ sigue ausente entonces. */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1 · Revelado al entrar en viewport ───────────────────────────── */
+  var revs = document.querySelectorAll('.reveal:not(.in)');
+  if (reduce) {
+    revs.forEach(function(el){ el.classList.add('in'); });
+  } else if ('IntersectionObserver' in window) {
+    var ioRev = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ioRev.unobserve(e.target);} });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:0.12 });
+    revs.forEach(function(el){ ioRev.observe(el); });
+  } else {
+    revs.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ── 2 · CountUp a mano (al entrar) ───────────────────────────────── */
+  function countUp(el){
+    var to = parseFloat(el.getAttribute('data-to'));
+    var suf = el.getAttribute('data-suf') || '';
+    if (reduce){ el.textContent = to + suf; return; }
+    var dur = 1100, t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0)/dur);
+      var e = 1 - Math.pow(1 - p, 3);            // easeOutCubic
+      el.textContent = Math.round(to * e) + suf;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = to + suf;
+    }
+    requestAnimationFrame(step);
+  }
+  function armGroup(group, run){
+    if ('IntersectionObserver' in window && !reduce){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target);} });
+      }, { threshold:0.4 });
+      io.observe(group);
+    } else { run(group); }
+  }
+  document.querySelectorAll('[data-countup]').forEach(function(g){
+    armGroup(g, function(grp){ grp.querySelectorAll('.v[data-to]').forEach(countUp); });
+  });
+
+  /* ── 3 · Barras horizontales (al entrar) ──────────────────────────── */
+  document.querySelectorAll('[data-bars]').forEach(function(g){
+    armGroup(g, function(grp){
+      grp.querySelectorAll('.fill').forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+    });
+  });
+
+  /* ── 4 · Lightbox simple ──────────────────────────────────────────── */
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lb-img'),
+      lbCap = document.getElementById('lb-cap'),
+      lastFocus = null;
+  function openLb(src, cap){
+    lastFocus = document.activeElement;
+    lbImg.src = src; lbImg.alt = cap || ''; lbCap.textContent = cap || '';
+    lb.classList.add('on'); document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    lb.classList.remove('on'); lbImg.src=''; document.body.style.overflow='';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-lightbox]').forEach(function(b){
+    b.addEventListener('click', function(){ openLb(b.getAttribute('data-lightbox'), b.getAttribute('data-cap')); });
+  });
+  lb.addEventListener('click', function(e){ if(e.target===lb || e.target.classList.contains('x')) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('on')) closeLb(); });
+
+  /* PNG-only theory cards → lightbox con sus datos canónicos */
+  document.querySelectorAll('.teoria[data-png]').forEach(function(card){
+    card.addEventListener('click', function(){
+      openLb(card.getAttribute('data-png'),
+             (card.getAttribute('data-titulo')||'') + ' — ' + (card.getAttribute('data-cap')||''));
+    });
+  });
+
+  /* ── 5 · Progreso de scroll ───────────────────────────────────────── */
+  var prog = document.getElementById('prog'), ticking = false;
+  function updProg(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(updProg);} }, {passive:true});
+  updProg();
+
+  /* ── 6 · VIZ vivas — lazy mount/unmount por proximidad ─────────────
+     Monta cuando el contenedor está a <1 pantalla del viewport; desmonta
+     cuando se aleja >2 pantallas (libera memoria del teléfono). Cada
+     módulo ya auto-pausa fuera de viewport con su propio IO y abre su
+     panel de datos nativo al tap. Bajo reduced-motion: PNG estático.    */
+  var SIM_PNG = {
+    von_thunen:'sim_von_thunen_anillos_1.png',
+    christaller:'sim_christaller_lugares_centrales_1.png',
+    schelling:'sim_schelling_segregacion_1.png',
+    zipf:'sim_zipf_rank_size_1.png',
+    automata:'sim_automata_celular_crecimiento_urbano_1.png',
+    dla:'sim_dla_batty_longley_fractal_1.png',
+    braess:'sim_braess_wardrop_equilibrio_1.png',
+    gravitacional:'sim_modelo_gravitacional_flujos_1.png'
+  };
+  function staticFallback(host, id){
+    var lienzo = host.classList.contains('fondo') ? host : host.querySelector('.lienzo') || host;
+    var img = document.createElement('img');
+    img.src = '../assets/sim/' + SIM_PNG[id]; img.alt = (host.getAttribute('data-titulo')||id);
+    img.loading = 'lazy'; img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    var ph = lienzo.querySelector('.ph'); if(ph) ph.remove();
+    lienzo.appendChild(img);
+  }
+
+  var hosts = Array.prototype.slice.call(document.querySelectorAll('[data-viz]'));
+
+  function target(h){ return h.hasAttribute('data-bg') ? h : (h.querySelector('.lienzo') || h); }
+
+  function staticOnly(h, id){            // PNG estático definitivo (sin viz)
+    if (h.hasAttribute('data-bg')) return;   // el fondo del hero queda sutil/vacío
+    if (SIM_PNG[id]) staticFallback(h, id);
+    h.__mounted = true;                  // marca para que el observer no insista
+  }
+
+  function mountHost(h){
+    if (h.__mounted) return;
+    var id = h.getAttribute('data-viz');
+    var mod = window.VIZ && window.VIZ[id];
+    var t = target(h);
+    if (!mod || typeof mod.mount !== 'function'){ staticOnly(h, id); return; }
+    var ph = t.querySelector('.ph'); if (ph) ph.remove();
+    try {
+      h.__api = mod.mount(t, { compact:true });
+      h.__mounted = true;
+    } catch(err){
+      console.error('[m] mount falló para', id, err);
+      t.innerHTML = '';
+      staticOnly(h, id);
+    }
+  }
+  function unmountHost(h){
+    if (!h.__mounted || h.__static) return;        // no desmontes un PNG fijo
+    try { if (h.__api && h.__api.destroy) h.__api.destroy(); } catch(e){}
+    h.__api = null; h.__mounted = false;
+    var t = target(h);
+    if (t){
+      t.innerHTML = '';
+      if (!h.hasAttribute('data-bg')){
+        var ph = document.createElement('span'); ph.className='ph'; ph.textContent='tocar para animar';
+        var vivo = document.createElement('span'); vivo.className='vivo'; vivo.textContent='viva';
+        t.appendChild(ph); t.appendChild(vivo);
+      }
+    }
+  }
+
+  function startViz(){
+    // Sin viz disponible o sin animación → PNG estático fijo en cada host.
+    if (reduce || !('IntersectionObserver' in window) || !window.VIZ){
+      hosts.forEach(function(h){ h.__static = true; staticOnly(h, h.getAttribute('data-viz')); });
+      return;
+    }
+    // mount cuando está a <1 pantalla (rootMargin 100%); desmonta a >2 pantallas.
+    var ioMount = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) mountHost(e.target); });
+    }, { rootMargin:'100% 0px 100% 0px', threshold:0 });
+    var ioKeep = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(!e.isIntersecting) unmountHost(e.target); });
+    }, { rootMargin:'200% 0px 200% 0px', threshold:0 });
+    hosts.forEach(function(h){ ioMount.observe(h); ioKeep.observe(h); });
+  }
+
+  /* Espera a que los defer hayan corrido (DOMContentLoaded) antes de decidir
+     viz; si ya pasó, arranca de inmediato. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startViz);
+  } else {
+    startViz();
+  }
+})();
+</script>
+</body>
+</html>

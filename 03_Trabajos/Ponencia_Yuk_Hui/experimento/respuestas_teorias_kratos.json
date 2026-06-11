@@ -1,0 +1,1250 @@
+{
+  "qwen2.5:3b|1": {
+    "modelo": "qwen2.5:3b",
+    "n": 1,
+    "respuesta_final": "13.33",
+    "nota": "",
+    "raw": "Para encontrar la distancia \\( d^* \\) al centro de la ciudad (CBD) donde los dos grupos pujan exactamente lo mismo, debemos establecer una ecuación que equate las funciones de puja para ambos grupos. \n\nLas funciones son:\n- \\( R_{pobre}(d) = 500 - 20d \\)\n- \\( R_{rico}(d) = 300 - 5d \\)\n\nEstas funciones representan el costo que pagan los grupos pobre y rico, respectivamente, en función de la distancia \\( d \\). Para que ambos grupos paguen lo mismo, debemos establecer:\n\n\\[ 500 - 20d = 300 - 5d \\]\n\nAhora resolvamos esta ecuación para encontrar \\( d^* \\):\n\nPrimero, despejamos las variables:\n\\[ 500 - 300 = 20d - 5d \\]\n\\[ 200 = 15d \\]\n\nLuego, dividimos ambos lados por 15:\n\\[ d^* = \\frac{200}{15} \\]\n\\[ d^* = \\frac{40}{3} \\]\n\\[ d^* = 13.33 \\]\n\nRespuesta final: 13.33",
+    "elapsed_s": 2.0
+  },
+  "qwen2.5:3b|2": {
+    "modelo": "qwen2.5:3b",
+    "n": 2,
+    "respuesta_final": "200",
+    "nota": "",
+    "raw": "Primero, debemos sustituir el valor dado (d = 20) en la fórmula R_rico(d) = 300 - 5d.\n\nEntonces, R_rico(20) = 300 - 5(20)\n\nPara simplificar:\n\nR_rico(20) = 300 - 100\n\nPor lo tanto,\n\nR_rico(20) = 200\n\nRespuesta final: 200",
+    "elapsed_s": 0.5
+  },
+  "qwen2.5:3b|3": {
+    "modelo": "qwen2.5:3b",
+    "n": 3,
+    "respuesta_final": "0.4",
+    "nota": "",
+    "raw": "Para resolver este problema, primero debemos entender qué significa \"asignación por mejor postor\". En términos de economía y asignaciones, esto implica que la demanda será determinada por el grupo con mayor capacidad de pago. Aquí, R_pobre(d) = 500 - 20d representa a los pobres (con una función de demanda), mientras que R_rico(d) = 300 - 5d representa a los ricos.\n\nVamos a calcular cuánto cobran ambos grupos en cada punto d del intervalo [0, 30] km:\n\n1. Para el grupo pobre:\n   R_pobre(d) = 500 - 20d\n\n2. Para el grupo rico:\n   R_rico(d) = 300 - 5d\n\nVamos a graficar estos dos conjuntos de puntos para ver cuándo la demanda del grupo pobre es mayor que la del grupo rico.\n\nPara cada punto d en [0, 30] con paso 0.1:\n- Calculamos R_pobre(d) y R_rico(d)\n- Si R_pobre(d) > R_rico(d), entonces el grupo pobre está asignado a ese punto\n- Si R_pobre(d) = R_rico(d), entonces ambos grupos están asignados al mismo precio\n\nVamos a calcular esto paso a paso en un bucle:\n\n```python\nd_values = [i * 0.1 for i in range(301)] # Crear una lista de d desde 0 hasta 30 con paso 0.1\npobre_prices = [(500 - 20*d) for d in d_values] # Precios para el grupo pobre\nrico_prices = [(300 - 5*d) for d in d_values] # Precios para el grupo rico\n\n# Comparar precios y determinar asignación\nasignaciones = []\nfor i, (p_pobre, p_rico) in enumerate(zip(pobre_prices, ricos_prices)):\n    if p_pobre > p_rico:\n        asignaciones.append(\"Pobre\")\n    elif p_pobre < p_rico:\n        asignaciones.append(\"Rico\")\n    else: # Si so",
+    "elapsed_s": 3.4
+  },
+  "qwen2.5:3b|4": {
+    "modelo": "qwen2.5:3b",
+    "n": 4,
+    "respuesta_final": "0.751",
+    "nota": "",
+    "raw": "Primero, identificaremos los valores necesarios para la fórmula proporcionada:\n\n- \\(p_{base} = 0.001\\)\n- \\(p_{difusion} = 1.00\\)\n- \\(k_i = 6\\) (ya que una celda no urbana tiene 6 vecinos urbanos en su vecindad de Moore)\n\nAhora, sustituiremos estos valores en la fórmula para calcular \\(p_i\\):\n\n\\[ p_i = p_{base} + p_{difusion} \\times \\left(\\frac{k_i}{8}\\right) \\]\n\nSustituyendo los valores:\n\n\\[ p_i = 0.001 + 1.00 \\times \\left(\\frac{6}{8}\\right) \\]\n\\[ p_i = 0.001 + 1.00 \\times 0.75 \\]\n\\[ p_i = 0.001 + 0.75 \\]\n\nFinalmente, sumamos los valores:\n\n\\[ p_i = 0.751 \\]\n\nRespuesta final: 0.751",
+    "elapsed_s": 1.0
+  },
+  "qwen2.5:3b|5": {
+    "modelo": "qwen2.5:3b",
+    "n": 5,
+    "respuesta_final": "0",
+    "nota": "",
+    "raw": "Para resolver este problema, necesitamos entender cómo se aplica el modelo de regla fronteriza y cuál es la probabilidad EFECTIVA de urbanización para una celda completamente aislada (donde k_i=0 vecinos urbanos).\n\nEl modelo de regla fronteriza establece que solo los vecinos urbanos en las cuatro direcciones (norte, sur, este y oeste) pueden influir en la decisión de urbanización. La regla fronteriza especifica que si una celda tiene al menos un vecino urbano (k_i >= 1), entonces esa celda se urbanizará con probabilidad p_base.\n\nEn el caso de una celda completamente aislada (donde k_i=0), no hay ningún vecino urbano. Según la regla, si ninguna de las condiciones para la urbanización son satisfechas (no hay vecinos urbanos), entonces la celda no se urbanizará con probabilidad 1 (o sea, 100%). \n\nPor lo tanto, la probabilidad EFECTIVA de urbanización de una celda completamente aislada es de 0.\n\nRespuesta final: 0",
+    "elapsed_s": 1.0
+  },
+  "qwen2.5:3b|6": {
+    "modelo": "qwen2.5:3b",
+    "n": 6,
+    "respuesta_final": "<valor>",
+    "nota": "",
+    "raw": "Para resolver este problema, necesitamos implementar un modelo de simulación celular automatas que siga las condiciones especificadas. El modelo se basará en la evolución de una celda a partir de su estado actual y los estados de sus vecinos. En este caso \"núcleo central 3x3\" con el centro como el núcleo, y las celdas fronterizas serán activadas si su valor es mayor o igual que un umbral (p_base=0.001). La difusión de la activación se controla por p_difusion=1.00.\n\nVamos a implementar el modelo en Python utilizando numpy para manejar las matrices y facilitando los cálculos necesarios. Aquí está la solución:\n\n```python\nimport numpy as np\n\n# Definir los parámetros del problema\np_base = 0.001\np_difusion = 1.00\nnumpy_random_seed = 7\nnum_iterations = 50\ngrid_size = (100, 100)\nneighbourhood = \"Moore\"\n\n# Inicializar el grid con numpy\nnp.random.seed(numpy_random_seed)\ngrid = np.random.choice([False, True], size=grid_size)\n\ndef update_cell(grid, i, j):\n    # Obtener los vecinos del celda (i,j) en la vecindad de Moore\n    neighbors = [(i-1,j), (i+1,j), (i,j-1), (i,j+1),\n                 (i-1,j-1), (i-1,j+1), (i+1,j-1), (i+1,j+1)]\n    \n    # Contar el número de vecinos activos\n    active_neighbors = sum(grid[neighbor] for neighbor in neighbors)\n    \n    # Si la celda está activa y menos del umbral de vecinos activos, se desactiva.\n    if grid[i, j] and (active_neighbors < p_base):\n        return False\n    \n    # Si la celda está desactivada y tiene al menos el umbral de vecinos activos,",
+    "elapsed_s": 2.7
+  },
+  "qwen2.5:3b|7": {
+    "modelo": "qwen2.5:3b",
+    "n": 7,
+    "respuesta_final": "1762894",
+    "nota": "",
+    "raw": "Primero, reemplazamos los valores dados en la fórmula:\n\nLa ecuación es Y = Y_0 * N^beta.\n\nDado que Y_0 = 1 y beta = 1.15, y tenemos N = 1,000,000 habitantes, podemos reescribir la ecuación como:\n\nY = 1 * (1,000,000)^{1.15}\n\nAhora calculamos el valor de Y:\n\nY = 1,000,000^{1.15}\nY ≈ 1,762,894.38\n\nFinalmente, redondeamos este resultado al entero más cercano:\n\nRespuesta final: 1762894",
+    "elapsed_s": 0.7
+  },
+  "qwen2.5:3b|8": {
+    "modelo": "qwen2.5:3b",
+    "n": 8,
+    "respuesta_final": "2.30",
+    "nota": "",
+    "raw": "Para resolver esta pregunta, necesitamos entender qué implicaría un escalamiento superlineal con beta=1.15 y cómo afecta a la magnitud socioeconómica Y cuando la población de una ciudad duplica.\n\nEl escalamiento superlineal se refiere a que el crecimiento es más rápido que lineal pero no exponencial. Con un factor de escalamiento beta = 1.15, esto significa que cada vez que aumentamos la magnitud (en este caso, la población), la nueva magnitud será 1.15 veces mayor que la antigua.\n\nSi duplicamos la población, el nuevo valor sería 2 vezes el antiguo. Para entender cómo afecta a Y, podemos establecer una relación de escalamiento:\n\n\\[ Y_{nuevo} = \\beta \\times Y_{antiguo} \\]\n\nDado que beta es 1.15 y estamos duplicando la población (que equivale a multiplicar la magnitud por 2), el nuevo valor de Y sería:\n\n\\[ Y_{nuevo} = 1.15 \\times 2 \\times Y_{antiguo} \\]\n\\[ Y_{nuevo} = 2.30 \\times Y_{antiguo} \\]\n\nPor lo tanto, la magnitud socioeconómica Y se multiplica por un factor de 2.30 cuando la población de una ciudad duplica.\n\nRespuesta final: 2.30",
+    "elapsed_s": 1.2
+  },
+  "qwen2.5:3b|9": {
+    "modelo": "qwen2.5:3b",
+    "n": 9,
+    "respuesta_final": "Procedimiento correcto para resolver la tarea.",
+    "nota": "",
+    "raw": "Para resolver esta tarea, primero debemos entender que estamos buscando una relación entre la población (N) y la magnitud (Y), donde Y = N^1.15. La ecuación logarítmica proporcionada es log10(Y) = a + b*log10(N). \n\nPrimero, vamos a calcular los valores de Y para cada valor de N entre 10,000 y 5,000,000, con un incremento en la población que se ve razonablemente espaciado logarítmicamente.\n\nN = [10000, 20000, ..., 5000000]\nY = N^1.15\n\nLuego, calcularemos los valores de log10(Y) y graficamos estos datos para ajustar la ecuación a la forma log10(Y) = a + b*log10(N).\n\nPara simplificar el proceso, vamos a generar 50 puntos equidistantes en el rango de N desde 10,000 hasta 5,000,000. Luego calcularíamos Y y luego log10(Y) para cada uno.\n\nAquí están los primeros pasos:\n\n1. Generar una lista de valores de N equidistantes entre 10,000 y 5,000,000.\n2. Calcular Y = N^1.15 para cada valor de N.\n3. Calcular log10(Y) para cada valor de Y.\n\nLuego, graficaríamos los datos (log10(N), log10(Y)) y ajustaríamos la ecuación a la forma log10(Y) = a + b*log10(N). Finalmente, recuperaríamos el coeficiente 'b' del modelo de regresión lineal.\n\nSin embargo, debido al tamaño de este problema, no puedo realizar estos cálculos directamente aquí. En lugar de eso, te proporciono un procedimiento que puedes seguir en tu computadora para obtener los resultados finales. \n\nRespuesta final: Procedimiento correcto para resolver la tarea.",
+    "elapsed_s": 1.9
+  },
+  "qwen2.5:3b|10": {
+    "modelo": "qwen2.5:3b",
+    "n": 10,
+    "respuesta_final": "65",
+    "nota": "",
+    "raw": "Primero, debemos determinar el flujo óptimo (tasa de tráfico) para cada vía. Como se reparten simétricamente 2000 vehículos por cada vía y la capacidad total es de 4000 vehículos, en equilibrio, cada vía transportará 2000 vehículos.\n\nEl tiempo que tarda un vehículo en recorrer la ruta superior está dado por la función t = x/100 + 45, donde x es el flujo. En el equilibrio, este flujo será de 2000 vehículos para cada vía. Reemplazando x con 2000 en la función:\n\nt = 2000 / 100 + 45\nt = 20 + 45\nt = 65\n\nRespuesta final: 65",
+    "elapsed_s": 0.8
+  },
+  "qwen2.5:3b|11": {
+    "modelo": "qwen2.5:3b",
+    "n": 11,
+    "respuesta_final": "0.02'.",
+    "nota": "",
+    "raw": "Primero, necesitamos determinar la velocidad promedio (x_A y x_B) para calcular los tiempos de viaje en cada parte de la ruta.\n\nEl tiempo de viaje por unidad de distancia es el costo dividido por la velocidad. En este caso:\n\n- El atajo A->B tiene un coste de 0, por lo que el tiempo de viaje por unidad de distancia para esta parte es 0.\n- La ruta Inicio->A->B->Fin tiene un coste total de x_A/100 + x_B/100 = 4000/100 + 4000/100 = 40 + 40 = 80.\n\nEntonces, el tiempo total para la ruta Inicio->A->B->Fin es:\n\n\\[ \\text{Tiempo Total} = \\frac{x_A}{100} + \\frac{x_B}{100} = 40 + 40 = 80 \\]\n\nEl tiempo de viaje por unidad de distancia para toda la ruta Inicio->A->B->Fin es:\n\n\\[ \\text{Tiempo Por Unidad De Distancia} = \\frac{\\text{Tiempo Total}}{\\text{Distancia Total}} = \\frac{80}{4000 + 4000} = \\frac{80}{8000} = 0.01 \\]\n\nPor lo tanto, el tiempo de viaje por unidad de distancia para la ruta Inicio->A->B->Fin es 0.01 unidades de tiempo por unidad de distancia.\n\nEl valor x_A/100 + x_B/100 que se menciona en el problema representa el costo total del atajo A->B, no el tiempo de viaje. Por lo tanto, la velocidad promedio (x_A y x_B) es 4000 vehículos por hora cada una.\n\nEl tiempo de viaje de equilibrio con el atajo se mide en términos de coste unitario, no en términos de tiempo. Dado que el costo del atajo A->B es 0 y la velocidad promedio para ambas rutas es 4000 vehículos por hora cada una, el tiempo de viaje de equilibrio con el atajo se mide como:\n\n\\[ \\text{Tiempo de Viaje} = \\frac{\\text{Tie",
+    "elapsed_s": 2.2
+  },
+  "qwen2.5:3b|12": {
+    "modelo": "qwen2.5:3b",
+    "n": 12,
+    "respuesta_final": "<valor>",
+    "nota": "",
+    "raw": "Para resolver este problema, necesitamos entender los conceptos básicos y luego proceder con un enfoque iterativo para asignar el flujo. Sin embargo, debido a la complejidad del problema, una solución exacta requiere algoritmos avanzados como el método de bestimación o búsqueda local. Aquí propondré un enfoque aproximado que puede ser utilizado para obtener una respuesta.\n\nPrimero, consideramos que la red sin atajo es la referencia (tiempo_sin). La idea es encontrar el equilibrio Wardrop en la red con atajo y compararlo con el tiempo de viaje del equilibrio en la red sin atajo. \n\n1) **Inicialización**: Asignar un flujo inicial a cada nodo, asegurando que la suma de los flujos entre cualquier par de nodos no sea mayor que la capacidad máxima de las conexiones.\n\n2) **Iteración para encontrar el equilibrio en la red sin atajo**: \n   - Para cada ruta, calcular el tiempo de viaje esperado.\n   - Actualizar el flujo de cada nodo considerando los tiempos de viaje calculados.\n   \n3) **Añadir el atajo y repetir**:\n   - Agregar el atajo a la red sin atajo. Esto puede ser una conexión adicional entre dos nodos que reduce el tiempo de viaje en ambos sentidos.\n   - Calcular nuevamente los tiempos de viaje esperados para cada ruta.\n   - Actualizar el flujo de nuevo.\n\n4) **Comparación**: Comparar el tiempo total de viaje del equilibrio encontrado con la red sin atajo y con la red con atajo. La diferencia entre estos dos tiempos será nuestro resultado.\n\n5) **Aumento del tiempo de viaje**:\n   ",
+    "elapsed_s": 1.9
+  },
+  "qwen2.5:3b|13": {
+    "modelo": "qwen2.5:3b",
+    "n": 13,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Para resolver este problema debemos entender que la secuencia dada es una secuencia geométrica inversa. El primer término de la secuencia es k=3, y cada siguiente término se obtiene dividiendo el número anterior por 2.\n\nLa secuencia proporcionada es: 1, 2, 6, 18\n\nEl tercer término (6) se obtiene al dividir el segundo término (2) por 2.\nEl cuarto término (18) se obtiene al dividir el tercero (6) por 2.\n\nEntonces, si seguimos esta secuencia inversa, podemos determinar cuántos lugares de orden 1 hay en una jerarquía de 4 niveles. Para ello, necesitamos encontrar la relación entre los términos y aplicarla para el primer término (orden 1).\n\nLa relación es: cada siguiente término se obtiene dividiendo por 2.\n\nEntonces, si dividimos el tercer término (6) por 2 obtenemos el segundo término (2), y si dividimos el segundo término (2) por 2 obtenemos el primero término (1). \n\nPor lo tanto, en una jerarquía de 4 niveles con k=3, hay 1 lugar de orden 1.\n\nRespuesta final: 1",
+    "elapsed_s": 1.1
+  },
+  "qwen2.5:3b|14": {
+    "modelo": "qwen2.5:3b",
+    "n": 14,
+    "respuesta_final": "259.8 km²",
+    "nota": "",
+    "raw": "Primero, necesitamos sustituir la variable r con su valor dado en la fórmula proporcionada:\n\nA = (3 * sqrt(3) / 2) * r^2\n\nDado que el radio r es igual a 10 km, reemplazaremos r por 10:\n\nA = (3 * sqrt(3) / 2) * (10)^2\n\nAhora, calculamos la parte de la fórmula que no depende del radio:\n\nA = (3 * sqrt(3) / 2) * 100\n   = 150 * sqrt(3)\n\nPara obtener el valor numérico, necesitamos calcular el valor de sqrt(3), que es aproximadamente 1.732.\n\nEntonces,\n\nA ≈ 150 * 1.732\n   ≈ 259.8\n\nPor lo tanto, la respuesta final será:\n\nRespuesta final: 259.8 km²",
+    "elapsed_s": 0.9
+  },
+  "qwen2.5:3b|15": {
+    "modelo": "qwen2.5:3b",
+    "n": 15,
+    "respuesta_final": "6914.87 km²",
+    "nota": "",
+    "raw": "Partiendo del área de mercado base de 259.81 km² en el nivel 1, seguiremos multiplicando por 3 para determinar el área de mercado en cada nivel superior.\n\nNivel 1 (nivel más alto): \nÁrea = 259.81 km²\n\nNivel 2:\nÁrea = Nivel 1 * 3\nÁrea = 259.81 * 3\nÁrea = 779.43 km²\n\nNivel 3:\nÁrea = Nivel 2 * 3\nÁrea = 779.43 * 3\nÁrea = 2338.29 km²\n\nNivel 4 (nivel más bajo):\nÁrea = Nivel 3 * 3\nÁrea = 2338.29 * 3\nÁrea = 6914.87 km²\n\nRespuesta final: 6914.87 km²",
+    "elapsed_s": 0.9
+  },
+  "qwen2.5:3b|16": {
+    "modelo": "qwen2.5:3b",
+    "n": 16,
+    "respuesta_final": "1.264",
+    "nota": "",
+    "raw": "Primero, identifiquemos los valores proporcionados en el problema:\n- N_1 = 158 celdas dentro de radio R_1 = 10 unidades.\n- N_2 = 380 celdas dentro de radio R_2 = 20 unidades.\n\nLa fórmula que se nos pide utilizar es la siguiente:\n\n\\[ D = \\frac{\\log(N_2/N_1)}{\\log(R_2/R_1)} \\]\n\nAhora, sustituyamos los valores en la fórmula:\n\n\\[ D = \\frac{\\log(380/158)}{\\log(20/10)} \\]\n\nPrimero calcularemos el valor del numerador:\n\n\\[ \\log(380/158) = \\log(2.4) \\approx 0.38079963 \\]\n\nLuego, el valor del denominador:\n\n\\[ \\log(20/10) = \\log(2) \\approx 0.30102999 \\]\n\nAhora, dividimos estos valores para obtener D:\n\n\\[ D = \\frac{0.38079963}{0.30102999} \\approx 1.264 \\]\n\nPor lo tanto, la dimensión fractal es aproximadamente 1.264.\n\nRespuesta final: 1.264",
+    "elapsed_s": 1.2
+  },
+  "qwen2.5:3b|17": {
+    "modelo": "qwen2.5:3b",
+    "n": 17,
+    "respuesta_final": "400",
+    "nota": "",
+    "raw": "Para resolver este problema, vamos a utilizar la fórmula dada N(R) ~ R^D. Aquí, N(R) representa el número de celdas ocupadas en un radio R y D es la dimensión fractal.\n\nEl valor dado es que dentro del radio R=10 hay 200 celdas ocupadas. Podemos usar esto para encontrar el valor de la constante K en la fórmula N(R) = K * R^D, donde K es la constante de proporcionalidad. \n\nEntonces, 200 = K * 10^1.7\n\nDe aquí podemos resolver para K:\n\nK = 200 / (10^1.7)\n\nAhora que tenemos K, podemos usarlo para calcular el número de celdas ocupadas dentro del radio R=20.\n\nN(20) = K * 20^D\n       = (200 / (10^1.7)) * 20^1.7\n\nPrimero calculamos la parte constante:\n\n20^1.7 / 10^1.7 = (20/10)^1.7 = 2^1.7\n\nEntonces, N(20) = K * 2^1.7\nN(20) = (200 / (10^1.7)) * 2^1.7\n\nFinalmente, simplificamos:\n\nN(20) = 200 * 2^(1.7-1.7)\n       = 200 * 2^0\n       = 200 * 1\n       = 200\n\nRespuesta final: 400",
+    "elapsed_s": 1.5
+  },
+  "qwen2.5:3b|18": {
+    "modelo": "qwen2.5:3b",
+    "n": 18,
+    "respuesta_final": "D_estimate",
+    "nota": "",
+    "raw": "Para resolver este problema necesitamos seguir varias etapas:\n\n1) Generar la rejilla y las particulas:\nPrimero, generaremos una rejilla de 201x201 con semilla central (la posición del centro será el punto de origen). Luego, asignaremos 1500 particulas aleatoriamente en esta rejilla.\n\n2) Realizar la caminata aleatoria:\nPara cada particula, realizamos una caminata aleatoria durante un número determinado de pasos. Esto implica moverse en direcciones aleatorias (arriba, abajo, izquierda y derecha) en el espacio de la rejilla.\n\n3) Estimar la dimensión fractal:\nPara estimar la dimensión fractal D usando la regresión log N(R) vs log R, necesitamos calcular el número de particulas que se encuentran dentro de diferentes rangos de radio (R). Esto nos permitirá determinar cómo crece N(R) con R. \n\n4) Determinar la región de escalamiento:\nLa dimensión fractal D se puede estimar en una región donde la relación entre N(R) y R sigue una ley lineal, es decir, log(N(R)) vs log(R) tiene una pendiente constante.\n\n5) Realizar la regresión y calcular D:\nFinalmente, realizamos la regresión de log(N(R)) vs log(R) en el rango de escalamiento para obtener la pendiente que representa la dimensión fractal D.\n\nEl cálculo exacto de D requiere un análisis detallado del comportamiento de N(R), lo cual no puedo realizar aquí debido a las limitaciones de este formato. Sin embargo, puedo decirte cómo procederías:\n\n- Generar la rejilla y particulas\n- Realizar caminata aleatoria para cada particula\n- Calcular N(",
+    "elapsed_s": 3.3
+  },
+  "qwen2.5:3b|19": {
+    "modelo": "qwen2.5:3b",
+    "n": 19,
+    "respuesta_final": "40",
+    "nota": "",
+    "raw": "Primero, necesitamos calcular la diferencia entre cada par correspondiente (a_i y b_i) para todos los tracts:\n\n- Para el primer tract: |40 - 10| = 30\n- Para el segundo tract: |30 - 20| = 10\n- Para el tercer tract: |20 - 30| = 10\n- Para el cuarto tract: |10 - 40| = 30\n\nAhora, sumamos estos valores:\n\nSuma de diferencias = 30 + 10 + 10 + 30 = 80\n\nLuego, aplicamos la fórmula dada D = 0.5 * Sum|a_i/A - b_i/B| con el valor calculado anteriormente:\n\nD = 0.5 * 80 = 40\n\nRespuesta final: 40",
+    "elapsed_s": 0.8
+  },
+  "qwen2.5:3b|20": {
+    "modelo": "qwen2.5:3b",
+    "n": 20,
+    "respuesta_final": "0.3",
+    "nota": "",
+    "raw": "Primero, debemos calcular la proporción de cada grupo en su respectivo tracto:\n\n- Para el primer tracto:\n  a1/A = 50/100 = 0.5\n  b1/B = 20/100 = 0.2\n\n- Para el segundo tracto:\n  a2/A = 30/100 = 0.3\n  b2/B = 30/100 = 0.3\n\n- Para el tercer tracto:\n  a3/A = 20/100 = 0.2\n  b3/B = 50/100 = 0.5\n\nAhora, calculamos la diferencia entre estas proporciones:\n\n- Diferencia para el primer tracto: |0.5 - 0.2| = 0.3\n- Diferencia para el segundo tracto: |0.3 - 0.3| = 0.0\n- Diferencia para el tercer tracto: |0.2 - 0.5| = 0.3\n\nSumamos estas diferencias:\n\nD = 0.5 * (0.3 + 0.0 + 0.3) = 0.5 * 0.6 = 0.3\n\nRespuesta final: 0.3",
+    "elapsed_s": 1.1
+  },
+  "qwen2.5:3b|21": {
+    "modelo": "qwen2.5:3b",
+    "n": 21,
+    "respuesta_final": "indice_disimilitud",
+    "nota": "",
+    "raw": "Primero, necesitamos importar las bibliotecas necesarias para realizar este experimento. Estas incluyen numpy, matplotlib (para visualización), y la función sim_schelling_segregacion de umbral T=0.30 con vecindad de Moore.\n\n```python\nimport numpy as np\n\ndef sim_schelling_segregacion(rejilla_50x50, porcentaje_rojos, porcentaje_azules, porcentaje_vacios, umbral_t, vecindad, seed, max_iter):\n    # Implementación del experimento Schelling aquí.\n    pass  # Reemplazar con la implementación real\n```\n\nLuego, dividiremos la rejilla en bloques de 10x10 celdas. Para ello, necesitamos generar una matriz de índices que nos permita identificar cada bloque.\n\n```python\ndef divide_rejilla_en_bloques(rejilla_50x50):\n    # Divide la rejilla en bloques de 10x10.\n    pass  # Reemplazar con la implementación real\n```\n\nDespués, necesitamos contar los rojos y azules por bloque. Esto implica recorrer cada bloque y contar cuántos rojos y azules hay dentro.\n\n```python\ndef cuenta_rojos_azules_por_bloque(bloques):\n    # Cuenta los rojos y azules en cada bloque.\n    pass  # Reemplazar con la implementación real\n```\n\nFinalmente, necesitamos calcular el índice de disimilitud D de Duncan. El índice de disimilitud D de Duncan es una medida que mide la similitud entre dos poblaciones. Para ello, usaremos las frecuencias de rojos y azules en cada bloque.\n\n```python\ndef indice_disimilitud_duncan(bloques_rojos, bloques_azules):\n    # Calcula el índice de disimilitud D de Duncan.\n    pass  # Reemplazar con la imp",
+    "elapsed_s": 3.3
+  },
+  "qwen2.5:3b|22": {
+    "modelo": "qwen2.5:3b",
+    "n": 22,
+    "respuesta_final": "20000",
+    "nota": "",
+    "raw": "Primero, reemplazamos los valores proporcionados en la ecuación gravitacional:\n\nT_ij = G*P_i*P_j/d_ij^2\n\nCon:\n- P_i = 10000\n- P_j = 5000\n- d_ij = 50\n- G = 1\n\nEntonces, reemplazamos estos valores en la ecuación:\n\nT_ij = (1)*(10000)*(5000)/(50)^2\n\nAhora calculamos el valor de T_ij:\n\nT_ij = (1)*(10000)*(5000)/2500\nT_ij = 10000*5000/2500\nT_ij = 50000000/2500\nT_ij = 20000\n\nRespuesta final: 20000",
+    "elapsed_s": 0.8
+  },
+  "qwen2.5:3b|23": {
+    "modelo": "qwen2.5:3b",
+    "n": 23,
+    "respuesta_final": "15625",
+    "nota": "",
+    "raw": "Primero, sustituyamos los valores dados en la fórmula T_ij = G*P_i*P_j/d_ij^c:\n\nT_ij = 1 * 10000 * 20000 / 40^2\n\nLuego calcularemos el valor de d_ij^c, que es 40 elevado a la potencia 2:\n\nd_ij^c = 40^2 = 1600\n\nAhora reemplazamos y simplificamos:\n\nT_ij = 1 * 10000 * 20000 / 1600\nT_ij = 250000000 / 1600\nT_ij = 15625\n\nRespuesta final: 15625",
+    "elapsed_s": 0.7
+  },
+  "qwen2.5:3b|24": {
+    "modelo": "qwen2.5:3b",
+    "n": 24,
+    "respuesta_final": "8666666.67",
+    "nota": "",
+    "raw": "Para resolver este problema, primero debemos calcular las distancias euclidianas entre cada par de posiciones y luego usar estas distancias para determinar los flujos (T) según la fórmula:\n\n\\[ T_{ij} = \\frac{P_i P_j}{d_{ij}} \\]\n\ndonde \\( P_i \\) es el flujo desde la posición \\( i \\), \\( P_j \\) es el flujo hacia la posición \\( j \\), y \\( d_{ij} \\) es la distancia entre las posiciones \\( i \\) y \\( j \\).\n\nLas posiciones son:\n- \\( p_1 = (0, 0) \\)\n- \\( p_2 = (30, 0) \\)\n- \\( p_3 = (0, 40) \\)\n\nLa fórmula para la distancia entre dos puntos en el plano es:\n\n\\[ d_{ij} = \\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} \\]\n\nCalculamos las distancias:\n\n- \\( d_{12} = \\sqrt{(0-30)^2 + (0-0)^2} = 30 \\)\n- \\( d_{13} = \\sqrt{(0-0)^2 + (0-40)^2} = 40 \\)\n- \\( d_{23} = \\sqrt{(30-0)^2 + (0-40)^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50 \\)\n\nAhora, usamos estas distancias para calcular los flujos \\( T_{ij} \\):\n\n\\[ T_{12} = \\frac{P_1 P_2}{d_{12}} = \\frac{10000 \\cdot 5000}{30} = \\frac{50000000}{30} \\approx 1666666.67 \\]\n\\[ T_{13} = \\frac{P_1 P_3}{d_{13}} = \\frac{10000 \\cdot 20000}{40} = \\frac{200000000}{40} = 5000000 \\]\n\\[ T_{23} = \\frac{P_2 P_3}{d_{23}} = \\frac{5000 \\cdot 20000}{50} = \\frac{100000000}{50} = 2000000 \\]\n\nSumamos todos los flujos \\( T_{ij} \\):\n\n\\[ T_1 + T_2 + T_3 = T_{12} + T_{13} + T_{23} \\]\n\\[ T_1 + T_2 + T_3 = 1666666.67 + 5000000 + 2000000 = 8666666.67 \\]\n\nPor lo tanto, el total de todos los flujos entre pares distintos es:\n\nRespuesta final: 8666666.67",
+    "elapsed_s": 3.7
+  },
+  "qwen2.5:3b|25": {
+    "modelo": "qwen2.5:3b",
+    "n": 25,
+    "respuesta_final": "10",
+    "nota": "",
+    "raw": "Primero, necesitamos calcular P_A y P_B utilizando las poblaciones proporcionadas:\n\nP_A = 64000\nP_B = 16000\n\nAhora, vamos a utilizar la fórmula del punto de ruptura de Reilly BP=d/(1+sqrt(P_A/P_B)) donde d es la distancia entre las ciudades A y B.\n\nd = 30 km\n\nBP = 30 / (1 + sqrt(64000/16000))\n\nPrimero, calculamos el valor del término dentro de la raíz:\n\nP_A/P_B = 64000/16000 = 4\n\nLuego, tomamos la raíz cuadrada de este valor:\n\nsqrt(4) = 2\n\nAhora, sumamos 1 a esta raíz:\n\n1 + sqrt(4) = 3\n\nFinalmente, dividimos la distancia entre las ciudades por este resultado para obtener BP:\n\nBP = 30 / 3 = 10 km\n\nRespuesta final: 10",
+    "elapsed_s": 0.9
+  },
+  "qwen2.5:3b|26": {
+    "modelo": "qwen2.5:3b",
+    "n": 26,
+    "respuesta_final": "\\(\\frac{4}{17}\\)",
+    "nota": "",
+    "raw": "Para resolver este problema, primero debemos entender cómo funciona el modelo de Huff. Este modelo predice cuál será la elección del consumidor entre varias tiendas basándose en su atracción y distancia a cada una.\n\nEl modelo de Huff se expresa con la siguiente fórmula:\n\n\\[ P_i = \\frac{A_i^{\\beta}}{\\sum_{j=1}^{n} A_j^{\\beta}} \\]\n\nDonde:\n- \\(P_i\\) es la probabilidad de que el consumidor elija la tienda i.\n- \\(A_i\\) es el atractivo de la tienda i (que en este caso es 1000 para Tienda 1 y 4000 para Tienda 2).\n- \\(\\beta\\) es un exponente, aquí dado como 2.\n\nVamos a calcular la probabilidad de que el consumidor elija la Tienda 2. Para ello, necesitamos primero calcular \\(P_1\\), la probabilidad de elegir la Tienda 1:\n\n\\[ P_1 = \\frac{A_1^{\\beta}}{\\sum_{j=1}^{n} A_j^{\\beta}} = \\frac{1000^2}{1000^2 + 4000^2} \\]\n\nAhora, calculamos \\(P_2\\), la probabilidad de elegir la Tienda 2:\n\n\\[ P_2 = \\frac{A_2^{\\beta}}{\\sum_{j=1}^{n} A_j^{\\beta}} = \\frac{4000^2}{1000^2 + 4000^2} \\]\n\nPara simplificar, notamos que \\(P_1\\) y \\(P_2\\) tienen la misma estructura pero con diferentes valores de \\(A_i\\). Podemos escribir:\n\n\\[ P_1 = \\frac{1000^2}{1000^2 + 4000^2} = \\frac{1000^2}{1000^2 (1 + \\left(\\frac{4000}{1000}\\right)^2)} = \\frac{1}{1 + 4^2} = \\frac{1}{17} \\]\n\n\\[ P_2 = \\frac{4000^2}{1000^2 + 4000^2} = \\frac{4000^2}{1000^2 (1 + 4^2)} = \\frac{4}{17} \\]\n\nPor lo tanto, la probabilidad de que el consumidor elija la Tienda 2 es:\n\n\\[ P_2 = \\frac{4}{17} \\]\n\nRespuesta final: \\(\\frac{4}{17}\\)",
+    "elapsed_s": 2.3
+  },
+  "qwen2.5:3b|27": {
+    "modelo": "qwen2.5:3b",
+    "n": 27,
+    "respuesta_final": "441",
+    "nota": "",
+    "raw": "Primero, necesitamos entender cómo se calcula la probabilidad de Huff para una celda específica en esta situación. La fórmula de Huff para calcular la probabilidad de que un consumidor elija una tienda es:\n\n\\[ P_i = \\frac{A_i^{\\beta}}{\\sum_{j=1}^{n} A_j^{\\beta}} \\]\n\ndonde:\n- \\(P_i\\) es la probabilidad de que un consumidor elija la tienda i.\n- \\(A_i\\) es el área de atracción de la tienda i.\n- \\(n\\) es el número total de tiendas.\n- \\(\\beta\\) es una constante que determina la forma del modelo.\n\nEn este problema, tenemos dos tiendas (Tienda 1 y Tienda 2), con las siguientes características:\n- Tienda 1 está en (5,10) con un atractivo de 1000.\n- Tienda 2 está en (15,10) con un atractivo de 4000.\n- \\(\\beta = 2\\).\n\nLa probabilidad de que un consumidor elija la Tienda 2 es mayor o igual a 0.5 si:\n\n\\[ P_2 \\geq 0.5 \\]\n\nSabemos que \\(A_1 = 1000\\) y \\(A_2 = 4000\\). Por lo tanto, la probabilidad de Huff para la Tienda 2 es:\n\n\\[ P_2 = \\frac{A_2^{\\beta}}{A_1^{\\beta} + A_2^{\\beta}} = \\frac{4000^2}{1000^2 + 4000^2} \\]\n\nCalculando esto, obtenemos:\n\n\\[ P_2 = \\frac{4000^2}{1000^2 + 4000^2} = \\frac{16000000}{1000000 + 16000000} = \\frac{16000000}{17000000} = \\approx 0.9412 \\]\n\nPor lo tanto, la probabilidad de Huff para la Tienda 2 es mayor que 0.5.\n\nAhora, necesitamos determinar cuántas celdas de la rejilla de 21x21 tienen una probabilidad de Huff para la Tienda 2 igual o superior a 0.5. Para hacer esto, debemos considerar el área de atracción de la Tienda 2 y ver cuántas celdas están dentro de est",
+    "elapsed_s": 3.3
+  },
+  "qwen2.5:3b|28": {
+    "modelo": "qwen2.5:3b",
+    "n": 28,
+    "respuesta_final": "Sí",
+    "nota": "",
+    "raw": "Primero, determinaremos cuántos de los vecinos OCUPADOS son del mismo grupo que el agente. El agente tiene 5 vecinos en su grupo y 2 vecinos en otro grupo. La celda vacía no cuenta como ocupada ni como un vecino.\n\nPor lo tanto, hay 7 vecinos OCUPADOS (5 de su grupo + 2 de otro grupo).\n\nEl umbral de tolerancia es T=0.30, que significa que el agente está satisfecho si al menos 30% de sus vecinos OCUPADOS son del mismo grupo.\n\nLa fracción de mismos grupos entre los vecinos OCUPADOS sería entonces: (5/7) ≈ 0.714\n\nRespuesta final: Sí",
+    "elapsed_s": 0.7
+  },
+  "qwen2.5:3b|29": {
+    "modelo": "qwen2.5:3b",
+    "n": 29,
+    "respuesta_final": "250",
+    "nota": "",
+    "raw": "Primero, calculamos cuántas celdas están ocupadas por cada grupo:\n\n- Celdas Rojo: 45% de 2500 = (45/100) * 2500 = 1125\n- Celdas Azul: 45% de 2500 = (45/100) * 2500 = 1125\n\nEl resto de las celdas están vacías. Para encontrar cuántas hay, restamos el número total de celdas ocupadas por los grupos Rojo y Azul:\n\n- Celdas Vacías: 2500 - (1125 + 1125) = 2500 - 2250 = 250\n\nRespuesta final: 250",
+    "elapsed_s": 0.8
+  },
+  "qwen2.5:3b|30": {
+    "modelo": "qwen2.5:3b",
+    "n": 30,
+    "respuesta_final": "{final_fraction:.4f}",
+    "nota": "",
+    "raw": "Para resolver este problema, primero debemos entender cómo funciona el modelo de Schelling. En este modelo, cada celda de una rejilla se puede llenar con un individuo de dos colores (Rojo y Azul). El umbral T=0.30 significa que si más del 30% de los vecinos de una celda son del mismo color, la celda permanece en su estado actual; en caso contrario, cambia a otro color.\n\nEl modelo comienza con un estado inicial aleatorio y luego se permite que el sistema evolucione hasta alcanzar un estado estacionario. En este problema, queremos calcular cuánto tiempo tarda el sistema en converger al estado final y reportar la fracción media de vecinos del mismo grupo.\n\nPara simular esto con numpy y Python, vamos a seguir estos pasos:\n\n1. Generar una matriz 50x50 con valores aleatorios que representen las celdas vacías (0), Rojo (1) o Azul (-1).\n2. Establecer el umbral T=0.30.\n3. Iterar hasta que no haya cambios en la matriz, calculando los vecinos del mismo color para cada celda y aplicando el umbral.\n\nAquí está el código correspondiente:\n\n```python\nimport numpy as np\n\n# Parámetros iniciales\nrows, cols = 50, 50\ninitial_fraction_same_color = 0.5\nnum_iterations_max = 200\nthreshold_T = 0.30\n\n# Crear la matriz de celdas con valores aleatorios\nnp.random.seed(42)\nmatrix = np.where(np.random.rand(rows, cols) < initial_fraction_same_color,\n                   -1,  # Azul\n                   np.where(np.random.rand(rows, cols) < 0.5,  # Rojo\n                            1,  # Rojo\n                      ",
+    "elapsed_s": 2.8
+  },
+  "qwen2.5:3b|31": {
+    "modelo": "qwen2.5:3b",
+    "n": 31,
+    "respuesta_final": "1.5",
+    "nota": "",
+    "raw": "Primero, sumamos todas las profundidades topológicas del nodo central C a los demás nodos:\n\nMD = (2 + 1 + 1 + 2) / (n - 1)\n\nDonde n es el número de nodos en total. En este caso, n=5.\n\nMD = (6) / (5 - 1)\nMD = 6 / 4\nMD = 1.5\n\nRespuesta final: 1.5",
+    "elapsed_s": 0.4
+  },
+  "qwen2.5:3b|32": {
+    "modelo": "qwen2.5:3b",
+    "n": 32,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Primero, vamos a calcular la asimetría relativa (RA):\n\nLa fórmula para RA es:\n\\[ RA = \\frac{2(MD - 1)}{n - 2} \\]\n\nDonde MD = 2.5 y n = 5.\n\nSustituyendo los valores en la fórmula, obtenemos:\n\\[ RA = \\frac{2(2.5 - 1)}{5 - 2} \\]\n\\[ RA = \\frac{2(1.5)}{3} \\]\n\\[ RA = \\frac{3}{3} \\]\n\\[ RA = 1 \\]\n\nLuego, la integración es:\n\\[ Integración = \\frac{1}{RA} \\]\n\\[ Integración = \\frac{1}{1} \\]\n\\[ Integración = 1 \\]\n\nRespuesta final: 1",
+    "elapsed_s": 0.8
+  },
+  "qwen2.5:3b|33": {
+    "modelo": "qwen2.5:3b",
+    "n": 33,
+    "respuesta_final": "5.75",
+    "nota": "",
+    "raw": "Para resolver este problema, seguiremos los siguientes pasos:\n\n1. **Construcción del Grafo**: Primero, construimos un grafo de una rejilla viaria 5x5 con nodos y conexiones a vecinos ortogonales.\n\n2. **Cálculo de Profundidad Media (BFS)**: Luego, calculamos la profundidad media de cada nodo utilizando el algoritmo BFS (Busqueda en Anchura).\n\n3. **Calculo de Integración**: Finalmente, usaremos la fórmula dada para calcular la integración del nodo central.\n\n### Paso 1: Construcción del Grafo\n\nEl grafo consiste en 25 nodos (un cuadrado 5x5) y conexiones a vecinos ortogonales. Por ejemplo, el nodo (0,0) está conectado con los nodos (0,1), (1,0), (1,1).\n\n### Paso 2: Cálculo de Profundidad Media\n\nPara cada nodo, calculamos la profundidad media utilizando BFS. La profundidad media es la media aritmética de las distancias desde el nodo central hasta todos los demás nodos.\n\n### Paso 3: Calculo de Integración\n\nLa fórmula para calcular la integración del nodo central (fila 2, columna 2) es:\n\n\\[ \\text{Integración} = \\frac{1}{\\text{RA}} \\]\n\nDonde:\n\n- RA = \\( \\frac{2(\\text{MD}-1)}{\\text{n}-2} \\)\n\nY MD es la profundidad media del nodo central.\n\n### Cálculo de Profundidad Media\n\nPrimero, necesitamos calcular las distancias desde el nodo central (2, 2) hasta todos los demás nodos. La distancia entre dos nodos (i,j) y (k,l) en una rejilla viaria es:\n\n\\[ \\text{Distancia} = |i-k| + |j-l| \\]\n\n### Cálculo de RA\n\nEl nodo central tiene un MD que calcularemos más adelante, pero para la fórmula de RA ",
+    "elapsed_s": 2.7
+  },
+  "qwen2.5:3b|34": {
+    "modelo": "qwen2.5:3b",
+    "n": 34,
+    "respuesta_final": "24",
+    "nota": "",
+    "raw": "Primero, sustituiré los valores dados en la ecuación R(d)=y*(p-c)-y*f*d para el Cultivo A:\n\nR(d) = 10 * (7 - 1) - 10 * 0.6 * 6\n\nLa ecuación simplifica a:\n\nR(d) = 10 * 6 - 36\nR(d) = 60 - 36\nR(d) = 24\n\nPor lo tanto, la renta de localización por hectárea para el Cultivo A a una distancia d=6 km del mercado es:\n\nRespuesta final: 24",
+    "elapsed_s": 0.6
+  },
+  "qwen2.5:3b|35": {
+    "modelo": "qwen2.5:3b",
+    "n": 35,
+    "respuesta_final": "Infinito",
+    "nota": "",
+    "raw": "Para resolver este problema, debemos entender que la \"renta de localización\" en el contexto del Cultivo B es una función que depende de las variables d (distancia), y (yield), p (precio por unidad), c (costo de instalación), y f (factor de eficiencia). La renta de localización se define como:\n\n\\[ \\text{Renta} = \\frac{p \\times y}{d^p \\times c} \\]\n\nDonde:\n- \\( d \\) es la distancia a la que se mide la renta.\n- \\( y \\) es el yield (rendimiento).\n- \\( p \\) es el precio por unidad.\n- \\( c \\) es el costo de instalación.\n- \\( f \\) es un factor que puede influir en la rentabilidad.\n\nPara Cultivo B, tenemos:\n- \\( y = 4 \\)\n- \\( p = 14 \\)\n- \\( c = 2 \\)\n- \\( f = 0.75 \\)\n\nLa función de renta se simplifica a:\n\n\\[ \\text{Renta} = \\frac{p \\times y}{d^p \\times c} = \\frac{14 \\times 4}{d^{14} \\times 2} = \\frac{56}{2d^{14}} = \\frac{28}{d^{14}} \\]\n\nLa renta de localización se hace cero cuando la función de renta es igual a cero. Sin embargo, en este caso, la renta nunca será exactamente cero ya que estamos dividiendo por \\( d^{14} \\), lo cual significa que siempre habrá una pequeña cantidad si \\( d \\) no es infinito.\n\nLa pregunta busca encontrar la distancia máxima \\( d_0 \\) a la que esta renta se hace cero. Sin embargo, en términos matemáticos, dividir por cero no tiene sentido y la función de renta nunca será exactamente cero para cualquier valor real de \\( d \\).\n\nPor lo tanto, la distancia máxima \\( d_0 \\) a la que la renta de localización se hace cero es infinita. Sin embargo, en términos práct",
+    "elapsed_s": 2.0
+  },
+  "qwen2.5:3b|36": {
+    "modelo": "qwen2.5:3b",
+    "n": 36,
+    "respuesta_final": "0.78",
+    "nota": "",
+    "raw": "Para resolver este problema, primero debemos entender qué significa cada parámetro en la ecuación y = mx + b. En este caso, m representa el coeficiente de productividad (p), c es el costo unitario por unidad de área cultivada (c) y f es la función de beneficio que relaciona la ganancia con la distancia desde el centro del cultivo.\n\nEl experimento determinista de los dos cultivos A y B se puede representar como sigue:\n\n- Cultivo A: y = 10x + 7, c = 1, f = 0.6\n- Cultivo B: y = 4x + 14, c = 2, f = 0.75\n\nLa función de beneficio (f) es una función que relaciona la ganancia con la distancia desde el centro del cultivo. Sin embargo, en este problema no se proporciona información sobre cómo esta función se aplica aquí. Por lo tanto, asumiremos que la función de beneficio f = 1 para ambos cultivos.\n\nLa envolvente superior max(R_A,R_B,0) significa encontrar el valor máximo entre R_A y R_B en cada punto d (distancia). Como no hay información sobre cómo se calcula R_A y R_B, asumiremos que estos son los valores de la función de beneficio f = 1 para ambos cultivos.\n\nLa ecuación del cultivo A es: y = mx + b con m = p/c = 10/1 = 10. Por lo tanto, la ecuación de R_A será:\nR_A(d) = d * 10 + 7\n\nLa ecuación del cultivo B es: y = mx + b con m = p/c = 4/2 = 2. Por lo tanto, la ecuación de R_B será:\nR_B(d) = d * 2 + 14\n\nPara encontrar la distancia de transición d* donde R_A(d*) = R_B(d*), debemos resolver la siguiente ecuación:\n\nd * 10 + 7 = d * 2 + 14\n9d = 7\nd = 7/9 ≈ 0.78 km\n\nRespuesta final: 0.",
+    "elapsed_s": 1.9
+  },
+  "qwen2.5:3b|37": {
+    "modelo": "qwen2.5:3b",
+    "n": 37,
+    "respuesta_final": "62,500",
+    "nota": "",
+    "raw": "Para resolver este problema, debemos entender que en un sistema que cumple con la ley de Zipf (o distribución Zipfiana), el tamaño de una ciudad está relacionado con su posición en la lista de ciudades más pobladas. La ley de Zipf establece que si la población de la ciudad \\(i\\) es \\(P_i\\), entonces:\n\n\\[ P_i \\propto \\frac{1}{i^\\alpha} \\]\n\ndonde \\(\\alpha = q - 1\\) y para este caso, \\(q=1\\). Esto significa que \\(\\alpha = 0\\).\n\nSin embargo, si consideramos un sistema real donde \\(\\alpha > 0\\), la ley de Zipf se vería así:\n\n\\[ P_i \\propto \\frac{1}{i^\\alpha} \\]\n\nPara simplificar el problema, vamos a asumir que la población de cada ciudad es proporcional al inverso del cuadrado de su posición en la lista (es decir, \\(\\alpha = 2\\)), lo cual es una aproximación común para muchos sistemas reales.\n\nDada que la ciudad más grande tiene 1,000,000 habitantes y suponiendo que el tamaño de la población decrece con el cuadrado del rango (ya sea porque \\(\\alpha = 2\\)):\n\n\\[ P_1 = 1,000,000 \\]\n\nPara calcular la población \\(P_4\\) de la ciudad en el quarto lugar, usamos la relación proporcional:\n\n\\[ P_i = P_1 \\left( \\frac{1}{i} \\right)^2 \\]\n\nEntonces para \\(i=4\\):\n\n\\[ P_4 = 1,000,000 \\times \\left(\\frac{1}{4}\\right)^2 = 1,000,000 \\times \\frac{1}{16} = 62,500 \\]\n\nRespuesta final: 62,500",
+    "elapsed_s": 1.7
+  },
+  "qwen2.5:3b|38": {
+    "modelo": "qwen2.5:3b",
+    "n": 38,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Para resolver esta tarea, debemos utilizar la fórmula dada para P(r), que es P(r) = P_1 / r^q. Sabemos que P_1 = 1,000,000 y que cuando r = 5 (la ciudad de rango 5), P(5) = 200,000 habitantes.\n\nSubstituyendo estos valores en la fórmula:\n\n\\[ 200,000 = \\frac{1,000,000}{5^q} \\]\n\nPodemos simplificar esto a:\n\n\\[ 200,000 = \\frac{1,000,000}{5^q} \\]\n\\[ 200,000 \\times 5^q = 1,000,000 \\]\n\\[ 5^q = \\frac{1,000,000}{200,000} \\]\n\\[ 5^q = 5 \\]\n\nDe aquí, podemos ver que \\( q = 1 \\), ya que \\( 5^1 = 5 \\).\n\nRespuesta final: 1",
+    "elapsed_s": 1.0
+  },
+  "qwen2.5:3b|39": {
+    "modelo": "qwen2.5:3b",
+    "n": 39,
+    "respuesta_final": "b",
+    "nota": "",
+    "raw": "Para resolver este problema, primero necesitamos generar 100 ciudades con P(r)=1,000,000/r (donde r es el valor de r que va desde 1 hasta 100). Luego ajustaremos la recta log10(P) = a + b*log10(r) utilizando los mínimos cuadrados y reportaremos la pendiente b.\n\nPrimero generamos las ciudades con P(r):\n\n```python\nciudades = []\nfor r in range(1, 101):\n    P_r = 1_000_000 / r\n    ciudades.append((r, P_r))\n```\n\nAhora que tenemos nuestras ciudades, procederemos a ajustar la recta log10(P) = a + b*log10(r). Para hacer esto, necesitamos calcular los valores de log10(P) y log10(r).\n\n```python\nimport numpy as np\n\n# Calculamos los valores de log10(P) y log10(r)\nlog10_r = [np.log10(r) for r in range(1, 101)]\nlog10_P = [np.log10(P_r) for P_r, _ in ciudades]\n\n# Ajustamos la recta\na, b = np.polyfit(log10_r, log10_P, 1)\n\n# La pendiente de la recta es 'b'\nRespuesta final: b",
+    "elapsed_s": 1.2
+  },
+  "qwen3:14b|1": {
+    "modelo": "qwen3:14b",
+    "n": 1,
+    "respuesta_final": "13.33",
+    "nota": "",
+    "raw": "Para encontrar la distancia $ d^* $ al CBD donde ambos grupos pujan exactamente lo mismo, igualamos las dos funciones:\n\n$$\nR_{\\text{pobre}}(d) = R_{\\text{rico}}(d)\n$$\n\nSustituyendo las expresiones:\n\n$$\n500 - 20d = 300 - 5d\n$$\n\nResolviendo la ecuación:\n\n$$\n500 - 300 = 20d - 5d\n$$\n$$\n200 = 15d\n$$\n$$\nd = \\frac{200}{15} = \\frac{40}{3} \\approx 13.33\n$$\n\nRespuesta final: 13.33",
+    "elapsed_s": 19.9
+  },
+  "qwen3:14b|2": {
+    "modelo": "qwen3:14b",
+    "n": 2,
+    "respuesta_final": "200",
+    "nota": "",
+    "raw": "Para calcular la puja de renta del grupo rico a $ d = 20 $ km del CBD, usamos la función dada:\n\n$$\nR_{\\text{rico}}(d) = 300 - 5d\n$$\n\nSustituimos $ d = 20 $:\n\n$$\nR_{\\text{rico}}(20) = 300 - 5(20) = 300 - 100 = 200\n$$\n\nRespuesta final: 200",
+    "elapsed_s": 1.6
+  },
+  "qwen3:14b|3": {
+    "modelo": "qwen3:14b",
+    "n": 3,
+    "respuesta_final": "0.4443",
+    "nota": "",
+    "raw": "Para resolver este problema, necesitamos determinar para qué valores de $ d \\in [0, 30] $ km la función $ R_{\\text{pobre}}(d) = 500 - 20d $ es mayor que $ R_{\\text{rico}}(d) = 300 - 5d $, ya que el grupo que tiene la función de valor más alta gana el derecho a ocupar el intervalo (asignación por mejor postor).\n\n### Paso 1: Encontrar el valor de $ d $ donde $ R_{\\text{pobre}}(d) = R_{\\text{rico}}(d) $\nIgualamos las dos funciones:\n\n$$\n500 - 20d = 300 - 5d\n$$\n\nResolvemos para $ d $:\n\n$$\n500 - 300 = 20d - 5d \\\\\n200 = 15d \\\\\nd = \\frac{200}{15} = \\frac{40}{3} \\approx 13.33\n$$\n\n### Paso 2: Determinar en qué intervalo $ R_{\\text{pobre}}(d) > R_{\\text{rico}}(d) $\nPara $ d < 13.33 $, $ R_{\\text{pobre}}(d) > R_{\\text{rico}}(d) $, por lo que el grupo pobre gana.\n\nPara $ d > 13.33 $, $ R_{\\text{rico}}(d) > R_{\\text{pobre}}(d) $, por lo que el grupo rico gana.\n\n### Paso 3: Calcular la fracción del intervalo [0, 30] donde el grupo pobre gana\nEl grupo pobre gana en el intervalo $ [0, 13.33] $, que tiene longitud $ 13.33 $ km.\n\nLa longitud total del intervalo es $ 30 $ km.\n\nPor lo tanto, la fracción del intervalo ocupada por el grupo pobre es:\n\n$$\n\\frac{13.33}{30} \\approx 0.4443\n$$\n\nRespuesta final: 0.4443",
+    "elapsed_s": 6.8
+  },
+  "qwen3:14b|4": {
+    "modelo": "qwen3:14b",
+    "n": 4,
+    "respuesta_final": "0.751",
+    "nota": "",
+    "raw": "Dado que la celda no urbana tiene 6 vecinos urbanos en su vecindad de Moore, el valor de $ k_i $ es 6.\n\nLa fórmula para calcular $ p_i $ es:\n\n$$\np_i = p_{\\text{base}} + p_{\\text{difusion}} \\cdot \\left( \\frac{k_i}{8} \\right)\n$$\n\nSustituyendo los valores dados:\n\n$$\np_i = 0.001 + 1.00 \\cdot \\left( \\frac{6}{8} \\right) = 0.001 + 0.75 = 0.751\n$$\n\nRespuesta final: 0.751",
+    "elapsed_s": 2.2
+  },
+  "qwen3:14b|5": {
+    "modelo": "qwen3:14b",
+    "n": 5,
+    "respuesta_final": "0",
+    "nota": "",
+    "raw": "Bajo la regla del modelo mencionada, la probabilidad efectiva de urbanización de una celda completamente aislada (con $ k_i = 0 $ vecinos urbanos) es **0**, ya que la regla establece que $ k_i \\geq 1 $ es un requisito necesario para que la urbanización pueda ocurrir.\n\nRespuesta final: 0",
+    "elapsed_s": 1.2
+  },
+  "qwen3:14b|6": {
+    "modelo": "qwen3:14b",
+    "n": 6,
+    "respuesta_final": "158",
+    "nota": "",
+    "raw": "Respuesta final: 158",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|7": {
+    "modelo": "qwen3:14b",
+    "n": 7,
+    "respuesta_final": "7943000",
+    "nota": "",
+    "raw": "Dado el modelo de escalamiento:\n\n$$\nY = Y_0 \\cdot N^\\beta\n$$\n\nDonde:\n- $ Y_0 = 1 $\n- $ \\beta = 1.15 $\n- $ N = 1{,}000{,}000 $\n\nSustituimos los valores:\n\n$$\nY = 1 \\cdot (1{,}000{,}000)^{1.15}\n$$\n\nCalculamos $ (1{,}000{,}000)^{1.15} $:\n\n$$\n(1{,}000{,}000)^{1.15} = 10^{6 \\cdot 1.15} = 10^{6.9} \\approx 7.943 \\cdot 10^6\n$$\n\nRedondeando al entero más cercano:\n\n$$\nY \\approx 7{,}943{,}000\n$$\n\nRespuesta final: 7943000",
+    "elapsed_s": 3.2
+  },
+  "qwen3:14b|8": {
+    "modelo": "qwen3:14b",
+    "n": 8,
+    "respuesta_final": "2.24",
+    "nota": "",
+    "raw": "Bajo un escalamiento superlineal con exponente $\\beta = 1.15$, la magnitud socioeconómica $Y$ está relacionada con la población $P$ de una ciudad mediante la relación:\n\n$$\nY \\propto P^\\beta\n$$\n\nSi la población se duplica, es decir, $P' = 2P$, entonces la nueva magnitud socioeconómica $Y'$ será:\n\n$$\nY' \\propto (2P)^\\beta = 2^\\beta \\cdot P^\\beta\n$$\n\nPor lo tanto, la magnitud socioeconómica se multiplica por un factor de $2^\\beta$.\n\nSustituyendo $\\beta = 1.15$:\n\n$$\n2^{1.15} \\approx 2.24\n$$\n\nRespuesta final: 2.24",
+    "elapsed_s": 2.5
+  },
+  "qwen3:14b|9": {
+    "modelo": "qwen3:14b",
+    "n": 9,
+    "respuesta_final": "1.15",
+    "nota": "",
+    "raw": "Respuesta final: 1.15",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|10": {
+    "modelo": "qwen3:14b",
+    "n": 10,
+    "respuesta_final": "65",
+    "nota": "",
+    "raw": "El flujo en la ruta superior en equilibrio es 2000 vehículos. Sustituyendo este valor en la ecuación del tiempo de viaje:\n\n$$\nt = \\frac{x}{100} + 45 = \\frac{2000}{100} + 45 = 20 + 45 = 65\n$$\n\nRespuesta final: 65",
+    "elapsed_s": 1.3
+  },
+  "qwen3:14b|11": {
+    "modelo": "qwen3:14b",
+    "n": 11,
+    "respuesta_final": "80",
+    "nota": "",
+    "raw": "El tiempo de viaje para la ruta Inicio->A->B->Fin se calcula como:\n\n$$\n\\text{Tiempo} = \\frac{x_A}{100} + 0 + \\frac{x_B}{100}\n$$\n\nDado que $ x_A = x_B = 4000 $, sustituimos estos valores:\n\n$$\n\\text{Tiempo} = \\frac{4000}{100} + 0 + \\frac{4000}{100} = 40 + 0 + 40 = 80\n$$\n\nRespuesta final: 80",
+    "elapsed_s": 1.9
+  },
+  "qwen3:14b|12": {
+    "modelo": "qwen3:14b",
+    "n": 12,
+    "respuesta_final": "1000.0",
+    "nota": "",
+    "raw": "Respuesta final: 1000.0",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|13": {
+    "modelo": "qwen3:14b",
+    "n": 13,
+    "respuesta_final": "18",
+    "nota": "",
+    "raw": "Para resolver este problema, analicemos la secuencia dada: **1, 2, 6, 18**. Esta representa el número de asentamientos en cada nivel jerárquico, desde el nivel más alto (nivel 1) hasta el nivel más bajo (nivel 4).\n\n- Nivel 1: 1 asentamiento\n- Nivel 2: 2 asentamientos\n- Nivel 3: 6 asentamientos\n- Nivel 4: 18 asentamientos\n\nEl nivel más bajo es el nivel 4, y el número de lugares de orden 1 (nivel más bajo) es **18**.\n\nRespuesta final: 18",
+    "elapsed_s": 2.0
+  },
+  "qwen3:14b|14": {
+    "modelo": "qwen3:14b",
+    "n": 14,
+    "respuesta_final": "259.8 km².",
+    "nota": "",
+    "raw": "Usamos la fórmula dada para calcular el área de un hexágono regular:  \n$$ A = \\frac{3\\sqrt{3}}{2} \\cdot r^2 $$  \ndonde $ r = 10 $ km.  \n\nSustituimos el valor de $ r $:  \n$$ A = \\frac{3\\sqrt{3}}{2} \\cdot (10)^2 = \\frac{3\\sqrt{3}}{2} \\cdot 100 = 150\\sqrt{3} $$  \n\nCalculamos el valor numérico aproximado:  \n$$ \\sqrt{3} \\approx 1.732 $$  \n$$ A \\approx 150 \\cdot 1.732 = 259.8 $$  \n\nRespuesta final: 259.8 km².",
+    "elapsed_s": 2.5
+  },
+  "qwen3:14b|15": {
+    "modelo": "qwen3:14b",
+    "n": 15,
+    "respuesta_final": "7014.87",
+    "nota": "",
+    "raw": "Para generar la jerarquía anidada de 4 niveles con $ k = 3 $, partimos del área de mercado base en el nivel 1, que es $ 259.81 \\, \\text{km}^2 $, y multiplicamos por $ k = 3 $ en cada nivel superior (es decir, de nivel 1 a nivel 2, de nivel 2 a nivel 3, y de nivel 3 a nivel 4).\n\n- **Nivel 1:** $ 259.81 \\, \\text{km}^2 $\n- **Nivel 2:** $ 259.81 \\times 3 = 779.43 \\, \\text{km}^2 $\n- **Nivel 3:** $ 779.43 \\times 3 = 2338.29 \\, \\text{km}^2 $\n- **Nivel 4:** $ 2338.29 \\times 3 = 7014.87 \\, \\text{km}^2 $\n\nRespuesta final: 7014.87",
+    "elapsed_s": 3.4
+  },
+  "qwen3:14b|16": {
+    "modelo": "qwen3:14b",
+    "n": 16,
+    "respuesta_final": "1.262",
+    "nota": "",
+    "raw": "Para calcular la dimensión fractal $ D $, usamos la fórmula:\n\n$$\nD = \\frac{\\log\\left(\\frac{N_2}{N_1}\\right)}{\\log\\left(\\frac{R_2}{R_1}\\right)}\n$$\n\nDonde:\n- $ N_1 = 158 $, $ R_1 = 10 $\n- $ N_2 = 380 $, $ R_2 = 20 $\n\nPrimero calculamos el cociente de los números de celdas:\n\n$$\n\\frac{N_2}{N_1} = \\frac{380}{158} \\approx 2.405\n$$\n\nLuego calculamos el cociente de los radios:\n\n$$\n\\frac{R_2}{R_1} = \\frac{20}{10} = 2\n$$\n\nAhora calculamos los logaritmos:\n\n$$\n\\log(2.405) \\approx 0.380\n$$\n$$\n\\log(2) \\approx 0.301\n$$\n\nFinalmente, calculamos $ D $:\n\n$$\nD = \\frac{0.380}{0.301} \\approx 1.262\n$$\n\nRespuesta final: 1.262",
+    "elapsed_s": 3.9
+  },
+  "qwen3:14b|17": {
+    "modelo": "qwen3:14b",
+    "n": 17,
+    "respuesta_final": "648",
+    "nota": "",
+    "raw": "La relación dada es $ N(R) \\sim R^D $, donde $ D = 1.7 $ es la dimensión fractal. Esto significa que el número de celdas ocupadas dentro de un radio $ R $ es proporcional a $ R^{1.7} $.\n\nSabemos que dentro de un radio $ R = 10 $ hay $ N(10) = 200 $ celdas ocupadas. Queremos encontrar $ N(20) $.\n\nUsamos la relación:\n\n$$\n\\frac{N(20)}{N(10)} = \\left( \\frac{20}{10} \\right)^{1.7} = 2^{1.7}\n$$\n\nCalculamos $ 2^{1.7} $:\n\n$$\n2^{1.7} \\approx 3.24\n$$\n\nEntonces:\n\n$$\nN(20) \\approx 200 \\times 3.24 = 648\n$$\n\nRespuesta final: 648",
+    "elapsed_s": 3.1
+  },
+  "qwen3:14b|18": {
+    "modelo": "qwen3:14b",
+    "n": 18,
+    "respuesta_final": "1.75",
+    "nota": "",
+    "raw": "Respuesta final: 1.75",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|19": {
+    "modelo": "qwen3:14b",
+    "n": 19,
+    "respuesta_final": "0.4",
+    "nota": "",
+    "raw": "Para calcular el índice de disimilitud $ D $, usamos la fórmula:\n\n$$\nD = 0.5 \\cdot \\sum | \\frac{a_i}{A} - \\frac{b_i}{B} |\n$$\n\nDonde:\n- $ a_i $ y $ b_i $ son los valores del grupo A y B en el tracto $ i $, respectivamente.\n- $ A $ y $ B $ son los totales de los grupos A y B, respectivamente.\n\nDado:\n- Grupo A = [40, 30, 20, 10], $ A = 100 $\n- Grupo B = [10, 20, 30, 40], $ B = 100 $\n\nCalculamos $ \\frac{a_i}{A} $ y $ \\frac{b_i}{B} $ para cada tracto:\n\n1. Tracto 1:\n   $$\n   \\frac{a_1}{A} = \\frac{40}{100} = 0.4, \\quad \\frac{b_1}{B} = \\frac{10}{100} = 0.1\n   $$\n   $$\n   |0.4 - 0.1| = 0.3\n   $$\n\n2. Tracto 2:\n   $$\n   \\frac{a_2}{A} = \\frac{30}{100} = 0.3, \\quad \\frac{b_2}{B} = \\frac{20}{100} = 0.2\n   $$\n   $$\n   |0.3 - 0.2| = 0.1\n   $$\n\n3. Tracto 3:\n   $$\n   \\frac{a_3}{A} = \\frac{20}{100} = 0.2, \\quad \\frac{b_3}{B} = \\frac{30}{100} = 0.3\n   $$\n   $$\n   |0.2 - 0.3| = 0.1\n   $$\n\n4. Tracto 4:\n   $$\n   \\frac{a_4}{A} = \\frac{10}{100} = 0.1, \\quad \\frac{b_4}{B} = \\frac{40}{100} = 0.4\n   $$\n   $$\n   |0.1 - 0.4| = 0.3\n   $$\n\nSumamos los valores absolutos:\n$$\n\\sum | \\frac{a_i}{A} - \\frac{b_i}{B} | = 0.3 + 0.1 + 0.1 + 0.3 = 0.8\n$$\n\nFinalmente, calculamos $ D $:\n$$\nD = 0.5 \\cdot 0.8 = 0.4\n$$\n\nRespuesta final: 0.4",
+    "elapsed_s": 8.6
+  },
+  "qwen3:14b|20": {
+    "modelo": "qwen3:14b",
+    "n": 20,
+    "respuesta_final": "0.3",
+    "nota": "",
+    "raw": "Para calcular el índice de disimilitud de Duncan $ D $, seguimos la fórmula:\n\n$$\nD = 0.5 \\cdot \\sum | \\frac{a_i}{A} - \\frac{b_i}{B} |\n$$\n\nDonde:\n- $ a_i $ y $ b_i $ son los valores de los grupos A y B en cada tramo.\n- $ A $ y $ B $ son los totales de los grupos A y B, respectivamente.\n\nDado:\n- Grupo A = [50, 30, 20], $ A = 100 $\n- Grupo B = [20, 30, 50], $ B = 100 $\n\nCalculamos las fracciones para cada tramo:\n\n**Tramo 1:**\n$$\n\\frac{a_1}{A} = \\frac{50}{100} = 0.5, \\quad \\frac{b_1}{B} = \\frac{20}{100} = 0.2\n$$\n$$\n|0.5 - 0.2| = 0.3\n$$\n\n**Tramo 2:**\n$$\n\\frac{a_2}{A} = \\frac{30}{100} = 0.3, \\quad \\frac{b_2}{B} = \\frac{30}{100} = 0.3\n$$\n$$\n|0.3 - 0.3| = 0\n$$\n\n**Tramo 3:**\n$$\n\\frac{a_3}{A} = \\frac{20}{100} = 0.2, \\quad \\frac{b_3}{B} = \\frac{50}{100} = 0.5\n$$\n$$\n|0.2 - 0.5| = 0.3\n$$\n\nSumamos los valores absolutos:\n$$\n0.3 + 0 + 0.3 = 0.6\n$$\n\nFinalmente, calculamos $ D $:\n$$\nD = 0.5 \\cdot 0.6 = 0.3\n$$\n\nRespuesta final: 0.3",
+    "elapsed_s": 6.4
+  },
+  "qwen3:14b|21": {
+    "modelo": "qwen3:14b",
+    "n": 21,
+    "respuesta_final": "0.48",
+    "nota": "",
+    "raw": "Respuesta final: 0.48",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|22": {
+    "modelo": "qwen3:14b",
+    "n": 22,
+    "respuesta_final": "20000",
+    "nota": "",
+    "raw": "Usando la fórmula del modelo gravitacional:\n\n$$\nT_{ij} = \\frac{G \\cdot P_i \\cdot P_j}{d_{ij}^2}\n$$\n\nDonde:\n- $ G = 1 $\n- $ P_i = 10000 $\n- $ P_j = 5000 $\n- $ d_{ij} = 50 $\n\nSustituyendo los valores:\n\n$$\nT_{ij} = \\frac{1 \\cdot 10000 \\cdot 5000}{50^2} = \\frac{50000000}{2500} = 20000\n$$\n\nRespuesta final: 20000",
+    "elapsed_s": 2.2
+  },
+  "qwen3:14b|23": {
+    "modelo": "qwen3:14b",
+    "n": 23,
+    "respuesta_final": "125000",
+    "nota": "",
+    "raw": "Dado que $ T_{ij} = \\frac{G \\cdot P_i \\cdot P_j}{d_{ij}^c} $, sustituimos los valores dados:\n\n- $ G = 1 $\n- $ P_i = 10000 $\n- $ P_j = 20000 $\n- $ d_{ij} = 40 $\n- $ c = 2 $\n\nEntonces:\n\n$$\nT_{ij} = \\frac{1 \\cdot 10000 \\cdot 20000}{40^2} = \\frac{200000000}{1600} = 125000\n$$\n\nRespuesta final: 125000",
+    "elapsed_s": 2.2
+  },
+  "qwen3:14b|24": {
+    "modelo": "qwen3:14b",
+    "n": 24,
+    "respuesta_final": "4333333.33",
+    "nota": "",
+    "raw": "Para calcular la matriz de flujos completa entre 3 zonas, utilizamos la fórmula del flujo entre pares de zonas:\n\n$$\nT_{ij} = P_i \\cdot P_j \\cdot G \\cdot \\frac{1}{c \\cdot d_{ij}}\n$$\n\nDonde:\n- $P_i$ y $P_j$ son las poblaciones de las zonas $i$ y $j$,\n- $G = 1$ es el factor de generación de flujos,\n- $c = 2$ es el factor de fricción,\n- $d_{ij}$ es la distancia euclidiana entre las zonas $i$ y $j$.\n\n### Paso 1: Posiciones de las zonas\n- Zona 1: $(0, 0)$\n- Zona 2: $(30, 0)$\n- Zona 3: $(0, 40)$\n\n### Paso 2: Poblaciones\n- $P_1 = 10000$\n- $P_2 = 5000$\n- $P_3 = 20000$\n\n### Paso 3: Distancias euclidianas\n- $d_{12} = \\sqrt{(30 - 0)^2 + (0 - 0)^2} = \\sqrt{900} = 30$\n- $d_{13} = \\sqrt{(0 - 0)^2 + (40 - 0)^2} = \\sqrt{1600} = 40$\n- $d_{23} = \\sqrt{(0 - 30)^2 + (40 - 0)^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50$\n\n### Paso 4: Calcular los flujos\n- $T_{12} = 10000 \\cdot 5000 \\cdot 1 \\cdot \\frac{1}{2 \\cdot 30} = 50000000 \\cdot \\frac{1}{60} = 833333.33$\n- $T_{13} = 10000 \\cdot 20000 \\cdot 1 \\cdot \\frac{1}{2 \\cdot 40} = 200000000 \\cdot \\frac{1}{80} = 2500000$\n- $T_{23} = 5000 \\cdot 20000 \\cdot 1 \\cdot \\frac{1}{2 \\cdot 50} = 100000000 \\cdot \\frac{1}{100} = 1000000$\n\n### Paso 5: Sumar los flujos entre pares distintos\n$$\nT_{12} + T_{13} + T_{23} = 833333.33 + 2500000 + 1000000 = 4333333.33\n$$\n\nRespuesta final: 4333333.33",
+    "elapsed_s": 9.6
+  },
+  "qwen3:14b|25": {
+    "modelo": "qwen3:14b",
+    "n": 25,
+    "respuesta_final": "10",
+    "nota": "",
+    "raw": "Para calcular la distancia del punto de ruptura de Reilly desde la ciudad B, usamos la fórmula:\n\n$$\nBP = \\frac{d}{1 + \\sqrt{\\frac{P_A}{P_B}}}\n$$\n\nDonde:\n- $ d = 30 $ km (distancia entre las ciudades A y B),\n- $ P_A = 64000 $ (población de la ciudad A),\n- $ P_B = 16000 $ (población de la ciudad B).\n\nPrimero calculamos la raíz cuadrada de la razón de poblaciones:\n\n$$\n\\sqrt{\\frac{P_A}{P_B}} = \\sqrt{\\frac{64000}{16000}} = \\sqrt{4} = 2\n$$\n\nLuego sustituimos en la fórmula:\n\n$$\nBP = \\frac{30}{1 + 2} = \\frac{30}{3} = 10\n$$\n\nPor lo tanto, la distancia del punto de ruptura medida desde B es 10 km.\n\nRespuesta final: 10",
+    "elapsed_s": 3.3
+  },
+  "qwen3:14b|26": {
+    "modelo": "qwen3:14b",
+    "n": 26,
+    "respuesta_final": "0.5",
+    "nota": "",
+    "raw": "Para calcular la probabilidad de que un consumidor elija la Tienda 2 según el modelo de Huff, utilizamos la siguiente fórmula:\n\n$$\nP_i = \\frac{A_i \\cdot d_i^{-\\beta}}{\\sum_j A_j \\cdot d_j^{-\\beta}}\n$$\n\nDonde:\n- $P_i$ es la probabilidad de elegir la opción $i$,\n- $A_i$ es el atractivo de la opción $i$,\n- $d_i$ es la distancia a la opción $i$,\n- $\\beta$ es el parámetro de sensibilidad a la distancia.\n\nEn este caso:\n- Para la Tienda 1: $A_1 = 1000$, $d_1 = 5$,\n- Para la Tienda 2: $A_2 = 4000$, $d_2 = 10$,\n- $\\beta = 2$.\n\nCalculamos los numeradores:\n\n- Para la Tienda 1: $1000 \\cdot 5^{-2} = 1000 \\cdot \\frac{1}{25} = 40$,\n- Para la Tienda 2: $4000 \\cdot 10^{-2} = 4000 \\cdot \\frac{1}{100} = 40$.\n\nSumamos los numeradores: $40 + 40 = 80$.\n\nLa probabilidad de elegir la Tienda 2 es:\n\n$$\nP_2 = \\frac{40}{80} = 0.5\n$$\n\nRespuesta final: 0.5",
+    "elapsed_s": 4.7
+  },
+  "qwen3:14b|27": {
+    "modelo": "qwen3:14b",
+    "n": 27,
+    "respuesta_final": "0.35",
+    "nota": "",
+    "raw": "Para resolver este problema, utilizamos la **probabilidad de Huff**, que se define como:\n\n$$\nP_i(x, y) = \\frac{A_i^{\\beta}}{A_i^{\\beta} + A_j^{\\beta}} \\cdot \\frac{1}{d_i(x, y)^{\\beta} + d_j(x, y)^{\\beta}}\n$$\n\ndonde:\n- $P_i(x, y)$ es la probabilidad de que un consumidor en la posición $(x, y)$ elija la tienda $i$,\n- $A_i$ es el atractivo de la tienda $i$,\n- $\\beta$ es un parámetro de sensibilidad a la distancia,\n- $d_i(x, y)$ es la distancia euclidiana entre el consumidor $(x, y)$ y la tienda $i$.\n\nEn este caso:\n- Tienda 1: $(x_1, y_1) = (5, 10)$, $A_1 = 1000$,\n- Tienda 2: $(x_2, y_2) = (15, 10)$, $A_2 = 4000$,\n- $\\beta = 2$.\n\nQueremos calcular la fracción de celdas en las que $P_2(x, y) \\geq 0.5$, es decir, donde la probabilidad de elegir la Tienda 2 es mayor o igual a 0.5.\n\nLa probabilidad de elegir la Tienda 2 es:\n\n$$\nP_2(x, y) = \\frac{A_2^{\\beta}}{A_1^{\\beta} + A_2^{\\beta}} \\cdot \\frac{1}{d_1(x, y)^{\\beta} + d_2(x, y)^{\\beta}}\n$$\n\nPero para simplificar, ya que $A_2 > A_1$, y $\\beta = 2$, la probabilidad de elegir la Tienda 2 depende de la relación entre las distancias a ambas tiendas. La probabilidad de elegir la Tienda 2 será mayor o igual a 0.5 cuando:\n\n$$\n\\frac{A_2^{\\beta}}{A_1^{\\beta} + A_2^{\\beta}} \\cdot \\frac{1}{d_1(x, y)^{\\beta} + d_2(x, y)^{\\beta}} \\geq 0.5\n$$\n\nDado que $A_2 = 4000$ y $A_1 = 1000$, y $\\beta = 2$, tenemos:\n\n$$\n\\frac{4000^2}{1000^2 + 4000^2} = \\frac{16,000,000}{1,000,000 + 16,000,000} = \\frac{16,000,000}{17,000,000} \\approx 0.9412\n$$\n\nEntonces, para ",
+    "elapsed_s": 14.7
+  },
+  "qwen3:14b|28": {
+    "modelo": "qwen3:14b",
+    "n": 28,
+    "respuesta_final": "0.714",
+    "nota": "",
+    "raw": "La fracción de mismo-grupo se calcula como el número de vecinos del mismo grupo dividido entre el número total de vecinos ocupados. En este caso, hay 5 vecinos del mismo grupo y 2 del otro grupo, lo que da un total de 7 vecinos ocupados. Por lo tanto, la fracción de mismo-grupo es:\n\n$$\n\\frac{5}{7} \\approx 0.714\n$$\n\nRespuesta final: 0.714",
+    "elapsed_s": 1.5
+  },
+  "qwen3:14b|29": {
+    "modelo": "qwen3:14b",
+    "n": 29,
+    "respuesta_final": "250",
+    "nota": "",
+    "raw": "Para calcular el número de celdas vacías, primero determinamos el porcentaje de celdas vacías:\n\n$$\n100\\% - 45\\% - 45\\% = 10\\%\n$$\n\nLuego, calculamos el 10% de 2500 celdas:\n\n$$\n0.10 \\times 2500 = 250\n$$\n\nRespuesta final: 250",
+    "elapsed_s": 39.2
+  },
+  "qwen3:14b|30": {
+    "modelo": "qwen3:14b",
+    "n": 30,
+    "respuesta_final": "0.85",
+    "nota": "",
+    "raw": "Respuesta final: 0.85",
+    "elapsed_s": 0.2
+  },
+  "qwen3:14b|31": {
+    "modelo": "qwen3:14b",
+    "n": 31,
+    "respuesta_final": "1.5",
+    "nota": "",
+    "raw": "La profundidad media $ MD $ se calcula como la suma de las profundidades de los nodos (excepto el nodo central C) dividida entre $ n-1 $, donde $ n $ es el número total de nodos.\n\nLos valores de profundidad dados son:\n- A = 2\n- B = 1\n- D = 1\n- E = 2\n\nSuma de profundidades = $ 2 + 1 + 1 + 2 = 6 $\n\n$ n = 5 $, por lo tanto $ n-1 = 4 $\n\n$ MD = \\frac{6}{4} = 1.5 $\n\nRespuesta final: 1.5",
+    "elapsed_s": 2.0
+  },
+  "qwen3:14b|32": {
+    "modelo": "qwen3:14b",
+    "n": 32,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Calculamos primero la asimetria relativa $ RA $ usando la fórmula:\n\n$$\nRA = \\frac{2 \\cdot (MD - 1)}{n - 2}\n$$\n\nDonde:\n- $ MD = 2.5 $ (mediana de profundidad),\n- $ n = 5 $ (número de nodos).\n\nSustituyendo los valores:\n\n$$\nRA = \\frac{2 \\cdot (2.5 - 1)}{5 - 2} = \\frac{2 \\cdot 1.5}{3} = \\frac{3}{3} = 1\n$$\n\nLuego calculamos la integración:\n\n$$\n\\text{Integración} = \\frac{1}{RA} = \\frac{1}{1} = 1\n$$\n\nRespuesta final: 1",
+    "elapsed_s": 2.4
+  },
+  "qwen3:14b|33": {
+    "modelo": "qwen3:14b",
+    "n": 33,
+    "respuesta_final": "8.22",
+    "nota": "",
+    "raw": "Para resolver este problema, seguimos los siguientes pasos:\n\n### 1. **Construcción del grafo**\nEl grafo es una rejilla 5x5, con 25 nodos indexados desde 0 a 24. Cada nodo está conectado a sus vecinos ortogonales (arriba, abajo, izquierda, derecha), siempre que estos existan.\n\n### 2. **Cálculo de profundidad media (MD)**\nPara cada nodo, se calcula la profundidad media como el promedio de las distancias (en número de pasos) desde ese nodo a todos los demás nodos, usando BFS (busqueda en anchura).\n\n### 3. **Cálculo de la integración**\nLa fórmula dada es:\n\n$$\n\\text{integración} = \\frac{1}{RA}, \\quad \\text{donde} \\quad RA = \\frac{2 \\cdot (MD - 1)}{n - 2}, \\quad n = 25\n$$\n\n### 4. **Nodo central**\nEl nodo central en una rejilla 5x5 indexada desde 0 es el nodo en la fila 2, columna 2, que corresponde al índice:\n\n$$\n\\text{Índice} = 2 \\cdot 5 + 2 = 12\n$$\n\n### 5. **Cálculo de la profundidad media del nodo central**\nRealizamos un BFS desde el nodo 12 y calculamos la distancia promedio a todos los demás nodos.\n\n#### Distancias desde el nodo 12 (nodo central):\n- Distancia 0: 1 nodo (el propio nodo 12)\n- Distancia 1: 4 nodos (nodos vecinos directos)\n- Distancia 2: 8 nodos (nodos a dos pasos)\n- Distancia 3: 8 nodos (nodos a tres pasos)\n- Distancia 4: 4 nodos (nodos a cuatro pasos)\n\n#### Cálculo de la profundidad media (MD):\n$$\nMD = \\frac{(0 \\cdot 1) + (1 \\cdot 4) + (2 \\cdot 8) + (3 \\cdot 8) + (4 \\cdot 4)}{25} = \\frac{0 + 4 + 16 + 24 + 16}{25} = \\frac{60}{25} = 2.4\n$$\n\n### 6. **Cálculo de RA ",
+    "elapsed_s": 9.0
+  },
+  "qwen3:14b|34": {
+    "modelo": "qwen3:14b",
+    "n": 34,
+    "respuesta_final": "24",
+    "nota": "",
+    "raw": "Para calcular la renta de localización por hectárea, usamos la fórmula:\n\n$$\nR(d) = y \\cdot (p - c) - y \\cdot f \\cdot d\n$$\n\nSustituimos los valores dados:\n\n- $ y = 10 $\n- $ p = 7 $\n- $ c = 1 $\n- $ f = 0.6 $\n- $ d = 6 $\n\nPrimero calculamos $ p - c $:\n\n$$\np - c = 7 - 1 = 6\n$$\n\nLuego calculamos $ y \\cdot (p - c) $:\n\n$$\n10 \\cdot 6 = 60\n$$\n\nAhora calculamos $ y \\cdot f \\cdot d $:\n\n$$\n10 \\cdot 0.6 \\cdot 6 = 36\n$$\n\nFinalmente, calculamos $ R(d) $:\n\n$$\nR(d) = 60 - 36 = 24\n$$\n\nRespuesta final: 24",
+    "elapsed_s": 2.9
+  },
+  "qwen3:14b|35": {
+    "modelo": "qwen3:14b",
+    "n": 35,
+    "respuesta_final": "4",
+    "nota": "",
+    "raw": "Para calcular la distancia máxima $ d_0 $ a la que la renta de localización se hace cero, utilizamos la fórmula:\n\n$$\nd_0 = \\frac{p - c}{f \\cdot y}\n$$\n\nDonde:\n- $ p = 14 $: precio del producto\n- $ c = 2 $: costo de producción\n- $ f = 0.75 $: factor de fricción\n- $ y = 4 $: rendimiento por unidad de área\n\nSustituyendo los valores:\n\n$$\nd_0 = \\frac{14 - 2}{0.75 \\cdot 4} = \\frac{12}{3} = 4\n$$\n\nRespuesta final: 4",
+    "elapsed_s": 2.2
+  },
+  "qwen3:14b|36": {
+    "modelo": "qwen3:14b",
+    "n": 36,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "misma rentabilidad en $ d = 0 $, pero no se menciona que el cultivo B sea más rentable a distancias mayores. Por lo tanto, revisamos la fórmula de rentabilidad para el cultivo B:\n\n$$\nR_B(d) = 4 \\cdot 14 \\cdot 0.75 - 2 \\cdot d = 42 - 2d\n$$\n\nAhora, igualamos $ R_A(d) = R_B(d) $:\n$$\n42 - d = 42 - 2d\n$$",
+    "raw": "Para resolver este problema, necesitamos calcular la rentabilidad de cada cultivo en función de la distancia $ d $, y luego encontrar el punto de transición $ d^* $ donde las rentabilidades de ambos cultivos son iguales.\n\n### Datos de los cultivos:\n- **Cultivo A**: $ y = 10 $, $ p = 7 $, $ c = 1 $, $ f = 0.6 $\n- **Cultivo B**: $ y = 4 $, $ p = 14 $, $ c = 2 $, $ f = 0.75 $\n\n### Fórmula de rentabilidad:\nLa rentabilidad $ R $ de un cultivo se calcula como:\n$$\nR = y \\cdot p \\cdot f - c \\cdot d\n$$\ndonde:\n- $ y $: rendimiento por hectárea\n- $ p $: precio por unidad de producto\n- $ f $: factor de conversión (rendimiento a valor monetario)\n- $ c $: costo por kilómetro\n- $ d $: distancia (en km)\n\n### Rentabilidad para cada cultivo:\n- **Cultivo A**:\n$$\nR_A(d) = 10 \\cdot 7 \\cdot 0.6 - 1 \\cdot d = 42 - d\n$$\n\n- **Cultivo B**:\n$$\nR_B(d) = 4 \\cdot 14 \\cdot 0.75 - 2 \\cdot d = 42 - 2d\n$$\n\n### Punto de transición $ d^* $:\nPara encontrar $ d^* $, igualamos $ R_A(d^*) = R_B(d^*) $:\n$$\n42 - d^* = 42 - 2d^*\n$$\n$$\n-d^* = -2d^*\n$$\n$$\nd^* = 0\n$$\n\nEste resultado no tiene sentido en el contexto del problema, ya que implica que los cultivos tienen la misma rentabilidad en $ d = 0 $, pero no se menciona que el cultivo B sea más rentable a distancias mayores. Revisemos la fórmula de rentabilidad para el cultivo B:\n\n$$\nR_B(d) = 4 \\cdot 14 \\cdot 0.75 - 2 \\cdot d = 42 - 2d\n$$\n\nAhora, igualamos $ R_A(d) = R_B(d) $:\n$$\n42 - d = 42 - 2d\n$$\n$$\n-d = -2d\n$$\n$$\nd = 0\n$$\n\nEste resultado sugiere que los cultivos tie",
+    "elapsed_s": 83.2
+  },
+  "qwen3:14b|37": {
+    "modelo": "qwen3:14b",
+    "n": 37,
+    "respuesta_final": "250000",
+    "nota": "",
+    "raw": "En un sistema que sigue la **ley de Zipf** con $ q = 1 $, la relación entre el tamaño de una ciudad y su rango se describe por la fórmula:\n\n$$\nP(r) = \\frac{P_1}{r}\n$$\n\ndonde:\n- $ P(r) $ es la población de la ciudad de rango $ r $,\n- $ P_1 $ es la población de la ciudad más grande (rango 1),\n- $ r $ es el rango de la ciudad.\n\nDado que $ P_1 = 1{,}000{,}000 $ y $ r = 4 $, sustituimos en la fórmula:\n\n$$\nP(4) = \\frac{1{,}000{,}000}{4} = 250{,}000\n$$\n\nRespuesta final: 250000",
+    "elapsed_s": 2.7
+  },
+  "qwen3:14b|38": {
+    "modelo": "qwen3:14b",
+    "n": 38,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Dado que la población de una ciudad bajo la ley de Zipf se modela como:\n\n$$\nP(r) = \\frac{P_1}{r^q}\n$$\n\ndonde:\n- $P(r)$ es la población de la ciudad de rango $r$,\n- $P_1$ es la población de la ciudad de rango 1,\n- $q$ es el exponente de Zipf,\n- $r$ es el rango de la ciudad.\n\nSabemos que:\n- $P_1 = 1,000,000$,\n- $P(5) = 200,000$,\n- $r = 5$.\n\nSustituimos estos valores en la ecuación:\n\n$$\n200,000 = \\frac{1,000,000}{5^q}\n$$\n\nMultiplicamos ambos lados por $5^q$:\n\n$$\n200,000 \\cdot 5^q = 1,000,000\n$$\n\nDividimos ambos lados entre 200,000:\n\n$$\n5^q = \\frac{1,000,000}{200,000} = 5\n$$\n\nTomamos el logaritmo en base 5 de ambos lados:\n\n$$\nq = \\log_5(5) = 1\n$$\n\nRespuesta final: 1",
+    "elapsed_s": 4.2
+  },
+  "qwen3:14b|39": {
+    "modelo": "qwen3:14b",
+    "n": 39,
+    "respuesta_final": "-1.0000000000",
+    "nota": "",
+    "raw": "Para resolver este problema, seguimos los siguientes pasos:\n\n1. **Generar las ciudades con P(r) = 1,000,000 / r**:\n   - Para cada valor de r desde 1 hasta 100, calculamos P(r) = 1,000,000 / r.\n\n2. **Tomar logaritmos base 10 de P(r) y de r**:\n   - Calculamos log10(P(r)) y log10(r) para cada valor de r.\n\n3. **Ajustar una recta por mínimos cuadrados**:\n   - La ecuación de la recta es log10(P) = a + b * log10(r).\n   - Para encontrar la pendiente b, utilizamos la fórmula de regresión lineal:\n     $$\n     b = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum (x_i - \\bar{x})^2}\n     $$\n     donde $x_i = \\log_{10}(r)$, $y_i = \\log_{10}(P(r))$, $\\bar{x}$ es el promedio de $x_i$, y $\\bar{y}$ es el promedio de $y_i$.\n\n4. **Calcular b**:\n   - Dado que P(r) = 1,000,000 / r, entonces log10(P(r)) = log10(1,000,000) - log10(r) = 6 - log10(r).\n   - Por lo tanto, log10(P) = 6 - log10(r), lo que implica que la pendiente b es -1.\n\nRespuesta final: -1.0000000000",
+    "elapsed_s": 5.3
+  },
+  "gpt-oss:20b|1": {
+    "modelo": "gpt-oss:20b",
+    "n": 1,
+    "respuesta_final": "13.33",
+    "nota": "",
+    "raw": "Respuesta final: 13.33",
+    "elapsed_s": 13.2
+  },
+  "gpt-oss:20b|2": {
+    "modelo": "gpt-oss:20b",
+    "n": 2,
+    "respuesta_final": "200",
+    "nota": "",
+    "raw": "Respuesta final: 200",
+    "elapsed_s": 1.8
+  },
+  "gpt-oss:20b|3": {
+    "modelo": "gpt-oss:20b",
+    "n": 3,
+    "respuesta_final": "0.4444",
+    "nota": "",
+    "raw": "Respuesta final: 0.4444",
+    "elapsed_s": 3.9
+  },
+  "gpt-oss:20b|4": {
+    "modelo": "gpt-oss:20b",
+    "n": 4,
+    "respuesta_final": "0.751",
+    "nota": "",
+    "raw": "Respuesta final: 0.751",
+    "elapsed_s": 1.4
+  },
+  "gpt-oss:20b|5": {
+    "modelo": "gpt-oss:20b",
+    "n": 5,
+    "respuesta_final": "0",
+    "nota": "",
+    "raw": "Respuesta final: 0",
+    "elapsed_s": 3.6
+  },
+  "gpt-oss:20b|6": {
+    "modelo": "gpt-oss:20b",
+    "n": 6,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 69.8
+  },
+  "gpt-oss:20b|7": {
+    "modelo": "gpt-oss:20b",
+    "n": 7,
+    "respuesta_final": "7943282",
+    "nota": "",
+    "raw": "Respuesta final: 7943282",
+    "elapsed_s": 2.8
+  },
+  "gpt-oss:20b|8": {
+    "modelo": "gpt-oss:20b",
+    "n": 8,
+    "respuesta_final": "2.22",
+    "nota": "",
+    "raw": "Respuesta final: 2.22",
+    "elapsed_s": 3.6
+  },
+  "gpt-oss:20b|9": {
+    "modelo": "gpt-oss:20b",
+    "n": 9,
+    "respuesta_final": "1.15",
+    "nota": "",
+    "raw": "Respuesta final: 1.15",
+    "elapsed_s": 5.2
+  },
+  "gpt-oss:20b|10": {
+    "modelo": "gpt-oss:20b",
+    "n": 10,
+    "respuesta_final": "65",
+    "nota": "",
+    "raw": "Respuesta final: 65",
+    "elapsed_s": 10.6
+  },
+  "gpt-oss:20b|11": {
+    "modelo": "gpt-oss:20b",
+    "n": 11,
+    "respuesta_final": "80",
+    "nota": "",
+    "raw": "Respuesta final: 80",
+    "elapsed_s": 4.4
+  },
+  "gpt-oss:20b|12": {
+    "modelo": "gpt-oss:20b",
+    "n": 12,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 73.0
+  },
+  "gpt-oss:20b|13": {
+    "modelo": "gpt-oss:20b",
+    "n": 13,
+    "respuesta_final": "18",
+    "nota": "",
+    "raw": "Respuesta final: 18",
+    "elapsed_s": 7.6
+  },
+  "gpt-oss:20b|14": {
+    "modelo": "gpt-oss:20b",
+    "n": 14,
+    "respuesta_final": "259.8076 km²",
+    "nota": "",
+    "raw": "Respuesta final: 259.8076 km²",
+    "elapsed_s": 4.1
+  },
+  "gpt-oss:20b|15": {
+    "modelo": "gpt-oss:20b",
+    "n": 15,
+    "respuesta_final": "7014.87",
+    "nota": "",
+    "raw": "Respuesta final: 7014.87",
+    "elapsed_s": 2.4
+  },
+  "gpt-oss:20b|16": {
+    "modelo": "gpt-oss:20b",
+    "n": 16,
+    "respuesta_final": "1.27",
+    "nota": "",
+    "raw": "Respuesta final: 1.27",
+    "elapsed_s": 9.3
+  },
+  "gpt-oss:20b|17": {
+    "modelo": "gpt-oss:20b",
+    "n": 17,
+    "respuesta_final": "650",
+    "nota": "",
+    "raw": "Respuesta final: 650",
+    "elapsed_s": 2.5
+  },
+  "gpt-oss:20b|18": {
+    "modelo": "gpt-oss:20b",
+    "n": 18,
+    "respuesta_final": "1.71",
+    "nota": "",
+    "raw": "Respuesta final: 1.71",
+    "elapsed_s": 5.5
+  },
+  "gpt-oss:20b|19": {
+    "modelo": "gpt-oss:20b",
+    "n": 19,
+    "respuesta_final": "0.4",
+    "nota": "",
+    "raw": "Respuesta final: 0.4",
+    "elapsed_s": 3.4
+  },
+  "gpt-oss:20b|20": {
+    "modelo": "gpt-oss:20b",
+    "n": 20,
+    "respuesta_final": "0.3",
+    "nota": "",
+    "raw": "Respuesta final: 0.3",
+    "elapsed_s": 3.9
+  },
+  "gpt-oss:20b|21": {
+    "modelo": "gpt-oss:20b",
+    "n": 21,
+    "respuesta_final": "0.73",
+    "nota": "",
+    "raw": "Respuesta final: 0.73",
+    "elapsed_s": 3.9
+  },
+  "gpt-oss:20b|22": {
+    "modelo": "gpt-oss:20b",
+    "n": 22,
+    "respuesta_final": "20000",
+    "nota": "",
+    "raw": "Respuesta final: 20000",
+    "elapsed_s": 2.2
+  },
+  "gpt-oss:20b|23": {
+    "modelo": "gpt-oss:20b",
+    "n": 23,
+    "respuesta_final": "125000",
+    "nota": "",
+    "raw": "Respuesta final: 125000",
+    "elapsed_s": 2.6
+  },
+  "gpt-oss:20b|24": {
+    "modelo": "gpt-oss:20b",
+    "n": 24,
+    "respuesta_final": "220556",
+    "nota": "",
+    "raw": "Respuesta final: 220556",
+    "elapsed_s": 11.1
+  },
+  "gpt-oss:20b|25": {
+    "modelo": "gpt-oss:20b",
+    "n": 25,
+    "respuesta_final": "20",
+    "nota": "",
+    "raw": "Respuesta final: 20",
+    "elapsed_s": 2.7
+  },
+  "gpt-oss:20b|26": {
+    "modelo": "gpt-oss:20b",
+    "n": 26,
+    "respuesta_final": "0.5",
+    "nota": "",
+    "raw": "Respuesta final: 0.5",
+    "elapsed_s": 3.5
+  },
+  "gpt-oss:20b|27": {
+    "modelo": "gpt-oss:20b",
+    "n": 27,
+    "respuesta_final": "SIN_RESPUESTA",
+    "nota": "",
+    "raw": "",
+    "elapsed_s": 70.6
+  },
+  "gpt-oss:20b|28": {
+    "modelo": "gpt-oss:20b",
+    "n": 28,
+    "respuesta_final": "0.7143",
+    "nota": "",
+    "raw": "Respuesta final: 0.7143",
+    "elapsed_s": 2.4
+  },
+  "gpt-oss:20b|29": {
+    "modelo": "gpt-oss:20b",
+    "n": 29,
+    "respuesta_final": "250",
+    "nota": "",
+    "raw": "Respuesta final: 250",
+    "elapsed_s": 1.1
+  },
+  "gpt-oss:20b|30": {
+    "modelo": "gpt-oss:20b",
+    "n": 30,
+    "respuesta_final": "0.90",
+    "nota": "",
+    "raw": "Respuesta final: 0.90",
+    "elapsed_s": 5.9
+  },
+  "gpt-oss:20b|31": {
+    "modelo": "gpt-oss:20b",
+    "n": 31,
+    "respuesta_final": "1.5",
+    "nota": "",
+    "raw": "Respuesta final: 1.5",
+    "elapsed_s": 1.6
+  },
+  "gpt-oss:20b|32": {
+    "modelo": "gpt-oss:20b",
+    "n": 32,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Respuesta final: 1",
+    "elapsed_s": 1.3
+  },
+  "gpt-oss:20b|33": {
+    "modelo": "gpt-oss:20b",
+    "n": 33,
+    "respuesta_final": "8.2142857143",
+    "nota": "",
+    "raw": "Respuesta final: 8.2142857143",
+    "elapsed_s": 8.9
+  },
+  "gpt-oss:20b|34": {
+    "modelo": "gpt-oss:20b",
+    "n": 34,
+    "respuesta_final": "24",
+    "nota": "",
+    "raw": "Respuesta final: 24",
+    "elapsed_s": 1.7
+  },
+  "gpt-oss:20b|35": {
+    "modelo": "gpt-oss:20b",
+    "n": 35,
+    "respuesta_final": "0.48",
+    "nota": "",
+    "raw": "Respuesta final: 0.48",
+    "elapsed_s": 25.5
+  },
+  "gpt-oss:20b|36": {
+    "modelo": "gpt-oss:20b",
+    "n": 36,
+    "respuesta_final": "0.32",
+    "nota": "",
+    "raw": "Respuesta final: 0.32",
+    "elapsed_s": 42.5
+  },
+  "gpt-oss:20b|37": {
+    "modelo": "gpt-oss:20b",
+    "n": 37,
+    "respuesta_final": "250000",
+    "nota": "",
+    "raw": "Respuesta final: 250000",
+    "elapsed_s": 2.1
+  },
+  "gpt-oss:20b|38": {
+    "modelo": "gpt-oss:20b",
+    "n": 38,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Respuesta final: 1",
+    "elapsed_s": 1.9
+  },
+  "gpt-oss:20b|39": {
+    "modelo": "gpt-oss:20b",
+    "n": 39,
+    "respuesta_final": "-1",
+    "nota": "",
+    "raw": "Respuesta final: -1",
+    "elapsed_s": 2.6
+  },
+  "qwen3:32b|1": {
+    "modelo": "qwen3:32b",
+    "n": 1,
+    "respuesta_final": "13.33",
+    "nota": "",
+    "raw": "Para encontrar la distancia $ d^* $ donde ambos grupos pujan exactamente lo mismo, igualamos las funciones de puja:\n\n$$\nR_{\\text{pobre}}(d) = R_{\\text{rico}}(d)\n$$\n\nSustituimos las expresiones:\n\n$$\n500 - 20d = 300 - 5d\n$$\n\nReorganizamos la ecuación:\n\n$$\n500 - 300 = 20d - 5d\n$$\n\n$$\n200 = 15d\n$$\n\nDividimos ambos lados entre 15:\n\n$$\nd = \\frac{200}{15} = \\frac{40}{3} \\approx 13.33\n$$\n\nRespuesta final: 13.33",
+    "elapsed_s": 38.4
+  },
+  "qwen3:32b|2": {
+    "modelo": "qwen3:32b",
+    "n": 2,
+    "respuesta_final": "200",
+    "nota": "",
+    "raw": "Para calcular la puja de renta del grupo rico a una distancia $ d = 20 $ km del CBD, usamos la función dada:\n\n$$\nR_{\\text{rico}}(d) = 300 - 5d\n$$\n\nSustituimos $ d = 20 $ en la ecuación:\n\n$$\nR_{\\text{rico}}(20) = 300 - 5(20) = 300 - 100 = 200\n$$\n\nRespuesta final: 200",
+    "elapsed_s": 14.8
+  },
+  "qwen3:32b|3": {
+    "modelo": "qwen3:32b",
+    "n": 3,
+    "respuesta_final": "Respuesta final: 4/9",
+    "nota": "",
+    "raw": "Para resolver el problema, necesitamos determinar en qué puntos del intervalo $ d \\in [0, 30] $ (con paso 0.1) la función de renta del grupo pobre $ R_{\\text{pobre}}(d) = 500 - 20d $ es mayor que la del grupo rico $ R_{\\text{rico}}(d) = 300 - 5d $. En esos puntos, el grupo pobre es el mejor postor y ocupa la ubicación.\n\n### Paso 1: Encontrar el punto de intersección\nIgualamos las funciones para encontrar el valor de $ d $ donde $ R_{\\text{pobre}}(d) = R_{\\text{rico}}(d) $:\n\n$$\n500 - 20d = 300 - 5d\n$$\n\n$$\n500 - 300 = 20d - 5d\n$$\n\n$$\n200 = 15d\n$$\n\n$$\nd = \\frac{200}{15} = \\frac{40}{3} \\approx 13.33\n$$\n\n### Paso 2: Determinar en qué intervalo $ R_{\\text{pobre}}(d) > R_{\\text{rico}}(d) $\n- Para $ d < \\frac{40}{3} $, $ R_{\\text{pobre}}(d) > R_{\\text{rico}}(d) $\n- Para $ d > \\frac{40}{3} $, $ R_{\\text{pobre}}(d) < R_{\\text{rico}}(d) $\n\nPor lo tanto, el grupo pobre ocupa el intervalo $ [0, \\frac{40}{3}] $, que es aproximadamente $ [0, 13.33] $.\n\n### Paso 3: Calcular la fracción del intervalo $ [0, 30] $ ocupada por el grupo pobre\nLa longitud del intervalo total es $ 30 $ km.  \nLa longitud del intervalo ocupado por el grupo pobre es $ \\frac{40}{3} \\approx 13.33 $ km.\n\n$$\n\\text{Fracción} = \\frac{13.33}{30} = \\frac{40}{90} = \\frac{4}{9}\n$$\n\n### Respuesta final:\nRespuesta final: 4/9",
+    "elapsed_s": 65.7
+  },
+  "qwen3:32b|4": {
+    "modelo": "qwen3:32b",
+    "n": 4,
+    "respuesta_final": "0.751",
+    "nota": "",
+    "raw": "Dado que la probabilidad de urbanización de una celda está dada por la fórmula:\n\n$$\np_i = p_{\\text{base}} + p_{\\text{difusión}} \\cdot \\left(\\frac{k_i}{8}\\right)\n$$\n\ndonde:\n- $ p_{\\text{base}} = 0.001 $\n- $ p_{\\text{difusión}} = 1.00 $\n- $ k_i = 6 $ (número de vecinos urbanos)\n\nSustituyendo los valores:\n\n$$\np_i = 0.001 + 1.00 \\cdot \\left(\\frac{6}{8}\\right)\n$$\n\n$$\np_i = 0.001 + 0.75\n$$\n\n$$\np_i = 0.751\n$$\n\nRespuesta final: 0.751",
+    "elapsed_s": 23.9
+  },
+  "qwen3:32b|5": {
+    "modelo": "qwen3:32b",
+    "n": 5,
+    "respuesta_final": "0**",
+    "nota": "",
+    "raw": "En este contexto, se menciona una \"regla del modelo\" que establece:\n\n- **p_base solo refuerza el frente**: Esto sugiere que la probabilidad base de urbanización (p_base) solo tiene efecto en celdas que ya están en el frente de urbanización (es decir, celdas adyacentes a celdas urbanizadas).\n- **k_i >= 1 requerido**: Esto indica que para que una celda tenga probabilidad de urbanizarse, debe tener al menos un vecino urbanizado (k_i ≥ 1).\n\nDado que la pregunta se refiere a una **celda completamente aislada (k_i = 0)**, y la regla establece que **k_i >= 1 es requerido**, entonces:\n\n- La celda no cumple con la condición mínima para ser considerada en el proceso de urbanización.\n- Por lo tanto, **la probabilidad efectiva de urbanización es 0**.\n\n**Respuesta final: 0**",
+    "elapsed_s": 26.0
+  },
+  "qwen3:32b|6": {
+    "modelo": "qwen3:32b",
+    "n": 6,
+    "respuesta_final": "121**",
+    "nota": "",
+    "raw": "Para resolver esta pregunta, necesito simular un autómata celular con los siguientes parámetros:\n\n- Tamaño del autómata: 100x100 celdas.\n- Núcleo central 3x3 inicialmente urbanizado.\n- Probabilidad base de urbanización (`p_base`) = 0.001.\n- Probabilidad de difusión (`p_difusion`) = 1.00.\n- Vecindad de Moore (8 vecinos).\n- `p_base` solo activa celdas fronterizas (celdas con al menos un vecino urbano).\n- Semilla aleatoria: `numpy.random.seed(7)`.\n- 50 pasos sincrónicos.\n\n### Descripción del proceso\n\n1. **Inicialización**:\n   - Se crea una matriz de 100x100 con todas las celdas en estado rural (0).\n   - Se urbaniza un núcleo central 3x3 (celdas en estado urbano, 1).\n\n2. **Reglas de actualización**:\n   - En cada paso:\n     - Todas las celdas con al menos un vecino urbano (vecindad de Moore) tienen una probabilidad `p_base` de urbanizarse.\n     - Todas las celdas urbanas mantienen su estado.\n   - Esto se repite por 50 pasos sincrónicos.\n\n3. **Simulación**:\n   - Con `p_difusion = 1.00`, cualquier celda que tenga un vecino urbano y que cumpla la probabilidad `p_base` se urbaniza.\n   - Con `p_base = 0.001`, hay una probabilidad baja de urbanización, pero con 50 pasos, la urbanización se propaga gradualmente.\n\n4. **Implementación**:\n   - Se simula el autómata con `numpy` y `random` (usando `numpy.random.seed(7)` para reproducibilidad).\n   - Se cuenta el número total de celdas urbanas tras el paso 50.\n\n### Resultado\n\nTras ejecutar la simulación con los parámetros descritos, el número t",
+    "elapsed_s": 59.9
+  },
+  "qwen3:32b|7": {
+    "modelo": "qwen3:32b",
+    "n": 7,
+    "respuesta_final": "794328",
+    "nota": "",
+    "raw": "Dado el modelo de escalamiento:\n\n$$\nY = Y_0 \\cdot N^\\beta\n$$\n\nDonde:\n\n- $ Y_0 = 1 $\n- $ \\beta = 1.15 $\n- $ N = 1,000,000 $\n\nSustituimos los valores:\n\n$$\nY = 1 \\cdot (1,000,000)^{1.15}\n$$\n\nPrimero, calculamos $ (1,000,000)^{1.15} $. Notamos que:\n\n$$\n1,000,000 = 10^6\n$$\n\nEntonces:\n\n$$\n(10^6)^{1.15} = 10^{6 \\cdot 1.15} = 10^{6.9}\n$$\n\nAhora calculamos $ 10^{6.9} $:\n\n$$\n10^{6.9} \\approx 794,328.23\n$$\n\nRedondeamos al entero más cercano:\n\n$$\nY \\approx 794,328\n$$\n\nRespuesta final: 794328",
+    "elapsed_s": 31.2
+  },
+  "qwen3:32b|8": {
+    "modelo": "qwen3:32b",
+    "n": 8,
+    "respuesta_final": "2.216",
+    "nota": "",
+    "raw": "En el contexto del escalamiento superlineal de ciudades, la magnitud socioeconómica $ Y $ (como la producción de patentes, ingresos, etc.) se relaciona con la población $ N $ mediante una ley de potencias:\n\n$$\nY \\propto N^\\beta\n$$\n\ndonde $ \\beta $ es el exponente de escalamiento. Si $ \\beta = 1.15 $, entonces:\n\n$$\nY = k \\cdot N^{1.15}\n$$\n\ndonde $ k $ es una constante de proporcionalidad.\n\nSi la población $ N $ se duplica, es decir, pasa de $ N $ a $ 2N $, entonces la nueva magnitud socioeconómica $ Y' $ es:\n\n$$\nY' = k \\cdot (2N)^{1.15} = k \\cdot 2^{1.15} \\cdot N^{1.15}\n$$\n\nDividiendo $ Y' $ entre $ Y $:\n\n$$\n\\frac{Y'}{Y} = \\frac{k \\cdot 2^{1.15} \\cdot N^{1.15}}{k \\cdot N^{1.15}} = 2^{1.15}\n$$\n\nCalculamos $ 2^{1.15} $:\n\n$$\n2^{1.15} \\approx e^{1.15 \\cdot \\ln(2)} \\approx e^{1.15 \\cdot 0.693} \\approx e^{0.797} \\approx 2.216\n$$\n\nPor lo tanto, cuando la población se duplica, la magnitud socioeconómica $ Y $ se multiplica por un factor de aproximadamente **2.216**.\n\nRespuesta final: 2.216",
+    "elapsed_s": 47.1
+  },
+  "qwen3:32b|9": {
+    "modelo": "qwen3:32b",
+    "n": 9,
+    "respuesta_final": "1.15**",
+    "nota": "",
+    "raw": "Primero, genero 50 ciudades con poblaciones $ N $ espaciadas logarítmicamente entre 10,000 y 5,000,000. Esto se logra tomando 50 puntos igualmente espaciados en el logaritmo de la población y luego convirtiéndolos de vuelta a la escala lineal.\n\nLuego, para cada población $ N $, calculo $ Y = N^{1.15} $, sin ruido.\n\nFinalmente, ajusto el modelo $ \\log_{10}(Y) = a + b \\cdot \\log_{10}(N) $ por mínimos cuadrados y reporto el valor del exponente $ b $ recuperado.\n\nVoy a proceder paso a paso.\n\n---\n\n### Paso 1: Generar 50 valores de $ N $ logarítmicamente espaciados\n\n$$\nN_i = 10^{\\text{np.linspace}(\\log_{10}(10000), \\log_{10}(5000000), 50)}\n$$\n\nEsto da 50 valores de $ N $ en escala logarítmica entre 10,000 y 5,000,000.\n\n---\n\n### Paso 2: Calcular $ Y_i = N_i^{1.15} $\n\n$$\nY_i = N_i^{1.15}\n$$\n\n---\n\n### Paso 3: Ajustar el modelo $ \\log_{10}(Y) = a + b \\cdot \\log_{10}(N) $\n\nTomamos logaritmos base 10 de $ Y $ y $ N $, y ajustamos una regresión lineal para estimar $ b $.\n\n$$\n\\log_{10}(Y_i) = a + b \\cdot \\log_{10}(N_i)\n$$\n\nEl valor esperado de $ b $ es 1.15, ya que $ Y = N^{1.15} $, por lo que $ \\log_{10}(Y) = 1.15 \\cdot \\log_{10}(N) $.\n\n---\n\n### Paso 4: Calcular el valor de $ b $ recuperado\n\nAl ajustar el modelo, el valor de $ b $ recuperado debe ser muy cercano a 1.15, ya que no hay ruido en los datos.\n\n---\n\n### Resultado\n\nEl exponente $ b $ recuperado es:\n\n**Respuesta final: 1.15**",
+    "elapsed_s": 66.2
+  },
+  "qwen3:32b|10": {
+    "modelo": "qwen3:32b",
+    "n": 10,
+    "respuesta_final": "65",
+    "nota": "",
+    "raw": "En la red de Braess, se nos da que la ruta superior tiene un tiempo de viaje dado por la función:\n\n$$\nt = \\frac{x}{100} + 45\n$$\n\ndonde $ x $ es el flujo de vehículos en esa ruta.\n\nEn el equilibrio, se nos dice que hay 4000 vehículos repartidos simétricamente, es decir, 2000 vehículos en la ruta superior y 2000 en la inferior.\n\nPor lo tanto, para la ruta superior, el flujo $ x = 2000 $.\n\nSustituimos este valor en la fórmula del tiempo:\n\n$$\nt = \\frac{2000}{100} + 45 = 20 + 45 = 65\n$$\n\nRespuesta final: 65",
+    "elapsed_s": 22.5
+  },
+  "qwen3:32b|11": {
+    "modelo": "qwen3:32b",
+    "n": 11,
+    "respuesta_final": "80",
+    "nota": "",
+    "raw": "Dado que los 4000 vehículos usan la ruta **Inicio -> A -> B -> Fin**, el tiempo total de viaje para cada vehículo es:\n\n$$\n\\text{Tiempo} = \\frac{x_A}{100} + 0 + \\frac{x_B}{100}\n$$\n\nDonde:\n- $ x_A = 4000 $\n- $ x_B = 4000 $\n\nSustituyendo los valores:\n\n$$\n\\text{Tiempo} = \\frac{4000}{100} + 0 + \\frac{4000}{100} = 40 + 0 + 40 = 80\n$$\n\nRespuesta final: 80",
+    "elapsed_s": 19.6
+  },
+  "qwen3:32b|12": {
+    "modelo": "qwen3:32b",
+    "n": 12,
+    "respuesta_final": "0**",
+    "nota": "",
+    "raw": "La red de Braess es un ejemplo clásico en teoría de juegos y teoría de redes de tráfico que muestra cómo la adición de una nueva ruta puede empeorar el equilibrio de Nash (en este caso, el equilibrio de Wardrop). Vamos a resolver el problema paso a paso.\n\n---\n\n### **1. Descripción de la red de Braess**\n\nLa red de Braess tiene 4 nodos: A (origen), B, C, y D (destino). Hay 4 arcos principales:\n\n1. A → B\n2. B → D\n3. A → C\n4. C → D\n\nY un **atajo** adicional:\n\n5. B → C\n\nCada arco tiene una función de costo (tiempo de viaje) que depende del flujo $ x $:\n\n- Arco A → B: $ t(x) = x $\n- Arco B → D: $ t(x) = x $\n- Arco A → C: $ t(x) = 1 $\n- Arco C → D: $ t(x) = x $\n- Arco B → C: $ t(x) = 1 $\n\nEl número total de viajeros es $ N = 4000 $, y todos deben ir de A a D.\n\n---\n\n### **2. Equilibrio de Wardrop sin el atajo (B → C)**\n\nSin el atajo, los viajeros pueden elegir entre dos rutas:\n\n- Ruta 1: A → B → D, con costo $ t(x) = x + x = 2x $\n- Ruta 2: A → C → D, con costo $ t(x) = 1 + x $\n\nEn equilibrio de Wardrop, todos los caminos usados tienen el mismo costo. Supongamos que $ x $ viajeros toman la ruta 1, y $ 4000 - x $ toman la ruta 2.\n\nIgualamos los costos:\n\n$$\n2x = 1 + (4000 - x)\n$$\n\n$$\n2x = 4001 - x\n$$\n\n$$\n3x = 4001\n$$\n\n$$\nx = \\frac{4001}{3} \\approx 1333.67\n$$\n\nEntonces, el costo de viaje es:\n\n$$\nt = 2x = 2 \\cdot 1333.67 \\approx 2667.33\n$$\n\n**Tiempo total sin atajo:**\n\n$$\n\\text{Tiempo\\_sin} = 2667.33 \\times 4000 \\approx 10,669,320\n$$\n\n---\n\n### **3. Equilibrio de Wardrop con el atajo (B → ",
+    "elapsed_s": 150.5
+  },
+  "qwen3:32b|13": {
+    "modelo": "qwen3:32b",
+    "n": 13,
+    "respuesta_final": "18",
+    "nota": "",
+    "raw": "Para resolver el problema, analizamos la secuencia dada bajo el principio de mercado $ k = 3 $, que describe la jerarquía de asentamientos:\n\n- Nivel 1 (más alto): 1 lugar  \n- Nivel 2: 2 lugares  \n- Nivel 3: 6 lugares  \n- Nivel 4 (más bajo): 18 lugares  \n\nLa pregunta pide cuántos lugares de **orden 1** (es decir, el nivel más bajo) hay en esta jerarquía de 4 niveles.\n\nEn la jerarquía, el nivel más bajo es el **nivel 4**, y según la secuencia, hay **18 lugares** en ese nivel.\n\nRespuesta final: 18",
+    "elapsed_s": 19.5
+  },
+  "qwen3:32b|14": {
+    "modelo": "qwen3:32b",
+    "n": 14,
+    "respuesta_final": "259.8",
+    "nota": "",
+    "raw": "Para calcular el área de un hexágono regular usando la fórmula dada:\n\n$$\nA = \\left(\\frac{3\\sqrt{3}}{2}\\right) r^2\n$$\n\ndonde $ r = 10 $ km, sustituimos el valor de $ r $ en la fórmula:\n\n$$\nA = \\left(\\frac{3\\sqrt{3}}{2}\\right) \\cdot 10^2\n$$\n\n$$\nA = \\left(\\frac{3\\sqrt{3}}{2}\\right) \\cdot 100\n$$\n\n$$\nA = 150\\sqrt{3}\n$$\n\nUsando $ \\sqrt{3} \\approx 1.732 $:\n\n$$\nA \\approx 150 \\cdot 1.732 = 259.8\n$$\n\nRespuesta final: 259.8",
+    "elapsed_s": 24.4
+  },
+  "qwen3:32b|15": {
+    "modelo": "qwen3:32b",
+    "n": 15,
+    "respuesta_final": "7014.87",
+    "nota": "",
+    "raw": "Para generar la jerarquía anidada de 4 niveles con $ k = 3 $, partimos de un área de mercado base de 259.81 km² en el nivel 1. En cada nivel superior, el área se multiplica por 3.\n\n**Nivel 1:**  \nÁrea = 259.81 km²\n\n**Nivel 2:**  \nÁrea = $ 259.81 \\times 3 = 779.43 $ km²\n\n**Nivel 3:**  \nÁrea = $ 779.43 \\times 3 = 2,338.29 $ km²\n\n**Nivel 4:**  \nÁrea = $ 2,338.29 \\times 3 = 7,014.87 $ km²\n\n**Área total del nivel 4:**  \n7,014.87 km²\n\nRespuesta final: 7014.87",
+    "elapsed_s": 26.5
+  },
+  "qwen3:32b|16": {
+    "modelo": "qwen3:32b",
+    "n": 16,
+    "respuesta_final": "1.267",
+    "nota": "",
+    "raw": "Para calcular la dimensión fractal $ D $, usamos la fórmula:\n\n$$\nD = \\frac{\\log(N_2 / N_1)}{\\log(R_2 / R_1)}\n$$\n\nDonde:\n- $ N_1 = 158 $, $ N_2 = 380 $\n- $ R_1 = 10 $, $ R_2 = 20 $\n\nPrimero calculamos las razones:\n\n$$\n\\frac{N_2}{N_1} = \\frac{380}{158} \\approx 2.4051\n$$\n$$\n\\frac{R_2}{R_1} = \\frac{20}{10} = 2\n$$\n\nAhora aplicamos el logaritmo:\n\n$$\n\\log(2.4051) \\approx 0.3813\n$$\n$$\n\\log(2) \\approx 0.3010\n$$\n\nFinalmente, calculamos $ D $:\n\n$$\nD = \\frac{0.3813}{0.3010} \\approx 1.267\n$$\n\nRespuesta final: 1.267",
+    "elapsed_s": 32.2
+  },
+  "qwen3:32b|17": {
+    "modelo": "qwen3:32b",
+    "n": 17,
+    "respuesta_final": "649**",
+    "nota": "",
+    "raw": "Sabemos que la cantidad de celdas ocupadas en una forma urbana sigue la relación:\n\n$$\nN(R) \\sim R^D\n$$\n\ndonde:\n- $ N(R) $ es el número de celdas ocupadas dentro de un radio $ R $,\n- $ D $ es la dimensión fractal,\n- $ R $ es el radio.\n\nDado:\n- $ D = 1.7 $\n- $ N(10) = 200 $\n- Queremos calcular $ N(20) $\n\nUsamos la relación proporcional:\n\n$$\n\\frac{N(20)}{N(10)} = \\left( \\frac{20}{10} \\right)^D = 2^{1.7}\n$$\n\nCalculamos $ 2^{1.7} $:\n\n$$\n2^{1.7} \\approx 3.246\n$$\n\nEntonces:\n\n$$\nN(20) = N(10) \\cdot 2^{1.7} \\approx 200 \\cdot 3.246 = 649.2\n$$\n\nRedondeamos al entero más cercano, ya que el número de celdas ocupadas debe ser un número entero.\n\n**Respuesta final: 649**",
+    "elapsed_s": 34.5
+  },
+  "qwen3:32b|18": {
+    "modelo": "qwen3:32b",
+    "n": 18,
+    "respuesta_final": "1.73**",
+    "nota": "",
+    "raw": "Para resolver esta tarea, se debe simular un proceso de **Diffusion-Limited Aggregation (DLA)** en una rejilla de $201 \\times 201$, con una **semilla central**, y agregar **1500 partículas** que realicen una **caminata aleatoria** hasta adherirse al agregado. Luego, se debe calcular la **dimensión fractal** $D$ usando el método **mass-radius**, es decir, mediante una regresión lineal de $\\log N(R)$ vs $\\log R$, donde $N(R)$ es la cantidad de partículas en una esfera de radio $R$ centrada en el agregado. Se deben considerar radios en el rango $R \\approx 5$ a $R \\approx 35$, excluyendo la saturación (donde $N(R)$ > 60% del total de partículas).\n\nAunque no puedo ejecutar código directamente aquí, puedo describir el proceso y estimar el valor esperado basado en simulaciones típicas de DLA.\n\n---\n\n### **Paso 1: Simulación DLA**\n- Se inicializa una rejilla de $201 \\times 201$.\n- Se coloca una semilla en el centro.\n- Cada partícula comienza en una posición aleatoria en el borde exterior de la rejilla.\n- La partícula realiza una caminata aleatoria hasta que toca el agregado (una celda ocupada).\n- Se repite el proceso hasta agregar 1500 partículas.\n\n---\n\n### **Paso 2: Medición de la dimensión fractal**\n- Para cada radio $R$ desde 5 hasta 35, se cuenta cuántas partículas $N(R)$ están dentro de una esfera de radio $R$ centrada en la semilla.\n- Se grafica $\\log N(R)$ vs $\\log R$.\n- Se ajusta una recta a los datos en la región de escalamiento (donde la relación es lineal).\n- La pendiente d",
+    "elapsed_s": 86.6
+  },
+  "qwen3:32b|19": {
+    "modelo": "qwen3:32b",
+    "n": 19,
+    "respuesta_final": "0.4",
+    "nota": "",
+    "raw": "Primero, identificamos los totales de cada grupo:\n\n- Grupo A: $ A = 100 $\n- Grupo B: $ B = 100 $\n\nDado que $ A = B $, el índice de disimilitud se simplifica a:\n\n$$\nD = 0.5 \\cdot \\sum \\left| \\frac{a_i}{100} - \\frac{b_i}{100} \\right| = 0.5 \\cdot \\sum \\left| a_i - b_i \\right| / 100\n$$\n\nAhora, calculamos $ |a_i - b_i| $ para cada tract:\n\n- Tract 1: $ |40 - 10| = 30 $\n- Tract 2: $ |30 - 20| = 10 $\n- Tract 3: $ |20 - 30| = 10 $\n- Tract 4: $ |10 - 40| = 30 $\n\nSumamos estos valores:\n\n$$\n\\sum |a_i - b_i| = 30 + 10 + 10 + 30 = 80\n$$\n\nAhora calculamos el índice de disimilitud:\n\n$$\nD = 0.5 \\cdot \\frac{80}{100} = 0.5 \\cdot 0.8 = 0.4\n$$\n\nRespuesta final: 0.4",
+    "elapsed_s": 71.7
+  },
+  "qwen3:32b|20": {
+    "modelo": "qwen3:32b",
+    "n": 20,
+    "respuesta_final": "0.3",
+    "nota": "",
+    "raw": "Para calcular el índice de disimilitud de Duncan $ D $, usamos la fórmula:\n\n$$\nD = 0.5 \\cdot \\sum \\left| \\frac{a_i}{A} - \\frac{b_i}{B} \\right|\n$$\n\nDonde:\n- $ a_i $ y $ b_i $ son las poblaciones del grupo A y B en el tract $ i $.\n- $ A $ y $ B $ son las poblaciones totales de los grupos A y B (ambas son 100 en este caso).\n\nDado:\n- Grupo A = [50, 30, 20]\n- Grupo B = [20, 30, 50]\n\nCalculamos las diferencias absolutas normalizadas para cada tract:\n\n1. Tract 1:\n$$\n\\left| \\frac{50}{100} - \\frac{20}{100} \\right| = |0.5 - 0.2| = 0.3\n$$\n\n2. Tract 2:\n$$\n\\left| \\frac{30}{100} - \\frac{30}{100} \\right| = |0.3 - 0.3| = 0\n$$\n\n3. Tract 3:\n$$\n\\left| \\frac{20}{100} - \\frac{50}{100} \\right| = |0.2 - 0.5| = 0.3\n$$\n\nSumamos las diferencias absolutas:\n$$\n0.3 + 0 + 0.3 = 0.6\n$$\n\nMultiplicamos por 0.5:\n$$\nD = 0.5 \\cdot 0.6 = 0.3\n$$\n\nRespuesta final: 0.3",
+    "elapsed_s": 54.6
+  },
+  "qwen3:32b|21": {
+    "modelo": "qwen3:32b",
+    "n": 21,
+    "respuesta_final": "0.312**",
+    "nota": "",
+    "raw": "Para resolver esta tarea, necesito seguir los siguientes pasos:\n\n1. **Cargar la rejilla final del experimento de Schelling** con los parámetros especificados:\n   - Tamaño: 50x50\n   - Porcentaje de Rojos: 45%\n   - Porcentaje de Azules: 45%\n   - Porcentaje vacío: 10%\n   - Umbral de felicidad: T = 0.30\n   - Vecindad: Moore\n   - Semilla aleatoria: `numpy.random.seed(42)`\n   - Máximo de iteraciones: 200\n\n2. **Dividir la rejilla en 25 bloques (tracts)** de 10x10 celdas.\n\n3. **Contar el número de Rojos y Azules en cada bloque**.\n\n4. **Calcular el índice de disimilitud de Duncan (D)** entre Rojos y Azules.\n\n---\n\n### Paso 1: Simular la rejilla final de Schelling\n\nVoy a simular la rejilla final del experimento de Schelling con los parámetros especificados. Para hacerlo, usaré una implementación simplificada del modelo de Schelling.\n\n```python\nimport numpy as np\nimport random\n\n# Parámetros\nsize = 50\nred_percent = 0.45\nblue_percent = 0.45\nempty_percent = 0.10\nthreshold = 0.30\nseed = 42\nmax_iter = 200\n\n# Inicializar rejilla\nnp.random.seed(seed)\ngrid = np.random.choice([0, 1, 2], size=(size, size), p=[empty_percent, red_percent, blue_percent])\n\n# Función para contar vecinos de Moore\ndef count_neighbors(grid, i, j):\n    neighbors = []\n    for di in [-1, 0, 1]:\n        for dj in [-1, 0, 1]:\n            if di == 0 and dj == 0:\n                continue\n            ni, nj = i + di, j + dj\n            if 0 <= ni < size and 0 <= nj < size:\n                neighbors.append(grid[ni, nj])\n    return",
+    "elapsed_s": 151.0
+  },
+  "qwen3:32b|22": {
+    "modelo": "qwen3:32b",
+    "n": 22,
+    "respuesta_final": "20000",
+    "nota": "",
+    "raw": "Dado el modelo gravitacional:\n\n$$\nT_{ij} = G \\cdot \\frac{P_i \\cdot P_j}{d_{ij}^2}\n$$\n\nDonde:\n- $ G = 1 $\n- $ P_i = 10000 $\n- $ P_j = 5000 $\n- $ d_{ij} = 50 $\n\nSustituimos los valores en la fórmula:\n\n$$\nT_{ij} = 1 \\cdot \\frac{10000 \\cdot 5000}{50^2}\n$$\n\n$$\nT_{ij} = \\frac{50000000}{2500}\n$$\n\n$$\nT_{ij} = 20000\n$$\n\nRespuesta final: 20000",
+    "elapsed_s": 23.5
+  },
+  "qwen3:32b|23": {
+    "modelo": "qwen3:32b",
+    "n": 23,
+    "respuesta_final": "125000",
+    "nota": "",
+    "raw": "Dado que la fórmula es:\n\n$$ T_{ij} = G \\cdot \\frac{P_i \\cdot P_j}{d_{ij}^c} $$\n\nY los valores son:\n\n- $ G = 1 $\n- $ P_i = 10000 $\n- $ P_j = 20000 $\n- $ d_{ij} = 40 $\n- $ c = 2 $\n\nSustituimos los valores en la fórmula:\n\n$$ T_{ij} = 1 \\cdot \\frac{10000 \\cdot 20000}{40^2} $$\n\n$$ T_{ij} = \\frac{200000000}{1600} $$\n\n$$ T_{ij} = 125000 $$\n\nRespuesta final: 125000",
+    "elapsed_s": 27.3
+  },
+  "qwen3:32b|24": {
+    "modelo": "qwen3:32b",
+    "n": 24,
+    "respuesta_final": "4333333.33**",
+    "nota": "",
+    "raw": "Para resolver este problema, usaremos el modelo de interacción gravitacional, que define el flujo entre dos zonas $ i $ y $ j $ como:\n\n$$\nT_{ij} = \\frac{P_i P_j G}{c \\cdot d_{ij}}\n$$\n\nDonde:\n\n- $ P_i $, $ P_j $: Poblaciones de las zonas $ i $ y $ j $\n- $ G $: Constante de gravedad (en este caso $ G = 1 $)\n- $ c $: Factor de calibración (en este caso $ c = 2 $)\n- $ d_{ij} $: Distancia euclidiana entre las zonas $ i $ y $ j $\n\n---\n\n### **Paso 1: Definir las zonas**\n\n- Zona 1: $ P_1 = 10000 $, posición $ (0,0) $\n- Zona 2: $ P_2 = 5000 $, posición $ (30,0) $\n- Zona 3: $ P_3 = 20000 $, posición $ (0,40) $\n\n---\n\n### **Paso 2: Calcular las distancias euclidianas**\n\n$$\nd_{12} = \\sqrt{(30 - 0)^2 + (0 - 0)^2} = \\sqrt{900} = 30\n$$\n$$\nd_{13} = \\sqrt{(0 - 0)^2 + (40 - 0)^2} = \\sqrt{1600} = 40\n$$\n$$\nd_{23} = \\sqrt{(0 - 30)^2 + (40 - 0)^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\n$$\n\n---\n\n### **Paso 3: Calcular los flujos entre pares**\n\n$$\nT_{12} = \\frac{10000 \\cdot 5000 \\cdot 1}{2 \\cdot 30} = \\frac{50000000}{60} = 833333.33\n$$\n$$\nT_{13} = \\frac{10000 \\cdot 20000 \\cdot 1}{2 \\cdot 40} = \\frac{200000000}{80} = 2500000\n$$\n$$\nT_{23} = \\frac{5000 \\cdot 20000 \\cdot 1}{2 \\cdot 50} = \\frac{100000000}{100} = 1000000\n$$\n\n---\n\n### **Paso 4: Sumar los flujos entre pares distintos**\n\n$$\nT_{12} + T_{13} + T_{23} = 833333.33 + 2500000 + 1000000 = 4333333.33\n$$\n\n---\n\n**Respuesta final: 4333333.33**",
+    "elapsed_s": 93.8
+  },
+  "qwen3:32b|25": {
+    "modelo": "qwen3:32b",
+    "n": 25,
+    "respuesta_final": "10**",
+    "nota": "",
+    "raw": "Para calcular el punto de ruptura (BP) entre las ciudades A y B, usamos la fórmula:\n\n$$\nBP = \\frac{d}{1 + \\sqrt{\\frac{P_A}{P_B}}}\n$$\n\nDonde:\n\n- $d = 30$ km (distancia entre las ciudades),\n- $P_A = 64000$ (población de A),\n- $P_B = 16000$ (población de B).\n\nSustituimos los valores en la fórmula:\n\n$$\nBP = \\frac{30}{1 + \\sqrt{\\frac{64000}{16000}}}\n$$\n\n$$\nBP = \\frac{30}{1 + \\sqrt{4}}\n$$\n\n$$\nBP = \\frac{30}{1 + 2}\n$$\n\n$$\nBP = \\frac{30}{3} = 10\n$$\n\nEl punto de ruptura está a 10 km de la ciudad B.\n\n**Respuesta final: 10**",
+    "elapsed_s": 29.5
+  },
+  "qwen3:32b|26": {
+    "modelo": "qwen3:32b",
+    "n": 26,
+    "respuesta_final": "0.8",
+    "nota": "",
+    "raw": "Para calcular la probabilidad de que un consumidor elija una tienda según el modelo de Huff, usamos la fórmula:\n\n$$\nP_j = \\frac{A_j^\\beta / D_j^\\beta}{\\sum_{i=1}^{n} A_i^\\beta / D_i^\\beta}\n$$\n\nDonde:\n- $P_j$ es la probabilidad de elegir la tienda $j$,\n- $A_j$ es el atractivo de la tienda $j$,\n- $D_j$ es la distancia a la tienda $j$,\n- $\\beta$ es un parámetro de sensibilidad a la distancia (en este caso, $\\beta = 2$).\n\nDado:\n- Tienda 1: $A_1 = 1000$, $D_1 = 5$\n- Tienda 2: $A_2 = 4000$, $D_2 = 10$\n- $\\beta = 2$\n\nCalculamos los valores de atracción ajustados por distancia:\n\n$$\n\\frac{A_1^\\beta}{D_1^\\beta} = \\frac{1000^2}{5^2} = \\frac{1,000,000}{25} = 40,000\n$$\n$$\n\\frac{A_2^\\beta}{D_2^\\beta} = \\frac{4000^2}{10^2} = \\frac{16,000,000}{100} = 160,000\n$$\n\nSumamos los valores:\n\n$$\n\\text{Total} = 40,000 + 160,000 = 200,000\n$$\n\nCalculamos la probabilidad de elegir la Tienda 2:\n\n$$\nP_2 = \\frac{160,000}{200,000} = 0.8\n$$\n\nRespuesta final: 0.8",
+    "elapsed_s": 56.1
+  },
+  "qwen3:32b|27": {
+    "modelo": "qwen3:32b",
+    "n": 27,
+    "respuesta_final": "0.6674**",
+    "nota": "",
+    "raw": "Para resolver este problema, utilizamos el modelo de probabilidad de Huff, que asigna a cada consumidor una probabilidad de elegir una tienda en función de su atractivo y la distancia a la tienda.\n\n### Modelo de Huff\n\nLa probabilidad de que un consumidor en la posición $(x, y)$ elija la Tienda $i$ es:\n\n$$\nP_i(x, y) = \\frac{A_i / d_i^\\beta}{\\sum_{j=1}^2 A_j / d_j^\\beta}\n$$\n\nDonde:\n- $A_i$ es el atractivo de la tienda $i$,\n- $d_i$ es la distancia del consumidor a la tienda $i$,\n- $\\beta$ es un parámetro de sensibilidad a la distancia.\n\n---\n\n### Datos del problema\n\n- Rejilla de $21 \\times 21$ celdas, con coordenadas de celdas desde $(0,0)$ hasta $(20,20)$.\n- Tienda 1: ubicada en $(5,10)$, atractivo $A_1 = 1000$.\n- Tienda 2: ubicada en $(15,10)$, atractivo $A_2 = 4000$.\n- $\\beta = 2$.\n\nQueremos calcular la fracción de celdas en las que $P_2(x, y) \\geq 0.5$.\n\n---\n\n### Paso 1: Calcular $P_2(x, y)$\n\nDado que hay solo dos tiendas, la probabilidad de elegir la Tienda 2 es:\n\n$$\nP_2(x, y) = \\frac{A_2 / d_2^2}{A_1 / d_1^2 + A_2 / d_2^2}\n$$\n\nQueremos que $P_2(x, y) \\geq 0.5$, lo cual ocurre cuando:\n\n$$\n\\frac{A_2 / d_2^2}{A_1 / d_1^2 + A_2 / d_2^2} \\geq 0.5\n$$\n\nMultiplicamos ambos lados por el denominador:\n\n$$\nA_2 / d_2^2 \\geq 0.5 (A_1 / d_1^2 + A_2 / d_2^2)\n$$\n\n$$\n2A_2 / d_2^2 \\geq A_1 / d_1^2 + A_2 / d_2^2\n$$\n\n$$\nA_2 / d_2^2 \\geq A_1 / d_1^2\n$$\n\n$$\n\\frac{A_2}{A_1} \\geq \\left(\\frac{d_2}{d_1}\\right)^2\n$$\n\n$$\n\\left(\\frac{d_1}{d_2}\\right)^2 \\geq \\frac{A_1}{A_2}\n$$\n\n$$\n\\frac{d_1}{d_2} \\geq \\s",
+    "elapsed_s": 185.5
+  },
+  "qwen3:32b|28": {
+    "modelo": "qwen3:32b",
+    "n": 28,
+    "respuesta_final": "0.714",
+    "nota": "",
+    "raw": "Para determinar si el agente está satisfecho, calculamos la fracción de vecinos que pertenecen al mismo grupo.\n\nEl agente tiene:\n- 5 vecinos del mismo grupo,\n- 2 vecinos del otro grupo,\n- 1 celda vacía.\n\nLa cantidad total de vecinos **ocupados** es $5 + 2 = 7$.\n\nLa fracción de vecinos del mismo grupo es:\n$$\n\\frac{5}{7} \\approx 0.714\n$$\n\nEste valor es mayor que el umbral de tolerancia $T = 0.30$, por lo que el agente **está satisfecho**.\n\nRespuesta final: 0.714",
+    "elapsed_s": 35.6
+  },
+  "qwen3:32b|29": {
+    "modelo": "qwen3:32b",
+    "n": 29,
+    "respuesta_final": "250",
+    "nota": "",
+    "raw": "En total hay 2500 celdas. El 45% son del grupo Rojo y otro 45% del grupo Azul, por lo tanto, entre ambos grupos ocupan el 90% de las celdas.\n\nCalculamos el número de celdas ocupadas por los grupos Rojo y Azul:\n\n- Rojo: $ 2500 \\times 0.45 = 1125 $ celdas  \n- Azul: $ 2500 \\times 0.45 = 1125 $ celdas  \n\nTotal ocupado por ambos grupos:  \n$ 1125 + 1125 = 2250 $ celdas\n\nPor lo tanto, las celdas vacías son:  \n$ 2500 - 2250 = 250 $\n\nRespuesta final: 250",
+    "elapsed_s": 26.3
+  },
+  "qwen3:32b|30": {
+    "modelo": "qwen3:32b",
+    "n": 30,
+    "respuesta_final": "0.65**",
+    "nota": "",
+    "raw": "Para resolver este problema, se debe simular el modelo de Schelling en una rejilla de 50×50 con las siguientes condiciones:\n\n- 45% de agentes rojos  \n- 45% de agentes azules  \n- 10% de celdas vacías  \n- Umbral de satisfacción $ T = 0.30 $  \n- Vecindad de Moore (8 vecinos)  \n- Máximo de 200 iteraciones  \n- Semilla aleatoria: `numpy.random.seed(42)`  \n\nEl objetivo es calcular la **fracción media de vecinos del mismo grupo** en el estado final convergido.\n\nEste cálculo implica:\n\n1. Inicializar la rejilla con las proporciones dadas.\n2. Simular el modelo de Schelling hasta que se alcance un estado estacionario o se alcance el límite de 200 iteraciones.\n3. Calcular la fracción promedio de vecinos del mismo grupo para todos los agentes en la rejilla final.\n\nEste cálculo se puede realizar mediante un script en Python. Sin embargo, dado que no puedo ejecutar código directamente, puedo estimar el resultado basándome en simulaciones típicas del modelo de Schelling con estos parámetros.\n\nEn simulaciones similares, se ha observado que con un umbral $ T = 0.30 $, la segregación es moderada, pero suficiente para elevar la fracción media de vecinos del mismo grupo desde un valor inicial cercano a 0.50 a un valor más alto, típicamente entre **0.60 y 0.70**.\n\nDado que el umbral es relativamente bajo, la convergencia ocurre con una segregación moderada, y el valor final tiende a estar alrededor de **0.65**.\n\n**Respuesta final: 0.65**",
+    "elapsed_s": 59.1
+  },
+  "qwen3:32b|31": {
+    "modelo": "qwen3:32b",
+    "n": 31,
+    "respuesta_final": "1.5",
+    "nota": "",
+    "raw": "Para calcular la profundidad media $ MD $ del nodo central $ C $, usamos la fórmula:\n\n$$\nMD = \\frac{\\text{suma de profundidades}}{n - 1}\n$$\n\nDonde:\n- Las profundidades son: $ A = 2 $, $ B = 1 $, $ C = 0 $ (porque es el nodo central), $ D = 1 $, $ E = 2 $.\n- $ n = 5 $ (número total de nodos).\n- $ n - 1 = 4 $ (número de nodos considerados para calcular la profundidad media desde $ C $).\n\nSumamos las profundidades:\n\n$$\n2 + 1 + 0 + 1 + 2 = 6\n$$\n\nAhora calculamos la profundidad media:\n\n$$\nMD = \\frac{6}{4} = 1.5\n$$\n\nRespuesta final: 1.5",
+    "elapsed_s": 34.7
+  },
+  "qwen3:32b|32": {
+    "modelo": "qwen3:32b",
+    "n": 32,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Primero, identificamos los valores necesarios para calcular la asimetría relativa $ RA $:\n\n- $ MD = 2.5 $ (profundidad media)\n- $ n = 5 $ (número de nodos)\n\nLa fórmula para $ RA $ es:\n\n$$\nRA = 2 \\cdot \\frac{MD - 1}{n - 2}\n$$\n\nSustituyendo los valores:\n\n$$\nRA = 2 \\cdot \\frac{2.5 - 1}{5 - 2} = 2 \\cdot \\frac{1.5}{3} = 2 \\cdot 0.5 = 1\n$$\n\nAhora calculamos la integración, que es el recíproco de $ RA $:\n\n$$\n\\text{integración} = \\frac{1}{RA} = \\frac{1}{1} = 1\n$$\n\nRespuesta final: 1",
+    "elapsed_s": 34.3
+  },
+  "qwen3:32b|33": {
+    "modelo": "qwen3:32b",
+    "n": 33,
+    "respuesta_final": "6.90**",
+    "nota": "",
+    "raw": "Vamos a resolver este problema paso a paso.\n\n---\n\n### **Paso 1: Definir el grafo de la rejilla 5x5**\n\nLa rejilla 5x5 tiene 25 nodos, numerados de 0 a 24. Cada nodo está conectado a sus vecinos ortogonales (arriba, abajo, izquierda, derecha), si existen.\n\nPodemos indexar los nodos como una matriz 5x5:\n\n```\n 0  1  2  3  4\n 5  6  7  8  9\n10 11 12 13 14\n15 16 17 18 19\n20 21 22 23 24\n```\n\nCada nodo tiene como máximo 4 vecinos (arriba, abajo, izquierda, derecha).\n\n---\n\n### **Paso 2: Calcular la profundidad media (MD) de cada nodo usando BFS**\n\nLa profundidad media de un nodo es el promedio de las distancias (en pasos) desde ese nodo a todos los demás nodos. Para calcularlo, usamos BFS desde cada nodo.\n\nVamos a calcular la profundidad media del nodo central, que es el nodo **12** (fila 2, columna 2, indexado desde 0).\n\nUsamos BFS desde el nodo 12 para calcular las distancias a todos los demás nodos.\n\n#### BFS desde el nodo 12:\n\n```\nNodo | Distancia\n---- | ---------\n12   | 0\n6, 7, 11, 13, 17 | 1\n2, 8, 16, 18, 22 | 2\n1, 3, 10, 20, 24 | 3\n0, 4, 9, 15, 19, 23 | 4\n5, 21 | 5\n```\n\nAhora sumamos todas las distancias:\n\n- 5 nodos a distancia 1 → 5 × 1 = 5\n- 5 nodos a distancia 2 → 5 × 2 = 10\n- 5 nodos a distancia 3 → 5 × 3 = 15\n- 6 nodos a distancia 4 → 6 × 4 = 24\n- 2 nodos a distancia 5 → 2 × 5 = 10\n\nTotal de distancias = 5 + 10 + 15 + 24 + 10 = **64**\n\nProfundidad media (MD) = 64 / 24 = **2.666...**\n\n---\n\n### **Paso 3: Calcular la integración**\n\nLa fórmula dada es:\n\n$$\n\\text{Integración} = ",
+    "elapsed_s": 127.6
+  },
+  "qwen3:32b|34": {
+    "modelo": "qwen3:32b",
+    "n": 34,
+    "respuesta_final": "24",
+    "nota": "",
+    "raw": "Primero, identificamos los parámetros del Cultivo A:\n\n- $ y = 10 $ (rendimiento por hectárea)\n- $ p = 7 $ (precio de venta por unidad)\n- $ c = 1 $ (costo de producción por unidad)\n- $ f = 0.6 $ (costo de transporte por unidad por km)\n- $ d = 6 $ (distancia al mercado en km)\n\nLa fórmula de la renta de localización es:\n\n$$\nR(d) = y \\cdot (p - c) - y \\cdot f \\cdot d\n$$\n\nSustituimos los valores:\n\n$$\nR(6) = 10 \\cdot (7 - 1) - 10 \\cdot 0.6 \\cdot 6\n$$\n\n$$\nR(6) = 10 \\cdot 6 - 10 \\cdot 3.6\n$$\n\n$$\nR(6) = 60 - 36\n$$\n\n$$\nR(6) = 24\n$$\n\nRespuesta final: 24",
+    "elapsed_s": 36.6
+  },
+  "qwen3:32b|35": {
+    "modelo": "qwen3:32b",
+    "n": 35,
+    "respuesta_final": "1.29",
+    "nota": "",
+    "raw": "Para calcular la distancia máxima $ d_0 $ a la que la renta de localización se hace cero, utilizamos la fórmula de la renta agrícola de von Thünen:\n\n$$\nR = p \\cdot y \\cdot (1 - f \\cdot d) - c\n$$\n\nDonde:\n\n- $ R $: renta agrícola\n- $ p $: precio del producto (14)\n- $ y $: rendimiento por unidad de tierra (4)\n- $ f $: costo de transporte por km (0.75)\n- $ d $: distancia desde el mercado (en km)\n- $ c $: costo de producción (2)\n\nQueremos encontrar la distancia $ d_0 $ a la que la renta $ R $ se hace cero:\n\n$$\n0 = p \\cdot y \\cdot (1 - f \\cdot d_0) - c\n$$\n\nReorganizando:\n\n$$\np \\cdot y \\cdot (1 - f \\cdot d_0) = c\n$$\n\n$$\n1 - f \\cdot d_0 = \\frac{c}{p \\cdot y}\n$$\n\n$$\nf \\cdot d_0 = 1 - \\frac{c}{p \\cdot y}\n$$\n\n$$\nd_0 = \\frac{1 - \\frac{c}{p \\cdot y}}{f}\n$$\n\nSustituyendo los valores:\n\n- $ p = 14 $\n- $ y = 4 $\n- $ c = 2 $\n- $ f = 0.75 $\n\n$$\nd_0 = \\frac{1 - \\frac{2}{14 \\cdot 4}}{0.75}\n$$\n\n$$\nd_0 = \\frac{1 - \\frac{2}{56}}{0.75}\n$$\n\n$$\nd_0 = \\frac{1 - 0.0357}{0.75}\n$$\n\n$$\nd_0 = \\frac{0.9643}{0.75}\n$$\n\n$$\nd_0 \\approx 1.2857\n$$\n\nRespuesta final: 1.29",
+    "elapsed_s": 71.5
+  },
+  "qwen3:32b|36": {
+    "modelo": "qwen3:32b",
+    "n": 36,
+    "respuesta_final": "Respuesta final: 4",
+    "nota": "",
+    "raw": "Para resolver el problema, necesitamos calcular el beneficio neto $ R(d) $ de cada cultivo como función de la distancia $ d $ al centro del mercado. Los parámetros son:\n\n- Cultivo A: $ y_A = 10 $, $ p_A = 7 $, $ c_A = 1 $, $ f_A = 0.6 $\n- Cultivo B: $ y_B = 4 $, $ p_B = 14 $, $ c_B = 2 $, $ f_B = 0.75 $\n\nLa fórmula general para el beneficio neto es:\n\n$$\nR(d) = (p - c) \\cdot y - f \\cdot d \\cdot y\n$$\n\nSimplificando:\n\n$$\nR(d) = y \\cdot [(p - c) - f \\cdot d]\n$$\n\n### Cultivo A:\n$$\nR_A(d) = 10 \\cdot [(7 - 1) - 0.6 \\cdot d] = 10 \\cdot [6 - 0.6d] = 60 - 6d\n$$\n\n### Cultivo B:\n$$\nR_B(d) = 4 \\cdot [(14 - 2) - 0.75 \\cdot d] = 4 \\cdot [12 - 0.75d] = 48 - 3d\n$$\n\nQueremos encontrar la distancia $ d^* $ donde $ R_A(d^*) = R_B(d^*) $, es decir:\n\n$$\n60 - 6d = 48 - 3d\n$$\n\nResolviendo:\n\n$$\n60 - 48 = 6d - 3d \\Rightarrow 12 = 3d \\Rightarrow d^* = 4\n$$\n\n### Respuesta final:\nRespuesta final: 4",
+    "elapsed_s": 62.1
+  },
+  "qwen3:32b|37": {
+    "modelo": "qwen3:32b",
+    "n": 37,
+    "respuesta_final": "250000**",
+    "nota": "",
+    "raw": "La **ley de Zipf** establece una relación entre el rango de una ciudad y su población. En forma general, la ley de Zipf se expresa como:\n\n$$\nP(r) = \\frac{P_1}{r^q}\n$$\n\nDonde:\n\n- $ P(r) $: población de la ciudad en el rango $ r $.\n- $ P_1 $: población de la ciudad más grande (rango 1).\n- $ r $: rango de la ciudad.\n- $ q $: parámetro de la ley de Zipf.\n\nEn este caso:\n\n- $ P_1 = 1{,}000{,}000 $\n- $ r = 4 $\n- $ q = 1 $\n\nSustituyendo en la fórmula:\n\n$$\nP(4) = \\frac{1{,}000{,}000}{4^1} = \\frac{1{,}000{,}000}{4} = 250{,}000\n$$\n\n**Respuesta final: 250000**",
+    "elapsed_s": 37.5
+  },
+  "qwen3:32b|38": {
+    "modelo": "qwen3:32b",
+    "n": 38,
+    "respuesta_final": "1",
+    "nota": "",
+    "raw": "Sabemos que bajo la ley de Zipf, la población de una ciudad de rango $ r $ se expresa como:\n\n$$\nP(r) = \\frac{P_1}{r^q}\n$$\n\nDonde:\n\n- $ P_1 = 1,000,000 $\n- $ r = 5 $\n- $ P(5) = 200,000 $\n\nSustituimos los valores en la fórmula:\n\n$$\n200,000 = \\frac{1,000,000}{5^q}\n$$\n\nMultiplicamos ambos lados por $ 5^q $:\n\n$$\n200,000 \\cdot 5^q = 1,000,000\n$$\n\nDividimos ambos lados por 200,000:\n\n$$\n5^q = \\frac{1,000,000}{200,000} = 5\n$$\n\nTomamos logaritmo en ambos lados:\n\n$$\n\\log(5^q) = \\log(5)\n$$\n\n$$\nq \\cdot \\log(5) = \\log(5)\n$$\n\nDividimos ambos lados por $ \\log(5) $:\n\n$$\nq = 1\n$$\n\nRespuesta final: 1",
+    "elapsed_s": 45.1
+  },
+  "qwen3:32b|39": {
+    "modelo": "qwen3:32b",
+    "n": 39,
+    "respuesta_final": "-1**",
+    "nota": "",
+    "raw": "Para resolver este problema, seguimos estos pasos:\n\n---\n\n### **1. Entender la fórmula de población**\nLa población de cada ciudad se define como:\n\n$$\nP(r) = \\frac{1{,}000{,}000}{r}\n$$\n\ndonde $ r = 1, 2, ..., 100 $.\n\n---\n\n### **2. Tomar logaritmos**\nPara ajustar una recta por mínimos cuadrados, tomamos logaritmos en base 10 de ambos lados:\n\n$$\n\\log_{10}(P(r)) = \\log_{10}\\left(\\frac{1{,}000{,}000}{r}\\right) = \\log_{10}(1{,}000{,}000) - \\log_{10}(r)\n$$\n\n$$\n\\log_{10}(P(r)) = 6 - \\log_{10}(r)\n$$\n\nEsto ya es una recta de la forma:\n\n$$\n\\log_{10}(P) = a + b \\cdot \\log_{10}(r)\n$$\n\ndonde $ a = 6 $ y $ b = -1 $.\n\n---\n\n### **3. Confirmar con ajuste por mínimos cuadrados**\nDado que la relación es exacta (no hay error), el ajuste por mínimos cuadrados debe dar exactamente $ b = -1 $, ya que la relación es lineal perfecta.\n\n---\n\n### **Respuesta final: -1**",
+    "elapsed_s": 52.4
+  }
+}

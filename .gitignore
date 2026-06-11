@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 .agora-conflicts/
 .agora-host-sync.json
+.playwright-mcp/

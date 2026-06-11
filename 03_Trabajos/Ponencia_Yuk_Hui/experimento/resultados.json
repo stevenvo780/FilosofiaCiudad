@@ -1,0 +1,859 @@
+{
+  "condiciones_experimento": {
+    "modelos": [
+      "Claude Sonnet",
+      "Claude Opus"
+    ],
+    "uso_herramientas": false,
+    "intentos_por_modelo": 2,
+    "fecha": "2026-06-10",
+    "nota": "Sin herramientas externas; razonamiento interno del LLM únicamente.",
+    "modelos_locales": [
+      "qwen2.5:3b",
+      "qwen3:14b",
+      "gpt-oss:20b",
+      "qwen3:32b"
+    ],
+    "ejecucion_local": {
+      "plataforma": "kratos",
+      "ollama_version": "0.24",
+      "hardware": "RTX 5070 Ti 16 GB",
+      "temperature": 0.2,
+      "herramientas": false,
+      "intentos_por_modelo": 2,
+      "nota": "Sin herramientas por construcción (ollama no expone llamadas a herramientas en este modo); razonamiento interno únicamente."
+    },
+    "omisiones": [
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t2_camino_corto",
+        "intento": 1,
+        "razon": "Timed out (605.2 s) — sin respuesta registrada."
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t4_recursion_afin",
+        "intento": 1,
+        "razon": "Timed out (604.5 s) — sin respuesta registrada."
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t4_recursion_afin",
+        "intento": 2,
+        "razon": "Datos ausentes en respuestas_kratos.json"
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t5_calculo_exteriorizado",
+        "intento": 1,
+        "razon": "Datos ausentes en respuestas_kratos.json"
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t5_calculo_exteriorizado",
+        "intento": 2,
+        "razon": "Datos ausentes en respuestas_kratos.json"
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t6_relevancia_escena",
+        "intento": 1,
+        "razon": "Datos ausentes en respuestas_kratos.json"
+      },
+      {
+        "modelo": "qwen3:32b",
+        "tarea_id": "t6_relevancia_escena",
+        "intento": 2,
+        "razon": "Datos ausentes en respuestas_kratos.json"
+      }
+    ]
+  },
+  "tareas": [
+    {
+      "id": "t1_multiplicacion",
+      "titulo": "Multiplicación exacta de dos enteros de 12 dígitos",
+      "teoria": "La IA estadística no ejecuta el algoritmo aritmético; predice tokens plausibles, de modo que la precisión dígito a dígito no está garantizada.",
+      "autor": "Bergson",
+      "inversa": false,
+      "valor_exacto": "349625969488102520908371"
+    },
+    {
+      "id": "t2_camino_corto",
+      "titulo": "Camino más corto exacto en un grafo urbano de 25 barrios",
+      "teoria": "El óptimo global sobre datos discretos exige un algoritmo determinístico (Dijkstra); la heurística asociativa del LLM no garantiza la ruta mínima ni su unicidad.",
+      "autor": "Hui",
+      "inversa": false,
+      "valor_exacto": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro"
+    },
+    {
+      "id": "t3_conteo_reticula",
+      "titulo": "Conteo combinatorio de rutas monótonas en una retícula urbana 12x12",
+      "teoria": "El conteo combinatorio exacto crece de forma explosiva; un coeficiente binomial es trivial para Python pero la magnitud exacta excede la memorización estadística del LLM.",
+      "autor": "Bergson",
+      "inversa": false,
+      "valor_exacto": "2704156"
+    },
+    {
+      "id": "t4_recursion_afin",
+      "titulo": "Iteración recursiva profunda de una función afín modular (40 pasos)",
+      "teoria": "La recursividad y la retroalimentación exigen tomar la salida como nueva entrada con fidelidad perfecta en cada paso; 40 iteraciones encadenadas amplifican cualquier error del LLM.",
+      "autor": "Wiener",
+      "inversa": false,
+      "valor_exacto": "23842"
+    },
+    {
+      "id": "t5_calculo_exteriorizado",
+      "titulo": "Suma de cuadrados exacta de 30 lecturas de sensores urbanos",
+      "teoria": "Un agregado exacto sobre 30 valores literales es cómputo puro reproducible; el LLM no acumula con precisión aritmética sino que estima.",
+      "autor": "Bergson",
+      "inversa": false,
+      "valor_exacto": "651396404"
+    },
+    {
+      "id": "t6_relevancia_escena",
+      "titulo": "Juicio de relevancia en una escena urbana ambigua (tarea inversa)",
+      "teoria": "El juicio de relevancia y significatividad no admite formalización algorítmica previa: no hay función de entrada-salida sin que un humano fije primero qué cuenta como relevante.",
+      "autor": "Dreyfus/Heidegger",
+      "inversa": true,
+      "valor_exacto": "NO_COMPUTABLE"
+    }
+  ],
+  "respuestas": [
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "349625969488102520908371",
+      "confianza": "baja",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "349625969488102520908371",
+      "confianza": "baja",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "349625969488102520908371",
+      "confianza": "baja",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "349634804376851666458571",
+      "confianza": "baja",
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Farallon, Girasol, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "23842",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "23842",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "23842",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "23842",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "651396404",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "651396404",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": true
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "651397404",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "651400404",
+      "confianza": "media",
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "sonnet",
+      "intento": 1,
+      "respuesta_final": "La alerta debe dirigirse al repartidor en moto para que frene de inmediato, porque es el unico agente con capacidad de causar un impacto letal sobre el nino que acaba de pisar la calzada con el semaforo en rojo y el pavimento mojado reduciendo la distancia de frenado.",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "El modelo identificó al repartidor en moto como foco de la alerta (agente activo de peligro), focalizando en la causa del impacto."
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "sonnet",
+      "intento": 2,
+      "respuesta_final": "La alerta debe dirigirse al niño que acaba de pisar la calzada, para detenerlo de inmediato antes de que la moto que acelera sobre el pavimento mojado lo atropelle.",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "El modelo identificó al niño como sujeto de la alerta (víctima potencial directa), focalizando en quien recibe el peligro."
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "opus",
+      "intento": 1,
+      "respuesta_final": "Al acompanante del nino, para que lo sujete y le impida entrar a la calzada antes de que lo atropelle la moto que acelera sobre el pavimento mojado.",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "El modelo identificó al acompañante del niño como receptor de la alerta (agente que puede actuar preventivamente sobre la víctima)."
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "opus",
+      "intento": 2,
+      "respuesta_final": "Alerta dirigida al niño que soltó la mano de su acompañante y entra a la calzada (y a su acompañante para retenerlo), por riesgo de atropello mortal con la moto acelerando, semáforo en rojo y pavimento resbaladizo.",
+      "confianza": "alta",
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "El modelo identificó al niño —y secundariamente a su acompañante— como destinatarios, enfatizando el riesgo de atropello mortal y el pavimento resbaladizo."
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "337783171400000000000000",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 5.2
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "336403254580724477483177",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 3.4
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Yarumal, Zafiro",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 5.3
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "Altavista, Bellavista, Dorado",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 6.6
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 4.2
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 4.6
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 28.4
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 27.9
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "1000000000",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 6.2
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "100360",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 6.3
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen2.5:3b",
+      "intento": 1,
+      "respuesta_final": "Alertar a las personas en el cruce para evitar posibles choques.",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Respuesta vaga: alerta genérica al grupo en el cruce, sin identificar un destinatario específico ni jerarquizar el peligro.",
+      "elapsed_s": 3.8
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen2.5:3b",
+      "intento": 2,
+      "respuesta_final": "<alertar al niño>",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Identificó al niño como destinatario de la alerta; respuesta esquemática con marcadores HTML no solicitados.",
+      "elapsed_s": 2.8
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "34962209758543162489373",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 21.2
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "349623619854859461437377",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 4.8
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Dorado, Farallon, Girasol, Horizonte, Jacaranda, Iguazu, Kennedy, Lagos, Nogal, Palermo, Olivos, Roble, Quinta, Urapan, Zafiro",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 30.7
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Iguazu, Yarumal, Zafiro",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 23.8
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 5.9
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 5.5
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "37521",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 13.6
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 83.5
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "501581288",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 15.3
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "740766323",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 16.6
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen3:14b",
+      "intento": 1,
+      "respuesta_final": "La alerta debe dirigirse a la mujer mayor para evitar un posible accidente.",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Identificó a la mujer mayor como destinataria principal; la escena menciona un niño y un repartidor, no una mujer mayor — alucinación de entidad.",
+      "elapsed_s": 3.7
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen3:14b",
+      "intento": 2,
+      "respuesta_final": "Al repartidor en moto.",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Identificó al repartidor en moto como destinatario; coherente con la lectura de agente activo de peligro.",
+      "elapsed_s": 3.8
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 79.2
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 108.5
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Jacaranda, Lagos, Tejar, Yarumal, Zafiro",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 42.7
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 87.6
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 18.9
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 38.8
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 95.5
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 95.0
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "651396404",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 41.2
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "SIN_RESPUESTA",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 77.6
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "gpt-oss:20b",
+      "intento": 1,
+      "respuesta_final": "Alerta al niño que está cruzando la calle",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Identificó al niño que cruza como destinatario; respuesta muy concisa, sin razonamiento adicional.",
+      "elapsed_s": 10.2
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "gpt-oss:20b",
+      "intento": 2,
+      "respuesta_final": "Alerta al niño que está cruzando la calle.",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "Identificó al niño que cruza como destinatario; idéntica respuesta en los dos intentos (convergencia plana).",
+      "elapsed_s": 9.1
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "349686784924678492491",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 21.5
+    },
+    {
+      "tarea_id": "t1_multiplicacion",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "34972277298969722772981",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 7.0
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "ERROR",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 605.2
+    },
+    {
+      "tarea_id": "t2_camino_corto",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "Altavista, Bellavista, Dorado, Farallon, Girasol, Iguazu, Jaguar, Zafiro**",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 222.0
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 61.4
+    },
+    {
+      "tarea_id": "t3_conteo_reticula",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "2704156",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": true,
+      "elapsed_s": 55.7
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "ERROR",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false,
+      "elapsed_s": 604.5
+    },
+    {
+      "tarea_id": "t4_recursion_afin",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "OMITIDO",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "OMITIDO",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t5_calculo_exteriorizado",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "OMITIDO",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": false
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen3:32b",
+      "intento": 1,
+      "respuesta_final": "OMITIDO",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "OMITIDO: timed out (605 s) — tarea no completada."
+    },
+    {
+      "tarea_id": "t6_relevancia_escena",
+      "modelo": "qwen3:32b",
+      "intento": 2,
+      "respuesta_final": "OMITIDO",
+      "confianza": null,
+      "uso_herramientas": false,
+      "correcto": "NO_APLICA",
+      "nota_cualitativa": "OMITIDO: datos ausentes en respuestas_kratos.json — tarea no recogida."
+    }
+  ],
+  "exactitud_por_modelo": {
+    "sonnet": {
+      "aciertos": 9,
+      "total": 10,
+      "porcentaje": 90.0
+    },
+    "opus": {
+      "aciertos": 7,
+      "total": 10,
+      "porcentaje": 70.0
+    },
+    "qwen2_5_3b": {
+      "aciertos": 2,
+      "total": 10,
+      "porcentaje": 20.0
+    },
+    "qwen3_14b": {
+      "aciertos": 2,
+      "total": 10,
+      "porcentaje": 20.0
+    },
+    "gpt-oss_20b": {
+      "aciertos": 4,
+      "total": 10,
+      "porcentaje": 40.0
+    },
+    "qwen3_32b": {
+      "aciertos": 2,
+      "total": 10,
+      "porcentaje": 20.0
+    }
+  },
+  "nota_tarea_inversa": "t6_relevancia_escena es NO_COMPUTABLE: la escena se entrega en lenguaje natural sin estructura de datos, sin métrica de peligro ni función objetivo. La formalización necesaria para escribir un algoritmo ES el juicio que se pide. Los LLMs produjeron respuestas plausibles y coherentes identificando al niño, al repartidor o al acompañante como foco de la alerta, lo cual ilustra la capacidad del LLM en el dominio del significado contextual donde el cómputo puro no puede arrancar."
+}

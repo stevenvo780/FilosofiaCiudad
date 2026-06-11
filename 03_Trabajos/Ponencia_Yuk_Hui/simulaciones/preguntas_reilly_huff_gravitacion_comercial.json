@@ -1,0 +1,29 @@
+{
+  "teoria": "reilly_huff_gravitacion_comercial",
+  "nombre": "Gravitación comercial: ley de Reilly y modelo probabilístico de Huff",
+  "autor": "William J. Reilly / David L. Huff",
+  "anio": "1931/1964",
+  "preguntas": [
+    {
+      "q": "Dos ciudades A (población 64000) y B (población 16000) están separadas por 30 km. Usando el punto de ruptura de Reilly BP=d/(1+sqrt(P_A/P_B)), calcula la distancia (km) del punto de ruptura medida desde B. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "10.0",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.05 (10.0)",
+      "como_computar": "sqrt(64000/16000)=sqrt(4)=2; BP=30.0/(1+2)=10.0000 km desde B."
+    },
+    {
+      "q": "Con el modelo de Huff y beta=2, un consumidor enfrenta la Tienda 1 (atractivo 1000, distancia 5) y la Tienda 2 (atractivo 4000, distancia 10). Calcula la probabilidad de que elija la Tienda 2. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.5",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.001 (0.5)",
+      "como_computar": "U1=1000/5.0^2=40.00, U2=4000/10.0^2=40.00; P2=40.00/(40.00+40.00)=0.5000."
+    },
+    {
+      "q": "Sobre una rejilla de 21x21 consumidores en [0,20]x[0,20] km, con Tienda 1 en (5,10) atractivo 1000 y Tienda 2 en (15,10) atractivo 4000, beta=2, calcula la fracción de celdas de la rejilla en las que la probabilidad de Huff de elegir la Tienda 2 es mayor o igual a 0.5. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.77551",
+      "tipo": "emergente",
+      "tolerancia": "±0.05 en torno a 0.78",
+      "como_computar": "Rejilla 21×21=441 celdas; celdas con P(T2)>=0.5: 342; fracción=0.775510."
+    }
+  ]
+}

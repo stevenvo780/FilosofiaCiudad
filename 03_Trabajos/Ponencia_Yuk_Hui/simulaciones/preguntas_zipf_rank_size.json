@@ -1,0 +1,29 @@
+{
+  "teoria": "zipf_rank_size",
+  "nombre": "Ley rango-tamaño de Zipf para ciudades",
+  "autor": "George Kingsley Zipf",
+  "anio": "1949",
+  "preguntas": [
+    {
+      "q": "En un sistema que cumple la ley de Zipf con q=1, la ciudad mas grande tiene 1,000,000 de habitantes. Cual es la poblacion esperada de la ciudad de rango 4? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "250000",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (250000)",
+      "como_computar": "P(4) = 1,000,000 / 4^1 = 250,000"
+    },
+    {
+      "q": "Bajo Zipf con exponente q, P(r)=P_1/r^q. Si P_1=1,000,000 y la ciudad de rango 5 tiene 200,000 habitantes, cual es el exponente q? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "1.0",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.01 (1.0)",
+      "como_computar": "200000 = 1000000 / 5^q  =>  5^q = 5  =>  q = 1"
+    },
+    {
+      "q": "Genera 100 ciudades con P(r)=1,000,000/r (q=1 exacto, r=1..100), ajusta por minimos cuadrados la recta log10(P) = a + b*log10(r) y reporta la pendiente b. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "-1.0",
+      "tipo": "emergente",
+      "tolerancia": "±0.001 en torno a -1.000",
+      "como_computar": "Simulacion determinista con P(r) = 1,000,000 / r (q=1 exacto, sin ruido). Ajuste scipy.stats.linregress sobre log10(rangos) vs log10(poblaciones). Pendiente recuperada: -1.000000 (R^2 = 1.000000). La tolerancia ±0.001 es consistente con el criterio_validacion del catalogo: al ser q=1 exacto el ajuste recupera -1.000000 sin ruido. (El sistema empirico perturbado q≈0.86 que se grafica para contraste no entra en esta pregunta.)"
+    }
+  ]
+}

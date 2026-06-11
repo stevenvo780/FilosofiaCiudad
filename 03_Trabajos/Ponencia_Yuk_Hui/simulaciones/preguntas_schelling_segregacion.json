@@ -1,0 +1,29 @@
+{
+  "teoria": "schelling_segregacion",
+  "nombre": "Modelo de segregación de Schelling",
+  "autor": "Thomas Schelling",
+  "anio": "1971",
+  "preguntas": [
+    {
+      "q": "Un agente de Schelling tiene 8 vecinos en la vecindad de Moore: 5 de su mismo grupo, 2 del otro grupo y 1 celda vacía. El umbral de tolerancia es T=0.30, definido como la fracción mínima de mismo-grupo sobre los vecinos OCUPADOS. ¿Está satisfecho el agente? Calcula primero la fracción de mismo-grupo. Formato: 'Respuesta final: <valor>' donde valor es la fracción (no sí/no).",
+      "valor_exacto": "0.7143",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.01 (0.714)",
+      "como_computar": "Vecinos ocupados = 5 + 2 = 7; fracción mismo-grupo = 5/7 = 0.7143; como 0.7143 >= 0.30 el agente está satisfecho. La respuesta pedida es la fracción: 0.7143."
+    },
+    {
+      "q": "En una rejilla de Schelling con 2500 celdas, el 45% son del grupo Rojo, el 45% del grupo Azul y el resto vacías. ¿Cuántas celdas vacías hay? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "250",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (250)",
+      "como_computar": "Vacías = 10% de 2500 = 250. Verificación: 1125 Rojo + 1125 Azul + 250 vacío = 2500."
+    },
+    {
+      "q": "Corre el modelo de Schelling en rejilla 50×50, 45% Rojo, 45% Azul, 10% vacío, umbral T=0.30, vecindad de Moore, numpy.random.seed(42), máximo 200 iteraciones. Partiendo de una fracción media de mismo-grupo inicial cercana a 0.50, reporta la fracción media de vecinos del mismo grupo en el estado final convergido. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.7507",
+      "tipo": "emergente",
+      "tolerancia": "±0.05 en torno a 0.75",
+      "como_computar": "Resultado de la simulación con seed=42 y T=0.30: 0.7507. Con T=0.30 el valor final ronda 0.74-0.76 (cluster robusto 0.738-0.751 sobre seeds 1,7,42,123,999). La segregación emergente eleva la fracción de mismo-grupo desde 0.501 hasta 0.751 en 14 iteraciones."
+    }
+  ]
+}

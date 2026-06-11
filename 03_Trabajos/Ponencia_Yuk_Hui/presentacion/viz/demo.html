@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería QA — Visualizaciones VIZ</title>
+  <style>
+    /* ── Paleta del proyecto ─────────────────────────────────────────── */
+    :root {
+      --fondo:        #0e1a2b;
+      --fondo-grad:   #0a121e;
+      --texto:        #e8e6e1;
+      --texto-tenue:  #9aa3af;
+      --acento:       #e0a458;
+      --acento-suave: #efc88a;
+      --linea:        #243248;
+      --verde:        #3ecf9a;
+      --rojo:         #e07a68;
+      --azul:         #5fa8e0;
+      --serif:        Georgia, 'Times New Roman', serif;
+      --sans:         'Helvetica Neue', Arial, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: radial-gradient(ellipse at 28% -5%, #16263c 0%, var(--fondo) 45%, var(--fondo-grad) 100%);
+      color: var(--texto);
+      font-family: var(--sans);
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(10, 18, 30, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--linea);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--acento);
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    header .subtitle {
+      font-size: 0.75rem;
+      color: var(--texto-tenue);
+      flex-shrink: 0;
+    }
+
+    /* ── Selector de viz ─────────────────────────────────────────────── */
+    .selector-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+
+    .selector-wrap label {
+      font-size: 0.75rem;
+      color: var(--texto-tenue);
+    }
+
+    select#viz-selector {
+      background: #0e1a2b;
+      border: 1px solid var(--linea);
+      color: var(--texto);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.15s;
+      min-width: 200px;
+    }
+    select#viz-selector:focus,
+    select#viz-selector:hover {
+      border-color: var(--acento);
+    }
+
+    button#fullscreen-btn {
+      background: rgba(224, 164, 88, 0.12);
+      border: 1px solid rgba(224, 164, 88, 0.35);
+      color: var(--acento);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    button#fullscreen-btn:hover {
+      background: rgba(224, 164, 88, 0.22);
+      border-color: var(--acento);
+    }
+
+    button#reset-btn {
+      background: rgba(94, 168, 224, 0.10);
+      border: 1px solid rgba(94, 168, 224, 0.3);
+      color: var(--azul);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button#reset-btn:hover {
+      background: rgba(94, 168, 224, 0.18);
+    }
+
+    /* ── Contador de viz ─────────────────────────────────────────────── */
+    .viz-count {
+      font-size: 0.72rem;
+      color: var(--texto-tenue);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      padding: 0.2rem 0.55rem;
+      flex-shrink: 0;
+    }
+    .viz-count span {
+      color: var(--acento);
+      font-weight: 600;
+    }
+
+    /* ── Modo galería ────────────────────────────────────────────────── */
+    #gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ── Tarjeta de visualización ─────────────────────────────────────── */
+    .viz-card {
+      border: 1px solid var(--linea);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(14, 26, 43, 0.6);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      transition: border-color 0.2s;
+    }
+    .viz-card:hover {
+      border-color: rgba(224, 164, 88, 0.3);
+    }
+
+    .viz-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1rem;
+      background: rgba(10, 18, 30, 0.7);
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .viz-card-id {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.7rem;
+      color: var(--acento);
+      background: rgba(224, 164, 88, 0.12);
+      border: 1px solid rgba(224, 164, 88, 0.25);
+      border-radius: 4px;
+      padding: 0.15rem 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .viz-card-title {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--texto);
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .viz-card-status {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .viz-card-status.ok  { background: rgba(62,207,154,0.12); color: var(--verde); border: 1px solid rgba(62,207,154,0.25); }
+    .viz-card-status.err { background: rgba(224,122,104,0.12); color: var(--rojo); border: 1px solid rgba(224,122,104,0.25); }
+    .viz-card-status.loading { background: rgba(95,168,224,0.12); color: var(--azul); border: 1px solid rgba(95,168,224,0.25); }
+
+    .viz-card-btn {
+      background: none;
+      border: 1px solid var(--linea);
+      color: var(--texto-tenue);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .viz-card-btn:hover {
+      border-color: var(--acento);
+      color: var(--acento);
+    }
+
+    /* ── Contenedor de canvas: 1200×700 fijos ─────────────────────────── */
+    .viz-container {
+      width: 1200px;
+      height: 700px;
+      max-width: 100%;
+      position: relative;
+      background: #0e1a2b;
+    }
+
+    /* ── Modo pantalla completa ───────────────────────────────────────── */
+    #fullscreen-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: #0e1a2b;
+      flex-direction: column;
+    }
+    #fullscreen-overlay.active {
+      display: flex;
+    }
+
+    #fullscreen-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 1rem;
+      background: rgba(10, 18, 30, 0.92);
+      border-bottom: 1px solid var(--linea);
+      flex-shrink: 0;
+    }
+
+    #fullscreen-header .fs-id {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: var(--acento);
+    }
+
+    #fullscreen-header .fs-title {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      color: var(--texto);
+      flex: 1;
+    }
+
+    #fullscreen-close {
+      background: none;
+      border: 1px solid var(--linea);
+      color: var(--texto-tenue);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    #fullscreen-close:hover {
+      border-color: var(--rojo);
+      color: var(--rojo);
+    }
+
+    #fullscreen-canvas-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Mensaje de error ────────────────────────────────────────────── */
+    .viz-error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      gap: 0.5rem;
+      color: var(--rojo);
+      font-size: 0.85rem;
+      padding: 1rem;
+      text-align: center;
+    }
+    .viz-error code {
+      font-size: 0.75rem;
+      color: var(--texto-tenue);
+      background: rgba(255,255,255,0.04);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    /* ── Spinner de carga ────────────────────────────────────────────── */
+    .viz-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--texto-tenue);
+      font-size: 0.8rem;
+      gap: 0.5rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(224,164,88,0.2);
+      border-top-color: var(--acento);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* ── Scrollbar ───────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--linea); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(224,164,88,0.3); }
+
+    /* ── Responsive: contenedor de canvas se encoge si no cabe ───────── */
+    @media (max-width: 1240px) {
+      .viz-container {
+        width: 100%;
+        height: 0;
+        padding-bottom: calc(700 / 1200 * 100%);
+      }
+      .viz-container > * {
+        position: absolute;
+        inset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
+<header>
+  <h1>Galería QA — VIZ</h1>
+  <span class="subtitle">Ponencia Yuk Hui · visualizaciones registradas</span>
+  <div class="viz-count" id="viz-count"><span>0</span> viz cargadas</div>
+
+  <div class="selector-wrap">
+    <label for="viz-selector">Ver a pantalla completa:</label>
+    <select id="viz-selector">
+      <option value="">— seleccionar —</option>
+    </select>
+    <button id="fullscreen-btn" title="Abrir visualización seleccionada a pantalla completa">Pantalla completa</button>
+    <button id="reset-btn" title="Volver a la galería">Galería</button>
+  </div>
+</header>
+
+<!-- ══════════════════════ PANTALLA COMPLETA ══════════════════════ -->
+<div id="fullscreen-overlay" role="dialog" aria-modal="true" aria-label="Visualización a pantalla completa">
+  <div id="fullscreen-header">
+    <span class="fs-id" id="fs-id-label"></span>
+    <span class="fs-title" id="fs-title-label"></span>
+    <button id="fullscreen-close" title="Cerrar pantalla completa (Esc)">✕ Cerrar</button>
+  </div>
+  <div id="fullscreen-canvas-wrap"></div>
+</div>
+
+<!-- ══════════════════════════ GALERÍA ══════════════════════════ -->
+<div id="gallery">
+  <p id="gallery-loading" style="color:var(--texto-tenue);font-size:0.85rem;text-align:center;padding:3rem 0;">
+    <span class="spinner" style="display:inline-block;vertical-align:middle;margin-right:0.5rem;"></span>
+    Cargando scripts…
+  </p>
+</div>
+
+<!-- ══════════════════════════ SCRIPTS ══════════════════════════ -->
+<!--
+  Orden intencionado: de más antiguo/simple a más reciente/complejo.
+  Todos registran en window.VIZ antes de que demo.js los monte.
+-->
+<script src="von_thunen.js"></script>
+<script src="christaller.js"></script>
+<script src="zipf.js"></script>
+<script src="schelling.js"></script>
+<script src="automata.js"></script>
+<script src="dla.js"></script>
+<script src="gravitacional.js"></script>
+<script src="braess.js"></script>
+
+<!-- ══════════════════════════ DEMO.JS ══════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Orden de presentación deseado (se usa si la clave existe en VIZ) ── */
+  var VIZ_ORDER = [
+    'von_thunen',
+    'christaller',
+    'zipf',
+    'schelling',
+    'automata',
+    'dla',
+    'gravitacional',
+    'braess'
+  ];
+
+  /* ── Estado global ──────────────────────────────────────────────────── */
+  var instances   = {};   // id → instancia { api, card, container }
+  var fsInstance  = null; // instancia montada en pantalla completa
+  var fsCurrentId = null;
+
+  /* ── Esperar a que todos los scripts hayan ejecutado ─────────────────── */
+  window.addEventListener('load', function () {
+    var viz = window.VIZ || {};
+    var ids = VIZ_ORDER.filter(function (id) { return !!viz[id]; });
+
+    /* Agregar cualquier clave no listada en VIZ_ORDER */
+    Object.keys(viz).forEach(function (id) {
+      if (ids.indexOf(id) === -1) ids.push(id);
+    });
+
+    buildGallery(ids, viz);
+    buildSelector(ids, viz);
+    updateCount(ids.length);
+  });
+
+  /* ── Construye las tarjetas en la galería ────────────────────────────── */
+  function buildGallery(ids, viz) {
+    var gallery = document.getElementById('gallery');
+    var loadingMsg = document.getElementById('gallery-loading');
+    if (loadingMsg) loadingMsg.remove();
+
+    if (ids.length === 0) {
+      gallery.innerHTML = '<p style="color:var(--rojo);text-align:center;padding:3rem 0;">' +
+        'No se encontraron visualizaciones registradas en window.VIZ.</p>';
+      return;
+    }
+
+    ids.forEach(function (id) {
+      var vizDef = viz[id];
+      var card   = buildCard(id, vizDef);
+      gallery.appendChild(card);
+
+      /* Montar la viz en su contenedor */
+      var containerEl = card.querySelector('.viz-container');
+      mountViz(id, vizDef, containerEl, card);
+    });
+  }
+
+  /* ── Construye el DOM de una tarjeta ─────────────────────────────────── */
+  function buildCard(id, vizDef) {
+    var titulo = (vizDef && vizDef.titulo) ? vizDef.titulo : id;
+
+    var card = document.createElement('section');
+    card.className = 'viz-card';
+    card.id = 'card-' + id;
+
+    /* Header de la tarjeta */
+    var header = document.createElement('div');
+    header.className = 'viz-card-header';
+
+    var idBadge = document.createElement('span');
+    idBadge.className = 'viz-card-id';
+    idBadge.textContent = id;
+
+    var titleEl = document.createElement('span');
+    titleEl.className = 'viz-card-title';
+    titleEl.textContent = titulo;
+
+    var statusEl = document.createElement('span');
+    statusEl.className = 'viz-card-status loading';
+    statusEl.textContent = 'montando…';
+    statusEl.id = 'status-' + id;
+
+    var fsBtn = document.createElement('button');
+    fsBtn.className = 'viz-card-btn';
+    fsBtn.textContent = '⛶ Pantalla completa';
+    fsBtn.dataset.vizId = id;
+    fsBtn.addEventListener('click', function () {
+      openFullscreen(id);
+    });
+
+    header.appendChild(idBadge);
+    header.appendChild(titleEl);
+    header.appendChild(statusEl);
+    header.appendChild(fsBtn);
+    card.appendChild(header);
+
+    /* Contenedor de la viz */
+    var container = document.createElement('div');
+    container.className = 'viz-container';
+    container.id = 'viz-wrap-' + id;
+    card.appendChild(container);
+
+    return card;
+  }
+
+  /* ── Monta una viz en un contenedor ──────────────────────────────────── */
+  function mountViz(id, vizDef, containerEl, card) {
+    var statusEl = document.getElementById('status-' + id);
+
+    if (!vizDef || typeof vizDef.mount !== 'function') {
+      setStatus(statusEl, 'err', 'sin mount()');
+      containerEl.innerHTML = '<div class="viz-error">' +
+        '<span>window.VIZ["' + id + '"] no tiene método mount()</span>' +
+        '<code>typeof mount === "' + typeof (vizDef && vizDef.mount) + '"</code>' +
+        '</div>';
+      return;
+    }
+
+    /* Mostrar spinner mientras la viz inicializa */
+    containerEl.innerHTML = '<div class="viz-loading"><span class="spinner"></span>iniciando ' + id + '…</div>';
+
+    try {
+      var api = vizDef.mount(containerEl, { compact: false });
+
+      /* Limpiar spinner si la viz no lo hizo ya */
+      var loadingEl = containerEl.querySelector('.viz-loading');
+      if (loadingEl) loadingEl.remove();
+
+      instances[id] = { api: api, card: card, container: containerEl, def: vizDef };
+      setStatus(statusEl, 'ok', 'ok');
+    } catch (err) {
+      setStatus(statusEl, 'err', 'error');
+      containerEl.innerHTML = '<div class="viz-error">' +
+        '<span>Error al montar <strong>' + id + '</strong></span>' +
+        '<code>' + (err && err.message ? err.message : String(err)) + '</code>' +
+        '</div>';
+      console.error('[demo.html] mount error en "' + id + '":', err);
+    }
+  }
+
+  /* ── Construye el <select> del selector ──────────────────────────────── */
+  function buildSelector(ids, viz) {
+    var sel = document.getElementById('viz-selector');
+    ids.forEach(function (id) {
+      var opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = id + ' — ' + ((viz[id] && viz[id].titulo) ? viz[id].titulo : '');
+      sel.appendChild(opt);
+    });
+  }
+
+  /* ── Actualiza el contador ───────────────────────────────────────────── */
+  function updateCount(n) {
+    var el = document.getElementById('viz-count');
+    if (el) el.innerHTML = '<span>' + n + '</span> viz cargadas';
+  }
+
+  /* ── Helpers de estado ──────────────────────────────────────────────── */
+  function setStatus(el, cls, text) {
+    if (!el) return;
+    el.className = 'viz-card-status ' + cls;
+    el.textContent = text;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     PANTALLA COMPLETA
+  ══════════════════════════════════════════════════════════════════════ */
+
+  function openFullscreen(id) {
+    var viz = window.VIZ || {};
+    var vizDef = viz[id];
+    if (!vizDef) return;
+
+    /* Cerrar anterior si la hubiere */
+    closeFullscreen();
+
+    fsCurrentId = id;
+
+    var overlay  = document.getElementById('fullscreen-overlay');
+    var wrap     = document.getElementById('fullscreen-canvas-wrap');
+    var idLabel  = document.getElementById('fs-id-label');
+    var titleLbl = document.getElementById('fs-title-label');
+
+    idLabel.textContent  = id;
+    titleLbl.textContent = vizDef.titulo || id;
+
+    /* Montar la viz en el contenedor de pantalla completa */
+    wrap.innerHTML = '';
+    try {
+      var api = vizDef.mount(wrap, { compact: false });
+      fsInstance = { api: api, id: id };
+    } catch (err) {
+      wrap.innerHTML = '<div class="viz-error">' +
+        '<span>Error al montar en pantalla completa</span>' +
+        '<code>' + (err && err.message ? err.message : String(err)) + '</code>' +
+        '</div>';
+      console.error('[demo.html] fullscreen mount error:', err);
+    }
+
+    /* Pausar la instancia de galería para no consumir CPU de más */
+    if (instances[id] && instances[id].api && instances[id].api.pause) {
+      instances[id].api.pause();
+    }
+
+    overlay.classList.add('active');
+    document.getElementById('fullscreen-close').focus();
+
+    /* Sync selector */
+    var sel = document.getElementById('viz-selector');
+    sel.value = id;
+  }
+
+  function closeFullscreen() {
+    var overlay = document.getElementById('fullscreen-overlay');
+    var wrap    = document.getElementById('fullscreen-canvas-wrap');
+
+    if (fsInstance && fsInstance.api && fsInstance.api.destroy) {
+      try { fsInstance.api.destroy(); } catch (e) {}
+    }
+    fsInstance = null;
+
+    wrap.innerHTML = '';
+    overlay.classList.remove('active');
+
+    /* Resumir la instancia de galería */
+    if (fsCurrentId && instances[fsCurrentId] && instances[fsCurrentId].api) {
+      var api = instances[fsCurrentId].api;
+      if (api.resume) { try { api.resume(); } catch (e) {} }
+    }
+
+    fsCurrentId = null;
+  }
+
+  /* ── Botones de cabecera ─────────────────────────────────────────────── */
+  document.getElementById('fullscreen-btn').addEventListener('click', function () {
+    var sel = document.getElementById('viz-selector');
+    var id  = sel.value;
+    if (id) openFullscreen(id);
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    closeFullscreen();
+    document.getElementById('viz-selector').value = '';
+  });
+
+  document.getElementById('fullscreen-close').addEventListener('click', closeFullscreen);
+
+  /* Cerrar con Escape */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var overlay = document.getElementById('fullscreen-overlay');
+      if (overlay.classList.contains('active')) closeFullscreen();
+    }
+  });
+
+  /* Selector: abrir pantalla completa al cambiar */
+  document.getElementById('viz-selector').addEventListener('change', function () {
+    var id = this.value;
+    if (id) {
+      openFullscreen(id);
+    } else {
+      closeFullscreen();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "teoria": "reilly_huff_gravitacion_comercial",
+  "nombre": "Gravitación comercial: ley de Reilly y modelo probabilístico de Huff",
+  "autor": "William J. Reilly / David L. Huff",
+  "anio": "1931/1964",
+  "reilly": {
+    "P_A": 64000,
+    "P_B": 16000,
+    "D_AB_km": 30.0,
+    "sqrt_PA_PB": 2.0,
+    "BP_desde_B_km": 10.0,
+    "BP_desde_A_km": 20.0,
+    "validacion_ok": true
+  },
+  "huff_analitico": {
+    "A1": 1000,
+    "d1": 5.0,
+    "A2": 4000,
+    "d2": 10.0,
+    "beta": 2.0,
+    "U1": 40.0,
+    "U2": 40.0,
+    "P1": 0.5,
+    "P2": 0.5,
+    "suma_P": 1.0,
+    "validacion_ok": true
+  },
+  "huff_rejilla": {
+    "grid_n": 21,
+    "grid_rango_km": [
+      0.0,
+      20.0
+    ],
+    "tienda1_pos": [
+      5.0,
+      10.0
+    ],
+    "tienda1_atractivo": 1000.0,
+    "tienda2_pos": [
+      15.0,
+      10.0
+    ],
+    "tienda2_atractivo": 4000.0,
+    "beta": 2.0,
+    "celdas_totales": 441,
+    "celdas_P_T2_ge_0p5": 342,
+    "fraccion_P_T2_ge_0p5": 0.7755102040816326,
+    "validacion_sumas_1": true
+  }
+}

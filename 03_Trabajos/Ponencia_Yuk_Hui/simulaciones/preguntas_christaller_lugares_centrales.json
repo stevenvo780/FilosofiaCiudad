@@ -1,0 +1,35 @@
+{
+  "teoria": "christaller_lugares_centrales",
+  "nombre": "Teoria de los lugares centrales (jerarquia k=3)",
+  "autor": "Walter Christaller",
+  "anio": "1933",
+  "criterio_validacion_corregido": {
+    "razon_areas": "La razon de areas entre niveles consecutivos debe ser exactamente 3 (±0.001). CUMPLIDO: razones [3.0, 3.0, 3.0].",
+    "razon_lugares": "Las razones de lugares entre niveles consecutivos son 18/6=3, 6/2=3, 2/1=2. Los primeros dos pares cumplen razon=3 (±0.001); el par n3->n4 tiene razon=2 (±0.001), que es el factor correcto para la secuencia 1,2,6,18 con factores 2,3,3,3 en la jerarquia de 4 niveles. razon_lugares_OK=true.",
+    "area_hexagono": "El area del hexagono base coincide con (3*sqrt(3)/2)*r^2 = 259.807621 km2 (error=0.0 km2, dentro de ±0.01). CUMPLIDO.",
+    "hexagonos_n3_dentro_n4": "Los hexagonos de nivel 3 quedan completamente dentro del hexagono de nivel 4. Distancia maxima de vertices n3 al centro: 50.2341 km < r4=51.9615 km. CUMPLIDO."
+  },
+  "preguntas": [
+    {
+      "q": "Bajo el principio de mercado k=3, el numero de asentamientos por nivel jerarquico descendente sigue la secuencia 1, 2, 6, 18 (factores 2, 3, 3). Cuantos lugares de orden 1 (nivel mas bajo) hay en esta jerarquia de 4 niveles? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "18",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (18)",
+      "como_computar": "Secuencia de Christaller k=3: orden4=1, orden3=2, orden2=6, orden1=18 (factores 2,3,3). El numero de lugares de orden 1 es 18, exactamente el conteo generado por la simulacion (num_lugares) y mostrado en ambos PNG."
+    },
+    {
+      "q": "Calcula el area de un area de mercado hexagonal de alcance (radio) r=10 km usando A=(3*sqrt(3)/2)*r^2. Da el resultado en km2. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "259.8076",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.1 (259.81)",
+      "como_computar": "A = (3*sqrt(3)/2)*r^2 = (3*1.7320508/2)*100 = 2.5980762*100 = 259.8076 km2."
+    },
+    {
+      "q": "Genera la jerarquia anidada de 4 niveles con k=3 partiendo de un area de mercado base de 259.81 km2 en el nivel 1, multiplicando por 3 en cada nivel superior. Reporta el area de mercado total (km2) del nivel 4. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "7014.8058",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±5 km2 en torno a 7014.81",
+      "como_computar": "Nivel4 = 259.8076 * 3^3 = 259.8076 * 27 = 7014.8058 km2. Calculado desde la simulacion con la formula exacta del area del hexagono base A=(3*sqrt(3)/2)*r^2 y escalado por k^(nivel-1) = 3^3 = 27."
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+[
+  {
+    "n": 1,
+    "teoria": "alonso_bid_rent",
+    "q": "Dadas las funciones de puja lineales R_pobre(d)=500-20d y R_rico(d)=300-5d (con d en km), calcula la distancia d* (km) al CBD donde ambos grupos pujan exactamente lo mismo. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "13.3333",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (13.33)",
+    "como_computar": "500-20d=300-5d => 200=15d => d*=200/15=13.3333 km"
+  },
+  {
+    "n": 2,
+    "teoria": "alonso_bid_rent",
+    "q": "Con R_rico(d)=300-5d, calcula la puja de renta del grupo rico a d=20 km del CBD. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "200.0000",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (200)",
+    "como_computar": "R_rico(20)=300-5*20=300-100=200"
+  },
+  {
+    "n": 3,
+    "teoria": "alonso_bid_rent",
+    "q": "Ejecuta la asignacion por mejor postor con R_pobre(d)=500-20d y R_rico(d)=300-5d en d=0..30 km (paso 0.1). Reporta la fraccion del intervalo [0,30] km que termina ocupada por el grupo pobre (mejor postor). Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.4452",
+    "tipo": "emergente",
+    "tolerancia": "±0.02 en torno a 0.44",
+    "como_computar": "Los pobres ganan en d < 13.3333 km; n_pobre=134 de 301 puntos; fraccion=134/301=0.4452"
+  },
+  {
+    "n": 4,
+    "teoria": "automata_celular_crecimiento_urbano",
+    "q": "En el autómata celular de crecimiento urbano, la probabilidad de urbanización de una celda es p_i = p_base + p_difusion*(k_i/8), con p_base=0.001 y p_difusion=1.00. Una celda no urbana tiene 6 vecinos urbanos en su vecindad de Moore. Calcula p_i. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.751",
+    "tipo": "forma_cerrada",
+    "tolerancia": "+-0.001 (0.751)",
+    "como_computar": "p_i = 0.001 + 1.0*(6/8) = 0.001 + 0.75 = 0.751"
+  },
+  {
+    "n": 5,
+    "teoria": "automata_celular_crecimiento_urbano",
+    "q": "Bajo la regla del modelo (regla fronteriza: p_base solo refuerza el frente, k_i>=1 requerido), cuál es la probabilidad EFECTIVA de urbanización de una celda completamente aislada (k_i=0 vecinos urbanos)? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.0",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (0.0)",
+    "como_computar": "La regla fija p_i=0 para k_i=0 (celda aislada nunca se urbaniza). Probabilidad efectiva = 0.0. (La fórmula algebraica daría p_base=0.001, pero el modelo no la aplica a celdas aisladas; el código ejecutado produce 0.)"
+  },
+  {
+    "n": 6,
+    "teoria": "automata_celular_crecimiento_urbano",
+    "q": "Corre el autómata 100x100 con núcleo central 3x3, p_base=0.001, p_difusion=1.00, vecindad de Moore, p_base solo activa celdas fronterizas (k_i>=1), numpy.random.seed(7), 50 pasos sincrónicos. Reporta el número total de celdas urbanas tras el paso 50. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "2672",
+    "tipo": "emergente",
+    "tolerancia": "valor exacto determinista: 2672 (simulacion compacta con regla fronteriza corregida)",
+    "como_computar": "Simulación determinista con semilla 7, regla fronteriza (k_i>=1): resultado = 2672 celdas urbanas"
+  },
+  {
+    "n": 7,
+    "teoria": "bettencourt_west_escalamiento",
+    "q": "Con escalamiento Y=Y_0*N^beta, Y_0=1 y beta=1.15, calcula la magnitud Y para una ciudad de N=1,000,000 habitantes. Da el resultado redondeado al entero. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "7943282",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±1% (7943282)",
+    "como_computar": "Y = 1,000,000^1.15 = 10^(6*1.15) = 10^6.9 = 7943282.347 -> redondeado: 7943282"
+  },
+  {
+    "n": 8,
+    "teoria": "bettencourt_west_escalamiento",
+    "q": "Bajo escalamiento superlineal con beta=1.15, por que factor se multiplica la magnitud socioeconomica Y cuando la poblacion de una ciudad se DUPLICA? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "2.2191",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (2.219)",
+    "como_computar": "Factor = 2^1.15 = 2.219139"
+  },
+  {
+    "n": 9,
+    "teoria": "bettencourt_west_escalamiento",
+    "q": "Genera 50 ciudades con poblaciones N espaciadas logaritmicamente entre 10,000 y 5,000,000 y magnitud Y=N^1.15 (sin ruido), ajusta por minimos cuadrados log10(Y)=a+b*log10(N) y reporta el exponente b recuperado. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.1500",
+    "tipo": "emergente",
+    "tolerancia": "±0.02 en torno a 1.150",
+    "como_computar": "Datos sin ruido generados con beta=1.15 exacto -> el ajuste por minimos cuadrados recupera b=1.150000; R^2=1.0000000000"
+  },
+  {
+    "n": 10,
+    "teoria": "braess_wardrop_equilibrio",
+    "q": "En la red de Braess sin atajo, 4000 vehiculos se reparten simetricamente 2000 por la ruta superior y 2000 por la inferior. La ruta superior tiene tiempo t = x/100 + 45 donde x es su flujo. Calcula el tiempo de viaje de la ruta superior en equilibrio. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "65",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (65)",
+    "como_computar": "t = 2000/100 + 45 = 20 + 45 = 65"
+  },
+  {
+    "n": 11,
+    "teoria": "braess_wardrop_equilibrio",
+    "q": "Con el atajo A->B de coste 0 anadido, en equilibrio los 4000 vehiculos usan la ruta Inicio->A->B->Fin, cuyo tiempo es x_A/100 + 0 + x_B/100 con x_A=x_B=4000. Calcula el tiempo de viaje de equilibrio con el atajo. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "80",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (80)",
+    "como_computar": "t = 4000/100 + 0 + 4000/100 = 40 + 0 + 40 = 80"
+  },
+  {
+    "n": 12,
+    "teoria": "braess_wardrop_equilibrio",
+    "q": "Resuelve el equilibrio de Wardrop de la red de Braess con atajo para N=4000 (asignando flujo iterativamente o por mejor respuesta hasta que ningun vehiculo mejore cambiando de ruta). Reporta el aumento del tiempo de viaje de equilibrio respecto a la red sin atajo (tiempo_con - tiempo_sin). Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "15",
+    "tipo": "emergente",
+    "tolerancia": "±1 en torno a 15",
+    "como_computar": "Equilibrio con atajo = 80, sin atajo = 65; aumento = 80 - 65 = 15. Confirmado por MSA iterativo (5000 iteraciones) que converge a flujo_R3=4000, tiempo=80.00."
+  },
+  {
+    "n": 13,
+    "teoria": "christaller_lugares_centrales",
+    "q": "Bajo el principio de mercado k=3, el numero de asentamientos por nivel jerarquico descendente sigue la secuencia 1, 2, 6, 18 (factores 2, 3, 3). Cuantos lugares de orden 1 (nivel mas bajo) hay en esta jerarquia de 4 niveles? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "18",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (18)",
+    "como_computar": "Secuencia de Christaller k=3: orden4=1, orden3=2, orden2=6, orden1=18 (factores 2,3,3). El numero de lugares de orden 1 es 18, exactamente el conteo generado por la simulacion (num_lugares) y mostrado en ambos PNG."
+  },
+  {
+    "n": 14,
+    "teoria": "christaller_lugares_centrales",
+    "q": "Calcula el area de un area de mercado hexagonal de alcance (radio) r=10 km usando A=(3*sqrt(3)/2)*r^2. Da el resultado en km2. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "259.8076",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.1 (259.81)",
+    "como_computar": "A = (3*sqrt(3)/2)*r^2 = (3*1.7320508/2)*100 = 2.5980762*100 = 259.8076 km2."
+  },
+  {
+    "n": 15,
+    "teoria": "christaller_lugares_centrales",
+    "q": "Genera la jerarquia anidada de 4 niveles con k=3 partiendo de un area de mercado base de 259.81 km2 en el nivel 1, multiplicando por 3 en cada nivel superior. Reporta el area de mercado total (km2) del nivel 4. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "7014.8058",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±5 km2 en torno a 7014.81",
+    "como_computar": "Nivel4 = 259.8076 * 3^3 = 259.8076 * 27 = 7014.8058 km2. Calculado desde la simulacion con la formula exacta del area del hexagono base A=(3*sqrt(3)/2)*r^2 y escalado por k^(nivel-1) = 3^3 = 27."
+  },
+  {
+    "n": 16,
+    "teoria": "dla_batty_longley_fractal",
+    "q": "Usando la relacion mass-radius N(R) ~ R^D, un cluster sintetico contiene N_1=158 celdas dentro de radio R_1=10 y N_2=380 celdas dentro de radio R_2=20. Calcula la dimension fractal D = log(N_2/N_1)/log(R_2/R_1) (forma mas ramificada que la urbana tipica ~1.7). Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.266",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (1.266)",
+    "como_computar": "D = log(380/158) / log(20/10) = log(2.4051) / log(2) = 0.87758 / 0.69315 = 1.26607"
+  },
+  {
+    "n": 17,
+    "teoria": "dla_batty_longley_fractal",
+    "q": "Una forma urbana cumple N(R) ~ R^D con dimension fractal D=1.7. Si dentro de radio R=10 hay 200 celdas ocupadas, cuantas celdas ocupadas se esperan dentro de radio R=20? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "649.8",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±1% (649.8)",
+    "como_computar": "N(20) = 200 * (20/10)^1.7 = 200 * 2^1.7 = 200 * 3.24901 = 649.8019"
+  },
+  {
+    "n": 18,
+    "teoria": "dla_batty_longley_fractal",
+    "q": "Simula DLA en rejilla 201x201 con semilla central, 1500 particulas en caminata aleatoria, numpy.random.seed(3); luego mide la dimension fractal por mass-radius (regresion log N(R) vs log R sobre la region de escalamiento, radios ~5..35, excluyendo saturacion N>60% del total). Reporta la dimension fractal D estimada. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.693",
+    "tipo": "emergente",
+    "tolerancia": "±0.12 en torno a 1.71",
+    "como_computar": "Simulacion DLA 201x201, 1500 particulas, seed=3, regresion log-log excluyendo saturacion (N>60% total). D obtenido = 1.69275"
+  },
+  {
+    "n": 19,
+    "teoria": "duncan_disimilitud",
+    "q": "Una ciudad tiene 4 tracts con grupo A = [40,30,20,10] (total 100) y grupo B = [10,20,30,40] (total 100). Usando D = 0.5*sum|a_i/A - b_i/B|, calcula el indice de disimilitud. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.4",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.001 (0.40)",
+    "como_computar": "|0.4-0.1|+|0.3-0.2|+|0.2-0.3|+|0.1-0.4|=0.3+0.1+0.1+0.3=0.8; D=0.5*0.8=0.40."
+  },
+  {
+    "n": 20,
+    "teoria": "duncan_disimilitud",
+    "q": "En 3 tracts, grupo A = [50,30,20] (total 100) y grupo B = [20,30,50] (total 100). Calcula el indice de disimilitud de Duncan D = 0.5*sum|a_i/A - b_i/B|. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.3",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.001 (0.30)",
+    "como_computar": "|0.5-0.2|+|0.3-0.3|+|0.2-0.5|=0.3+0+0.3=0.6; D=0.5*0.6=0.30."
+  },
+  {
+    "n": 21,
+    "teoria": "duncan_disimilitud",
+    "q": "Toma la rejilla final del experimento de Schelling del proyecto (sim_schelling_segregacion: 50x50, 45% Rojo, 45% Azul, 10% vacio, umbral T=0.30, vecindad de Moore, numpy seed=42, max_iter=200), divide la rejilla en 25 bloques de 10x10 celdas como 'tracts', cuenta Rojos y Azules por bloque, y calcula el indice de disimilitud D de Duncan entre Rojo y Azul. Reporta D. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.2462",
+    "tipo": "emergente",
+    "tolerancia": "±0.05 en torno a 0.246 (a esta escala de agregacion 10x10 el Schelling T=0.30 da segregacion baja-moderada; baseline aleatorio D~0.09)",
+    "como_computar": "Rejilla final del modulo Schelling canonico (45/45/10, T=0.30, seed=42, max_iter=200) -> 1125 Rojos y 1125 Azules; agregar en 25 bloques 10x10; rojos_por_bloque=[48.0, 37.0, 35.0, 46.0, 33.0, 55.0, 50.0, 38.0, 29.0, 47.0, 19.0, 45.0, 69.0, 50.0, 64.0, 65.0, 56.0, 52.0, 21.0, 30.0, 53.0, 55.0, 33.0, 37.0, 58.0]; azules_por_bloque=[45.0, 53.0, 54.0, 46.0, 56.0, 36.0, 40.0, 51.0, 62.0, 41.0, 69.0, 42.0, 23.0, 41.0, 32.0, 25.0, 38.0, 36.0, 71.0, 63.0, 30.0, 35.0, 57.0, 53.0, 26.0]; D=0.5*sum|r_i/R - a_i/A|=0.2462. Las contribuciones por tract 0.5*|r_i/R - a_i/A| suman exactamente D."
+  },
+  {
+    "n": 22,
+    "teoria": "modelo_gravitacional_flujos",
+    "q": "Con el modelo gravitacional T_ij = G*P_i*P_j/d_ij^2, G=1, dos zonas con P_i=10000 y P_j=5000 separadas por d_ij=50. Calcula el flujo T_ij. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "20000",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (20000)",
+    "como_computar": "T=1*10000*5000/50^2=50,000,000/2500=20,000."
+  },
+  {
+    "n": 23,
+    "teoria": "modelo_gravitacional_flujos",
+    "q": "Con T_ij = G*P_i*P_j/d_ij^c, G=1, c=2, P_i=10000, P_j=20000. Calcula el flujo a una distancia d_ij=40. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "125000",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (125000)",
+    "como_computar": "T=1*10000*20000/40^2=200,000,000/1600=125,000."
+  },
+  {
+    "n": 24,
+    "teoria": "modelo_gravitacional_flujos",
+    "q": "Calcula la matriz de flujos completa para 3 zonas: P=[10000,5000,20000] en posiciones (0,0),(30,0),(0,40), con G=1, c=2 y distancias euclidianas. Suma todos los flujos entre pares distintos (T_12+T_13+T_23). Reporta el total. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "220555.5556",
+    "tipo": "emergente",
+    "tolerancia": "±1% en torno a 220555.56",
+    "como_computar": "T_12=55555.5556, T_13=125000.0000, T_23=40000.0000; suma=220555.5556"
+  },
+  {
+    "n": 25,
+    "teoria": "reilly_huff_gravitacion_comercial",
+    "q": "Dos ciudades A (población 64000) y B (población 16000) están separadas por 30 km. Usando el punto de ruptura de Reilly BP=d/(1+sqrt(P_A/P_B)), calcula la distancia (km) del punto de ruptura medida desde B. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "10.0",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.05 (10.0)",
+    "como_computar": "sqrt(64000/16000)=sqrt(4)=2; BP=30.0/(1+2)=10.0000 km desde B."
+  },
+  {
+    "n": 26,
+    "teoria": "reilly_huff_gravitacion_comercial",
+    "q": "Con el modelo de Huff y beta=2, un consumidor enfrenta la Tienda 1 (atractivo 1000, distancia 5) y la Tienda 2 (atractivo 4000, distancia 10). Calcula la probabilidad de que elija la Tienda 2. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.5",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.001 (0.5)",
+    "como_computar": "U1=1000/5.0^2=40.00, U2=4000/10.0^2=40.00; P2=40.00/(40.00+40.00)=0.5000."
+  },
+  {
+    "n": 27,
+    "teoria": "reilly_huff_gravitacion_comercial",
+    "q": "Sobre una rejilla de 21x21 consumidores en [0,20]x[0,20] km, con Tienda 1 en (5,10) atractivo 1000 y Tienda 2 en (15,10) atractivo 4000, beta=2, calcula la fracción de celdas de la rejilla en las que la probabilidad de Huff de elegir la Tienda 2 es mayor o igual a 0.5. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.77551",
+    "tipo": "emergente",
+    "tolerancia": "±0.05 en torno a 0.78",
+    "como_computar": "Rejilla 21×21=441 celdas; celdas con P(T2)>=0.5: 342; fracción=0.775510."
+  },
+  {
+    "n": 28,
+    "teoria": "schelling_segregacion",
+    "q": "Un agente de Schelling tiene 8 vecinos en la vecindad de Moore: 5 de su mismo grupo, 2 del otro grupo y 1 celda vacía. El umbral de tolerancia es T=0.30, definido como la fracción mínima de mismo-grupo sobre los vecinos OCUPADOS. ¿Está satisfecho el agente? Calcula primero la fracción de mismo-grupo. Formato: 'Respuesta final: <valor>' donde valor es la fracción (no sí/no).",
+    "valor_exacto": "0.7143",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (0.714)",
+    "como_computar": "Vecinos ocupados = 5 + 2 = 7; fracción mismo-grupo = 5/7 = 0.7143; como 0.7143 >= 0.30 el agente está satisfecho. La respuesta pedida es la fracción: 0.7143."
+  },
+  {
+    "n": 29,
+    "teoria": "schelling_segregacion",
+    "q": "En una rejilla de Schelling con 2500 celdas, el 45% son del grupo Rojo, el 45% del grupo Azul y el resto vacías. ¿Cuántas celdas vacías hay? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "250",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (250)",
+    "como_computar": "Vacías = 10% de 2500 = 250. Verificación: 1125 Rojo + 1125 Azul + 250 vacío = 2500."
+  },
+  {
+    "n": 30,
+    "teoria": "schelling_segregacion",
+    "q": "Corre el modelo de Schelling en rejilla 50×50, 45% Rojo, 45% Azul, 10% vacío, umbral T=0.30, vecindad de Moore, numpy.random.seed(42), máximo 200 iteraciones. Partiendo de una fracción media de mismo-grupo inicial cercana a 0.50, reporta la fracción media de vecinos del mismo grupo en el estado final convergido. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "0.7507",
+    "tipo": "emergente",
+    "tolerancia": "±0.05 en torno a 0.75",
+    "como_computar": "Resultado de la simulación con seed=42 y T=0.30: 0.7507. Con T=0.30 el valor final ronda 0.74-0.76 (cluster robusto 0.738-0.751 sobre seeds 1,7,42,123,999). La segregación emergente eleva la fracción de mismo-grupo desde 0.501 hasta 0.751 en 14 iteraciones."
+  },
+  {
+    "n": 31,
+    "teoria": "sintaxis_espacial_integracion",
+    "q": "En un grafo viario en linea de 5 nodos A-B-C-D-E (camino simple), las profundidades topologicas del nodo central C a los demas son: A=2, B=1, D=1, E=2. Calcula la profundidad media MD = (suma de profundidades)/(n-1) para C, con n=5. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.5",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (1.5)",
+    "como_computar": "MD=(2+1+1+2)/(5-1)=6/4=1.5."
+  },
+  {
+    "n": 32,
+    "teoria": "sintaxis_espacial_integracion",
+    "q": "Para el nodo extremo A del camino de 5 nodos (profundidades 1,2,3,4, MD=2.5), calcula la asimetria relativa RA = 2*(MD-1)/(n-2) con n=5, y luego la integracion = 1/RA. Reporta la integracion. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.0",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (1.0)",
+    "como_computar": "RA=2*(2.5-1)/(5-2)=2*1.5/3=1.0; Integracion=1/1.0=1.0."
+  },
+  {
+    "n": 33,
+    "teoria": "sintaxis_espacial_integracion",
+    "q": "Construye el grafo de una rejilla viaria 5x5 (25 nodos, conexiones a vecinos ortogonales), calcula la profundidad media de cada nodo via caminos minimos (BFS) y la integracion=1/RA con RA=2*(MD-1)/(n-2), n=25. Reporta la integracion del nodo central (fila 2, columna 2, indexado desde 0). Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "7.6667",
+    "tipo": "emergente",
+    "tolerancia": "±1.0 en torno a 7.67",
+    "como_computar": "BFS desde (2,2) en rejilla 5x5: MD=2.5, RA=0.130435, Integration=7.666667."
+  },
+  {
+    "n": 34,
+    "teoria": "von_thunen_anillos",
+    "q": "Con R(d)=y*(p-c)-y*f*d y los parámetros del Cultivo A (y=10, p=7, c=1, f=0.6), calcula la renta de localización por hectárea a una distancia d=6 km del mercado. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "24",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (24)",
+    "como_computar": "R_A(6) = 10*(7-1) - 10*0.6*6 = 60 - 36 = 24"
+  },
+  {
+    "n": 35,
+    "teoria": "von_thunen_anillos",
+    "q": "Para el Cultivo B (y=4, p=14, c=2, f=0.75), calcula la distancia máxima d0 (en km) a la que la renta de localización se hace cero. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "16.0",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (16.0)",
+    "como_computar": "d0_B = (p-c)/f = (14-2)/0.75 = 12/0.75 = 16.0 km"
+  },
+  {
+    "n": 36,
+    "teoria": "von_thunen_anillos",
+    "q": "Ejecuta el experimento determinista de los dos cultivos (A: y=10,p=7,c=1,f=0.6; B: y=4,p=14,c=2,f=0.75) construyendo la envolvente superior max(R_A,R_B,0) en d=0..18 km. El cultivo intensivo A domina cerca del centro y el extensivo B lo releva más lejos. Reporta la distancia de transición d* (km) que separa el anillo interior del exterior, es decir donde R_A(d*)=R_B(d*). Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "4.0",
+    "tipo": "emergente",
+    "tolerancia": "±0.25 km en torno a 4.0",
+    "como_computar": "Cruce de rectas: 60-6d = 48-3d => 12 = 3d => d* = 4.0 km. A domina en 0≤d<4 (anillo interior), B en 4<d<16 (anillo exterior). La frontera emerge de la envolvente y no coincide con ningún d0."
+  },
+  {
+    "n": 37,
+    "teoria": "zipf_rank_size",
+    "q": "En un sistema que cumple la ley de Zipf con q=1, la ciudad mas grande tiene 1,000,000 de habitantes. Cual es la poblacion esperada de la ciudad de rango 4? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "250000",
+    "tipo": "forma_cerrada",
+    "tolerancia": "igualdad exacta (250000)",
+    "como_computar": "P(4) = 1,000,000 / 4^1 = 250,000"
+  },
+  {
+    "n": 38,
+    "teoria": "zipf_rank_size",
+    "q": "Bajo Zipf con exponente q, P(r)=P_1/r^q. Si P_1=1,000,000 y la ciudad de rango 5 tiene 200,000 habitantes, cual es el exponente q? Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "1.0",
+    "tipo": "forma_cerrada",
+    "tolerancia": "±0.01 (1.0)",
+    "como_computar": "200000 = 1000000 / 5^q  =>  5^q = 5  =>  q = 1"
+  },
+  {
+    "n": 39,
+    "teoria": "zipf_rank_size",
+    "q": "Genera 100 ciudades con P(r)=1,000,000/r (q=1 exacto, r=1..100), ajusta por minimos cuadrados la recta log10(P) = a + b*log10(r) y reporta la pendiente b. Formato: 'Respuesta final: <valor>'.",
+    "valor_exacto": "-1.0",
+    "tipo": "emergente",
+    "tolerancia": "±0.001 en torno a -1.000",
+    "como_computar": "Simulacion determinista con P(r) = 1,000,000 / r (q=1 exacto, sin ruido). Ajuste scipy.stats.linregress sobre log10(rangos) vs log10(poblaciones). Pendiente recuperada: -1.000000 (R^2 = 1.000000). La tolerancia ±0.001 es consistente con el criterio_validacion del catalogo: al ser q=1 exacto el ajuste recupera -1.000000 sin ruido. (El sistema empirico perturbado q≈0.86 que se grafica para contraste no entra en esta pregunta.)"
+  }
+]

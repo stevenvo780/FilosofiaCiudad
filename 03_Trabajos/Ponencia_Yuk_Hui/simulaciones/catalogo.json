@@ -1,0 +1,421 @@
+[
+  {
+    "id": "von_thunen_anillos",
+    "nombre": "Anillos de von Thunen (renta de localizacion agricola)",
+    "autor": "Johann Heinrich von Thunen",
+    "anio": "1826",
+    "campo": "economia espacial",
+    "formulacion": "Renta de localizacion por unidad de superficie para un cultivo: R(d) = y*(p - c) - y*f*d, donde y = rendimiento por hectarea, p = precio de mercado por unidad, c = coste de produccion por unidad, f = coste de transporte por unidad y por km, d = distancia al mercado central. La renta es no negativa: R(d)=max(0, y*(p-c)-y*f*d). El cultivo que se localiza a distancia d es argmax_k R_k(d) (envolvente superior). El radio de cultivo cero para k es d0_k=(p_k-c_k)/f_k. Las fronteras entre anillos son las distancias d* donde R_i(d*)=R_j(d*).",
+    "experimento": "Dos cultivos en un plano isotropo con mercado en el origen, reproduciendo el fenomeno canonico de anillos concentricos de cultivos distintos. Cultivo A (intensivo, gana cerca): y=10, p=7, c=1, f=0.6. Cultivo B (extensivo, gana lejos): y=4, p=14, c=2, f=0.75. Evaluar R_A(d) y R_B(d) en d=0,1,2,...,18 km. Sin aleatoriedad (modelo determinista cerrado); no requiere semilla. Construir la envolvente superior max(R_A,R_B,0) y registrar la distancia de transicion entre anillos. Verificacion numerica: R_A(0)=60 > R_B(0)=48, pendientes A=-6.0 (mas pronunciada) y B=-3.0 (mas suave), d0_A=10, d0_B=16. El cultivo intensivo A domina el anillo interior (0<=d<4 km) y el extensivo B el anillo exterior (4<d<16 km); se cruzan en la frontera de anillo d*=4 km con renta R=36; mas alla de d0_B=16 km ningun cultivo es rentable.",
+    "salida_grafica": "PNG de lineas: eje x distancia d (0-18 km), eje y renta R por hectarea; una curva por cultivo (A en azul, B en naranja), la envolvente superior en linea gruesa punteada, y bandas de color de fondo indicando que cultivo domina cada anillo (A interior, B exterior). Anotar la frontera de anillo d*=4 km (cruce R_A=R_B) y las distancias de renta cero d0_A=10, d0_B=16. Segundo PNG con la vista espacial de los dos anillos concentricos en el plano isotropo.",
+    "criterio_validacion": "Las pendientes de R_k(d) deben igualar exactamente -y_k*f_k (A: -6.0, B: -3.0). Los radios de renta cero deben coincidir con (p-c)/f dentro de ±0.01 km (d0_A=10, d0_B=16). Debe haber dos anillos reales de cultivos distintos: A dominante en una banda interior y B en una banda exterior, con frontera en d*=4 km. La envolvente debe ser monotona no creciente y convexa por tramos.",
+    "preguntas": [
+      {
+        "q": "Con R(d)=y*(p-c)-y*f*d y los parametros del Cultivo A (y=10, p=7, c=1, f=0.6), calcula la renta de localizacion por hectarea a una distancia d=6 km del mercado. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "R_A(6)=10*(7-1)-10*0.6*6 = 60-36 = 24.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (24)"
+      },
+      {
+        "q": "Para el Cultivo B (y=4, p=14, c=2, f=0.75), calcula la distancia maxima d0 (en km) a la que la renta de localizacion se hace cero. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "d0_B=(p-c)/f=(14-2)/0.75=12/0.75=16.0 km.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (16.0)"
+      },
+      {
+        "q": "Ejecuta el experimento determinista de los dos cultivos (A: y=10,p=7,c=1,f=0.6; B: y=4,p=14,c=2,f=0.75) construyendo la envolvente superior max(R_A,R_B,0) en d=0..18 km. El cultivo intensivo A domina cerca del centro y el extensivo B lo releva mas lejos. Reporta la distancia de transicion d* (km) que separa el anillo interior del exterior, es decir donde R_A(d*)=R_B(d*). Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Cruce de rectas: 60-6d = 48-3d => 12 = 3d => d*=4.0 km. A domina en 0<=d<4 (anillo interior) y B en 4<d<16 (anillo exterior); la frontera emerge de la envolvente y no coincide con ningun d0.",
+        "tipo": "emergente",
+        "tolerancia": "±0.25 km en torno a 4.0"
+      }
+    ],
+    "relevancia_filosofica": "Primer modelo que vuelve la localizacion economicamente legible: el espacio deja de ser cualidad para convertirse en distancia computable al mercado. Captura la idea de que el uso del suelo es producto de un calculo de renta, no de la naturaleza del lugar; mutila la heterogeneidad ecologica, la propiedad, la coercion y la historia (presupone un plano isotropo y un unico mercado). Para un curso de filosofia de la ciudad: introduce la ontologia de la ciudad como gradiente de valor y plantea quien fija el precio central y como la abstraccion del plano isotropo invisibiliza el poder territorial."
+  },
+  {
+    "id": "alonso_bid_rent",
+    "nombre": "Bid-rent urbano de Alonso (funciones de puja residencial)",
+    "autor": "William Alonso",
+    "anio": "1964",
+    "campo": "economia espacial",
+    "formulacion": "Cada grupo de hogares tiene una funcion de puja R(d) que mantiene constante su utilidad a lo largo de la distancia d al centro de negocios (CBD); en la version lineal R_g(d)=R0_g - k_g*d, donde R0_g es la puja en el centro y k_g el gradiente (proporcional al coste de transporte e inversamente al consumo de suelo). El suelo se asigna al mejor postor: en cada d ocupa el grupo argmax_g R_g(d). La frontera entre grupos i,j esta en d* con R_i(d*)=R_j(d*), es decir d*=(R0_i-R0_j)/(k_i-k_j). Grupos con gradiente mas pronunciado se localizan mas cerca del centro.",
+    "experimento": "Dos grupos compitiendo por suelo a lo largo de un radio desde el CBD. Grupo POBRE (alta dependencia del acceso, gradiente pronunciado): R(d)=500-20d. Grupo RICO (valora espacio, gradiente plano): R(d)=300-5d. Determinista, sin semilla. Evaluar en d=0..30 km y construir la envolvente de pujas. Verificacion: R0_pobre=500 > R0_rico=300, cruce en d*=(500-300)/(20-5)=13.33 km con renta 233.33; los pobres ocupan d<13.33, los ricos d>13.33.",
+    "salida_grafica": "PNG de lineas: x = distancia al CBD (0-30 km), y = puja de renta. Dos curvas (pobre con pendiente fuerte, rico con pendiente suave), envolvente superior remarcada y sombreado de la zona ocupada por cada grupo. Marcar el punto de cruce d*=13.33 y anotar la inversion contraintuitiva (los pobres pujan mas cerca del centro).",
+    "criterio_validacion": "La distancia de cruce debe ser d*=(R0_i-R0_j)/(k_i-k_j) dentro de ±0.05 km (13.33). El grupo de mayor gradiente debe quedar asignado al anillo interior. La envolvente debe ser monotona decreciente.",
+    "preguntas": [
+      {
+        "q": "Dadas las funciones de puja lineales R_pobre(d)=500-20d y R_rico(d)=300-5d (con d en km), calcula la distancia d* (km) al CBD donde ambos grupos pujan exactamente lo mismo. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "500-20d=300-5d => 200=15d => d*=200/15=13.33 km.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (13.33)"
+      },
+      {
+        "q": "Con R_rico(d)=300-5d, calcula la puja de renta del grupo rico a d=20 km del CBD. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "R_rico(20)=300-5*20=300-100=200.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (200)"
+      },
+      {
+        "q": "Ejecuta la asignacion por mejor postor con R_pobre(d)=500-20d y R_rico(d)=300-5d en d=0..30 km (paso 0.1). Reporta la fraccion del intervalo [0,30] km que termina ocupada por el grupo pobre (mejor postor). Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Los pobres ganan en d<13.33 km; fraccion=13.33/30=0.444.",
+        "tipo": "emergente",
+        "tolerancia": "±0.02 en torno a 0.44"
+      }
+    ],
+    "relevancia_filosofica": "Modela por que en muchas ciudades los pobres ocupan el centro degradado y los ricos la periferia: no por preferencia moral sino por la estructura matematica del trade-off acceso/espacio. Captura el mercado del suelo como mecanismo de ordenamiento de clases; mutila la regulacion, la discriminacion racial, la herencia y el poder politico que el modelo reduce a 'gradientes' exogenos. Eje del curso: la ciudad como equilibrio de mercado vs. la ciudad como campo de disputa politica; la naturalizacion de la segregacion mediante la elegancia del modelo."
+  },
+  {
+    "id": "christaller_lugares_centrales",
+    "nombre": "Teoria de los lugares centrales (jerarquia k=3)",
+    "autor": "Walter Christaller",
+    "anio": "1933",
+    "campo": "economia espacial",
+    "formulacion": "El territorio se cubre con areas de mercado hexagonales de radio (alcance) r. Bajo el principio de mercado k=3, cada lugar central de orden n+1 sirve a 3 areas del orden n (la propia mas 1/3 de cada uno de los 6 vecinos = 1+6*(1/3)=3). Area del hexagono de radio r: A=(3*sqrt(3)/2)*r^2. Las AREAS de mercado escalan geometricamente con razon k=3 (1,3,9,27); el NUMERO de asentamientos por nivel descendente sigue 1,2,6,18,54 (factores 2,3,3,3), donde el factor 2 del tope refleja que cada lugar de mayor orden anade 2 dependientes nuevos del orden inmediato inferior.",
+    "experimento": "Jerarquia de 4 niveles con principio de mercado k=3. Area de mercado base (nivel 1) con hexagono de alcance r=10 km. Determinista, sin semilla. Calcular: (a) area del hexagono base A=(3*sqrt(3)/2)*100=259.81 km2; (b) areas de mercado por nivel: 259.81, 779.42, 2338.27, 7014.81 km2 (factores 1,3,9,27); (c) numero de lugares por nivel: 18,6,2,1 (de menor a mayor orden). Generar la teselacion hexagonal anidada.",
+    "salida_grafica": "PNG de la teselacion hexagonal anidada: hexagonos pequenos (lugares de bajo orden) agrupados de a tres dentro de hexagonos mayores, con los lugares centrales marcados por tamano segun su orden. Panel adjunto de barras log mostrando el numero de lugares y el area de mercado por nivel jerarquico.",
+    "criterio_validacion": "La razon de areas entre niveles consecutivos debe ser exactamente 3 (±0.001). La razon del numero de lugares entre niveles debe ser 3 (±0.001). El area del hexagono debe coincidir con (3*sqrt(3)/2)*r^2 dentro de ±0.01 km2.",
+    "preguntas": [
+      {
+        "q": "Bajo el principio de mercado k=3, el numero de asentamientos por nivel jerarquico descendente sigue la secuencia 1, 2, 6, 18 (factores 2, 3, 3). Cuantos lugares de orden 1 (nivel mas bajo) hay en esta jerarquia de 4 niveles? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Secuencia de Christaller k=3: orden4=1, orden3=2, orden2=6, orden1=18 (factores 2,3,3). El numero de lugares de orden 1 es 18, exactamente el conteo generado por la simulacion (num_lugares) y mostrado en ambos PNG.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (18)"
+      },
+      {
+        "q": "Calcula el area de un area de mercado hexagonal de alcance (radio) r=10 km usando A=(3*sqrt(3)/2)*r^2. Da el resultado en km2. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "A=(3*1.7320508/2)*100=2.5980762*100=259.81 km2.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.1 (259.81)"
+      },
+      {
+        "q": "Genera la jerarquia anidada de 4 niveles con k=3 partiendo de un area de mercado base de 259.81 km2 en el nivel 1, multiplicando por 3 en cada nivel superior. Reporta el area de mercado total (km2) del nivel 4. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Nivel4=259.81*3^3=259.81*27=7014.81 km2.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±5 km2 en torno a 7014.81"
+      }
+    ],
+    "relevancia_filosofica": "Propone que la red de ciudades no es caotica sino una geometria optima de servicio: la ciudad como nodo de una jerarquia funcional deducible a priori. Captura la logica de eficiencia espacial del comercio y la administracion; mutila la contingencia historica, los rios, fronteras, guerras y la agencia de los habitantes (de hecho Christaller puso su teoria al servicio de la planificacion nazi del este europeo). Eje del curso: el peligro politico de la geometria normativa, la pretension de deducir el orden urbano ideal y su uso como herramienta de poder territorial."
+  },
+  {
+    "id": "reilly_huff_gravitacion_comercial",
+    "nombre": "Gravitacion comercial: ley de Reilly y modelo probabilistico de Huff",
+    "autor": "William J. Reilly / David L. Huff",
+    "anio": "1931/1964",
+    "campo": "economia espacial",
+    "formulacion": "Reilly (punto de ruptura): la frontera de influencia entre dos ciudades A y B separadas por distancia d, con poblaciones P_A,P_B, esta a una distancia desde B de: BP = d/(1+sqrt(P_A/P_B)). Huff (probabilidad de eleccion): la probabilidad de que el consumidor i compre en la tienda j es Pij = (A_j / d_ij^beta) / sum_k (A_k / d_ik^beta), donde A_j es atractivo (p.ej. superficie de venta), d_ij distancia, beta exponente de friccion de la distancia. El numero esperado de consumidores que captura un centro j es E_j = sum_i P_i * Pij, donde P_i es la poblacion (o demanda) del origen i.",
+    "experimento": "Reilly: ciudades A (P_A=64000) y B (P_B=16000) separadas d=30 km; calcular el punto de ruptura. Huff: un consumidor frente a dos tiendas, beta=2; Tienda 1 con A=1000 m2 a d=5 km, Tienda 2 con A=4000 m2 a d=10 km. Determinista, sin semilla. Verificacion: punto de ruptura desde B = 30/(1+sqrt(64000/16000))=30/(1+2)=10 km; Huff: utilidades 1000/25=40 y 4000/100=40, probabilidades 0.5 y 0.5.",
+    "salida_grafica": "PNG de dos paneles. Panel Reilly: linea entre A y B con el punto de ruptura marcado y las zonas de captura coloreadas. Panel Huff: mapa de calor de la probabilidad de eleccion de la Tienda 2 sobre una rejilla de consumidores, con isolineas de probabilidad 0.25/0.5/0.75 y las dos tiendas marcadas.",
+    "criterio_validacion": "El punto de ruptura de Reilly debe igualar d/(1+sqrt(P_A/P_B)) dentro de ±0.05 km. Las probabilidades de Huff deben sumar 1.0 (±1e-9) en cada punto. Con A_1/d_1^2 = A_2/d_2^2 el modelo de Huff debe dar exactamente 0.5/0.5.",
+    "preguntas": [
+      {
+        "q": "Dos ciudades A (poblacion 64000) y B (poblacion 16000) estan separadas por 30 km. Usando el punto de ruptura de Reilly BP=d/(1+sqrt(P_A/P_B)), calcula la distancia (km) del punto de ruptura medida desde B. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "sqrt(64000/16000)=sqrt(4)=2; BP=30/(1+2)=10 km desde B.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.05 (10.0)"
+      },
+      {
+        "q": "Con el modelo de Huff y beta=2, un consumidor enfrenta la Tienda 1 (atractivo 1000, distancia 5) y la Tienda 2 (atractivo 4000, distancia 10). Calcula la probabilidad de que elija la Tienda 2. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "U1=1000/5^2=40, U2=4000/10^2=40; P2=40/(40+40)=0.5.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.001 (0.5)"
+      },
+      {
+        "q": "Sobre una rejilla de 21x21 consumidores en [0,20]x[0,20] km, con Tienda 1 en (5,10) atractivo 1000 y Tienda 2 en (15,10) atractivo 4000, beta=2, calcula la fraccion de celdas de la rejilla en las que la probabilidad de Huff de elegir la Tienda 2 es mayor o igual a 0.5. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Correr Huff (o el circulo de Apolonio d2<=2*d1) en las 441 celdas; la Tienda 2 (4x mas atractiva) captura 342 celdas; fraccion=342/441=0.7755.",
+        "tipo": "emergente",
+        "tolerancia": "±0.05 en torno a 0.78"
+      }
+    ],
+    "relevancia_filosofica": "Importa la metafora newtoniana de la gravedad a la conducta humana: las personas son atraidas por las masas comerciales segun una ley fisica. Captura la regularidad estadistica del consumo agregado; mutila la decision individual, la marca, la cultura, la fidelidad y el sentido del lugar, reduciendo el deseo a masa/distancia. Eje del curso: la ciudad como campo de fuerzas y la cuestion epistemica de si una analogia fisica puede ser ley social; la politica de quien define el 'atractivo' (los grandes centros ganan por construccion del modelo)."
+  },
+  {
+    "id": "schelling_segregacion",
+    "nombre": "Modelo de segregacion de Schelling",
+    "autor": "Thomas Schelling",
+    "anio": "1971",
+    "campo": "dinamica social",
+    "formulacion": "Rejilla de NxN con dos grupos y celdas vacias. Cada agente esta satisfecho si la fraccion de vecinos de su mismo grupo (en la vecindad de Moore de 8) es >= un umbral de tolerancia T. En cada paso, los agentes insatisfechos se mueven a una celda vacia elegida al azar (relajacion estocastica). El sistema itera hasta que ningun agente insatisfecho permanece o se alcanza un maximo de pasos. La segregacion global emergente se mide por la fraccion media de vecinos del mismo grupo. El resultado clave: umbrales individuales moderados (T~0.3-0.5) producen segregacion global severa.",
+    "experimento": "Rejilla 50x50 (2500 celdas), 45% grupo Rojo, 45% grupo Azul, 10% vacias. Umbral T=0.30 (cada agente quiere al menos 30% de vecinos iguales). Semilla aleatoria fija seed=42 (numpy.random.default_rng(42)) para la asignacion inicial y para la eleccion de destinos. Vecindad de Moore (8 vecinos) con frontera toroidal (periodica): los bordes y esquinas se enlazan con el lado opuesto, de modo que todo agente tiene siempre 8 vecinos (decision de modelado explicita que difiere del original acotado de Schelling 1971; no altera la segregacion emergente ~0.75). Regla: en cada iteracion, recorrer agentes insatisfechos en orden aleatorio fijado por la semilla y reubicarlos en una celda vacia elegida al azar. Maximo 200 iteraciones. Medir la 'fraccion de mismo-grupo' media inicial y final.",
+    "salida_grafica": "PNG de 3 paneles: estado inicial (rejilla coloreada rojo/azul/vacio en el color de fondo, identificado por la leyenda), estado final segregado, y curva de la fraccion media de vecinos del mismo grupo vs iteracion (mostrando el ascenso desde ~0.5 hasta el plateau de segregacion). Anotar el umbral T y la segregacion final.",
+    "criterio_validacion": "Partiendo de mezcla aleatoria (fraccion de mismo-grupo inicial ~0.50), con T=0.30 la fraccion de mismo-grupo final debe superar 0.70 (segregacion emergente pese a tolerancia individual del 30%). El sistema debe converger a <2% de agentes insatisfechos en <=200 pasos. Para T>=0.75 no debe alcanzar convergencia (frustracion).",
+    "preguntas": [
+      {
+        "q": "Un agente de Schelling tiene 8 vecinos en la vecindad de Moore: 5 de su mismo grupo, 2 del otro grupo y 1 celda vacia. El umbral de tolerancia es T=0.30, definido como la fraccion minima de mismo-grupo sobre los vecinos OCUPADOS. Esta satisfecho el agente? Calcula primero la fraccion de mismo-grupo. Formato: 'Respuesta final: <valor>' donde valor es la fraccion (no si/no).",
+        "como_computar": "Vecinos ocupados=5+2=7; fraccion mismo-grupo=5/7=0.714; como 0.714>=0.30, satisfecho. La respuesta pedida es la fraccion 0.714.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (0.714)"
+      },
+      {
+        "q": "En una rejilla de Schelling con 2500 celdas, el 45% son del grupo Rojo, el 45% del grupo Azul y el resto vacias. Cuantas celdas vacias hay? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Vacias=10% de 2500=250.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (250)"
+      },
+      {
+        "q": "Corre el modelo de Schelling en rejilla 50x50, 45% Rojo, 45% Azul, 10% vacio, umbral T=0.30, vecindad de Moore, numpy.random.seed(42), maximo 200 iteraciones. Partiendo de una fraccion media de mismo-grupo inicial cercana a 0.50, reporta la fraccion media de vecinos del mismo grupo en el estado final convergido. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "La segregacion emergente eleva la fraccion de mismo-grupo desde ~0.50 hasta un plateau alto; con T=0.30 el valor final ronda 0.74-0.76 (cluster robusto 0.738-0.751 sobre seeds 1,7,42,123,999).",
+        "tipo": "emergente",
+        "tolerancia": "±0.05 en torno a 0.75"
+      }
+    ],
+    "relevancia_filosofica": "El experimento mental fundacional de la emergencia: preferencias individuales suaves (nadie quiere segregar) generan un orden macro segregado que nadie eligio. Captura la brecha entre intencion micro y resultado macro, central para pensar la responsabilidad moral en la ciudad. Mutila la economia, el racismo institucional, las politicas de vivienda y el poder, reduciendo la segregacion a un parametro de tolerancia. Eje del curso: ontologia de lo emergente (la segregacion existe sin un sujeto que la quiera), la falacia de inferir intenciones desde patrones, y la critica politica de naturalizar la segregacion como 'autoorganizacion'."
+  },
+  {
+    "id": "duncan_disimilitud",
+    "nombre": "Indice de disimilitud de Duncan y Duncan",
+    "autor": "Otis Dudley Duncan y Beverly Duncan",
+    "anio": "1955",
+    "campo": "dinamica social",
+    "formulacion": "Dada una particion de la ciudad en n unidades (tracts) con a_i miembros del grupo A y b_i del grupo B, A=sum a_i, B=sum b_i, el indice de disimilitud es D = 0.5 * sum_{i=1}^{n} |a_i/A - b_i/B|. D in [0,1]: D=0 significa distribucion identica (sin segregacion), D=1 segregacion completa. Interpretacion: D es la fraccion de un grupo que tendria que reubicarse para igualar la distribucion del otro grupo. Es independiente del tamano relativo de los grupos.",
+    "experimento": "Ciudad con 4 tracts. Grupo A por tract: [40,30,20,10] (A=100). Grupo B por tract: [10,20,30,40] (B=100). Determinista, sin semilla. Calcular las proporciones por tract y D. Verificacion: |0.40-0.10|+|0.30-0.20|+|0.20-0.30|+|0.10-0.40| = 0.30+0.10+0.10+0.30 = 0.80; D=0.5*0.80=0.40.",
+    "salida_grafica": "PNG 1 de barras por tract mostrando la proporcion de A y de B (a_i/A y b_i/B) lado a lado, con la diferencia absoluta |a_i/A - b_i/B| anotada sobre cada tract y el valor D total en el titulo. Linea de referencia de distribucion uniforme (1/n). PNG 2: rejilla de Schelling del proyecto + heatmap de la contribucion real de cada tract al indice D (0.5*|r_i/R - a_i/A|, cuya suma es exactamente D), no la desviacion local de proporcion.",
+    "criterio_validacion": "D debe estar en [0,1]. Para distribuciones identicas D=0 (±1e-9). Para el experimento literal D=0.40 (±0.001). D debe ser invariante a multiplicar todos los a_i (o b_i) por una constante positiva.",
+    "preguntas": [
+      {
+        "q": "Una ciudad tiene 4 tracts con grupo A = [40,30,20,10] (total 100) y grupo B = [10,20,30,40] (total 100). Usando D = 0.5*sum|a_i/A - b_i/B|, calcula el indice de disimilitud. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Diferencias: |0.4-0.1|+|0.3-0.2|+|0.2-0.3|+|0.1-0.4|=0.3+0.1+0.1+0.3=0.8; D=0.5*0.8=0.40.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.001 (0.40)"
+      },
+      {
+        "q": "En 3 tracts, grupo A = [50,30,20] (total 100) y grupo B = [20,30,50] (total 100). Calcula el indice de disimilitud de Duncan D = 0.5*sum|a_i/A - b_i/B|. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "|0.5-0.2|+|0.3-0.3|+|0.2-0.5|=0.3+0+0.3=0.6; D=0.5*0.6=0.30.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.001 (0.30)"
+      },
+      {
+        "q": "Toma la rejilla final del experimento de Schelling del proyecto (sim_schelling_segregacion: 50x50, 45% Rojo, 45% Azul, 10% vacio, umbral T=0.30, vecindad de Moore, numpy seed=42, max_iter=200), divide la rejilla en 25 bloques de 10x10 celdas como 'tracts', cuenta Rojos y Azules por bloque, y calcula el indice de disimilitud D de Duncan entre Rojo y Azul. Reporta D. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Reusar la rejilla final del modulo Schelling canonico (45/45/10, T=0.30, seed=42, max_iter=200 -> 1125 Rojos y 1125 Azules), agregarla en 25 tracts (10x10) y aplicar D=0.5*sum|r_i/R - a_i/A|; a esta escala de agregacion el Schelling con T=0.30 produce D~0.246, segregacion baja-moderada (un baseline aleatorio da D~0.09), no alto.",
+        "tipo": "emergente",
+        "tolerancia": "±0.05 en torno a 0.246"
+      }
+    ],
+    "relevancia_filosofica": "Convierte la segregacion en un numero unico comparable entre ciudades y epocas, posibilitando la politica basada en evidencia y los litigios de derechos civiles. Captura la desigualdad distributiva de forma operacional; mutila la escala (depende de como se dibujan los tracts: falacia ecologica), la intensidad de contacto y la dimension cualitativa de la exclusion. Eje del curso: el poder del indicador (lo que se mide se gobierna), la politica de la unidad de analisis y la pregunta de si reducir la injusticia a un escalar la hace gobernable o la trivializa."
+  },
+  {
+    "id": "zipf_rank_size",
+    "nombre": "Ley rango-tamano de Zipf para ciudades",
+    "autor": "George Kingsley Zipf",
+    "anio": "1949",
+    "campo": "leyes estadisticas",
+    "formulacion": "Ordenadas las ciudades de un sistema de la mayor (rango 1) a la menor, la poblacion del rango r cumple P(r) = P_1 / r^q, donde P_1 es la poblacion de la mayor ciudad y q el exponente de Zipf (q=1 en la version estricta o idealizada). Tomando logaritmos: log P(r) = log P_1 - q*log r, una recta de pendiente -q en el plano log-log. La regla del rango-tamano clasica es el caso q=1: la ciudad de rango r tiene 1/r de la poblacion de la primera. Conviene matizar que en Zipf (1949, 'Human Behavior and the Principle of Least Effort') q=1 es una regularidad empirica de la regla rango-tamano, no una constante natural exacta: la literatura posterior (Gabaix 1999) la deriva como caso limite y documenta desviaciones empiricas (q tipicamente 0.8-1.2 segun pais y recorte). Los sistemas urbanos reales muestran exponentes cercanos pero no exactamente 1.",
+    "experimento": "Sistema sintetico de 100 ciudades con P_1=1,000,000 y q=1 exacto: P(r)=1,000,000/r. Determinista, sin semilla. Calcular las poblaciones de rangos 1..100, ajustar por minimos cuadrados log P vs log r y recuperar la pendiente. Verificacion: P(1)=1,000,000; P(2)=500,000; P(4)=250,000; P(10)=100,000; pendiente ajustada = -1.000.",
+    "salida_grafica": "PNG log-log: eje x = log(rango), eje y = log(poblacion). Se grafican dos sistemas para ilustrar el contraste: (a) sistema ideal q=1 exacto, cuyos puntos caen sobre la linea de referencia de pendiente -1 (Zipf estricta, trazada como linea verde ancha por debajo para que sea visible y no quede oculta bajo otra curva); y (b) sistema empirico q=0.85 con perturbacion log-normal determinista, cuyos puntos se dispersan y cuya recta de regresion (pendiente recuperada ~ -0.857) se aparta visiblemente de la referencia -1, mostrando que la ley es una idealizacion. Segundo PNG: panel lineal vs. log-log.",
+    "criterio_validacion": "La pendiente de la regresion log P vs log r debe ser -1.0 ± 0.15 para un sistema Zipf-compatible. R^2 del ajuste lineal en log-log debe ser > 0.95. Para el sistema sintetico generado con q=1, la pendiente recuperada debe ser -1.000 ± 0.001.",
+    "preguntas": [
+      {
+        "q": "En un sistema que cumple la ley de Zipf con q=1, la ciudad mas grande tiene 1,000,000 de habitantes. Cual es la poblacion esperada de la ciudad de rango 4? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "P(4)=1,000,000/4^1=250,000.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (250000)"
+      },
+      {
+        "q": "Bajo Zipf con exponente q, P(r)=P_1/r^q. Si P_1=1,000,000 y la ciudad de rango 5 tiene 200,000 habitantes, cual es el exponente q? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "200000=1000000/5^q => 5^q=5 => q=1.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (1.0)"
+      },
+      {
+        "q": "Genera 100 ciudades con P(r)=1,000,000/r (q=1 exacto, r=1..100), ajusta por minimos cuadrados la recta log10(P) = a + b*log10(r) y reporta la pendiente b. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Como los datos provienen de q=1 exacto (sin ruido), el ajuste recupera pendiente b=-1.000000 (R^2=1.000000). Tolerancia ±0.001 consistente con el criterio_validacion.",
+        "tipo": "emergente",
+        "tolerancia": "±0.001 en torno a -1.000"
+      }
+    ],
+    "relevancia_filosofica": "Una regularidad estadistica casi universal y sin teoria causal acordada: las ciudades del mundo, pese a su diversidad historica, se distribuyen segun una ley de potencias. Captura un orden estadistico que trasciende la voluntad de los planificadores; mutila por completo la singularidad, la cultura y la causalidad (la ley describe pero no explica). Importa subrayar que q=1 es la version estricta/idealizada: los sistemas reales se desvian (q~0.8-1.2; Gabaix 1999), de modo que la 'ley' no es un invariante fisico exacto sino una tendencia. Eje del curso: la ciudad como instancia de una ley natural-social, el estatuto epistemico de las leyes sin mecanismo, y la tension entre la unicidad vivida de cada ciudad y su lugar anonimo en una distribucion."
+  },
+  {
+    "id": "bettencourt_west_escalamiento",
+    "nombre": "Escalamiento urbano superlineal de Bettencourt-West",
+    "autor": "Bettencourt, Lobo, Helbing, Kuhnert y West",
+    "anio": "2007",
+    "referencia": "Bettencourt, L.M.A., Lobo, J., Helbing, D., Kuhnert, C. & West, G.B. (2007). 'Growth, innovation, scaling, and the pace of life in cities.' PNAS 104(17): 7301-7306.",
+    "campo": "leyes estadisticas",
+    "formulacion": "Las magnitudes urbanas Y escalan con la poblacion N segun una ley de potencias Y = Y_0 * N^beta. El exponente beta clasifica el fenomeno: beta~1.15 (superlineal) para la creacion socioeconomica (patentes, PIB, salarios, delitos, interacciones) -> las ciudades grandes son MAS que proporcionalmente productivas; beta~0.85 (sublineal) para infraestructura (estaciones de servicio, longitud de cables, area de calles) -> economias de escala; beta~1 (lineal) para necesidades individuales (vivienda, empleo). En log-log: log Y = log Y_0 + beta*log N. Al duplicar la poblacion, Y se multiplica por 2^beta.",
+    "experimento": "Magnitud socioeconomica con beta=1.15 e Y_0=1. Determinista, sin semilla. Ciudades con N=100,000, 200,000, 1,000,000. Calcular Y y la productividad per capita Y/N. Verificacion: Y(100000)=100000^1.15=562341; Y(200000)=1,247,914; Y(1,000,000)=7,943,282; factor al duplicar=2^1.15=2.219. La productividad per capita crece: Y/N=N^0.15.",
+    "salida_grafica": "PNG log-log: x=log(poblacion N), y=log(magnitud Y), nube de ciudades sobre la recta de pendiente beta=1.15, con linea de referencia de pendiente 1 (escalamiento lineal) para visualizar la 'prima urbana' superlineal. Panel adjunto: Y/N per capita vs N mostrando el crecimiento.",
+    "criterio_validacion": "Se ajustan por minimos cuadrados dos regresiones log Y vs log N: la nube socioeconomica (beta=1.15) debe recuperar beta en [1.10,1.20] y la nube de infraestructura (beta=0.85) debe recuperar beta en [0.80,0.90]. El factor de duplicacion debe ser 2^beta (2.219 para beta=1.15) ± 1%.",
+    "preguntas": [
+      {
+        "q": "Con escalamiento Y=Y_0*N^beta, Y_0=1 y beta=1.15, calcula la magnitud Y para una ciudad de N=1,000,000 habitantes. Da el resultado redondeado al entero. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Y=1,000,000^1.15=10^(6*1.15)=10^6.9=7,943,282.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±1% (7943282)"
+      },
+      {
+        "q": "Bajo escalamiento superlineal con beta=1.15, por que factor se multiplica la magnitud socioeconomica Y cuando la poblacion de una ciudad se DUPLICA? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Factor=2^1.15=2.2191.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (2.219)"
+      },
+      {
+        "q": "Genera 50 ciudades con poblaciones N espaciadas logaritmicamente entre 10,000 y 5,000,000 y magnitud Y=N^1.15 (sin ruido), ajusta por minimos cuadrados log10(Y)=a+b*log10(N) y reporta el exponente b recuperado. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Datos sin ruido generados con beta=1.15 exacto -> el ajuste recupera b=1.150.",
+        "tipo": "emergente",
+        "tolerancia": "±0.02 en torno a 1.150"
+      }
+    ],
+    "relevancia_filosofica": "Sostiene que la ciudad es fundamentalmente un reactor social: agrupar gente acelera de forma matematicamente predecible la innovacion, la riqueza y tambien el crimen y la enfermedad. Captura la ciudad como tecnologia de aceleracion de interacciones (la 'prima urbana'); mutila la distribucion interna (el promedio superlineal oculta a quien le toca el crimen y a quien la patente) y trata desigualdades como subproductos neutros del tamano. Eje del curso: la ciudad como organismo/maquina metabolica, la promesa tecno-optimista del escalamiento y su critica (lo bueno y lo malo escalan juntos; el agregado borra la justicia distributiva)."
+  },
+  {
+    "id": "automata_celular_crecimiento_urbano",
+    "nombre": "Automata celular de crecimiento urbano (regla estocastica de transicion)",
+    "autor": "Formulacion: Roger White y Guy Engelen / Keith Clarke (SLEUTH); antecedente conceptual: Waldo Tobler (geografia celular)",
+    "anio": "White-Engelen 1993 / Clarke 1997 (regla estocastica); Tobler 1979 (antecedente conceptual)",
+    "campo": "morfologia y crecimiento",
+    "nota_atribucion": "La regla probabilistica de transicion por conteo de vecinos p_i=p_base+p_difusion*(k_i/8) con vecindad de Moore NO fue propuesta por Tobler. Tobler (1979, 'Cellular Geography') introdujo el concepto general de geografia celular como antecedente. La formulacion estocastica con coeficientes de difusion/crecimiento espontaneo corresponde al automata celular restringido de White y Engelen (1993) y al modelo SLEUTH de Clarke (1997). Por eso la regla se acredita a White-Engelen / Clarke, citando a Tobler solo como antecedente conceptual.",
+    "formulacion": "Rejilla de celdas con estado urbano (1) o no urbano (0). En cada paso, una celda no urbana se urbaniza con probabilidad p que crece con el numero de vecinos urbanizados en la vecindad de Moore. Regla de transicion: p_i = p_base + p_difusion * (k_i/8), donde k_i = numero de vecinos urbanos de 8, p_difusion es el contagio de borde y p_base es el REFUERZO DEL FRENTE urbano. IMPORTANTE (regla fronteriza adoptada): a diferencia del SLEUTH canonico, en esta implementacion p_base NO es semilla de nucleos espontaneos: actua solo sobre celdas que ya colindan con el frente (k_i>=1). Las celdas completamente aisladas (k_i=0) tienen p_i=0 y nunca se urbanizan. Se urbaniza si un numero aleatorio uniforme U(0,1) < p_i. Esta eleccion suprime la nucleacion espontanea de islas dispersas y produce un crecimiento estrictamente compacto dominado por difusion de borde; el modelo no genera dispersion (sprawl) de islas alejadas.",
+    "experimento": "Rejilla 100x100 inicializada con un unico nucleo urbano de 3x3 en el centro. Parametros: p_base=0.001, p_difusion=1.00 (valor autorizado en el canon; difusion de borde dominante). Vecindad de Moore. Regla fronteriza: p_base solo activa celdas con k_i>=1. Semilla numpy.random.seed(7). Iterar 50 pasos sincronicos. Determinista dada la semilla. Medir el numero de celdas urbanas y el perimetro/compacidad por iteracion. Verificacion: arranque con 9 celdas urbanas; crecimiento dominado por difusion de borde produce un cluster compacto que crece aproximadamente de forma radial hasta 2672 celdas en el paso 50.",
+    "salida_grafica": "PNG de 4 instantaneas de la rejilla (pasos 0, 15, 30, 50) mostrando el cluster urbano sobre fondo oscuro, mas una curva del numero de celdas urbanas, del perimetro y de la compacidad isoperimetrica vs iteracion (crecimiento aproximadamente exponencial-saturante).",
+    "criterio_validacion": "El cluster debe permanecer mayoritariamente conexo (componente conexo principal >90% de celdas urbanas) dado el dominio de p_difusion sobre p_base; en la corrida canonica la conexidad es 100% en todos los pasos. El conteo de celdas urbanas debe ser monotono creciente. MEDIDA PRIMARIA DE COMPACIDAD: indice isoperimetrico 4*pi*Area/Perimetro^2 (final ~0.20, frente urbano rugoso). La dimension fractal por box-counting es INDICADOR SECUNDARIO: con tamanos de caja que dividen la rejilla (1,2,4,5,10,20,25,50) cae en [1.6,2.0] (D~1.68 en la corrida; para un blob solido casi-disco D tenderia a 2). No usar la dimension fractal como medida unica de forma compacta vs ramificada.",
+    "preguntas": [
+      {
+        "q": "En el automata celular de crecimiento urbano, la probabilidad de urbanizacion de una celda es p_i = p_base + p_difusion*(k_i/8), con p_base=0.001 y p_difusion=1.00. Una celda no urbana tiene 6 vecinos urbanos en su vecindad de Moore. Calcula p_i. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "p_i=0.001+1.00*(6/8)=0.001+0.75=0.751.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.001 (0.751)"
+      },
+      {
+        "q": "Bajo la regla del modelo (regla fronteriza: p_base solo refuerza el frente, k_i>=1 requerido), cual es la probabilidad EFECTIVA de urbanizacion de una celda completamente aislada (k_i=0 vecinos urbanos)? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "La regla fija p_i=0 para k_i=0: la celda aislada nunca se urbaniza. Probabilidad efectiva = 0.0. (La formula algebraica daria p_base=0.001, pero el modelo no la aplica a celdas aisladas; el codigo ejecutado produce 0.)",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (0.0)"
+      },
+      {
+        "q": "Corre el automata 100x100 con nucleo central 3x3, p_base=0.001, p_difusion=1.00, vecindad de Moore, p_base solo activa celdas fronterizas (k_i>=1), numpy.random.seed(7), 50 pasos sincronicos. Reporta el numero total de celdas urbanas tras el paso 50. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Simulacion determinista con semilla 7 y regla fronteriza (k_i>=1): el crecimiento por difusion de borde desde 9 celdas durante 50 pasos produce exactamente 2672 celdas urbanas.",
+        "tipo": "emergente",
+        "tolerancia": "valor exacto determinista: 2672"
+      }
+    ],
+    "relevancia_filosofica": "Modela el crecimiento urbano como proceso local sin plan central: la forma de la ciudad emerge de reglas de vecindad, no de un diseno. Captura la urbanizacion como contagio espacial y la sensibilidad a parametros (la forma compacta resultante depende del peso de p_difusion sobre p_base). Nota de alcance: la version aqui implementada adopta una regla fronteriza que suprime la nucleacion espontanea, por lo que el modelo solo produce crecimiento compacto y NO genera el sprawl de islas dispersas; la dispersion seria recuperable activando p_base como crecimiento espontaneo global (SLEUTH canonico), a costa de la conexidad. El modelo mutila el suelo real, la propiedad, la inversion, la infraestructura y la decision politica que absorbe en coeficientes. Eje del curso: la ciudad como computacion local (la cuestion de si una ciudad 'se calcula a si misma'), la naturalizacion de la forma urbana como propiedad emergente y la responsabilidad oculta tras los parametros del modelo (compacto vs disperso como decision de politica encubierta en p_base/p_difusion y en la propia eleccion de la regla)."
+  },
+  {
+    "id": "dla_batty_longley_fractal",
+    "nombre": "Agregacion limitada por difusion (DLA) y dimension fractal urbana de Batty-Longley",
+    "autor": "Michael Batty y Paul Longley",
+    "anio": "1994",
+    "campo": "morfologia y crecimiento",
+    "formulacion": "DLA: una semilla en el centro; particulas lanzadas desde lejos hacen caminata aleatoria hasta tocar el agregado, donde se pegan, formando un cluster ramificado. La forma resultante tiene dimension fractal D (~1.7 en 2D). La dimension fractal de una forma urbana se mide por mass-radius o box-counting: el numero de celdas ocupadas N dentro de un radio R cumple N(R) ~ R^D; tomando dos radios, D = log(N_2/N_1)/log(R_2/R_1). Equivalentemente en box-counting, N(epsilon) ~ epsilon^(-D) con epsilon el tamano de caja. D in (1,2): D->2 forma compacta llena, D->1 forma lineal/ramificada.",
+    "experimento": "Medida de dimension fractal por mass-radius sobre un cluster sintetico tipo DLA. Datos literales: a radio R_1=10 (unidades de rejilla) el cluster contiene N_1=158 celdas; a radio R_2=20 contiene N_2=380 celdas. Determinista, sin semilla para la medida. Calcular D=log(380/158)/log(20/10). Verificacion: D=log(2.405)/log(2)=0.878/0.693=1.266 (cluster relativamente ramificado). Para la simulacion DLA completa: rejilla 201x201, semilla central, 1500 particulas, numpy.random.seed(3).",
+    "salida_grafica": "PNG de dos paneles: el cluster DLA ramificado coloreado por orden de adhesion (mapa de calor temporal), y la grafica log-log de N(R) vs R con la recta ajustada cuya pendiente es la dimension fractal D anotada.",
+    "criterio_validacion": "Para un cluster DLA en 2D la dimension fractal medida por mass-radius o box-counting debe caer en D = 1.70 ± 0.10. La regresion log N vs log R debe tener R^2 > 0.97. Para el ejemplo literal de dos puntos, D=1.266 (±0.001).",
+    "preguntas": [
+      {
+        "q": "Usando la relacion mass-radius N(R) ~ R^D, un cluster sintetico contiene N_1=158 celdas dentro de radio R_1=10 y N_2=380 celdas dentro de radio R_2=20. Calcula la dimension fractal D = log(N_2/N_1)/log(R_2/R_1) (forma mas ramificada que la urbana tipica ~1.7). Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "D=log(380/158)/log(20/10)=log(2.405)/log(2)=0.87758/0.69315=1.266.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (1.266)"
+      },
+      {
+        "q": "Una forma urbana cumple N(R) ~ R^D con dimension fractal D=1.7. Si dentro de radio R=10 hay 200 celdas ocupadas, cuantas celdas ocupadas se esperan dentro de radio R=20? Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "N(20)=200*(20/10)^1.7=200*2^1.7=200*3.24901=649.8.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±1% (649.8)"
+      },
+      {
+        "q": "Simula DLA en rejilla 201x201 con semilla central, 1500 particulas en caminata aleatoria, numpy.random.seed(3); luego mide la dimension fractal por mass-radius (regresion log N(R) vs log R sobre la region de escalamiento, radios ~5..35, excluyendo saturacion N>60% del total). Reporta la dimension fractal D estimada. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Un cluster DLA 2D tiene dimension fractal caracteristica ~1.71; la estimacion por mass-radius sobre la region de escalamiento (excluyendo saturacion N>60% del total) cae cerca de ese valor (D~1.69).",
+        "tipo": "emergente",
+        "tolerancia": "±0.12 en torno a 1.71"
+      }
+    ],
+    "relevancia_filosofica": "Demuestra que la ciudad real no es ni un disco compacto ni una linea, sino un objeto fractal de dimension fraccionaria entre 1 y 2: su irregularidad es medible y autosimilar a multiples escalas. Captura la geometria genuina del borde urbano (lo que la geometria euclidiana clasica no puede); mutila la funcion, el sentido y la experiencia, reduciendo la ciudad a su silueta de ocupacion. Eje del curso: la ciudad como objeto matematico de nuevo tipo (geometria fractal), la belleza/poder de medir lo irregular, y la pregunta ontologica de si una dimension fraccionaria capta algo esencial o solo el contorno."
+  },
+  {
+    "id": "sintaxis_espacial_integracion",
+    "nombre": "Sintaxis espacial: integracion de grafos viarios (Hillier-Hanson)",
+    "autor": "Bill Hillier y Julienne Hanson",
+    "anio": "1984",
+    "campo": "redes",
+    "formulacion": "La ciudad se representa como grafo donde los nodos son lineas axiales (o calles) y las aristas son intersecciones. Para un nodo, la profundidad media MD = (sum de distancias topologicas a todos los demas)/(n-1). La asimetria relativa RA = 2*(MD-1)/(n-2), normalizada a [0,1]. La integracion (Integration) = 1/RA (o 1/RRA con factor de normalizacion de diamante). Valores altos de integracion = nodos topologicamente accesibles (centros 'a-la-vista'); valores bajos = segregados. Predice movimiento peatonal y vitalidad: 'natural movement'. Nota de rigor: aqui se reporta 1/RA (integracion NO normalizada por el tamano del grafo); el 'Integration value (i)' canonico mas citado en la literatura es 1/RRA, con RRA=RA/D_n y el factor diamante de Hillier-Hanson (1984) D_n=2*{n*[log2((n+2)/3)-1]+1}/((n-1)*(n-2)). La normalizacion por D_n solo es necesaria para comparar grafos de distinto n; al fijar n no altera el ranking de nodos del experimento.",
+    "experimento": "Grafo en linea (camino) de 5 nodos A-B-C-D-E (cada uno conectado al siguiente). Determinista, sin semilla. Calcular MD, RA e Integracion=1/RA para el nodo central C y para el nodo extremo A. Verificacion: nodo C: profundidades a A=2,B=1,D=1,E=2, suma=6, MD=6/4=1.5, RA=2*(1.5-1)/3=0.333, Integracion=3.0. Nodo A: profundidades 1,2,3,4, suma=10, MD=2.5, RA=2*1.5/3=1.0, Integracion=1.0.",
+    "salida_grafica": "PNG del grafo viario coloreado por integracion (mapa de calor: rojo=alta integracion en el centro, azul=baja en los extremos), con cada nodo etiquetado con su valor de integracion. Para una rejilla mayor, mapa axial coloreado tipo 'mapa de integracion' clasico de sintaxis espacial.",
+    "criterio_validacion": "La integracion debe ser maxima en el nodo topologicamente central y minima en los extremos. Para el camino de 5 nodos: Integracion(C)=3.0 (±0.01), Integracion(A)=1.0 (±0.01). RA debe estar en [0,1] para todo nodo. La profundidad media debe coincidir con la formula de caminos minimos.",
+    "preguntas": [
+      {
+        "q": "En un grafo viario en linea de 5 nodos A-B-C-D-E (camino simple), las profundidades topologicas del nodo central C a los demas son: A=2, B=1, D=1, E=2. Calcula la profundidad media MD = (suma de profundidades)/(n-1) para C, con n=5. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "MD=(2+1+1+2)/(5-1)=6/4=1.5.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (1.5)"
+      },
+      {
+        "q": "Para el nodo extremo A del camino de 5 nodos (profundidades 1,2,3,4, MD=2.5), calcula la asimetria relativa RA = 2*(MD-1)/(n-2) con n=5, y luego la integracion = 1/RA. Reporta la integracion. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "RA=2*(2.5-1)/(5-2)=2*1.5/3=1.0; Integracion=1/1.0=1.0.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "±0.01 (1.0)"
+      },
+      {
+        "q": "Construye el grafo de una rejilla viaria 5x5 (25 nodos, conexiones a vecinos ortogonales), calcula la profundidad media de cada nodo via caminos minimos (BFS) y la integracion=1/RA con RA=2*(MD-1)/(n-2), n=25. Reporta la integracion del nodo central (fila 2, columna 2, indexado desde 0). Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "BFS desde (2,2) en rejilla 5x5: distribucion de profundidades 4@1,8@2,8@3,4@4, suma=60, MD=60/24=2.5; RA=2*(2.5-1)/23=0.130435; Integracion=1/0.130435=7.6667.",
+        "valor_exacto": "7.6667",
+        "tipo": "emergente",
+        "tolerancia": "±1.0 en torno a 7.67"
+      }
+    ],
+    "relevancia_filosofica": "Sostiene que la estructura topologica de las calles, no su geometria metrica, determina donde la gente se mueve y se encuentra: el espacio configura la sociedad ('the social logic of space'). Captura la accesibilidad relacional y predice vitalidad urbana desde la pura forma de la red; mutila el uso del suelo, la economia, el transito vehicular y el significado cultural de las calles. Eje del curso: el espacio como agente (no mero contenedor), la politica de que calles son 'integradas' y cuales 'segregadas' por diseno, y la critica de un determinismo espacial que puede ocultar decisiones de poder tras la topologia."
+  },
+  {
+    "id": "braess_wardrop_equilibrio",
+    "nombre": "Paradoja de Braess y equilibrio de Wardrop en redes de transito",
+    "autor": "Dietrich Braess / John Glen Wardrop",
+    "anio": "1968/1952",
+    "campo": "redes",
+    "formulacion": "En equilibrio de usuario (primer principio de Wardrop), ningun conductor puede reducir su tiempo de viaje cambiando de ruta: todas las rutas usadas tienen igual tiempo, menor o igual al de las no usadas. Con funciones de tiempo dependientes del flujo t_e(x_e), el equilibrio se halla igualando tiempos de ruta. La paradoja de Braess: anadir una via (atajo de coste cero) puede AUMENTAR el tiempo de equilibrio de todos. Red clasica: Origen->Destino por rutas con tramos congestionables t(x)=x/c y tramos fijos t=t0. Con N viajeros y red simetrica el equilibrio reparte el flujo igualando costes.",
+    "experimento": "Red de Braess clasica con N=4000 vehiculos (unidades). Aristas: Inicio->A con t=x_A/100 (congestionable); A->Fin con t=45 (fijo); Inicio->B con t=45 (fijo); B->Fin con t=x_B/100 (congestionable). Determinista, sin semilla. SIN atajo: por simetria el equilibrio reparte 2000/2000, tiempo de cada ruta = 2000/100+45 = 65. CON atajo A->B de coste 0: en equilibrio todos usan Inicio->A->B->Fin, tiempo = 4000/100+4000/100 = 80. La paradoja: anadir el atajo sube el tiempo de 65 a 80.",
+    "salida_grafica": "PNG de dos diagramas de red lado a lado (sin atajo / con atajo) con los flujos de equilibrio anotados en cada arista y el tiempo total de viaje resaltado (65 vs 80). Barra comparativa mostrando el aumento de tiempo causado por anadir la via.",
+    "criterio_validacion": "Sin atajo, el equilibrio simetrico debe dar flujo 2000/2000 y tiempo 65 (±0.5). Con atajo, todos rutean por A->B->Fin con tiempo 80 (±0.5). La diferencia 80-65=15 unidades de tiempo (>0) confirma la paradoja. En equilibrio de Wardrop los tiempos de las rutas usadas deben ser iguales (±1e-6).",
+    "preguntas": [
+      {
+        "q": "En la red de Braess sin atajo, 4000 vehiculos se reparten simetricamente 2000 por la ruta superior y 2000 por la inferior. La ruta superior tiene tiempo t = x/100 + 45 donde x es su flujo. Calcula el tiempo de viaje de la ruta superior en equilibrio. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "t=2000/100+45=20+45=65.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (65)"
+      },
+      {
+        "q": "Con el atajo A->B de coste 0 anadido, en equilibrio los 4000 vehiculos usan la ruta Inicio->A->B->Fin, cuyo tiempo es x_A/100 + 0 + x_B/100 con x_A=x_B=4000. Calcula el tiempo de viaje de equilibrio con el atajo. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "t=4000/100+0+4000/100=40+40=80.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (80)"
+      },
+      {
+        "q": "Resuelve el equilibrio de Wardrop de la red de Braess con atajo para N=4000 (asignando flujo iterativamente o por mejor respuesta hasta que ningun vehiculo mejore cambiando de ruta). Reporta el aumento del tiempo de viaje de equilibrio respecto a la red sin atajo (tiempo_con - tiempo_sin). Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "Equilibrio con atajo=80, sin atajo=65; aumento=80-65=15.",
+        "tipo": "emergente",
+        "tolerancia": "±1 en torno a 15"
+      }
+    ],
+    "relevancia_filosofica": "Refuta la intuicion liberal de que mas opciones siempre mejoran el bienestar: anadir una via puede empeorar a todos cuando cada uno optimiza egoistamente (la brecha entre optimo de usuario y optimo del sistema). Captura la diferencia entre racionalidad individual y bien comun en la infraestructura; mutila la dimension temporal, el comportamiento real, los precios y la politica de peajes. Eje del curso: la ciudad como dilema de coordinacion, la critica del individualismo metodologico en la movilidad, y la justificacion matematica de la intervencion publica (cerrar calles puede mejorar el trafico)."
+  },
+  {
+    "id": "modelo_gravitacional_flujos",
+    "nombre": "Modelo gravitacional de interaccion espacial (flujos de viaje/migracion)",
+    "autor": "John Q. Stewart (analogia de cuadrado inverso); raices en Henry Carey (1858) y G. K. Zipf (1946); derivacion entropica de Alan Wilson (1967)",
+    "anio": "1948/1967",
+    "campo": "redes",
+    "formulacion": "El flujo de interaccion entre dos zonas i,j (viajes, migracion, comercio) es T_ij = G * (P_i^a * P_j^b) / d_ij^c, donde P_i,P_j son masas (poblacion/empleo), d_ij distancia, G constante, c exponente de friccion de la distancia (tipicamente 1-2). La forma c=1 (T_ij = G*P_i*P_j/d_ij, distancia lineal) corresponde a la 'P1*P2/D Hypothesis' de G. K. Zipf (1946). La forma c=2 con constante de proporcionalidad, T_ij = G*P_i*P_j/d_ij^2 (analogia newtoniana exacta de cuadrado inverso, I_ij=k*P_i*P_j/d_ij^2), es la de John Q. Stewart (1948) y es la que se simula aqui; Zipf nunca uso el cuadrado inverso. La version de Wilson (1967) maximiza entropia con restricciones de produccion/atraccion, dando T_ij = A_i*O_i*B_j*D_j*exp(-beta*d_ij). El total de flujos emanados de i es sum_j T_ij.",
+    "experimento": "Tres zonas con poblaciones P_1=10000, P_2=5000, P_3=20000 en posiciones (0,0), (30,0), (0,40). G=1, a=b=1, c=2. Determinista, sin semilla. Distancias euclidianas: d_12=30, d_13=40, d_23=50. Calcular la matriz de flujos T_ij. Verificacion: T_12=1*10000*5000/30^2=50,000,000/900=55,556; T_13=1*10000*20000/40^2=200,000,000/1600=125,000; T_23=1*5000*20000/50^2=100,000,000/2500=40,000.",
+    "salida_grafica": "PNG de mapa de las 3 (o N) zonas como circulos proporcionales a su poblacion, con lineas entre zonas cuyo grosor es proporcional al flujo T_ij, etiquetadas con el valor. Matriz de calor adjunta de la matriz de flujos T_ij.",
+    "criterio_validacion": "Cada flujo debe cumplir T_ij = G*P_i*P_j/d_ij^c exactamente (±0.5% por redondeo). La simetria T_ij=T_ji en el modelo no restringido. Al duplicar d_ij con c=2, el flujo debe caer a 1/4. La friccion ajustada por regresion log(T_ij) vs log(d_ij) (controlando masas) debe recuperar -c.",
+    "preguntas": [
+      {
+        "q": "Con el modelo gravitacional T_ij = G*P_i*P_j/d_ij^2, G=1, dos zonas con P_i=10000 y P_j=5000 separadas por d_ij=50. Calcula el flujo T_ij. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "T=1*10000*5000/50^2=50,000,000/2500=20,000.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (20000)"
+      },
+      {
+        "q": "Con T_ij = G*P_i*P_j/d_ij^c, G=1, c=2, P_i=10000, P_j=20000. Calcula el flujo a una distancia d_ij=40. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "T=1*10000*20000/40^2=200,000,000/1600=125,000.",
+        "tipo": "forma_cerrada",
+        "tolerancia": "igualdad exacta (125000)"
+      },
+      {
+        "q": "Calcula la matriz de flujos completa para 3 zonas: P=[10000,5000,20000] en posiciones (0,0),(30,0),(0,40), con G=1, c=2 y distancias euclidianas. Suma todos los flujos entre pares distintos (T_12+T_13+T_23). Reporta el total. Formato: 'Respuesta final: <valor>'.",
+        "como_computar": "T_12=55556 (50e6/900), T_13=125000 (200e6/1600), T_23=40000 (100e6/2500); suma=55556+125000+40000=220555.56.",
+        "tipo": "emergente",
+        "tolerancia": "±1% en torno a 220555.56"
+      }
+    ],
+    "relevancia_filosofica": "Aplica la analogia newtoniana exacta de cuadrado inverso (formulada por el astrofisico de Princeton John Q. Stewart, 1948) a la interaccion humana entre lugares: la ciudad-region como sistema de masas que se atraen. Captura la regularidad agregada de viajes y migraciones y fundamenta la planificacion de transporte; mutila la asimetria, la cultura, la frontera, el motivo del viaje y la agencia, reduciendo el desplazamiento humano a masa/distancia. La formalizacion entropica de Wilson (1967) revela que la 'ley fisica' es en realidad el estado mas probable bajo restricciones (no una fuerza). Eje del curso: la ciudad como campo gravitatorio social, el estatuto de las analogias fisicas en lo social, y la politica de planificar flujos como si fueran fenomenos naturales inevitables."
+  }
+]

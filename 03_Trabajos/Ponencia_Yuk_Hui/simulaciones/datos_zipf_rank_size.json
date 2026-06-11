@@ -1,0 +1,836 @@
+{
+  "teoria": "zipf_rank_size",
+  "autor": "George Kingsley Zipf",
+  "anio": "1949",
+  "nota_canon": "q=1 es la version estricta/idealizada de la regla rango-tamano (Zipf 1949). Es una regularidad empirica, no un invariante fisico exacto: los sistemas urbanos reales muestran exponentes cercanos pero no exactamente 1 (q tipicamente 0.8-1.2 segun pais/recorte; Gabaix 1999).",
+  "parametros": {
+    "P1": 1000000,
+    "q": 1.0,
+    "n_ciudades": 100,
+    "q_empirico": 0.85,
+    "sigma_perturbacion": 0.12,
+    "semilla": 42
+  },
+  "ajuste_log_log": {
+    "pendiente": -1.0000000000000004,
+    "intercepto": 6.000000000000002,
+    "r_cuadrado": 1.0,
+    "p_valor": 0.0
+  },
+  "ajuste_log_log_empirico": {
+    "pendiente": -0.8568656868110542,
+    "intercepto": 6.0082259079213625,
+    "r_cuadrado": 0.9865122254416313,
+    "p_valor": 1.8844437257732753e-93
+  },
+  "verificacion": {
+    "P_rango_1": 1000000.0,
+    "P_rango_2": 500000.0,
+    "P_rango_4": 250000.0,
+    "P_rango_10": 100000.0
+  },
+  "ciudades": [
+    {
+      "rango": 1,
+      "poblacion": 1000000.0
+    },
+    {
+      "rango": 2,
+      "poblacion": 500000.0
+    },
+    {
+      "rango": 3,
+      "poblacion": 333333.3333333333
+    },
+    {
+      "rango": 4,
+      "poblacion": 250000.0
+    },
+    {
+      "rango": 5,
+      "poblacion": 200000.0
+    },
+    {
+      "rango": 6,
+      "poblacion": 166666.66666666666
+    },
+    {
+      "rango": 7,
+      "poblacion": 142857.14285714287
+    },
+    {
+      "rango": 8,
+      "poblacion": 125000.0
+    },
+    {
+      "rango": 9,
+      "poblacion": 111111.11111111111
+    },
+    {
+      "rango": 10,
+      "poblacion": 100000.0
+    },
+    {
+      "rango": 11,
+      "poblacion": 90909.09090909091
+    },
+    {
+      "rango": 12,
+      "poblacion": 83333.33333333333
+    },
+    {
+      "rango": 13,
+      "poblacion": 76923.07692307692
+    },
+    {
+      "rango": 14,
+      "poblacion": 71428.57142857143
+    },
+    {
+      "rango": 15,
+      "poblacion": 66666.66666666667
+    },
+    {
+      "rango": 16,
+      "poblacion": 62500.0
+    },
+    {
+      "rango": 17,
+      "poblacion": 58823.529411764706
+    },
+    {
+      "rango": 18,
+      "poblacion": 55555.555555555555
+    },
+    {
+      "rango": 19,
+      "poblacion": 52631.57894736842
+    },
+    {
+      "rango": 20,
+      "poblacion": 50000.0
+    },
+    {
+      "rango": 21,
+      "poblacion": 47619.04761904762
+    },
+    {
+      "rango": 22,
+      "poblacion": 45454.545454545456
+    },
+    {
+      "rango": 23,
+      "poblacion": 43478.260869565216
+    },
+    {
+      "rango": 24,
+      "poblacion": 41666.666666666664
+    },
+    {
+      "rango": 25,
+      "poblacion": 40000.0
+    },
+    {
+      "rango": 26,
+      "poblacion": 38461.53846153846
+    },
+    {
+      "rango": 27,
+      "poblacion": 37037.03703703704
+    },
+    {
+      "rango": 28,
+      "poblacion": 35714.28571428572
+    },
+    {
+      "rango": 29,
+      "poblacion": 34482.75862068965
+    },
+    {
+      "rango": 30,
+      "poblacion": 33333.333333333336
+    },
+    {
+      "rango": 31,
+      "poblacion": 32258.064516129034
+    },
+    {
+      "rango": 32,
+      "poblacion": 31250.0
+    },
+    {
+      "rango": 33,
+      "poblacion": 30303.030303030304
+    },
+    {
+      "rango": 34,
+      "poblacion": 29411.764705882353
+    },
+    {
+      "rango": 35,
+      "poblacion": 28571.428571428572
+    },
+    {
+      "rango": 36,
+      "poblacion": 27777.777777777777
+    },
+    {
+      "rango": 37,
+      "poblacion": 27027.027027027027
+    },
+    {
+      "rango": 38,
+      "poblacion": 26315.78947368421
+    },
+    {
+      "rango": 39,
+      "poblacion": 25641.02564102564
+    },
+    {
+      "rango": 40,
+      "poblacion": 25000.0
+    },
+    {
+      "rango": 41,
+      "poblacion": 24390.243902439026
+    },
+    {
+      "rango": 42,
+      "poblacion": 23809.52380952381
+    },
+    {
+      "rango": 43,
+      "poblacion": 23255.81395348837
+    },
+    {
+      "rango": 44,
+      "poblacion": 22727.272727272728
+    },
+    {
+      "rango": 45,
+      "poblacion": 22222.222222222223
+    },
+    {
+      "rango": 46,
+      "poblacion": 21739.130434782608
+    },
+    {
+      "rango": 47,
+      "poblacion": 21276.59574468085
+    },
+    {
+      "rango": 48,
+      "poblacion": 20833.333333333332
+    },
+    {
+      "rango": 49,
+      "poblacion": 20408.163265306124
+    },
+    {
+      "rango": 50,
+      "poblacion": 20000.0
+    },
+    {
+      "rango": 51,
+      "poblacion": 19607.843137254902
+    },
+    {
+      "rango": 52,
+      "poblacion": 19230.76923076923
+    },
+    {
+      "rango": 53,
+      "poblacion": 18867.924528301886
+    },
+    {
+      "rango": 54,
+      "poblacion": 18518.51851851852
+    },
+    {
+      "rango": 55,
+      "poblacion": 18181.81818181818
+    },
+    {
+      "rango": 56,
+      "poblacion": 17857.14285714286
+    },
+    {
+      "rango": 57,
+      "poblacion": 17543.859649122805
+    },
+    {
+      "rango": 58,
+      "poblacion": 17241.379310344826
+    },
+    {
+      "rango": 59,
+      "poblacion": 16949.15254237288
+    },
+    {
+      "rango": 60,
+      "poblacion": 16666.666666666668
+    },
+    {
+      "rango": 61,
+      "poblacion": 16393.44262295082
+    },
+    {
+      "rango": 62,
+      "poblacion": 16129.032258064517
+    },
+    {
+      "rango": 63,
+      "poblacion": 15873.015873015873
+    },
+    {
+      "rango": 64,
+      "poblacion": 15625.0
+    },
+    {
+      "rango": 65,
+      "poblacion": 15384.615384615385
+    },
+    {
+      "rango": 66,
+      "poblacion": 15151.515151515152
+    },
+    {
+      "rango": 67,
+      "poblacion": 14925.373134328358
+    },
+    {
+      "rango": 68,
+      "poblacion": 14705.882352941177
+    },
+    {
+      "rango": 69,
+      "poblacion": 14492.753623188406
+    },
+    {
+      "rango": 70,
+      "poblacion": 14285.714285714286
+    },
+    {
+      "rango": 71,
+      "poblacion": 14084.507042253521
+    },
+    {
+      "rango": 72,
+      "poblacion": 13888.888888888889
+    },
+    {
+      "rango": 73,
+      "poblacion": 13698.630136986301
+    },
+    {
+      "rango": 74,
+      "poblacion": 13513.513513513513
+    },
+    {
+      "rango": 75,
+      "poblacion": 13333.333333333334
+    },
+    {
+      "rango": 76,
+      "poblacion": 13157.894736842105
+    },
+    {
+      "rango": 77,
+      "poblacion": 12987.012987012988
+    },
+    {
+      "rango": 78,
+      "poblacion": 12820.51282051282
+    },
+    {
+      "rango": 79,
+      "poblacion": 12658.227848101265
+    },
+    {
+      "rango": 80,
+      "poblacion": 12500.0
+    },
+    {
+      "rango": 81,
+      "poblacion": 12345.67901234568
+    },
+    {
+      "rango": 82,
+      "poblacion": 12195.121951219513
+    },
+    {
+      "rango": 83,
+      "poblacion": 12048.192771084337
+    },
+    {
+      "rango": 84,
+      "poblacion": 11904.761904761905
+    },
+    {
+      "rango": 85,
+      "poblacion": 11764.70588235294
+    },
+    {
+      "rango": 86,
+      "poblacion": 11627.906976744185
+    },
+    {
+      "rango": 87,
+      "poblacion": 11494.252873563219
+    },
+    {
+      "rango": 88,
+      "poblacion": 11363.636363636364
+    },
+    {
+      "rango": 89,
+      "poblacion": 11235.955056179775
+    },
+    {
+      "rango": 90,
+      "poblacion": 11111.111111111111
+    },
+    {
+      "rango": 91,
+      "poblacion": 10989.010989010989
+    },
+    {
+      "rango": 92,
+      "poblacion": 10869.565217391304
+    },
+    {
+      "rango": 93,
+      "poblacion": 10752.68817204301
+    },
+    {
+      "rango": 94,
+      "poblacion": 10638.297872340425
+    },
+    {
+      "rango": 95,
+      "poblacion": 10526.315789473685
+    },
+    {
+      "rango": 96,
+      "poblacion": 10416.666666666666
+    },
+    {
+      "rango": 97,
+      "poblacion": 10309.278350515464
+    },
+    {
+      "rango": 98,
+      "poblacion": 10204.081632653062
+    },
+    {
+      "rango": 99,
+      "poblacion": 10101.0101010101
+    },
+    {
+      "rango": 100,
+      "poblacion": 10000.0
+    }
+  ],
+  "ciudades_empiricas": [
+    {
+      "rango": 1,
+      "poblacion": 1037242.8111975067
+    },
+    {
+      "rango": 2,
+      "poblacion": 489694.6740757833
+    },
+    {
+      "rango": 3,
+      "poblacion": 430087.6293498106
+    },
+    {
+      "rango": 4,
+      "poblacion": 344561.58403255616
+    },
+    {
+      "rango": 5,
+      "poblacion": 201463.62233577628
+    },
+    {
+      "rango": 6,
+      "poblacion": 186512.48663605758
+    },
+    {
+      "rango": 7,
+      "poblacion": 194235.72536735504
+    },
+    {
+      "rango": 8,
+      "poblacion": 164396.4448639393
+    },
+    {
+      "rango": 9,
+      "poblacion": 154176.53072919586
+    },
+    {
+      "rango": 10,
+      "poblacion": 127509.73041008938
+    },
+    {
+      "rango": 11,
+      "poblacion": 144759.2552683921
+    },
+    {
+      "rango": 12,
+      "poblacion": 132810.01640225534
+    },
+    {
+      "rango": 13,
+      "poblacion": 113917.215964045
+    },
+    {
+      "rango": 14,
+      "poblacion": 121489.21502875784
+    },
+    {
+      "rango": 15,
+      "poblacion": 105849.01893748704
+    },
+    {
+      "rango": 16,
+      "poblacion": 85450.71436248529
+    },
+    {
+      "rango": 17,
+      "poblacion": 94045.06014193644
+    },
+    {
+      "rango": 18,
+      "poblacion": 76391.64814101656
+    },
+    {
+      "rango": 19,
+      "poblacion": 90957.84731201547
+    },
+    {
+      "rango": 20,
+      "poblacion": 77897.33463993523
+    },
+    {
+      "rango": 21,
+      "poblacion": 73532.51749585754
+    },
+    {
+      "rango": 22,
+      "poblacion": 66596.87458547055
+    },
+    {
+      "rango": 23,
+      "poblacion": 80583.19718129479
+    },
+    {
+      "rango": 24,
+      "poblacion": 65882.04758410926
+    },
+    {
+      "rango": 25,
+      "poblacion": 61578.42028932426
+    },
+    {
+      "rango": 26,
+      "poblacion": 60106.45232558958
+    },
+    {
+      "rango": 27,
+      "poblacion": 64726.52231800928
+    },
+    {
+      "rango": 28,
+      "poblacion": 61512.15103226128
+    },
+    {
+      "rango": 29,
+      "poblacion": 60044.24678658438
+    },
+    {
+      "rango": 30,
+      "poblacion": 58465.45254061078
+    },
+    {
+      "rango": 31,
+      "poblacion": 69816.04589797562
+    },
+    {
+      "rango": 32,
+      "poblacion": 50054.377257844346
+    },
+    {
+      "rango": 33,
+      "poblacion": 48146.80227222823
+    },
+    {
+      "rango": 34,
+      "poblacion": 45272.3334670129
+    },
+    {
+      "rango": 35,
+      "poblacion": 52437.76078270652
+    },
+    {
+      "rango": 36,
+      "poblacion": 54447.713531444
+    },
+    {
+      "rango": 37,
+      "poblacion": 45823.69696587182
+    },
+    {
+      "rango": 38,
+      "poblacion": 41058.105304904726
+    },
+    {
+      "rango": 39,
+      "poblacion": 40237.12729238886
+    },
+    {
+      "rango": 40,
+      "poblacion": 47006.17036826846
+    },
+    {
+      "rango": 41,
+      "poblacion": 46544.53158555242
+    },
+    {
+      "rango": 42,
+      "poblacion": 44518.935505270725
+    },
+    {
+      "rango": 43,
+      "poblacion": 37745.79262223455
+    },
+    {
+      "rango": 44,
+      "poblacion": 41225.35373155655
+    },
+    {
+      "rango": 45,
+      "poblacion": 39888.75520637593
+    },
+    {
+      "rango": 46,
+      "poblacion": 39632.628204949855
+    },
+    {
+      "rango": 47,
+      "poblacion": 42085.41614774696
+    },
+    {
+      "rango": 48,
+      "poblacion": 38247.02905775992
+    },
+    {
+      "rango": 49,
+      "poblacion": 39693.111276637406
+    },
+    {
+      "rango": 50,
+      "poblacion": 36257.462156421345
+    },
+    {
+      "rango": 51,
+      "poblacion": 36612.79681344667
+    },
+    {
+      "rango": 52,
+      "poblacion": 37522.948480613675
+    },
+    {
+      "rango": 53,
+      "poblacion": 28735.935687765
+    },
+    {
+      "rango": 54,
+      "poblacion": 32419.44163943091
+    },
+    {
+      "rango": 55,
+      "poblacion": 31345.708038055465
+    },
+    {
+      "rango": 56,
+      "poblacion": 30251.355702012133
+    },
+    {
+      "rango": 57,
+      "poblacion": 31129.148504103094
+    },
+    {
+      "rango": 58,
+      "poblacion": 37931.11218705898
+    },
+    {
+      "rango": 59,
+      "poblacion": 28161.300641572936
+    },
+    {
+      "rango": 60,
+      "poblacion": 34596.613572422306
+    },
+    {
+      "rango": 61,
+      "poblacion": 24817.97333278788
+    },
+    {
+      "rango": 62,
+      "poblacion": 28774.93938516867
+    },
+    {
+      "rango": 63,
+      "poblacion": 30133.006407481815
+    },
+    {
+      "rango": 64,
+      "poblacion": 31282.26544883789
+    },
+    {
+      "rango": 65,
+      "poblacion": 31339.31216406394
+    },
+    {
+      "rango": 66,
+      "poblacion": 31241.596139614783
+    },
+    {
+      "rango": 67,
+      "poblacion": 26894.439194125483
+    },
+    {
+      "rango": 68,
+      "poblacion": 26198.221177214386
+    },
+    {
+      "rango": 69,
+      "poblacion": 30317.401537303147
+    },
+    {
+      "rango": 70,
+      "poblacion": 26405.644767683425
+    },
+    {
+      "rango": 71,
+      "poblacion": 22905.91157661861
+    },
+    {
+      "rango": 72,
+      "poblacion": 23025.323042940203
+    },
+    {
+      "rango": 73,
+      "poblacion": 23348.447173216133
+    },
+    {
+      "rango": 74,
+      "poblacion": 27356.63892897766
+    },
+    {
+      "rango": 75,
+      "poblacion": 25919.13426884977
+    },
+    {
+      "rango": 76,
+      "poblacion": 27371.16760650498
+    },
+    {
+      "rango": 77,
+      "poblacion": 23670.992487816846
+    },
+    {
+      "rango": 78,
+      "poblacion": 25117.81961897732
+    },
+    {
+      "rango": 79,
+      "poblacion": 26279.66514355175
+    },
+    {
+      "rango": 80,
+      "poblacion": 23240.83950808636
+    },
+    {
+      "rango": 81,
+      "poblacion": 25211.154261675958
+    },
+    {
+      "rango": 82,
+      "poblacion": 21815.327212269658
+    },
+    {
+      "rango": 83,
+      "poblacion": 22380.14766111854
+    },
+    {
+      "rango": 84,
+      "poblacion": 22103.86439379959
+    },
+    {
+      "rango": 85,
+      "poblacion": 19845.969794463257
+    },
+    {
+      "rango": 86,
+      "poblacion": 24046.675998065057
+    },
+    {
+      "rango": 87,
+      "poblacion": 21229.783913375788
+    },
+    {
+      "rango": 88,
+      "poblacion": 22276.187457685086
+    },
+    {
+      "rango": 89,
+      "poblacion": 23338.49081251042
+    },
+    {
+      "rango": 90,
+      "poblacion": 23023.163096954886
+    },
+    {
+      "rango": 91,
+      "poblacion": 23414.861123331735
+    },
+    {
+      "rango": 92,
+      "poblacion": 21166.43622893534
+    },
+    {
+      "rango": 93,
+      "poblacion": 20171.080342006906
+    },
+    {
+      "rango": 94,
+      "poblacion": 20829.880716742166
+    },
+    {
+      "rango": 95,
+      "poblacion": 17021.543203600206
+    },
+    {
+      "rango": 96,
+      "poblacion": 17364.116723047126
+    },
+    {
+      "rango": 97,
+      "poblacion": 17470.731477675414
+    },
+    {
+      "rango": 98,
+      "poblacion": 18008.849983172426
+    },
+    {
+      "rango": 99,
+      "poblacion": 21112.732902574917
+    },
+    {
+      "rango": 100,
+      "poblacion": 17898.253428317334
+    }
+  ]
+}

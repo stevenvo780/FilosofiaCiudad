@@ -1,0 +1,29 @@
+{
+  "teoria": "modelo_gravitacional_flujos",
+  "nombre": "Modelo gravitacional de interaccion espacial (flujos de viaje/migracion)",
+  "autor": "John Q. Stewart (analogia de cuadrado inverso); raices en Henry Carey (1858) y G. K. Zipf (1946); derivacion entropica de Alan Wilson (1967)",
+  "anio": "1948/1967",
+  "preguntas": [
+    {
+      "q": "Con el modelo gravitacional T_ij = G*P_i*P_j/d_ij^2, G=1, dos zonas con P_i=10000 y P_j=5000 separadas por d_ij=50. Calcula el flujo T_ij. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "20000",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (20000)",
+      "como_computar": "T=1*10000*5000/50^2=50,000,000/2500=20,000."
+    },
+    {
+      "q": "Con T_ij = G*P_i*P_j/d_ij^c, G=1, c=2, P_i=10000, P_j=20000. Calcula el flujo a una distancia d_ij=40. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "125000",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (125000)",
+      "como_computar": "T=1*10000*20000/40^2=200,000,000/1600=125,000."
+    },
+    {
+      "q": "Calcula la matriz de flujos completa para 3 zonas: P=[10000,5000,20000] en posiciones (0,0),(30,0),(0,40), con G=1, c=2 y distancias euclidianas. Suma todos los flujos entre pares distintos (T_12+T_13+T_23). Reporta el total. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "220555.5556",
+      "tipo": "emergente",
+      "tolerancia": "±1% en torno a 220555.56",
+      "como_computar": "T_12=55555.5556, T_13=125000.0000, T_23=40000.0000; suma=220555.5556"
+    }
+  ]
+}

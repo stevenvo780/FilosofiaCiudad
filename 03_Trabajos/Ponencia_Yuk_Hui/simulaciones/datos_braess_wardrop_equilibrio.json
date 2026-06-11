@@ -1,0 +1,93 @@
+{
+  "teoria": "braess_wardrop_equilibrio",
+  "parametros": {
+    "N": 4000,
+    "capacidad": 100,
+    "t_fijo": 45
+  },
+  "equilibrio_sin_atajo": {
+    "flujo_R1": 2000.0,
+    "flujo_R2": 2000.0,
+    "flujo_IA": 2000.0,
+    "flujo_AFin": 2000.0,
+    "flujo_IB": 2000.0,
+    "flujo_BFin": 2000.0,
+    "flujo_AB": 0.0,
+    "tiempo_R1": 65.0,
+    "tiempo_R2": 65.0,
+    "tiempo_equilibrio": 65.0,
+    "wardrop_ok": true
+  },
+  "equilibrio_con_atajo": {
+    "flujo_R1": 0.0,
+    "flujo_R2": 0.0,
+    "flujo_R3": 4000.0,
+    "flujo_IA": 4000.0,
+    "flujo_AFin": 0.0,
+    "flujo_IB": 0.0,
+    "flujo_AB": 4000.0,
+    "flujo_BFin": 4000.0,
+    "tiempo_R1_si_usado": 85.0,
+    "tiempo_R2_si_usado": 85.0,
+    "tiempo_R3": 80.0,
+    "tiempo_equilibrio": 80.0,
+    "wardrop_activas_ok": true,
+    "wardrop_inactivas_ok": true
+  },
+  "verificacion_msa_sin_atajo": {
+    "flujos": [
+      1999.9999999999916,
+      1999.9999999999916
+    ],
+    "tiempos": [
+      64.99999999999991,
+      64.99999999999991
+    ],
+    "tiempo_equilibrio": 64.99999999999991,
+    "convergio": true
+  },
+  "verificacion_msa_con_atajo": {
+    "flujos": [
+      0.0,
+      0.0,
+      3999.999999999983
+    ],
+    "flujos_aristas": {
+      "IA": 3999.999999999983,
+      "AFin": 0.0,
+      "IB": 0.0,
+      "BFin": 3999.999999999983,
+      "AB": 3999.999999999983
+    },
+    "tiempos": [
+      84.99999999999983,
+      84.99999999999983,
+      79.99999999999966
+    ],
+    "tiempo_equilibrio": 79.99999999999966,
+    "convergio": true
+  },
+  "validacion": {
+    "sin_atajo_flujo_R1": 2000.0,
+    "sin_atajo_flujo_R2": 2000.0,
+    "sin_atajo_tiempo": 65.0,
+    "sin_atajo_flujo_ok": true,
+    "sin_atajo_tiempo_ok": true,
+    "sin_atajo_wardrop_diff": 0.0,
+    "sin_atajo_wardrop_ok": true,
+    "con_atajo_tiempo": 80.0,
+    "con_atajo_tiempo_ok": true,
+    "con_atajo_flujo_R3": 4000.0,
+    "con_atajo_todos_R3": true,
+    "con_atajo_wardrop_inactivas_ok": true,
+    "delta_tiempo": 15.0,
+    "paradoja_confirmada": true,
+    "paradoja_valor": 15.0,
+    "validacion_global": true
+  },
+  "preguntas": {
+    "P1_tiempo_sin_atajo": 65.0,
+    "P2_tiempo_con_atajo": 80.0,
+    "P3_aumento_tiempo": 15.0
+  }
+}

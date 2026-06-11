@@ -1,0 +1,29 @@
+{
+  "teoria": "duncan_disimilitud",
+  "nombre": "Indice de disimilitud de Duncan y Duncan",
+  "autor": "Otis Dudley Duncan y Beverly Duncan",
+  "anio": "1955",
+  "preguntas": [
+    {
+      "q": "Una ciudad tiene 4 tracts con grupo A = [40,30,20,10] (total 100) y grupo B = [10,20,30,40] (total 100). Usando D = 0.5*sum|a_i/A - b_i/B|, calcula el indice de disimilitud. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.4",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.001 (0.40)",
+      "como_computar": "|0.4-0.1|+|0.3-0.2|+|0.2-0.3|+|0.1-0.4|=0.3+0.1+0.1+0.3=0.8; D=0.5*0.8=0.40."
+    },
+    {
+      "q": "En 3 tracts, grupo A = [50,30,20] (total 100) y grupo B = [20,30,50] (total 100). Calcula el indice de disimilitud de Duncan D = 0.5*sum|a_i/A - b_i/B|. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.3",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.001 (0.30)",
+      "como_computar": "|0.5-0.2|+|0.3-0.3|+|0.2-0.5|=0.3+0+0.3=0.6; D=0.5*0.6=0.30."
+    },
+    {
+      "q": "Toma la rejilla final del experimento de Schelling del proyecto (sim_schelling_segregacion: 50x50, 45% Rojo, 45% Azul, 10% vacio, umbral T=0.30, vecindad de Moore, numpy seed=42, max_iter=200), divide la rejilla en 25 bloques de 10x10 celdas como 'tracts', cuenta Rojos y Azules por bloque, y calcula el indice de disimilitud D de Duncan entre Rojo y Azul. Reporta D. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.2462",
+      "tipo": "emergente",
+      "tolerancia": "±0.05 en torno a 0.246 (a esta escala de agregacion 10x10 el Schelling T=0.30 da segregacion baja-moderada; baseline aleatorio D~0.09)",
+      "como_computar": "Rejilla final del modulo Schelling canonico (45/45/10, T=0.30, seed=42, max_iter=200) -> 1125 Rojos y 1125 Azules; agregar en 25 bloques 10x10; rojos_por_bloque=[48.0, 37.0, 35.0, 46.0, 33.0, 55.0, 50.0, 38.0, 29.0, 47.0, 19.0, 45.0, 69.0, 50.0, 64.0, 65.0, 56.0, 52.0, 21.0, 30.0, 53.0, 55.0, 33.0, 37.0, 58.0]; azules_por_bloque=[45.0, 53.0, 54.0, 46.0, 56.0, 36.0, 40.0, 51.0, 62.0, 41.0, 69.0, 42.0, 23.0, 41.0, 32.0, 25.0, 38.0, 36.0, 71.0, 63.0, 30.0, 35.0, 57.0, 53.0, 26.0]; D=0.5*sum|r_i/R - a_i/A|=0.2462. Las contribuciones por tract 0.5*|r_i/R - a_i/A| suman exactamente D."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "teoria": "dla_batty_longley_fractal",
+  "nombre": "Agregacion limitada por difusion (DLA) y dimension fractal urbana de Batty-Longley",
+  "autor": "Michael Batty y Paul Longley",
+  "anio": "1994",
+  "preguntas": [
+    {
+      "q": "Usando la relacion mass-radius N(R) ~ R^D, un cluster sintetico contiene N_1=158 celdas dentro de radio R_1=10 y N_2=380 celdas dentro de radio R_2=20. Calcula la dimension fractal D = log(N_2/N_1)/log(R_2/R_1) (forma mas ramificada que la urbana tipica ~1.7). Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "1.266",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±0.01 (1.266)",
+      "como_computar": "D = log(380/158) / log(20/10) = log(2.4051) / log(2) = 0.87758 / 0.69315 = 1.26607"
+    },
+    {
+      "q": "Una forma urbana cumple N(R) ~ R^D con dimension fractal D=1.7. Si dentro de radio R=10 hay 200 celdas ocupadas, cuantas celdas ocupadas se esperan dentro de radio R=20? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "649.8",
+      "tipo": "forma_cerrada",
+      "tolerancia": "±1% (649.8)",
+      "como_computar": "N(20) = 200 * (20/10)^1.7 = 200 * 2^1.7 = 200 * 3.24901 = 649.8019"
+    },
+    {
+      "q": "Simula DLA en rejilla 201x201 con semilla central, 1500 particulas en caminata aleatoria, numpy.random.seed(3); luego mide la dimension fractal por mass-radius (regresion log N(R) vs log R sobre la region de escalamiento, radios ~5..35, excluyendo saturacion N>60% del total). Reporta la dimension fractal D estimada. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "1.693",
+      "tipo": "emergente",
+      "tolerancia": "±0.12 en torno a 1.71",
+      "como_computar": "Simulacion DLA 201x201, 1500 particulas, seed=3, regresion log-log excluyendo saturacion (N>60% total). D obtenido = 1.69275"
+    }
+  ]
+}

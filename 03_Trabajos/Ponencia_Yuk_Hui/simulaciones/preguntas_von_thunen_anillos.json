@@ -1,0 +1,29 @@
+{
+  "teoria": "von_thunen_anillos",
+  "nombre": "Anillos de von Thünen (renta de localización agrícola)",
+  "autor": "Johann Heinrich von Thunen",
+  "anio": "1826",
+  "preguntas": [
+    {
+      "q": "Con R(d)=y*(p-c)-y*f*d y los parámetros del Cultivo A (y=10, p=7, c=1, f=0.6), calcula la renta de localización por hectárea a una distancia d=6 km del mercado. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "24",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (24)",
+      "como_computar": "R_A(6) = 10*(7-1) - 10*0.6*6 = 60 - 36 = 24"
+    },
+    {
+      "q": "Para el Cultivo B (y=4, p=14, c=2, f=0.75), calcula la distancia máxima d0 (en km) a la que la renta de localización se hace cero. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "16.0",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (16.0)",
+      "como_computar": "d0_B = (p-c)/f = (14-2)/0.75 = 12/0.75 = 16.0 km"
+    },
+    {
+      "q": "Ejecuta el experimento determinista de los dos cultivos (A: y=10,p=7,c=1,f=0.6; B: y=4,p=14,c=2,f=0.75) construyendo la envolvente superior max(R_A,R_B,0) en d=0..18 km. El cultivo intensivo A domina cerca del centro y el extensivo B lo releva más lejos. Reporta la distancia de transición d* (km) que separa el anillo interior del exterior, es decir donde R_A(d*)=R_B(d*). Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "4.0",
+      "tipo": "emergente",
+      "tolerancia": "±0.25 km en torno a 4.0",
+      "como_computar": "Cruce de rectas: 60-6d = 48-3d => 12 = 3d => d* = 4.0 km. A domina en 0≤d<4 (anillo interior), B en 4<d<16 (anillo exterior). La frontera emerge de la envolvente y no coincide con ningún d0."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "teoria": "automata_celular_crecimiento_urbano",
+  "nombre": "Autómata celular de crecimiento urbano (regla estocástica de transición)",
+  "autor": "Formulación: Roger White y Guy Engelen / Keith Clarke (SLEUTH); antecedente conceptual: Waldo Tobler (geografía celular)",
+  "anio": "White-Engelen 1993 / Clarke 1997 (regla); Tobler 1979 (antecedente)",
+  "preguntas": [
+    {
+      "q": "En el autómata celular de crecimiento urbano, la probabilidad de urbanización de una celda es p_i = p_base + p_difusion*(k_i/8), con p_base=0.001 y p_difusion=1.00. Una celda no urbana tiene 6 vecinos urbanos en su vecindad de Moore. Calcula p_i. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.751",
+      "tipo": "forma_cerrada",
+      "tolerancia": "+-0.001 (0.751)",
+      "como_computar": "p_i = 0.001 + 1.0*(6/8) = 0.001 + 0.75 = 0.751"
+    },
+    {
+      "q": "Bajo la regla del modelo (regla fronteriza: p_base solo refuerza el frente, k_i>=1 requerido), cuál es la probabilidad EFECTIVA de urbanización de una celda completamente aislada (k_i=0 vecinos urbanos)? Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "0.0",
+      "tipo": "forma_cerrada",
+      "tolerancia": "igualdad exacta (0.0)",
+      "como_computar": "La regla fija p_i=0 para k_i=0 (celda aislada nunca se urbaniza). Probabilidad efectiva = 0.0. (La fórmula algebraica daría p_base=0.001, pero el modelo no la aplica a celdas aisladas; el código ejecutado produce 0.)"
+    },
+    {
+      "q": "Corre el autómata 100x100 con núcleo central 3x3, p_base=0.001, p_difusion=1.00, vecindad de Moore, p_base solo activa celdas fronterizas (k_i>=1), numpy.random.seed(7), 50 pasos sincrónicos. Reporta el número total de celdas urbanas tras el paso 50. Formato: 'Respuesta final: <valor>'.",
+      "valor_exacto": "2672",
+      "tipo": "emergente",
+      "tolerancia": "valor exacto determinista: 2672 (simulacion compacta con regla fronteriza corregida)",
+      "como_computar": "Simulación determinista con semilla 7, regla fronteriza (k_i>=1): resultado = 2672 celdas urbanas"
+    }
+  ]
+}
