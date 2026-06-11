@@ -4,3 +4,4 @@ __pycache__/
 .agora-conflicts/
 .agora-host-sync.json
 .playwright-mcp/
+.vercel/
