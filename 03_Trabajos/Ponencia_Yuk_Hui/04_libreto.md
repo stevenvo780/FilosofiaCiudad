@@ -18,7 +18,7 @@
 
 ## NÚCLEO
 
-> **Sin clics dentro de las slides.** Cada diapositiva muestra TODO su contenido al entrar (se anima sola al pasar a ella); tú solo avanzas a la siguiente con → o clic. Las marcas *[señalar…]* son gestos tuyos hacia la pantalla; **👆 TOCA** = interacción opcional con una simulación viva.
+> **No tienes que clicar nada dentro de las slides.** Los elementos de cada diapositiva se **revelan solos**, uno tras otro (cada ~2,6 s), con su transición. Tú solo avanzas a la **siguiente slide** con → / el control (salta automáticamente lo que falte por revelar). Las marcas *[señalar…]* son gestos tuyos hacia la pantalla; **👆 TOCA** = interacción opcional con una simulación viva.
 
 ---
 
@@ -136,9 +136,11 @@ El salto de verdad no es de tamaño, es de otra liga: de los caseros a los punte
 
 Tercer hecho, el matiz honesto: el conteo de caminos —dos millones setecientas mil rutas— lo aciertan los seis, hasta el más pequeño, las dos veces. ¿Por qué? Porque ese número sale en todos los libros: se lo saben de memoria, no lo calculan. Y eso no debilita nada: el tamaño afina la imitación en casos sueltos, pero sigue siendo imitar, no calcular.
 
+Y por si alguien piensa que basta un modelo más grande: anoche lo repetí con modelos hechos para programar, hasta uno de 80 mil millones de parámetros en mi escritorio. Los tres: veinte por ciento, y solo aciertan ese número memorizable. El de 80 mil no le gana al más pequeño —y eso que son de código, deberían ir mejor—; fue tan lento que ni terminó dos pruebas, cuentan como fallo. Ni el tamaño ni la especialización compran el cálculo.
+
 Por eso el cero de fondo —la tarea inversa, la sexta— no se mueve con ningún tamaño. Ese cero es el corazón del argumento.
 
-**(227 palabras)**
+**(323 palabras — incluye la réplica coder)**
 
 ---
 
@@ -311,8 +313,8 @@ Hay cuatro láminas de anexo reservadas para la ronda de preguntas: la gradiente
 
 ## RESUMEN DE CONTROL
 
-**Total de palabras habladas (versión activa, sin los bloques `[OPCIONAL]`): ≈2.745 palabras** (recuento del 12-jun tras reescribir todo a lenguaje llano para público de pregrado; el lenguaje cotidiano es ~5% más largo que la jerga).
-A 130 palabras/minuto ≈ **21,1 minutos**. Va ~1 min sobre los 20:00. Para ceñirte: el modo amable lo recuperas hablando a ~138 ppm (natural si fluyes), o recortando ~145 palabras del conectivo de slides 7, 9 y 10 (no de las cifras). No es crítico: hay debate después.
+**Total de palabras habladas (versión activa, sin los bloques `[OPCIONAL]`): ≈2.825 palabras** (recuento del 12-jun tras reescribir todo a lenguaje llano para pregrado y añadir la réplica coder a la slide 6).
+A 130 palabras/minuto ≈ **21,7 minutos**. Va ~1,7 min sobre los 20:00. Para ceñirte: habla a ~140 ppm (natural si fluyes), o recorta los bloques `[OPCIONAL]` (−1,7 min) que ya van aparte. No es crítico: hay debate después. Si vas MUY justo, la réplica coder de la slide 6 se comprime a una frase: «Lo repetí con modelos de código, hasta uno de 80 mil millones en mi escritorio: los tres, veinte por ciento; ni el tamaño ni la especialización compran el cálculo.» (33 palabras en vez de 80).
 
 Los tres bloques `[OPCIONAL]` (≈221 palabras: 5 tareas en slide 5 = 73, cierre mística/Hölderlin en slide 11 = 47, Mou Zongsan/noodiversidad en slide 12 = 101) van **aparte** de ese activo: solo se dicen si sobra tiempo, y se recortan primero si vas atrasado.
 
@@ -325,7 +327,7 @@ Los tres bloques `[OPCIONAL]` (≈221 palabras: 5 tareas en slide 5 = 73, cierre
 | 3 | Wiener · Simondon · Kant | 02:30–04:30 | 2.0 | 259 | — |
 | 4 | Dreyfus · Heidegger | 04:30–05:30 | 1.0 | 187 | — |
 | 5 | Exp. 1 · Protocolo | 05:30–07:00 | 1.5 | 139 | +56 |
-| 6 | Exp. 1 · Resultados | 07:00–08:30 | 1.5 | 227 | — |
+| 6 | Exp. 1 · Resultados (+ réplica coder) | 07:00–08:30 | 1.5 | 323 | — |
 | 7 | 13 teorías urbanas | 08:30–10:00 | 1.5 | 159 | — |
 | 8 | Galería viva | 10:00–11:30 | 1.5 | ≈205 | — |
 | 9 | Exp. 2 · Banco | 11:30–13:00 | 1.5 | 162 | — |
@@ -334,8 +336,8 @@ Los tres bloques `[OPCIONAL]` (≈221 palabras: 5 tareas en slide 5 = 73, cierre
 | 11 | Lectura filosófica | 16:00–17:30 | 1.5 | 204 | +47 |
 | 12 | Urban AI | 17:30–19:00 | 1.5 | 176 | +99 |
 | 13+14 | Tesis + Cierre | 19:00–20:00 | 1.0 | 166 | — |
-| | **TOTAL** | **~21:00** | **21.1** | **≈2.745** | **+221 ≈ 2.966** |
+| | **TOTAL** | **~21:40** | **21.7** | **≈2.825** | **+221 ≈ 3.046** |
 
-> Nota: las palabras por slide de arriba son del recuento previo; tras la reescritura amable los bloques de datos (5, 6, 9, 10, 10b) subieron ~10-20 c/u. El total activo verificado hoy es 2.745 (21,1 min).
+> Nota: varias palabras-por-slide de arriba son del recuento previo; el total activo verificado hoy es **2.825 (21,7 min)**, e incluye la réplica coder de la slide 6 (ya comprimida).
 
 > Nota de ritmo: la slide 3 (259, en su slot de 2 min) y la 6/10b (227/203) son las más densas; di las cifras despacio y aligera el conectivo. Las slides 5, 11 y 12 ya descargan su exceso en los bloques `[OPCIONAL]`: con ellos dichos quedan en 195/251/275, sin ellos en 121/204/176.

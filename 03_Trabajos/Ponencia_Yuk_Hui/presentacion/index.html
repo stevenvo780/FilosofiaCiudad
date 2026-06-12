@@ -945,6 +945,9 @@
         <div class="callout fragment fade-up" style="left:3%;bottom:14%;">
           El <b>20B local</b> supera al <b>32B</b>: la escala <em>no es monótona</em>.
         </div>
+        <div class="callout fragment fade-up" style="left:3%;bottom:2%;max-width:15em;">
+          Réplica <b>coder</b>: 24B, 30B y un <b>80B</b> en mi escritorio → los <b>tres 20 %</b>. Ni tamaño ni especialización compran el cálculo. <span style="color:var(--texto-tenue);font-size:0.85em;">[exploratorio · ver Anexo A]</span>
+        </div>
         <div class="grafico-fila">
           <img class="anim-scalein" src="assets/escala_vs_exactitud.png" alt="Exactitud vs. escala: 3B 20%, 14B 20%, 20B 40%, 32B 20%, Sonnet 90%, Opus 70%; cómputo puro 100%">
           <div class="grafico-lectura">
@@ -1319,7 +1322,7 @@
       </section>
 
       <!-- ============ ANEXO A — Gradiente Exp.1 ============ -->
-      <section
+      <section class="compacto"
         data-ambient="pulso_datos"
         data-ambient-opts='{"opBase":0.06,"opPico":0.15,"pistas":3,"periodo":6,"alto":0.09}'>
         <span class="anexo-tag">Anexo · para preguntas</span>
@@ -1340,7 +1343,17 @@
           <tr><td><strong>Total computable</strong></td><td></td><td class="no"><strong>20%</strong></td><td class="no"><strong>20%</strong></td><td><strong>40%</strong></td><td class="no"><strong>20%</strong></td><td class="ok"><strong>90%</strong></td><td><strong>70%</strong></td><td class="ok"><strong>100%</strong></td></tr>
           </tbody>
         </table>
-        <p class="pie-fuente">* SIN_RESPUESTA / timeout / datos ausentes cuentan como fallo (32B: timeouts &gt;600 s en T2/T4, datos ausentes en T4–T6) · T6 es no computable para todos · Fuente: experimento/resultados.json · 2026-06-10 · kratos (RTX 5070 Ti, Ollama) + API</p>
+        <h3 style="margin-top:0.35em;margin-bottom:0.15em;font-size:0.82em;">Réplica exploratoria — modelos especializados en código</h3>
+        <table class="tareas">
+          <thead><tr><th>Modelo (coder)</th><th>Exactitud</th><th>Acierta</th></tr></thead>
+          <tbody>
+          <tr><td>devstral 24B</td><td class="no"><strong>20%</strong> · 2/10</td><td>solo T3 (2.704.156), 2/2</td></tr>
+          <tr><td>qwen3-coder 30B</td><td class="no"><strong>20%</strong> · 2/10</td><td>solo T3 (2.704.156), 2/2</td></tr>
+          <tr><td>qwen3-coder-next 80B (MoE) †</td><td class="no"><strong>20%</strong> · 2/10</td><td>solo T3 (2.704.156), 2/2</td></tr>
+          </tbody>
+        </table>
+        <p class="pie-fuente" style="font-size:0.62em;margin-top:0.25em;">Réplica exploratoria (kratos · Ollama), extensión del Exp. 1; el canónico de 6 sujetos queda intacto. Son modelos <em>coder</em> —sesgados a favor del cálculo— y aun así el 80B no le gana al 24B: refuerza el límite. † El 80B quedó incompleto: agotó 120 min sin T5-int2 ni T6 (faltante = fallo). Exploratorio (timeout 120 min vs 25 del canon); solo corrieron el Exp. 1, no el Exp. 2. Fuente: experimento/exploratorio/resultados_exploratorio.json</p>
+        <p class="pie-fuente" style="font-size:0.62em;">* SIN_RESPUESTA / timeout / datos ausentes cuentan como fallo (32B: timeouts &gt;600 s en T2/T4, datos ausentes en T4–T6) · T6 es no computable para todos · Fuente: experimento/resultados.json · 2026-06-10 · kratos (RTX 5070 Ti, Ollama) + API</p>
 
         <aside class="notes">
           [Anexo · solo si preguntan] La gradiente completa. T3 es la única fila verde de punta a
@@ -1455,6 +1468,10 @@
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/reveal/plugin/notes/notes.js"></script>
   <script>
+    // Las flechas / clicker / espacio avanzan de SLIDE en SLIDE (saltan los
+    // fragmentos); los fragmentos se revelan SOLOS por temporizador. Así vuelven
+    // las transiciones sin que el ponente tenga que clicar fragmento por fragmento.
+    var navSig = function (d) { return function () { Reveal.slide(Reveal.getIndices().h + d); }; };
     Reveal.initialize({
       hash: true,
       slideNumber: 'c/t',
@@ -1465,9 +1482,28 @@
       transitionSpeed: 'default',
       autoAnimateDuration: 0.6,
       autoAnimateEasing: 'cubic-bezier(.2,.7,.2,1)',
-      fragments: false,   /* sin clics internos: cada slide muestra TODO al entrar; solo se avanza slide a slide */
+      fragments: true,        /* transiciones ON; se revelan automáticamente (abajo) */
+      keyboard: {
+        39: navSig(1),  37: navSig(-1),   // → / ←  = slide siguiente / anterior
+        32: navSig(1),                    // barra espaciadora = slide siguiente
+        34: navSig(1),  33: navSig(-1)    // AvPág / RePág (clicker) = slide
+      },
       plugins: [ RevealNotes ]
     });
+
+    // ── Auto-revelado de fragmentos (sin clics) ─────────────────────────────
+    var _fragTimer = null;
+    var _reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function autoRevealFragments() {
+      clearTimeout(_fragTimer);
+      if (_reduce) { while (Reveal.nextFragment()) {} return; }  // todo de una si reduce-motion
+      var tick = function () {
+        if (Reveal.nextFragment()) { _fragTimer = setTimeout(tick, 2600); }
+      };
+      _fragTimer = setTimeout(tick, 1600);   // primer reveal a 1,6 s; luego cada 2,6 s
+    }
+    Reveal.on('ready', autoRevealFragments);
+    Reveal.on('slidechanged', autoRevealFragments);
   </script>
 
   <!-- ════════════════════════════════════════════════════════════════════

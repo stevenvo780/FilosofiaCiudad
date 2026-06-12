@@ -92,6 +92,9 @@
 - Ni los punteros tocan el cien. Opus < Sonnet.
 - Opus falló la cuenta larga en ambos intentos: **651.397.404** y **651.400.404** vs exacto **651.396.404**.
 - Matiz honesto: el conteo de caminos (2.700.000) lo aciertan los seis — se lo saben de memoria.
+- Réplica coder (esta madrugada, kratos): 24B, 30B y un **80B** en mi escritorio → los **tres 20 %**.
+- Solo aciertan T3 (2.700.000), memorizable. El **80B no le gana** al 24B ni al 3B.
+- ⚡honesto: son modelos de código (deberían ir mejor) y el 80B no terminó T5-int2 ni T6 (timeout 120 min). Exploratorio · Anexo A.
 - La 6.ª (inversa) = cero de fondo: no se mueve con ningún tamaño. Corazón del argumento.
 
 ### [08:30–10:00] Slide 7 — 13 teorías urbanas
@@ -201,5 +204,6 @@
 
 - **Anexo A · Gradiente Exp.1 (6×6):** «el grande no siempre gana» → Opus 3 fallos en 10 (T1 ×1, T5 ×2); T2 lo falló Sonnet; T3 verde para los seis; 32B con timeouts >600 s.
 - **Anexo A2 · Aciertos por tarea:** T3 columna verde = régimen memorizable; T1/T4/T5 = colapso local; T6 sin casilla (no hay verdad).
+- **Anexo A · Réplica coder (exploratoria):** si insisten en que «un modelo más grande ganaría» → devstral 24B, qwen3-coder 30B y qwen3-coder-next **80B** dan los tres **20 %**, solo T3; el 80B no le gana al 24B. Son modelos de código (sesgo a favor) y aun así fallan. Exploratorio, timeout 120 min; solo corrieron el Exp. 1. Fuente: experimento/exploratorio/resultados_exploratorio.json.
 - **Anexo B · Detalle T6:** si dudan de la divergencia → foco por modelo (repartidor/niño/acompañante; qwen3:14b alucinó «mujer mayor»). Relevancia sin unicidad.
 - **Anexo C · Cerrada vs emergente:** si cuestionan «el grande siempre gana» → Sonnet 83 % supera a Opus 75 % en emergentes; cómputo puro 100 % en las tres columnas.

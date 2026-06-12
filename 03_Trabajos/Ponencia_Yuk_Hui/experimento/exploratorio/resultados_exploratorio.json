@@ -1,0 +1,61 @@
+{
+  "tipo": "EXPLORATORIO - no canonico",
+  "fecha": "2026-06-12",
+  "nota": "Modelos coder; timeout modelo 120 min; el 80B no completo T5.int2 ni T6 (timeout). Calificado contra resultados.json. Politica: faltante=fallo.",
+  "exactitud": {
+    "devstral:24b": {
+      "etiqueta": "24B (coder)",
+      "aciertos": 2,
+      "total": 10,
+      "pct": 20.0,
+      "detalle": {
+        "t1.1": "FALLO",
+        "t1.2": "FALLO",
+        "t2.1": "FALLO",
+        "t2.2": "FALLO",
+        "t3.1": "OK",
+        "t3.2": "OK",
+        "t4.1": "FALLO",
+        "t4.2": "FALLO",
+        "t5.1": "FALLO",
+        "t5.2": "FALLO"
+      }
+    },
+    "qwen3-coder:30b": {
+      "etiqueta": "30B (coder)",
+      "aciertos": 2,
+      "total": 10,
+      "pct": 20.0,
+      "detalle": {
+        "t1.1": "FALLO",
+        "t1.2": "FALLO",
+        "t2.1": "FALLO",
+        "t2.2": "FALLO",
+        "t3.1": "OK",
+        "t3.2": "OK",
+        "t4.1": "FALLO",
+        "t4.2": "FALLO",
+        "t5.1": "FALLO",
+        "t5.2": "FALLO"
+      }
+    },
+    "qwen3-coder-next:q4_K_M": {
+      "etiqueta": "80B (coder, MoE)",
+      "aciertos": 2,
+      "total": 10,
+      "pct": 20.0,
+      "detalle": {
+        "t1.1": "FALLO",
+        "t1.2": "FALLO",
+        "t2.1": "FALLO",
+        "t2.2": "FALLO",
+        "t3.1": "OK",
+        "t3.2": "OK",
+        "t4.1": "FALLO",
+        "t4.2": "FALLO",
+        "t5.1": "FALLO",
+        "t5.2": "FALTA"
+      }
+    }
+  }
+}
