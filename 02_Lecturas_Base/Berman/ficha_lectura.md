@@ -48,4 +48,5 @@ El libro pretende revivir los viejos ideales del modernismo frente a su aparente
 
 ---
 
-> **Nota**: El texto no está en el workspace. Se recomienda subir la edición de *Todo lo sólido se desvanece en el aire* (Siglo XXI).
+> **Fuente disponible**:
+> [`todo_lo_solido_se_desvanece_en_el_aire.pdf`](todo_lo_solido_se_desvanece_en_el_aire.pdf).

@@ -10,6 +10,9 @@ repos
 # ST guide (auto-generated, available via UI too)
 .st-guide.md
 
+# README legado sin extension
+README
+
 # Build artifacts & caches
 __pycache__
 *.pyc
@@ -26,8 +29,7 @@ node_modules
 .next
 
 # Rutas retiradas al consolidar la Clase 1
-filosofiaDeLaCiudad/Clase 1
-filosofiaDeLaCiudad/AGENTS.md
+filosofiaDeLaCiudad
 01_Clases/Clase_01/02_borradores_y_transcripciones
 01_Clases/Clase_01/03_recursos_visuales
 01_Clases/Clase_01/02_fuentes/apuntes_crudos

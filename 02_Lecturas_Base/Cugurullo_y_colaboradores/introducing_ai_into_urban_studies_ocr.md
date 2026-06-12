@@ -1,0 +1,883 @@
+# Introducing AI into Urban Studies
+
+<!-- Page 1 -->
+
+See discussions, stats, and author profiles for this publication at: https://www.researchgate.net/publication/373861342
+ Introducing AI into Urban Studies
+ Chapter  · October 2023
+ DOI: 10.4324/9781003365877-1
+ CITATIONS
+ 4
+ READS
+ 572
+ 6 authors , including:
+ Federico Cugurullo
+ Trinity College Dublin
+ 54  PUBLICATIONS  2,989  CITATIONS
+ SEE PROFILE
+ Federico Caprotti
+ University of Exeter
+ 119  PUBLICATIONS  3,438  CITATIONS
+ SEE PROFILE
+ Pauline Mcguirk
+ University of Wollongong
+ 132  PUBLICATIONS  3,987  CITATIONS
+ SEE PROFILE
+ Simon Marvin
+ The University of Sheffield
+ 235  PUBLICATIONS  15,694  CITATIONS
+ SEE PROFILE
+ All content following this page was uploaded by Federico Cugurullo on 24 January 2024.
+ The user has requested enhancement of the downloaded file.
+
+
+<!-- Page 2 -->
+
+DOI:  10.4324/9781003365877-1
+ Introduction: the dawn of AI urbanism
+ Innovation in artificial intelligence (AI) is transforming cities in unprece -
+ dented ways. Robots are increasingly managing key urban services, perform -
+ ing jobs that were once the exclusive domain of humans and maintaining the
+ infrastructure of cities ( Lynch et al., 2022 ;  Macrorie et al., 2021 ). Self-driving
+ cars are reshaping urban transport systems, thereby triggering new mobilities
+ that impact the design of the built environment ( Cugurullo et al. 2021 ;
+ Dowling and M c Guirk, 2022 ). City brains and digital platforms are gradually
+ reengineering the practice of urban governance by operating entire urban
+ systems that range from health to transport and from security to ecosystems
+ ( Caprotti and Liu, 2020 ;  Curran and Smart, 2021 ;  Marvin et al., 2022 ).
+ Meanwhile, through mobile apps and personal computers, invisible software
+ agents are sifting and sorting urban lives, for instance, deciding which resi -
+ dents to quarantine and which residents qualify for a mortgage ( Kitchin,
+ 2020 ;  Lee and Floridi, 2021 ). In essence, the advent of AI introduces multiple
+ non-biological intelligences that act upon and within cities. For the first time
+ in history, the control of the city is not determined exclusively by humans. It is
+ also influenced by AIs whose logics and actions sometimes diverge significantly
+ from ours ( Cugurullo, 2021 ;  Russell, 2019 ). We are witnessing the beginning
+ of a new and uncertain urban era, replete with risks and opportunities.
+ In different spaces and through diverse modalities, AIs and urban systems
+ are converging at a rapid pace ( Amoore, 2023 ;  Son et al., 2023 ;  While et al.,
+ 2021 ;  Yigitcanlar et al., 2023 ). The urban changes associated with AI are
+ challenging to describe and analyse in theoretical and empirical terms. There
+ 1
+ INTRODUCING AI INTO URBAN
+ STUDIES
+ Federico Cugurullo, Federico Caprotti, Matthew Cook,
+ Andrew Karvonen, Pauline M
+c
+Guirk and Simon Marvin
+ Citation:  Cugurullo,  F.,  Caprotti,  F.,  Cook,  M.,  Karvonen,  A.,  McGuirk,
+P.,  &  Marvin,  S.(2023).  Introducing  AI  into  Urban  Studies.  In Cugurullo,
+F.,  Caprotti,  F.,  Cook,  M.,  Karvonen,  A.,  McGuirk,  P.,  &  Marvin,  S.
+(Eds.). Artificial  Intelligence  and  the  City:  Urbanistic
+Perspectives  on  AI .  Routledge.  Pages  1-19
+
+
+<!-- Page 3 -->
+
+2  Federico Cugurullo et al.
+ are many different types of AI being applied in heterogeneous urban spaces,
+ unleashing a transformative force of rare impetus. These AIs are  urban  in the
+ sense that they operate primarily in urban environments and, in order to
+ function, they need resources and infrastructures, such as Big Data, electrical
+ grids and server farms, that are urban in nature. We refer to this polymor -
+ phous agglomeration of AIs, comprising robots, autonomous vehicles, city
+ brains and software agents, as  urban artificial intelligences  or simply  urban
+ AI  (see also  Cugurullo, 2020 ;  Luusua et al., 2023 ). Moreover, we note that
+ the diffusion of urban AI in the life, governance and planning of cities is
+ generating a distinct kind of urbanism which we term  AI urbanism . Here, the
+ configuration of urban systems, the form of the built environment and, more
+ broadly, the experiences of urban residents are morphing into something
+ markedly distinct from past iterations and in ways that are only partially
+ understood.
+ The emergence of AI urbanism is neither a linear nor an atemporal pro -
+ cess, but rather a multiform and geographically sensitive phenomenon influ -
+ enced by previous urbanisms, that is destabilizing the material and immaterial
+ fabric of cities. In this book, while we argue that the use of AI technologies
+ in the management of urban services and infrastructures is connected to well-
+ known practices of smart urbanism (see  Coletta et al., 2019 ;  Karvonen et al.,
+ 2019 ;  Willis and Aurigi, 2020 ), we also claim that the emergence of AI in
+ cities is a turning point at which  smart  is theoretically and empirically insuf -
+ ficient to explain the urban transformations generated by AI. Urban AI would
+ not be able to function without common smart technologies, such as sensors
+ and the repositories of Big Data that they generate. At the same time, how -
+ ever, urban AI embodies technologies, capabilities and operations which go
+ well beyond traditional smart-city initiatives. For example, the ability to
+ extract concepts and to reason, and the power to decide and act autono -
+ mously in real-life environments without human supervision, situates AI and
+ its numerous urban incarnations in theoretical and empirical grounds which
+ diverge from smart urbanism and, thus, require close scrutiny and debate
+ ( Cugurullo, 2020 ).
+ Drawing upon a range of urban disciplines and over 20 international case
+ studies, the aim of this book is to explore in theory and practice how AI
+ intersects with and alters the city. The chapters reveal a multitude of reper -
+ cussions that AI is having on urban society, urban infrastructure, urban gov -
+ ernance, urban planning and urban sustainability. At the same time, this
+ collection aims to examine how the city, far from being a passive recipient of
+ new technologies, is influencing and reframing AI through subtle processes of
+ co-constitution and co-determination. The focus on AI is specific in the sense
+ that we seek to explicitly look beyond the literature on smart urbanism, by
+ synthesizing new empirical data on AI and its hitherto overlooked urban
+ dimensions and presenting novel concepts and theories about AI urbanism.
+
+
+<!-- Page 4 -->
+
+Introducing AI into urban studies  3
+ Our focus is also broad since we take into account multiple types of AI and
+ urban scales from the individual citizen to the single building and from entire
+ cities to regional and international urban networks.
+ Overall, we advance three main contributions and arguments in the book.
+ First, we discuss the emergence of a post-smart trajectory for cities in which
+ new material and decision-making capabilities are being assembled through
+ multiple AIs. In so doing, we inquire into the distinctiveness and implications
+ of novel AI logics in the urban context. Second, we stress the importance of
+ understanding the mutually constitutive relations between the new experi -
+ ences enabled by AI technology and the urban context. We question how AI
+ shapes urban life and places and how the urban condition shapes AI in turn.
+ Third, we engage with the concepts required to clarify the often opaque rela -
+ tions that exist between AI and the city, as well as how to make sense of these
+ relations from a theoretical perspective. In essence, this collection provides a
+ state-of-the-art review of AI urbanism, from its historical roots to its contem -
+ porary global emergence, in an attempt to develop the empirical and theoret -
+ ical foundations for the next generation of urban socio-technical studies.
+ In the following sections, we unpack the connections between AI and the
+ urban by clarifying the concept of  urban AI  and illustrating its most promi -
+ nent incarnations, namely autonomous vehicles, urban robots, city brains
+ and urban software agents. We then explain how the emergence of urban AI
+ is contributing to the formation of a new type of urbanism which we call  AI
+ urbanism . We note how AI urbanism derives from but also extends well
+ beyond smart urbanism, along three main axes: function, presence and
+ agency. We discuss the similarities and differences underpinning  AI  and  smart
+ urbanism and, after stressing the problematic implications of human–machine
+ interactions in the making and governance of cities, we call on urban research -
+ ers and stakeholders to scrutinize the critical intersections between urban
+ development and the development of artificial intelligences.
+ Making sense of AI from an urbanistic perspective
+ AI is now one of the dominant forces that is transforming our planet and
+ lives, and yet its meaning and manifestations are elusive ( Crawford, 2021 ).
+ As  Greenfield (2018)  notes, AI is an obscure and esoteric set of technologies
+ in the sense that the intricate mechanics and thought processes of artificial
+ intelligences are usually understood only by a small group of experts with
+ specialized knowledge in computer science and engineering. This epistemo -
+ logical complexity is exacerbated by the fact that neither a single type of AI
+ nor a universal blueprint to build one exists ( Bostrom, 2017 ;  Cave et al.,
+ 2020 ). The field of AI is thus difficult to navigate, especially from the per -
+ spective of the social sciences and humanities. To address this issue, we pro -
+ pose a threefold approach to make sense of AI. In this section, we begin by
+
+
+<!-- Page 5 -->
+
+4  Federico Cugurullo et al.
+ acknowledging the wide range of AI technologies that are present in the
+ world. We then summarize the core characteristics of AI across its multiple
+ incarnations and, finally, provide examples to make them visible (and there -
+ fore easier to understand) by focusing on how they manifest themselves in
+ real-life urban spaces.
+ The first step in making sense of AI is to talk about artificial  intelligences
+ and avoid the conceptual trap of singular nouns. A singular noun refers to
+ (and thus makes us think about) a clearly delineated person, place or thing.
+ Specifically in relation to the subject of our inquiry, the term  AI , as a singular
+ noun, is misleading since it implies the existence of a singular technology
+ possessing a singular type of intelligence. In reality, this is far from being the
+ case. There are many different artificial intelligences manifesting diverse types
+ and degrees of intelligence ( Russell and Norvig, 2016 ;  Samoili et al., 2020 ).
+ A useful analogy here is offered by a widely recognized form of intelligence:
+ biological intelligence . We know that there is an extraordinary variety of
+ intelligent life forms on Earth, ranging from mammals to insects, and human
+ intelligence represents only a fraction of this variety. In science, we do not
+ generalize biological intelligence and instead acknowledge the cognitive and
+ behavioural differences as well as the similarities that exist among species.
+ This same logic applies to AI. We understand AI as a complex cosmos com -
+ prising a myriad of diverse non-biological intelligences whose cognition and
+ behaviour varies significantly from case to case.
+ The second step is to identify and characterize the most common traits
+ that are shared among different AIs. These traits include (a) the quality of
+ being artificial, (b) the capacity for learning, (c) the ability to extract con -
+ cepts, (d) the power to manage uncertainty and (e) the capability to act
+ rationally and (f) autonomously. All AIs are considered to be artificial, in the
+ sense that their development is not the outcome of a natural process such as
+ the formation of the human brain, whose current morphology is the byprod -
+ uct of thousands of years of evolution ( Bruner, 2021 ;  Galway-Witham and
+ Stringer, 2018 ). In contrast, AI is either human-made or, as  Bostrom (2017)
+ notes, created by machines through technological processes that are rela -
+ tively fast. The assembly of a simple robot, for instance, takes less than five
+ minutes, while algorithms can be created in a matter of hours ( Rubenstein
+ et al., 2014 ;  Sherry and Thompson, 2021 ).
+ In terms of key capabilities, AIs can learn and develop knowledge  directly
+ by sensing a given environment using sensors such as cameras and micro -
+ phones, and  indirectly  by being fed large data sets ( Russell and Norvig,
+ 2016 ). AIs can then make sense of the information that they acquire by
+ extracting concepts from it ( Bostrom, 2017 ). This capacity is a mark of their
+ intelligence since it shows the ability to find meanings and recognize ideas in
+ what is being observed. Examples include AI-driven cars that are capable of
+ understanding that the colour red in a traffic light means that they must stop,
+
+
+<!-- Page 6 -->
+
+Introducing AI into urban studies  5
+ and service robots operating in a restaurant that can distinguish customers
+ from inanimate objects and then comprehend that it is a good idea to attend
+ to the customers. It is also important to note that AIs can, as a result of
+ learning,  devise  new  rule  sets  that  take  us  beyond  previously  existing
+ human-centred logics. As  Bostrom (2017)  remarks, it would be dangerous to
+ always assume an affinity between the logics developed by biological and
+ non-biological intelligences.
+ Ultimately concepts lead to actions and most AIs are designed to act in
+ chaotic and uncertain situations in which some information might be missing
+ or unclear ( Kanal and Lemmer, 2014 ). Their actions are considered to be
+ rational inasmuch as they are ‘based on reasons’ which determine what is
+ right or wrong and inform their behaviour ( Lupia et al., 2000 : 7;  Russell and
+ Norvig, 2016 ). This assumes the presence of a moral order underpinning the
+ actions of AIs. However, the field of AI ethics remains underdeveloped, espe -
+ cially in practical terms. AI moral guidelines are often incoherent and ignored
+ by the private sector actors that are supposed to implement them ( Munn,
+ 2022 ). As a result, there is a problematic lack of clarity regarding the moral
+ compass behind AIs’ actions, particularly in contexts in which AI systems
+ operate with humans out of the loop. When humans do not steer the actions
+ of an AI or supervise its behaviour, that AI can be said to be  autonomous
+ because it is exercising intelligence in an independent manner ( Cugurullo,
+ 2020 ;  Levesque, 2017 ).
+ The urban is the space where AIs become most prominently visible and
+ materially situated in the physical landscape. It is the locus where their
+ actions occur and where their behaviours are materialized. AI is intrinsically
+ linked to urbanity, for three interconnected reasons. First, AI requires physi -
+ cal environments to act upon, and these are frequently urban. Autonomous
+ cars, for example, operate on public roads in urban settlements. Similarly,
+ service robots function in shops and restaurants located in urban environ -
+ ments. Even the actions of the most ethereal AIs have an inevitable material
+ dimension, like in the case of algorithms that calculate the market value of a
+ property or predict the location of a crime. Second, AI is an  agent  ( Russell
+ and Norvig, 2016 ). As such, it acts and, by nature, it engages in a plethora of
+ activities. Urban settlements encapsulate an increasing proportion and range
+ of activities on our planet ( Balland et al., 2020 ;  Elmqvist et al., 2021 ;  Kaddar
+ et al., 2022 ). Therefore, whether an AI is poised to participate in a social
+ activity, engage in an economic transaction, influence a political process or
+ contribute to global environmental changes, it is compelled to interact with
+ urban systems. Third, the development of AI depends on urban development.
+ Most AIs currently develop their intelligence through processes of  machine
+ learning  whereby they are ‘set loose on vast fields of data’ to learn from them
+ ( Greenfield, 2018 : 220). As  Lee (2018: 14)  points out, ‘there’s no data like
+ more data.’ The more data an AI is exposed to, the more and faster its
+
+
+<!-- Page 7 -->
+
+6  Federico Cugurullo et al.
+ intelligence grows. As the primary location of manifold human activity,
+ urban spaces are massive generators of data, and it is thus in the urban realm
+ that AI has the greatest opportunity to learn and evolve.
+ In terms of quality, the urban generates the fine-grain data most useful for
+ machine learning. It is  real-life data  which differs substantially from datasets
+ that are carefully curated and cleaned by computer scientists and then stored
+ digitally. In urban spaces, instead, AI learns  in the wild  and has the possibil -
+ ity to contemplate actually existing social, political, economic, cultural and
+ environmental phenomena as they unfold in real time in the real world. In
+ terms of quantity, cities in particular offer the largest sources of data. Cities,
+ as urban spaces with high population densities, host an unparalleled concen -
+ tration of human activities that fuel intense processes of consumption, social
+ interaction, mobility and intellectual exchange ( Balland et al., 2020 ;  Moran
+ et al., 2018 ). There are few limits to what can happen in a large city, which
+ is an ideal condition for machine learning and its limitless thirst for knowl -
+ edge. In China, for example, AI companies are building a competitive advan -
+ tage by using dense cities as a playground for machine learning ( Lee, 2018 ).
+ In essence, the contemporary city is the microcosm through which AI observes
+ and learns about the entire world.
+ The connection between the urban and AI makes the latter visible in four
+ distinct forms which, in turn, can be understood as four main types of urban
+ AI. The first one is represented by  autonomous vehicles  (AVs). These are
+ terrestrial devices built for transporting persons or things, which are driven
+ by an AI. They are characterized by different vehicle types including autono -
+ mous cars, trucks and buses, as well as by diverse public and private owner -
+ ship models and service types, such as car-sharing, mass transport and
+ mobility-as-a-service ( Acheampong et al., 2021 ;  Nikitas et al., 2021 ). The
+ urbanity of AVs is evident from a spatial perspective since this type of urban
+ AI necessitates urban spaces to fulfil its main function: transportation. Most
+ pointedly, autonomous cars operate on public roads predominantly in urban
+ environments where the quality of road infrastructure tends to be higher (and
+ thus easier to sense and navigate for an AI) than in rural areas, and where it
+ is more common to find fast and reliable communication networks. Cities, in
+ particular, are at the centre of AV innovation and related disruptions (see
+ Figure 1.1 ). It is in cities that companies like Waymo and Tesla are testing
+ their autonomous cars ( Dowling and M c Guirk, 2022 ). It is in cities that
+ car-sharing services and mobility-as-a-service initiatives abound and drive
+ the deployment of fully autonomous fleets à la Uber ( Schaller, 2021 ). It is
+ across cities that autonomous trucks are employed to sustain the logistics of
+ urban economies. And it is in the city that human road users (ranging from
+ drivers to pedestrians and from cyclists to people with disabilities) and AVs
+ are struggling to share the same spaces and ultimately competing to preserve
+ their own mobility ( Gaio and Cugurullo, 2023 ;  Talebian and Mishra, 2022 ).
+
+
+<!-- Page 8 -->
+
+Introducing AI into urban studies  7
+ Urban robots  represent a second type of urban AI. Similar to AVs, robots
+ have an evident physical presence, but unlike vehicles, they do not have an
+ empty interior to accommodate passengers or cargo and do not operate
+ exclusively within the field of transportation. Instead, urban robots come in
+ many different shapes and their influence cuts across a plethora of urban
+ domains. There are robots whose design mimics the general features of the
+ human body including limbs, eyes and an erect posture, with  androids
+ being almost indistinguishable from humans ( Mara and Appel, 2015 ;
+ Müller et al., 2021 ). Other robots, such as  drones , do not have an anthro -
+ pomorphic appearance, while  nanobots  are so small that they are almost
+ undetectable ( Jackman, 2022 ;  Toumey, 2013 ). Overall, urban robots are
+ infiltrating core sectors of cities, including security, education, retail and
+ hospitality, and their role in the maintenance of urban infrastructure is
+ increasing ( Macrorie et al., 2021 ;  Tiddi et al., 2020 ;  Valdez and Cook,
+ 2023 ;  While et al., 2021 ). In so doing, robots are in continuous interaction
+ with the principal inhabitants of the built environment: humans.  Service
+ robots , for instance, populate everyday urban spaces and are designed to
+ assist humans on  the frontline  ( Pozharliev et al., 2021 ;  Wirtz et al., 2018 ).
+ This position involves direct and often face-to-face interactions, as in the
+ case of robot waiters that are deployed to understand and accommodate a
+ client’s needs (see  Figure 1.2 ). The proliferation of service robots, however,
+ FIGURE 1.1  An autonomous car operating in Hong Kong.
+ Source:  © Shutterstock/Yu Chun Christopher Wong.
+
+
+<!-- Page 9 -->
+
+8  Federico Cugurullo et al.
+ does not necessarily imply cooperation. De facto urban robots are a ‘new
+ class’ of intelligent machines whose labour frequently comes at the expense
+ of a human’s job, and it is important to remember that ‘few employment
+ fields are immune’ ( Bissell and Del Casino, 2017 : 436; Del Casino,  2016 :
+ 847). From this perspective, urban robots are replacing rather than sup -
+ porting their human counterparts.
+ A third type of urban AI is the  city brain . City brains are  large-scale  urban
+ AIs inasmuch as their agency extends to large portions of urban territory,
+ infrastructure and the public sector ( Cugurullo, 2021 ;  Zhang et al., 2019 ).
+ While in the case of AVs and urban robots, AI is animating a car or a drone,
+ in the case of city brains what is being controlled by AI are buildings, tele -
+ communication networks and even entire cities. This type of urban AI is
+ materially and geographically more extensive but also elusive when com -
+ pared to the previous types. It does not reside in a single material artefact.
+ Instead, it is located within a digital platform, infused through the urban
+ fabric, where AI acts like a brain and controls different parts of the city in a
+ way that resembles a human brain in control of different parts of the human
+ body. Due to their existence inside digital platforms, city brains can be
+ understood as an extension of  platform urbanism  ( Barns, 2019 ;  Caprotti et
+ al., 2022 ;  Caprotti and Liu, 2020 ;  Hodson et al., 2020 ). Because of its
+ hybrid physical and digital nature, platform urbanism is challenging to map
+ FIGURE 1.2  A robot waiter serving food at a restaurant in Chennai (India).
+ Source:  © Getty Images/Arun Sankar.
+
+
+<!-- Page 10 -->
+
+Introducing AI into urban studies  9
+ and so are city brains ( Fields et al., 2020 ;  van der Graaf and Ballon, 2019 ).
+ To further complicate matters geographically, city brains have  actuators
+ which bridge digital and physical spaces. These are material components
+ through which city brains penetrate the real world, such as CCTV cameras
+ that a city brain uses as eyes to observe what is happening in the city ( Curran
+ and Smart, 2021 ). However, more than just a neutral observer, a city brain
+ acts on the city and influences its governance by attempting to predict the
+ future and enacts adaptations to respond to future conditions including, for
+ example, anticipated traffic congestions or concentration of demand for
+ emergency services ( Cugurullo, 2021 ;  Zhang et al., 2019 ). This is essentially
+ what  Brayne (2017)  defines as the shift from  reactive  to  proactive  approaches
+ to urban governance, whereby the unprecedented computational power of
+ AI is exploited to calculate large amounts of future possibilities, and then
+ enable certain urban futures while suppressing others ( Luque-Ayala and
+ Marvin, 2020 ).
+ Urban software agents  are a fourth type of urban AI which captures a
+ seemingly invisible yet highly impactful dimension of AI in urban contexts.
+ While the other types of urban AI are physically embodied and possess
+ material actuators allowing them to act tangibly on cities, urban software
+ agents are immaterial. Examples include computer programs that use algo -
+ rithms to determine which individuals or families qualify for a home mort -
+ gage or insurance policy, contact-tracing apps that identify individuals to be
+ quarantined, AI chatbots that create social bonds with humans and digital
+ assistants such as Alexa and Siri that respond to voice commands and exe -
+ cute domestic tasks ( Kitchin, 2020 ;  Lee and Floridi, 2021 ;  O'Neil, 2016 ;
+ Strengers and Kennedy, 2021 ). Using Waze, a popular navigation map app,
+ as an example,  Fisher (2022: 75)  notes that these aethereal AIs have a  spati -
+ ality  since they change ‘how space is known, experienced, and acted upon.’
+ Urban software agents are more prolific than one might imagine and their
+ immateriality belies their profound influence on the daily lives of urban res -
+ idents. From a geographical perspective, the location of many urban soft -
+ ware agents shows how AI is entering our private spaces, including our
+ homes, and becoming part of our everyday life. In the shape of software
+ agents, AI is always with us, whether talking through a speech synthesizer
+ sitting on the kitchen counter or simply operating our smartphones silently.
+ The intimacy of this AI tech implies that, willingly or not, we are constantly
+ sharing personal information with AI systems ( Zuboff, 2019 ). These are
+ systems that, XAI (Explainable Artificial Intelligence) scholars warn us, only
+ few experts in computer science and engineers comprehend. Yet, as  Zuboff
+ (2019: v)  remarks, these AIs are growing in popularity, assimilating unprec -
+ edented quantities of behavioural data and contributing to the formation of
+ a system of surveillance ‘that asserts dominance over society’ ( Baum et al.,
+ 2022 ;  Langer et al., 2021 ).
+
+
+<!-- Page 11 -->
+
+10  Federico Cugurullo et al.
+ From smart to AI urbanism
+ The four types of urban AI described above serve as the organizational scaf -
+ folding for this book and provide a means to classify the current evolution of
+ urbanism from  smart  to  AI . In  Part I  of the book,  Autonomous Vehicles and
+ Mobility , the authors examine the impact that vehicles driven by AI are hav -
+ ing on cities and the social, political and economic dynamics through which
+ such vehicles are accommodated and integrated into the city. In  Part II ,
+ Urban Robots and Robotic Spaces , the contributors illuminate the presence
+ and role of robots in a variety of urban domains, as well as the diversity of
+ urban spaces altered by robotics. The authors in  Part III  of the book explore
+ City Brains and Urban Platforms  and highlight the operation and influence
+ of large-scale AI control systems intended to manage vast portions, aspects
+ and domains of the city, which underpin everyday life. In the final part ( Part
+ IV ),  Urban Software Agents and Algorithms , the authors focus on immate -
+ rial AIs and consider the implications of digital assistants, computer pro -
+ grams and seemingly neutral machinic procedures for urban living, design
+ and governance.
+ Overall, the book draws on over 20 case studies based on empirical
+ research. We use these case studies to illustrate the emergence of  urban AI
+ defined as a class of material and immaterial artificial intelligences that oper -
+ ate most intensely in urban spaces and that depend on urban resources, as
+ they mediate urban services and influence urban sectors, by means of their
+ capacity to understand manifold spheres of urban life and act on them in an
+ autonomous manner (see  Figure 1.3 ). In addition, we emphasize how the
+ proliferation of urban AI across urban spaces and sectors is generating what
+ we term  AI urbanism : a novel urbanism that derives from smart urbanism
+ but also departs both empirically and theoretically from traditional smart-
+ city projects and trajectories. More specifically, we identify a series of points
+ of connection and departure along three axes, namely  function ,  presence  and
+ agency , captured in  Figure 1.4 .
+ First, there is a notable difference between the function of technologies
+ employed in smart cities versus the function of artificial intelligences in AI
+ urbanism. The technologies in smart cities are used to count and calculate
+ urban metabolic processes. This involves quantifying specific phenomena,
+ such as household energy consumption and neighbourhood crime rates by
+ collating and analysing  Big Data  ( Bhati et al., 2017 ;  Catlett et al., 2019 ;
+ Kitchin and McArdle, 2016 ). In contrast, urban AI produces an account of
+ urban phenomena by collecting and analysing data to explain why and how
+ certain things occur in cities. Urban AIs extract patterns and concepts from
+ large datasets and follow seemingly objective and unbiased logics to produce
+ predictions of urban futures yet to come. This is particularly evident in the
+ case of urban software agents like  Palantir , a predictive policing system
+
+
+<!-- Page 12 -->
+
+Introducing AI into urban studies  11
+ FIGURE 1.3
+
+Urban AI.
+ Source:
+ authors’ original.
+ URBAN AI a class of AIs
+Autonomous vehicles Urban robots City brains Urban software agents
+needing urban resources to function
+
+Infrastructures and facilities Data for machine learning Access to activities Urban spaces to act on operating mostly in urban spaces
+mediating urban services and influencing urban sectors
+Education
+Mobility Security
+Retail
+Health
+Hospitality
+Located mostly in
+cities
+ Acting rationally and autonomously Handling uncertainty
+Roads, buildings, homes,
+shops, etc.
+Socio, environmental, economic and political Big Data + Real-life data Electrical grids, server
+farms, etc.
+Learning and extracting concepts
+ Capabilities
+• • • •
+Situate AI in the physical landscape Multiple spheres of urban life
+
+
+<!-- Page 13 -->
+
+12  Federico Cugurullo et al.
+ whose function is to explain why some urban residents are more likely to
+ commit a crime and to foresee where unlawful activities will cluster within a
+ given city ( McDaniel and Pease, 2021 ;  Richardson et al., 2019 ). In essence,
+ along the  function  axis, we observe an evolution in the role and purpose of
+ technology from performing calculations on enormous sets of quantitative
+ data to providing an account of the urban condition. AI uses Big Data to
+ produce explanatory and interpretative models akin to narratives. These
+ models are not comprehensive stories analogous to human storytelling, but
+ they denote AI’s novel capacity to interpret urban phenomena, rather than
+ simply quantifying them. An interpretation is, in turn, a sign of thinking.
+ Although rudimentary and different from human thought processes, such
+ manifestations of thinking are absent in traditional smart city technologies.
+ The second axis concerns the space where urban artificial intelligences
+ function. While smart-city technologies are usually installed in confined
+ spaces or infrastructures that are detached and hidden from humans, urban
+ AIs are more visible sociotechnical phenomena. A smart grid, for example, is
+ located below the surface of the city in areas that are inaccessible to urban
+ residents ( Quitzow and Rohde, 2022 ), where it manages the distribution of
+ energy services. Citizens are aware of the existence of this technology but
+ cannot see it because it is buried in the bowels of the city, away from human
+ perception. Other smart technologies provide limited accessibility and visibil -
+ ity. In urban transport, for instance, automated track-bound metro systems
+ and personal rapid transport networks can be accessed by passengers, but
+ only in specially built guideways that are often underground and devoid of
+ other vehicles and, above all, of pedestrians ( Cugurullo, 2021 ). This is not
+ FIGURE 1.4  Comparing smart and AI urbanism.
+ Source:  authors’ original.
+
+
+<!-- Page 14 -->
+
+Introducing AI into urban studies  13
+ the case in AI urbanism. Autonomous vehicles traverse public roads, operat -
+ ing next to pedestrians and sharing the same space with traditional vehicles
+ and cyclists ( Brovarone et al., 2021 ;  Martens et al., 2022 ). Many robots
+ work on the frontline in environments such as shops, restaurants and air -
+ ports, where they are constantly encountering and interfacing with humans
+ ( Lin et al., 2022 ;  Sumartojo  et al.,  2022 ). Even software agents can make
+ their presence visible by animating the apps in our omnipresent smartphones.
+ Overall, this describes an evolution of the  presence  of technology from being
+ covert in smart urbanism to becoming overt in AI urbanism.
+ Third, we observe notable differences with respect to  agency . In smart
+ urbanism, technologies are programmed to repeat the same actions over and
+ over. They are  automated  technologies in the sense that they follow ‘repeti -
+ tive processes’ which are ‘constant and automatic’ ( Bourdieu, 2018 : 17).
+ These processes are programmed by human engineers and computer scien -
+ tists and the machine is compelled to abide by them. A smart sensor, for
+ example, automatically switches on the light every time a movement is
+ detected. Similarly, an automated tram follows a prescribed route and is
+ bound to fixed tracks from which it cannot escape. In essence, when it comes
+ to automation, ‘there is no room for variations or improvisation’ ( Cugurullo,
+ 2021 : 161). In contrast, urban AIs are becoming more and more autono -
+ mous. Our observation resonates with the notion of  autonomous technology
+ developed by Langdon  Winner (1978: 16) , whereby ‘technology governs its
+ own course.’ At the end of the third axis, machines decide the course of their
+ actions. They make important decisions de facto engaging with ethical
+ conundrums about what is right or wrong on a logical course of action
+ derived from machine learning and then act accordingly, with little or no
+ human supervision. An autonomous vehicle, for instance, determines its own
+ route which is constantly changing  on the run  as unexpected factors, such as
+ traffic jams and accidents, come into play. In this context rich in uncertainty,
+ autonomous technologies introduce new ethical dilemmas, especially in situ -
+ ations  where  harms  to  humans  are  unavoidable  ( Awad  et  al.,  2018 ;
+ Hagendorff, 2020 ;  Kaker et al., 2020 ). Autonomy is not a concern in smart
+ cities where decision-making and ethical decisions remain firmly in the hands
+ of humans.
+ Cutting across these three main axes, we begin to notice the emergence of
+ a fourth axis which encapsulates the dominant  discourse  underpinning smart
+ urbanism and AI urbanism. The grand narrative that fueled the genesis of
+ smart cities was based upon a modernist ideal of control ( Cugurullo, 2018 ;
+ Datta, 2015 ) whereby technology was understood as an instrument in the
+ hands of humans, designed and employed to fulfil human dreams and visions
+ in an anthropocentric manner ( Berman, 1983 ;  Boyer, 1986 ;  Cugurullo,
+ 2021 ). Nowadays, in the practice of AI urbanism, some of the core principles
+ of modernity no longer hold. In particular, AI urbanism pushes beyond the
+
+
+<!-- Page 15 -->
+
+14  Federico Cugurullo et al.
+ modernist ideal of control by ceding agency to autonomous technologies that
+ take initiative instead of following human instructions. Urban artificial intel -
+ ligences cannot be conceptualized as tools completely in the hands of humans
+ and in the service of human visions, given that they have the capacity to
+ develop their own narratives and to act autonomously in the pursuit of emer -
+ gent futures. The modernist logic of control applied in the case of smart cities
+ where technology was confined and contained in specific spaces, but it is not
+ pertinent in an urban context in which multiple AIs increasingly roam free as
+ autonomous agents. Modernist ideals of control are gradually falling apart,
+ along a trajectory towards  post-modernity  which we understand as the fal -
+ tering of the tenets, assumptions and promises of modernity ( Harvey, 1989 ).
+ More specifically, we see in the advent of an emergent urbanism shaped by
+ co-constitutive human/AI relations a condition in which modernist promises
+ of centralized and anthropocentric control are broken by dispersed forms of
+ control that are more-than-human in nature. This post-modern age of AI
+ upends the central role of humans as the sole builders and governors of cities,
+ spreads power and control across uncharted digital platforms and opens up
+ urban development to new post-human conditions.
+ Conclusions: transcending smart urbanism in the age of AI
+ The urban trends that we have discussed in this chapter indicate that, with
+ the advent of AI in cities, practices and theories of urban development, gov -
+ ernance and design are transcending what for decades has been known as
+ smart urbanism . The transition to AI urbanism has begun, but its empirical
+ and theoretical implications remain to be seen. The future that lies ahead is
+ unknown, though it is unlikely to be spatially homogeneous, as different cit -
+ ies are experimenting with AI technologies in ways that reflect their specific
+ geography, history and political economy. We already see the emergence of
+ new master-planned urban settlements such as The Line in Saudi Arabia,
+ where AI is being rolled out to have complete control over urban governance
+ and a single AI system is intended to monitor the life of every urban resident
+ ( Batty, 2022 ). In other places, AI is being implemented through small-scale
+ urban experiments to manage buildings and districts autonomously, which
+ suggests that AI’s impacts will be felt differentially  within  as well as across
+ urban geographies ( Aguilar et al., 2021 ;  Marvin et al., 2022 ). Overall, the
+ comprehensive and piecemeal applications of AI serve as two ends on a broad
+ spectrum of trajectories of AI urbanism. However, one common denomina -
+ tor in AI urbanism is clear: a more-than-human component that is redefining
+ the urban experience, as artificial and biological intelligences collide and col -
+ lude in the making and governance of cities.
+ These collisions and collusions of humans and urban AIs will be signifi -
+ cant regardless of the scale. Some urbanists, for example, ponder the genesis
+
+
+<!-- Page 16 -->
+
+Introducing AI into urban studies  15
+ of  autonomous cities  where ‘diverse artificial intelligences, from service
+ robots to digital platforms, perform urban activities that have traditionally
+ been human activities’ ( Allam, 2021 ;  Cugurullo, 2021 : 17). Even if such fully
+ autonomous cities do not become a reality around the world, there will still
+ be a myriad of small-scale human–AI interactions whose impact on the every -
+ day life of cities and urban residents will be largely invisible but profound.
+ For example, one can imagine the devastating consequences of a declined
+ mortgage application assessed by an AI on a family struggling to find shelter
+ during a housing crisis. Such an example is not the work of science fiction. As
+ this book shows, similar episodes are rapidly emerging as the new normal for
+ everyday life in many cities. The enormous and multifaceted impact of AI
+ urbanism, and its problematic and progressive possibilities, requires sus -
+ tained scrutiny, research and critique. AI technologies have been introduced
+ into the city and they are here to stay. Their form, function and impacts will
+ be variable and co-constituted by existing urban contexts. Now is the time to
+ introduce AI into urban studies, to understand empirically and theoretically
+ the intersection between the development of artificial intelligences and the
+ development of cities in the decades to come.
+ References
+ Acheampong, R. A., Cugurullo, F., Gueriau, M., & Dusparic, I. (2021). Can autono -
+ mous vehicles enable sustainable mobility in future cities? Insights and policy chal -
+ lenges from user preferences over different urban transport options.  Cities , 112,
+ 103134.
+ Aguilar, J., Garces-Jimenez, A., R-Moreno, M. D., & García, R. (2021). A systematic
+ literature review on the use of artificial intelligence in energy self-management in
+ smart buildings.  Renewable and Sustainable Energy Reviews , 151, 111530.
+ Allam, Z. (2021). Big data, artificial intelligence and the rise of autonomous smart
+ cities. In Allam, Z. (Ed.),  The rise of autonomous smart cities . Palgrave Macmillan,
+ Cham, 7–30.
+ Amoore, L. (2023). Machine learning political orders.  Review of International
+ Studies , 49(1), 20–36.
+ Awad, E., Dsouza, S., Kim, R., Schulz, J., Henrich, J., Shariff, A., … Rahwan, I.
+ (2018). The moral machine experiment.  Nature , 563(7729), 59–64.
+ Balland, P. A., Jara-Figueroa, C., Petralia, S. G., Steijn, M., Rigby, D. L., & Hidalgo,
+ C. A. (2020). Complex economic activities concentrate in large cities.  Nature
+ Human Behaviour , 4(3), 248–254.
+ Barns, S. (2019).  Platform urbanism: Negotiating platform ecosystems in connected
+ cities . Springer Nature, Berlin.
+ Batty, M. (2022). The Linear City: Illustrating the logic of spatial equilibrium.
+ Computational Urban Science , 2(1), 1–17.
+ Baum, K., Mantel, S., Schmidt, E., & Speith, T. (2022). From responsibility to reason-giv -
+ ing explainable artificial intelligence.  Philosophy & Technology , 35(1), 1–30.
+ Berman, M. (1983).  All that is solid melts into air: The experience of modernity .
+ Verso, London.
+
+
+<!-- Page 17 -->
+
+16  Federico Cugurullo et al.
+ Bhati, A., Hansen, M., & Chan, C. M. (2017). Energy conservation through smart
+ homes in a smart city: A lesson for Singapore households.  Energy Policy , 104,
+ 230–239.
+ Bissell, D., & Del Casino, V. J. (2017). Whither labor geography and the rise of the
+ robots?  Social & Cultural Geography , 18(3), 435–442.
+ Bostrom, N. (2017).  Superintelligence . Oxford University Press, Oxford.
+ Bourdieu, P. (2018).  On the state: Lectures at the Collège de France, 1989–1992 .
+ John Wiley & Sons.
+ Boyer, M. C. (1986).  Dreaming the rational city: The myth of American city planning .
+ MIT Press, Cambridge.
+ Brayne, S. (2017). Big data surveillance: The case of policing.  American Sociological
+ Review , 82(5), 977–1008.
+ Brovarone, E. V., Scudellari, J., & Staricco, L. (2021). Planning the transition to auton -
+ omous driving: A policy pathway towards urban liveability.  Cities , 108, 102996.
+ Bruner, E. (2021). Evolving human brains: Paleoneurology and the fate of Middle
+ Pleistocene.  Journal of Archaeological Method and Theory , 28(1), 76–94.
+ Caprotti, F., Chang, I., Catherine, C., & Joss, S. (2022). Beyond the smart city: A
+ typology of platform urbanism.  Urban Transformations , 4(1), 1–21.
+ Caprotti, F., & Liu, D. (2020). Platform urbanism and the Chinese smart city: The
+ co-production and territorialisation of Hangzhou City Brain.  GeoJournal , 87,
+ 1–15.
+ Catlett, C., Cesario, E., Talia, D., & Vinci, A. (2019). Spatio-temporal crime predic -
+ tions in smart cities: A data-driven approach and experiments.  Pervasive and
+ Mobile Computing , 53, 62–74.
+ Cave, S., Dihal, K., & Dillon, S., (eds.). (2020).  AI narratives: A history of imagina -
+ tive thinking about intelligent machines . Oxford University Press, Oxford.
+ Coletta, C., Evans, L., Heaphy, L., & Kitchin, R. (Eds.). (2019).  Creating smart cities .
+ Routledge, London and New York.
+ Crawford, K. (2021).  Atlas of AI: Power, politics, and the planetary costs of artificial
+ intelligence . Yale University Press, New Haven and London.
+ Cugurullo, F. (2018). The origin of the smart city imaginary: From the dawn of
+ modernity to the eclipse of reason. In Linder, C. & Meissner, M. (Eds.)  The
+ Routledge companion to urban imaginaries . Routledge, London, 113–124.
+ Cugurullo, F. (2020). Urban artificial intelligence: From automation to autonomy in
+ the smart city.  Frontiers in Sustainable Cities , 2, 38.
+ Cugurullo, F. (2021).  Frankenstein urbanism: Eco, smart and autonomous cities, arti -
+ ficial intelligence and the end of the city . Routledge, London and New York.
+ Cugurullo, F., Acheampong, R. A., Gueriau, M., & Dusparic, I. (2021). The transi -
+ tion to autonomous cars, the redesign of cities and the future of urban sustainabil -
+ ity.  Urban Geography , 42(6), 833–859.
+ Curran, D., & Smart, A. (2021). Data-driven governance, smart urbanism and risk-
+ class inequalities: Security and social credit in China.  Urban Studies , 58(3),
+ 487–506.
+ Datta, A. (2015). A 100 smart cities, a 100 utopias.  Dialogues in Human Geography ,
+ 5(1), 49–53.
+ Del Casino Jr, V. J. (2016). Social geographies II: Robots.  Progress in Human
+ Geography , 40(6), 846–855.
+ Dowling, R., & M c Guirk, P. (2022). Autonomous vehicle experiments and the city.
+ Urban Geography , 43(3), 409–426.
+
+
+<!-- Page 18 -->
+
+Introducing AI into urban studies  17
+ Elmqvist, T., Andersson, E., McPhearson, T., Bai, X., Bettencourt, L., Brondizio, E.,
+ … & Van Der Leeuw, S. (2021). Urbanization in and for the Anthropocene.  Urban
+ Sustainability , 1(1), 1–6.
+ Fields, D., Bissell, D., & Macrorie, R. (2020). Platform methods: Studying platform
+ urbanism outside the black box.  Urban Geography , 41(3), 462–468.
+ Fisher, E. (2022). Do algorithms have a right to the city? Waze and algorithmic spati -
+ ality.  Cultural Studies , 36(1), 74–95.
+ Gaio, A., & Cugurullo, F. (2023). Cyclists and autonomous vehicles at odds: Can the
+ transport oppression cycle be broken in the era of artificial intelligence?  AI &
+ Society , 38(3), 1223–1237.
+ Galway-Witham, J., & Stringer, C. (2018). How did Homo sapiens evolve?  Science ,
+ 360(6395), 1296–1298.
+ Greenfield, A. (2018).  Radical technologies: The design of everyday life . Verso Books,
+ London.
+ Hagendorff, T. (2020). The ethics of AI ethics: An evaluation of guidelines.  Minds and
+ Machines , 30(1), 99–120.
+ Harvey, D. (1989).  The condition of postmodernity: An enquiry into the origins of
+ cultural change . Wiley-Blackwell, London.
+ Hodson, M., Kasmire, J., McMeekin, A., Stehlin, J. G., & Ward, K. (Eds.). (2020).
+ Urban platforms and the future city: Transformations in infrastructure, govern -
+ ance, knowledge and everyday life . Routledge, London.
+ Jackman, A. (2022). Domestic drone futures.  Political Geography , 97, 102653.
+ Kaddar, M., Barak, N., Hoop, M., Kirchberg, V., & de Shalit, A. (2022). The artistic
+ spirit of cities: How cities influence artists’ agency.  Cities , 130, 103843.
+ Kaker, S. A., Evans, J., Cugurullo, F., Cook, M., & Petrova, S. (2020). Expanding
+ cities: Living, planning and governing uncertainty. In Scoones, I. & Stirling, A.
+ (Eds.),  The politics of uncertainty . Routledge, London, 85–98.
+ Kanal, L. N., and Lemmer, J. F. (Eds.). (2014).  Uncertainty in artificial intelligence .
+ Elsevier, Amsterdam.
+ Karvonen, A., Cugurullo, F., & Caprotti, F. (2019).  Inside smart cities . Routledge,
+ London and New York.
+ Kitchin, R. (2020). Civil liberties or public health, or civil liberties and public health?
+ Using surveillance technologies to tackle the spread of COVID-19.  Space and
+ Polity , 24(3), 362–381.
+ Kitchin, R., & McArdle, G. (2016). What makes Big Data, Big Data? Exploring the onto -
+ logical characteristics of 26 datasets.  Big Data & Society , 3(1), 2053951716631130.
+ Langer, M., Oster, D., Speith, T., Hermanns, H., Kästner, L., Schmidt, E., … Baum, K.
+ (2021). What do we want from Explainable Artificial Intelligence (XAI)?–A stake -
+ holder perspective on XAI and a conceptual model guiding interdisciplinary XAI
+ research.  Artificial Intelligence , 296, 103473.
+ Lee, K. F. (2018).  AI superpowers: China, Silicon Valley, and the new world order .
+ Houghton Mifflin, Boston.
+ Lee, M. S. A., & Floridi, L. (2021). Algorithmic fairness in mortgage lending: From
+ absolute conditions to relational trade-offs.  Minds and Machines , 31(1), 165–191.
+ Levesque, H. J. (2017).  Common sense, the turing test, and the quest for real AI:
+ Reflections on natural and artificial intelligence . MIT Press, Cambridge.
+ Lin, W., Adey, P., & Harris, T. (2022). Dispositions towards automation: Capital,
+ technology,  and  labour  relations  in  aeromobilities.  Dialogues  in  Human
+ Geography , 20438206221121652.
+
+
+<!-- Page 19 -->
+
+18  Federico Cugurullo et al.
+ Lynch, C. R., Bissell, D., House-Peters, L. A., & Del Casino Jr, V. J. (2022). Robotics,
+ affective displacement, and the automation of care.  Annals of the American
+ Association of Geographers , 112(3), 684–691.
+ Lupia, A., McCubbins, M. D., & Popkin, S. L. (Eds.). (2000).  Elements of reason:
+ Cognition, choice, and the bounds of rationality . Cambridge University Press,
+ Cambridge.
+ Luque-Ayala, A., & Marvin, S. (2020).  Urban operating systems: Producing the com -
+ putational city . MIT Press, Cambridge.
+ Luusua, A., Ylipulli, J., Foth, M., & Aurigi, A. (2023). Urban AI: Understanding the
+ emerging role of artificial intelligence in smart cities.  AI and Society , 8, 1039–1044.
+ Macrorie, R., Marvin, S., & While, A. (2021). Robotics and automation in the city:
+ A research agenda.  Urban Geography , 42(2), 197–217.
+ Mara, M., & Appel, M. (2015). Effects of lateral head tilt on user perceptions of
+ humanoid and android robots.  Computers in Human Behavior , 44, 326–334.
+ Martens, K., Beyazit, E., Henenson, E., Thomopoulos, N., Milakis, D., Mladenović,
+ M., … Negulescu, M. (2022). Autonomous and Connected Transport as Part of an
+ Inclusive Transport System: WG2: Social Challenges.
+ Marvin, S., While, A., Chen, B., & Kovacic, M. (2022). Urban AI in China: Social
+ control  or  hyper-capitalist  development  in  the  post-smart  city?  Frontiers  in
+ Sustainable Cities , 155, 1–11.
+ McDaniel, J. L., & Pease, K. (Eds.). (2021).  Predictive policing and artificial intelli -
+ gence . Routledge, London.
+ Munn, L. (2022). The uselessness of AI ethics.  AI and Ethics , 3, 869–877.
+ Moran, D., Kanemoto, K., Jiborn, M., Wood, R., Többen, J., & Seto, K. C. (2018).
+ Carbon footprints of 13 000 cities.  Environmental Research Letters , 13(6),
+ 064041.
+ Müller, B. C., Gao, X., Nijssen, S. R., & Damen, T. G. (2021). I, robot: How human
+ appearance  and  mind  attribution  relate  to  the  perceived  danger  of  robots.
+ International Journal of Social Robotics , 13(4), 691–701.
+ Nikitas, A., Thomopoulos, N., & Milakis, D. (2021). The environmental and resource
+ dimensions of automated transport: A nexus for enabling vehicle automation to
+ support sustainable urban mobility.  Annual Review of Environment and Resources ,
+ 46, 167–192.
+ O'Neil, C. (2016).  Weapons of math destruction: How Big Data increases inequality
+ and threatens democracy . Penguin, London.
+ Pozharliev, R., De Angelis, M., Rossi, D., Romani, S., Verbeke, W., & Cherubino, P.
+ (2021). Attachment styles moderate customer responses to frontline service robots:
+ Evidence from affective, attitudinal, and behavioral measures.  Psychology &
+ Marketing , 38(5), 881–895.
+ Quitzow, L., & Rohde, F. (2022). Imagining the smart city through smart grids?
+ Urban energy futures between technological experimentation and the imagined
+ low-carbon city.  Urban Studies , 59(2), 341–359.
+ Richardson, R., Schultz, J. M., & Crawford, K. (2019). Dirty data, bad predictions:
+ How civil rights violations impact police data, predictive policing systems, and
+ justice.  NYUL Review Online , 94, 15.
+ Rubenstein, M., Ahler, C., Hoff, N., Cabrera, A., & Nagpal, R. (2014). Kilobot: A
+ low cost robot with scalable operations designed for collective behaviors.  Robotics
+ and Autonomous Systems , 62(7), 966–975.
+
+
+<!-- Page 20 -->
+
+Introducing AI into urban studies  19
+ Russell, S. (2019).  Human compatible: Artificial intelligence and the problem of con -
+ trol . Penguin, London.
+ Russell, S. J., & Norvig, P. (2016).  Artificial intelligence: A modern approach . Pearson
+ Education Limited, Harlow.
+ Samoili, S., Lopez Cobo, M., Gomez Gutierrez, E., De Prato, G., Martinez-Plumed, F.,
+ & Delipetrev, B.  (2020). AI WATCH. Defining Artificial Intelligence, EUR 30117
+ EN, Publications Office of the European Union, doi: 10.2760/382730 , JRC118163.
+ Schaller, B. (2021). Can sharing a ride make for less traffic? Evidence from Uber and
+ Lyft and implications for cities.  Transport Policy , 102, 1–10.
+ Sherry, Y., & Thompson, N. C. (2021). How fast do algorithms improve?  Proceedings
+ of the IEEE , 109(11), 1768–1777.
+ Son, T. H., Weedon, Z., Yigitcanlar, T., Sanchez, T., Corchado, J. M., & Mehmood,
+ R. (2023). Algorithmic urban planning for smart and sustainable development:
+ Systematic review of the literature.  Sustainable Cities and Society , 104562, 1–43.
+ Strengers, Y., & Kennedy, J. (2021).  The smart wife: Why Siri, Alexa, and other smart
+ home devices need a feminist reboot . MIT Press, Cambridge.
+ Sumartojo, S., Lundberg, R., Kulić, D., Tian, L., Carreno-Medrano, P., Mintrom, M.,
+ … & Allen, A. (2022). The robotic production of spatiality: Predictability, parti -
+ tioning, and connection.  Transactions of the Institute of British Geographers ,
+ 48(1), 56–68.
+ Talebian, A., & Mishra, S. (2022). Unfolding the state of the adoption of connected
+ autonomous  trucks  by  the  commercial  fleet  owner  industry.  Transportation
+ Research Part E: Logistics and Transportation Review , 158, 102616.
+ Tiddi, I., Bastianelli, E., Daga, E., d’Aquin, M., & Motta, E. (2020). Robot–city interac -
+ tion: Mapping the research landscape—a survey of the interactions between robots
+ and modern cities.  International Journal of Social Robotics , 12(2), 299–324.
+ Toumey, C. (2013). Nanobots today.  Nature Nanotechnology , 8(7), 475–476.
+ van der Graaf, S., & Ballon, P. (2019). Navigating platform urbanism.  Technological
+ Forecasting and Social Change , 142, 364–372.
+ Valdez, M., & Cook, M. (2023). Humans, robots and artificial intelligences reconfig -
+ uring urban life in a crisis.  Frontiers in Sustainable Cities , 5, 27.
+ While, A. H., Marvin, S., & Kovacic, M. (2021). Urban robotic experimentation: San
+ Francisco. Tokyo and Dubai,  Urban Studies , 58(4), 769–786.
+ Willis, K. S., & Aurigi, A. (Eds.). (2020).  The Routledge companion to smart cities .
+ Routledge, London and New York.
+ Winner, L. (1978).  Autonomous technology: Technics-out-of-control as a theme in
+ political thought . MIT Press, Cambridge.
+ Wirtz, J., Patterson, P. G., Kunz, W. H., Gruber, T., Lu, V. N., Paluch, S., & Martins,
+ A. (2018). Brave new world: Service robots in the frontline.  Journal of Service
+ Management , 29, 907–931.
+ Yigitcanlar, T., Agdas, D., & Degirmenci, K. (2023). Artificial intelligence in local
+ governments: Perceptions of city managers on prospects, constraints and choices.
+ AI & Society , 38, 1135–1150.
+ Zhang, J., Hua, X. S., Huang, J., Shen, X., Chen, J., Zhou, Q., et al. (2019). City
+ brain: Practice of large-scale artificial intelligence in the real world.  IET Smart
+ Cities  1, 28–37.
+ Zuboff, S. (2019).  The age of surveillance capitalism: The fight for a human future at
+ the new frontier of power . Profile books, London.
+ View publication stats

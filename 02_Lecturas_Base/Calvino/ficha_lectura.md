@@ -48,4 +48,5 @@ La obra es una meditación sobre la **naturaleza de la ciudad** como construcci�
 
 ---
 
-> **Nota**: El texto no está en el workspace. Se recomienda subir la edición de *Las ciudades invisibles*.
+> **Fuente disponible**:
+> [`las_ciudades_invisibles.pdf`](las_ciudades_invisibles.pdf).

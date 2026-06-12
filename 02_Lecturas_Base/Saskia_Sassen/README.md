@@ -2,10 +2,9 @@
 
 ## Fuente
 
-- `libro_una_sociologia_de_la_globalizacion.pdf`: escaneo original.
-- `libro_una_sociologia_de_la_globalizacion.md`: version OCR consultable.
-
-Ambas versiones se conservan porque no son duplicados funcionales.
+- `una_sociologia_de_la_globalizacion.pdf`: fuente visual.
+- `una_sociologia_de_la_globalizacion_ocr.md`: extracción automática
+  consultable.
 
 ## Material derivado
 
@@ -13,4 +12,3 @@ Ambas versiones se conservan porque no son duplicados funcionales.
 2. `02_desglose_capitulo_3.md`
 3. `03_conceptos_clave.md`
 4. `04_resena_filosofica_capitulo_3.md`
-

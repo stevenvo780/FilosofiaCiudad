@@ -16,6 +16,7 @@ Materiales para la ponencia del **12 de junio de 2026** sobre Yuk Hui.
 - [ ] 2. Estructura de diapositivas (6 slides)
 - [ ] 3. Conexión con Urban AI
 
-## Pendiente
+## Fuente
 
-Subir el PDF: `B. Lecturas/LIBRO_Yuk-Hui-Fragmentar-el-Futuro.pdf` para lectura directa del capítulo pp. 163-191.
+El libro y su OCR están disponibles en
+[`../02_Lecturas_Base/Yuk_Hui/`](../02_Lecturas_Base/Yuk_Hui/).

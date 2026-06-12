@@ -10,7 +10,7 @@ Actualizado: 2026-05-31.
 - Tema: Los limites de la IA.
 - Texto: Yuk Hui, Sobre el limite de la inteligencia artificial, en Fragmentar el futuro. Ensayos sobre tecnodiversidad, 2020, pp. 163-191.
 - Responsable detectado: Steven Vallejo.
-- Archivo local de referencia: B. Lecturas/LIBRO_Yuk-Hui-Fragmentar-el-Futuro.pdf.
+- Fuente disponible en `02_Lecturas_Base/Yuk_Hui/fragmentar_el_futuro.pdf`.
 
 ## Problema de la ponencia
 

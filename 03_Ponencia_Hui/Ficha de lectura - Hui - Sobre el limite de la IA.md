@@ -76,4 +76,5 @@ Hui no pregunta *qué no puede hacer* la IA, sino **cómo pensar el límite** de
 
 ---
 
-> **Nota**: El libro *Fragmentar el futuro* no está subido al workspace. Archivo local de referencia: `B. Lecturas/LIBRO_Yuk-Hui-Fragmentar-el-Futuro.pdf`. Se recomienda subirlo para tener el texto completo.
+> **Fuente disponible**:
+> [`../02_Lecturas_Base/Yuk_Hui/fragmentar_el_futuro.pdf`](../02_Lecturas_Base/Yuk_Hui/fragmentar_el_futuro.pdf).
