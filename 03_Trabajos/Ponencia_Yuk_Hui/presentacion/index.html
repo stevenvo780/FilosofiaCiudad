@@ -942,11 +942,13 @@
         data-ambient-opts='{"opBase":0.06,"opPico":0.16,"pistas":3,"periodo":6,"alto":0.09}'>
         <p class="eje-label" data-id="lbl1">Experimento 1 · Resultados</p>
         <h2 data-id="t1">La escala no cruza el límite</h2>
-        <div class="callout fragment fade-up" style="left:3%;bottom:14%;">
-          El <b>20B local</b> supera al <b>32B</b>: la escala <em>no es monótona</em>.
-        </div>
-        <div class="callout fragment fade-up" style="left:3%;bottom:2%;max-width:15em;">
-          Réplica <b>coder</b>: 24B, 30B y un <b>80B</b> en mi escritorio → los <b>tres 20 %</b>. Ni tamaño ni especialización compran el cálculo. <span style="color:var(--texto-tenue);font-size:0.85em;">[exploratorio · ver Anexo A]</span>
+        <div class="callout-fila" style="display:flex;gap:1.1em;align-items:stretch;margin:0.35em 0 0.2em;">
+          <div class="callout fragment fade-up" style="position:relative;margin:0;flex:0 1 13em;max-width:13em;">
+            El <b>20B local</b> supera al <b>32B</b>: la escala <em>no es monótona</em>.
+          </div>
+          <div class="callout fragment fade-up" style="position:relative;margin:0;flex:1 1 auto;max-width:none;">
+            Réplica <b>coder</b>: 24B, 30B y un <b>80B</b> en mi escritorio → los <b>tres 20 %</b>. Ni tamaño ni especialización compran el cálculo. <span style="color:var(--texto-tenue);font-size:0.85em;">[exploratorio · ver Anexo A]</span>
+          </div>
         </div>
         <div class="grafico-fila">
           <img class="anim-scalein" src="assets/escala_vs_exactitud.png" alt="Exactitud vs. escala: 3B 20%, 14B 20%, 20B 40%, 32B 20%, Sonnet 90%, Opus 70%; cómputo puro 100%">
