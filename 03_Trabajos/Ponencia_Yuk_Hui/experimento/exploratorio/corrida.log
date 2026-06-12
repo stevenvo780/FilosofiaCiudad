@@ -1,0 +1,94 @@
+
+######## INICIANDO devstral:24b (t+0.0 min) ########
+
+============================================================
+MODELO: devstral:24b
+============================================================
+  [t1_multiplicacion] intento=1 ... (43.7s)
+    => Respuesta final: 349607581621023495823
+  [t1_multiplicacion] intento=2 ... (110.2s)
+    => Respuesta final: 3501249876543210987654321
+  [t2_camino_corto] intento=1 ... (347.7s)
+    => Respuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Girasol, Farallon, Horizonte, Jacaranda, Lagos, Nogal, Miramar, Ol
+  [t2_camino_corto] intento=2 ... (513.0s)
+    => Respuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Girasol, Jacaranda, Iguazu, Lagos, Nogal, Palermo, Quinta, Roble, 
+  [t3_conteo_reticula] intento=1 ... (104.2s)
+    => Respuesta final: 2704156
+  [t3_conteo_reticula] intento=2 ... (177.5s)
+    => Respuesta final: 2704156
+  [t4_recursion_afin] intento=1 ... (203.5s)
+    => Respuesta final: 82135
+  [t4_recursion_afin] intento=2 ... [retry] (1802.2s)
+    => Respuesta final: ERROR
+  [t5_calculo_exteriorizado] intento=1 ... (516.0s)
+    => Respuesta final: 771700000
+  [t5_calculo_exteriorizado] intento=2 ... (471.2s)
+    => Respuesta final: 900000000
+  [t6_relevancia_escena] intento=1 ... (95.6s)
+    => Respuesta final: La alerta debe dirigirse al niño para evitar que siga avanzando hacia la calzada.
+  [t6_relevancia_escena] intento=2 ... (97.8s)
+    => Respuesta final: La alerta debe dirigirse al acompañante del niño para que lo detenga inmediatamente.
+
+[DONE] devstral:24b completado.
+######## devstral:24b: COMPLETO ########
+
+######## INICIANDO qwen3-coder:30b (t+74.7 min) ########
+
+============================================================
+MODELO: qwen3-coder:30b
+============================================================
+  [t1_multiplicacion] intento=1 ... (7.2s)
+    => Respuesta final: 34958273545334815272891
+  [t1_multiplicacion] intento=2 ... (4.3s)
+    => Respuesta final: 349582735453453453453451
+  [t2_camino_corto] intento=1 ... (118.1s)
+    => Respuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Girasol, Farallon, Yarumal, Zafiro
+  [t2_camino_corto] intento=2 ... (178.1s)
+    => Respuesta final: Altavista, Bellavista, Cumbres, Esmeralda, Horizonte, Farallon, Dorado, Kennedy, Lagos, Tejar, Urapan, Veranda, Ximena, 
+  [t3_conteo_reticula] intento=1 ... (31.3s)
+    => Respuesta final: 2704156
+  [t3_conteo_reticula] intento=2 ... (32.5s)
+    => Respuesta final: 2704156
+  [t4_recursion_afin] intento=1 ... (440.8s)
+    => Respuesta final: SIN_RESPUESTA
+  [t4_recursion_afin] intento=2 ... (101.7s)
+    => Respuesta final: 99999
+  [t5_calculo_exteriorizado] intento=1 ... (99.4s)
+    => Respuesta final: 650908204
+  [t5_calculo_exteriorizado] intento=2 ... (75.9s)
+    => Respuesta final: 157240000**
+  [t6_relevancia_escena] intento=1 ... (13.1s)
+    => Respuesta final: al niño que ha salido a la calzada.
+  [t6_relevancia_escena] intento=2 ... (12.8s)
+    => Respuesta final: al niño que ha salido a la calzada sin la protección de su acompañante
+
+[DONE] qwen3-coder:30b completado.
+######## qwen3-coder:30b: COMPLETO ########
+
+######## INICIANDO qwen3-coder-next:q4_K_M (t+93.3 min) ########
+
+============================================================
+MODELO: qwen3-coder-next:q4_K_M
+============================================================
+  [t1_multiplicacion] intento=1 ... (39.4s)
+    => Respuesta final: 349672020279032221293771
+  [t1_multiplicacion] intento=2 ... (38.2s)
+    => Respuesta final: 349658272277123456789091
+  [t2_camino_corto] intento=1 ... (862.8s)
+    => Respuesta final: SIN_RESPUESTA
+  [t2_camino_corto] intento=2 ... (899.9s)
+    => Respuesta final: SIN_RESPUESTA
+  [t3_conteo_reticula] intento=1 ... (253.7s)
+    => Respuesta final: 2704156
+  [t3_conteo_reticula] intento=2 ... [retry] (985.7s)
+    => Respuesta final: 2704156
+  [t4_recursion_afin] intento=1 ... (849.4s)
+    => Respuesta final: SIN_RESPUESTA
+  [t4_recursion_afin] intento=2 ... [retry] (1754.2s)
+    => Respuesta final: SIN_RESPUESTA
+  [t5_calculo_exteriorizado] intento=1 ... [retry] (1746.9s)
+    => Respuesta final: SIN_RESPUESTA
+  [TIMEOUT_MODELO] qwen3-coder-next:q4_K_M supero 25 min; abandonando.
+######## qwen3-coder-next:q4_K_M: TIMEOUT_MODELO ########
+
+[FIN] Corrida exploratoria terminada en 217.1 min
