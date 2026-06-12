@@ -761,7 +761,7 @@
     var RGB_ACENTO = hexToRgb(P.ACENTO);
     var RGB_ROJO   = hexToRgb(P.ROJO);
 
-    function makeAscua(W, H) {
+    function makeAscua(W, H, sembrar) {
       /* Nace en franja lateral (evita zona muerta central) */
       var deadL = W * (1 - zonaDeadW) / 2;
       var deadR = W - deadL;
@@ -773,9 +773,12 @@
       }
       return {
         x: x,
-        y: -4,
+        /* sembrar=true reparte la brasa por la franja superior visible (evita
+           que arranque toda fuera del lienzo y tarde en aparecer); al reciclar
+           nace en el borde superior */
+        y: sembrar ? Math.random() * (H * 0.55) : -4,
         vx: (Math.random()-0.5) * viento * 4,
-        vy: gravedad * (0.5 + Math.random() * 0.8),
+        vy: gravedad * (1.6 + Math.random() * 1.4),
         r: 1.5 + Math.random() * 1.5,
         born: null,
         life: vida * (0.8 + Math.random() * 0.4)
@@ -785,8 +788,11 @@
     var dim = resizeCanvas(cv);
     var ascuas = [];
     for (var i = 0; i < densidad; i++) {
-      var a = makeAscua(dim.W, dim.H);
-      a.born = -Math.random() * a.life; // distribuir en el tiempo
+      /* sembrar=true: nacen ya dentro del lienzo y escalonadas en su ciclo
+         vital, para que el ambiente esté vivo desde el primer frame */
+      var a = makeAscua(dim.W, dim.H, true);
+      a.born = null;                       // el primer tick fija born=ts
+      a.preAge = Math.random() * a.life * 0.6; // desfasa su progreso inicial
       ascuas.push(a);
     }
 
@@ -815,7 +821,7 @@
       for (var ai = 0; ai < ascuas.length; ai++) {
         var asc = ascuas[ai];
         if (asc.born === null) asc.born = ts;
-        var age = ts - asc.born;
+        var age = ts - asc.born + (asc.preAge || 0);
 
         /* Reciclar */
         if (age > asc.life || asc.y > H * 0.8) {
@@ -827,8 +833,10 @@
 
         /* Progreso 0..1 */
         var t = age / asc.life;
-        /* Se extingue al 60% de altura (muere antes de llegar al centro) */
-        var yFrac = asc.y / H;
+        /* Se extingue al 60% de altura (muere antes de llegar al centro).
+           yFrac se acota a 0 para que las brasas recién nacidas en el borde
+           superior (y<0) ya sean visibles en lugar de calcular alpha>opNac. */
+        var yFrac = Math.max(0, asc.y / H);
         var extFrac = Math.min(t, yFrac / 0.6);
         var alpha = opNac * (1 - extFrac);
         if (alpha <= 0.002) { continue; }
