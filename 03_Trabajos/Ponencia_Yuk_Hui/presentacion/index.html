@@ -667,11 +667,61 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      opacity: 0.16;
+      opacity: 0.17;   /* un poco más visible para que se vean los brazos regados */
       pointer-events: none;
       overflow: hidden;
     }
     .portada > *:not(.viva-fondo) { position: relative; z-index: 1; }
+
+    /* ── QR en la portada (esquina inferior derecha) ───────────────────── */
+    /* Selector .portada .portada-qr tiene especificidad (0,2,0), gana sobre
+       la regla general .portada > *:not(.viva-fondo) { position:relative; z-index:1 }
+       que también tiene (0,2,0) pero aparece ANTES en la hoja → este bloque gana
+       por orden de cascada. */
+    .portada .portada-qr {
+      position: absolute;
+      top: calc(100% + 0.7em);   /* en la banda vacía bajo el contenido, sin pisar la pregunta */
+      bottom: auto;
+      right: 0.4em;
+      z-index: 2;           /* sobre .viva-fondo (z:0) y contenido (z:1) */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35em;
+      background: rgba(14, 26, 43, 0.72);
+      border-radius: 8px;
+      padding: 0.45em 0.6em 0.4em;
+      pointer-events: none; /* no interfiere con clics del fondo */
+    }
+    .portada .portada-qr img {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 6px;
+    }
+    .portada .portada-qr .qr-label {
+      font-family: var(--sans);
+      font-size: 0.42em;
+      letter-spacing: 0.07em;
+      color: var(--texto-tenue);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.3;
+    }
+    /* En proyección ≥1280px subimos ligeramente el tamaño */
+    @media (min-width: 1280px) {
+      .portada .portada-qr img { width: 108px; height: 108px; }
+    }
+    /* En pantallas pequeñas (<700px) reducimos para no tapar el título */
+    @media (max-width: 699px) {
+      .portada .portada-qr {
+        bottom: 0.5em;
+        right: 0.5em;
+        padding: 0.3em 0.4em;
+      }
+      .portada .portada-qr img { width: 72px; height: 72px; }
+      .portada .portada-qr .qr-label { font-size: 0.35em; }
+    }
 
     /* ── Enlace móvil discreto en el cierre ─────────────────────────────── */
     .enlace-movil {
@@ -692,8 +742,13 @@
 
       <!-- ============ 1 — APERTURA (1 min) ============ -->
       <section class="centrado portada" data-auto-animate>
-        <!-- Fondo vivo sutil (DLA fractal) a ~0.16; estático bajo prefers-reduced-motion -->
+        <!-- Fondo vivo sutil (DLA fractal) a ~0.14; estático bajo prefers-reduced-motion -->
         <div class="viva-fondo" data-viz="dla" aria-hidden="true"></div>
+        <!-- QR versión móvil — esquina inferior derecha, z-index 2 (sobre fondo y contenido) -->
+        <div class="portada-qr" aria-label="QR a la versión móvil interactiva">
+          <img src="assets/qr_movil.png" alt="QR a la versión móvil interactiva" loading="lazy">
+          <span class="qr-label">versión móvil + tesis ▸</span>
+        </div>
         <p class="autor anim-fadeup">Yuk Hui</p>
         <h1 class="anim-fadeup" data-id="titulo">Fragmentar el futuro</h1>
         <p class="subtitulo anim-fadeup">
@@ -1410,6 +1465,7 @@
       transitionSpeed: 'default',
       autoAnimateDuration: 0.6,
       autoAnimateEasing: 'cubic-bezier(.2,.7,.2,1)',
+      fragments: false,   /* sin clics internos: cada slide muestra TODO al entrar; solo se avanza slide a slide */
       plugins: [ RevealNotes ]
     });
   </script>
@@ -1428,7 +1484,7 @@
   <script defer src="viz/zipf.js"></script>
   <script defer src="viz/schelling.js"></script>
   <script defer src="viz/automata.js"></script>
-  <script defer src="viz/dla.js"></script>
+  <script defer src="viz/dla.js?v=7"></script>
   <script defer src="viz/gravitacional.js"></script>
   <script defer src="viz/braess.js"></script>
   <script defer src="viz/ambient.js"></script>

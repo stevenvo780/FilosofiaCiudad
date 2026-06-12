@@ -472,7 +472,7 @@
     var phase = 'growing';   // 'growing' | 'pause' | 'fading'
     var fadeAlpha = 1;
     var pauseTimer = 0;
-    var PAUSE_DURATION = 1500;  // ms
+    var PAUSE_DURATION = 4000;  // ms — el coral lleno aguanta más antes de desvanecer
     var FADE_DURATION  = 800;   // ms
 
     /* Canvas */
@@ -499,20 +499,65 @@
     var resizeObs = new ResizeObserver(resize);
     resizeObs.observe(container);
 
-    /* Simulación DLA */
-    var GRID = 201;
-    var sim = new DLASimulation(GRID);
+    /* ── Parámetros adaptativos por área real del contenedor ─────────────
+       Compact (chip de galería): idéntico al comportamiento histórico.
+       Full (portada a pantalla completa): grid grande, muchas partículas,
+       fractal que se riega hasta los bordes de la pantalla.
+       Fórmula: GRID escala con la raíz cuadrada del área, acotado a [201, 501].
+       maxParticles escala proporcional a GRID² (densidad constante), acotado a
+       [1500, 18000] para controlar rendimiento.
+       ─────────────────────────────────────────────────────────────────── */
+    var W0 = container.clientWidth  || 1200;
+    var H0 = container.clientHeight || 800;
 
-    /* cellSize: queremos que el cluster de radio ~67 quepa en ~40% del canvas */
+    var GRID, MAX_PARTICLES, CONCURRENT;
+    if (compact) {
+      /* Modo chip galería: exactamente igual que antes */
+      GRID          = 201;
+      MAX_PARTICLES = 1500;
+      CONCURRENT    = 6;
+    } else {
+      /* Modo full: grid y partículas proporcionales al área */
+      var area      = W0 * H0;                           // px²
+      var refArea   = 1280 * 720;                        // área de referencia (proyección)
+      var areaRatio = Math.sqrt(area / refArea);         // factor de escala lineal
+      /* GRID en pasos impares (DLA necesita centro entero): 201 → 501 */
+      var rawGrid   = Math.round(201 * areaRatio);
+      rawGrid       = Math.max(201, Math.min(501, rawGrid));
+      GRID          = (rawGrid % 2 === 0) ? rawGrid + 1 : rawGrid;  // forzar impar
+      /* Partículas: baseline alto (5500 a 1280×720) para que el coral se riegue
+         por la pantalla, no un copito central; escala cuadrática con GRID, tope 22000 */
+      MAX_PARTICLES = Math.round(5500 * Math.pow(GRID / 201, 2));
+      MAX_PARTICLES = Math.min(22000, MAX_PARTICLES);
+      /* Pasos por frame: muchos más pasos para que crezca a lo ancho; tope 80 */
+      CONCURRENT    = Math.min(80, Math.max(42, Math.round(42 * areaRatio)));
+    }
+
+    var sim = new DLASimulation(GRID);
+    sim.maxParticles = MAX_PARTICLES;   // sobreescribe el 1500 del constructor
+
+    /* Pre-crecimiento (solo full): sembramos un coral GRANDE de golpe al montar
+       —muchísimos pasos— para que la portada arranque ya regada por la pantalla;
+       el bucle en vivo sigue añadiendo el resto para el efecto de crecimiento. */
+    if (!compact) {
+      var preTarget = Math.min(Math.round(MAX_PARTICLES * 0.62), 3600);
+      var preBudget = preTarget * 7;
+      while (sim.count < preTarget && preBudget-- > 0) sim.stepParticle();
+    }
+
+    /* cellSize: en full queremos que el cluster llene la pantalla entera.
+       Usamos el lado MENOR dividido por GRID × 1.0 (sin encogimiento) para
+       que las ramas lleguen hasta los bordes; en compact mantenemos 0.92. */
     function getCellSize() {
       var W = container.clientWidth  || 1200;
       var H = container.clientHeight || 800;
-      var side = Math.min(W, H);
-      return compact ? (side / GRID) * 0.92 : (side / GRID) * 0.98;
+      /* full: usamos el lado MAYOR para que el coral cubra a lo ancho y se
+         derrame por arriba/abajo (se riega por la pantalla); compact: lado menor */
+      var side = compact ? Math.min(W, H) : Math.max(W, H);
+      /* full: celdas grandes (×2.3) — con el coral pre-crecido, esto riega los
+         brazos por toda la pantalla y derrama por los bordes */
+      return compact ? (side / GRID) * 0.92 : (side / GRID) * 2.3;
     }
-
-    /* Partículas en vuelo (máx concurrent) — más alto = cluster crece más rápido */
-    var CONCURRENT = compact ? 6 : 12;
 
     /* ── Bucle de animación ─────────────────────────────── */
     var lastTime = 0;
@@ -549,8 +594,9 @@
 
       } else if (phase === 'pause') {
         renderCluster(ctx, sim, getCellSize(), 1);
-        // Mostrar brevemente el coral completo
-        if (ts - pauseTimer >= PAUSE_DURATION) {
+        // compact (chip galería): ciclo grow→pausa→fade→reset, como siempre.
+        // full (portada): se queda en pausa — coral grande y quieto, sin reset.
+        if (compact && ts - pauseTimer >= PAUSE_DURATION) {
           phase = 'fading';
           fadeAlpha = 1;
         }
@@ -565,8 +611,7 @@
         renderCluster(ctx, sim, getCellSize(), Math.max(0, fadeAlpha));
       }
 
-      /* Texto discreto: contador */
-      drawHUD(ctx, sim, W, H, phase, fadeAlpha);
+      /* (HUD de conteo desactivado: no debe verse en la portada ni en la galería) */
 
       rafId = requestAnimationFrame(loop);
     }
