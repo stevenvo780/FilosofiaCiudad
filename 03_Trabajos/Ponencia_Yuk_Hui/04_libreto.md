@@ -96,6 +96,7 @@ Ya tenemos dos tesis enfrentadas: el cálculo, por un lado; la relevancia, por o
 
 ### [RELOJ 05:30 → 07:00] · [SLIDE 5 — Experimento 1 · Protocolo]
 
+*[primer clic al entrar: aparece el callout del 32B — no leerlo, fluye solo]*
 *[cada fila de la tabla aparece con un clic al nombrarla]*
 
 Seis sujetos en gradiente de tamaño: cuatro modelos abiertos —de 3 mil millones a 32 mil millones de parámetros— y dos de frontera, Sonnet y Opus, vía API.
@@ -117,11 +118,13 @@ Y la sexta es la trampa: la tarea inversa de Dreyfus, juicio de relevancia en un
 
 La hipótesis es explícita: si el límite fuera cuantitativo, debería disolverse subiendo de 3B a Opus. Veamos.
 
-**(195 palabras — sin las 5 tareas opcionales: 121)**
+**(195 palabras — base obligatoria: 139 / opcional de las 5 tareas: 56)**
 
 ---
 
 ### [RELOJ 07:00 → 08:30] · [SLIDE 6 — Experimento 1 · Resultados]
+
+*[primer clic: aparece el callout «El 20B local supera al 32B»; los 3 párrafos siguientes salen con un clic cada uno]*
 
 El argumento sale de los datos.
 
@@ -131,7 +134,7 @@ Primer hecho, el más fuerte: subir parámetros NO sube la exactitud. El de 3 mi
 
 *[pausa 2 seg]*
 
-El salto de verdad no es de tamaño, es de régimen: local a frontera. Sonnet, noventa por ciento; Opus, setenta. Pero —segundo hecho— ni la frontera toca el cien por ciento del cómputo puro. Y el mayor, Opus, es *menos* fiable que Sonnet: falló la suma de cuadrados en sus dos intentos por un solo dígito —651.397.404 en vez del exacto 651.396.404—, consistente con producir el token plausible en vez de ejecutar el algoritmo.
+El salto de verdad no es de tamaño, es de régimen: local a frontera. Sonnet, noventa por ciento; Opus, setenta. Pero —segundo hecho— ni la frontera toca el cien por ciento del cómputo puro. Y el mayor, Opus, es *menos* fiable que Sonnet: falló la suma de cuadrados en sus dos intentos —651.397.404 y 651.400.404 frente al exacto 651.396.404—, consistente con producir el token plausible en vez de ejecutar el algoritmo.
 
 Tercer hecho, el matiz honesto: la retícula de dos millones setecientas mil rutas la aciertan los seis, hasta el 3B, dos de dos. Porque es un coeficiente binomial memorizable. Eso no refuta nada: la escala mejora la imitación estadística en bolsillos concretos, pero sigue siendo estadística, no cálculo.
 
@@ -191,7 +194,7 @@ Segundo experimento, complementario. Tomé las trece teorías y derivé 39 pregu
 
 *[señalar la curva de exactitud global]*
 
-Exactitud global: el 3B en 38,5 por ciento; los locales medianos en torno a 77-79; Sonnet, 89,7; Opus, 92,3.
+Exactitud global: el 3B en 38,5 por ciento; los locales medianos en torno a 77-80; Sonnet, 89,7; Opus, 92,3.
 
 Aquí, a diferencia del primer experimento, la escala ordena de forma más limpia: el 3B se queda muy atrás y la frontera lidera. Incluso Opus supera a Sonnet, por poco.
 
@@ -260,11 +263,13 @@ Conecto con el gesto de Hui: lo computable —lo recursivamente enumerable— es
 *[OPCIONAL — recortar si vas atrasado: el cierre siguiente]*
 Y para Hui la salida no es oponer máquina y vida: siguiendo a Bergson, hay que resituar la técnica dentro de la vida. Por eso retoma su epígrafe, «la mecánica exigirá una mística», y a Hölderlin vía Heidegger: donde está el peligro, crece también lo que salva.
 
-**(≈235 palabras; sin el opcional ≈205)**
+**(≈251 palabras; sin el opcional ≈204)**
 
 ---
 
 ### [RELOJ 17:30 → 19:00] · [SLIDE 12 — Urban AI: gobernar no es gestionar]
+
+*[hay un fragment pendiente en esta slide: el callout «en lo emergente la frontera cae a 75–83%» — avanzarlo al decir «gestiona/gobierna»]*
 
 Llevemos esto a la ciudad. La smart city promete reducir la urbe a sensores, cálculo y gobierno algorítmico. Y aviso —marcador de honestidad—: Hui no tematiza la ciudad en este capítulo. La traslación de mundo a ciudad, y la dicotomía gobernar/gestionar, son elaboración mía. Lo que Hui sí dice es que el mundo se reduce a datos, a una *mathesis universalis*, al *Gestell*.
 
@@ -277,7 +282,7 @@ Y Hui llega a la cosmotécnica por el pensamiento chino. Con Mou Zongsan disting
 
 Cosmotécnica es el concepto analítico; tecnodiversidad, la propuesta normativa. Y que los cuatro locales corrieran en una workstation propia no es anécdota: es la condición material de esa tecnodiversidad.
 
-**(≈245 palabras; sin el opcional ≈170)**
+**(≈274 palabras; sin el opcional ≈175)**
 
 ---
 
@@ -290,6 +295,7 @@ La tesis, en tres movimientos.
 *[avanzar fragment 1]* Uno: tenemos herramientas sobredimensionadas respecto de su aplicación —el cómputo a gran escala cuesta mucho más que el conocimiento urbano que produce—.
 *[avanzar fragment 2]* Dos: por eso el límite decisivo no es técnico, sino político, económico y ontológico: quién computa, con qué cosmotécnica, a costa de qué soberanía.
 *[avanzar fragment 3]* Tres, el giro constructivo: lo que falta no es un modelo más potente, sino *aplicar* el conocimiento urbano clásico que ya existe. La tesis lo sistematiza en el Banco Epistémico Urbano —y, con ironía, se construyó orquestando IA bajo supervisión humana: evidencia performativa de su propio argumento.
+*[avanzar fragments 4 y 5: aparecen los dos enlaces a la tesis y al Banco — dos clics rápidos, sin narrarlos]*
 
 **[avanzar a SLIDE 14 — Cierre]** *[mostrar QR]*
 Cierro donde abrí. El límite de la IA no es una frontera técnica: es político y cosmológico. Lo que falta no es potencia, es pluralidad de mundos: una noodiversidad. Aplicar antes que escalar; fragmentar antes que optimizar.
@@ -310,10 +316,10 @@ Hay cuatro láminas de anexo reservadas para la ronda de preguntas: la gradiente
 
 ## RESUMEN DE CONTROL
 
-**Total de palabras habladas que llenan los 20:00 (versión activa, sin los bloques `[OPCIONAL]`): 2.591 palabras.**
-A 130 palabras/minuto = 19,9 minutos → encaja en 20:00 con margen para pausas. Dentro del rango objetivo (2.400–2.700). ✔
+**Total de palabras habladas que llenan los 20:00 (versión activa, sin los bloques `[OPCIONAL]`): 2.599 palabras** (recuento del 12-jun tras las correcciones de cifras).
+A 130 palabras/minuto = 20,0 minutos → encaja en 20:00 justo; las pausas salen del ritmo, no de palabras sobrantes. Dentro del rango objetivo (2.400–2.700). ✔
 
-Los tres bloques `[OPCIONAL]` (220 palabras: 5 tareas en slide 5 = 74, cierre mística/Hölderlin en slide 11 = 47, Mou Zongsan/noodiversidad en slide 12 = 99) son **colchón de seguridad**, no texto del reloj base: solo se dicen si te sobra tiempo, y se recortan primero si vas atrasado. Si los dices TODOS, el total sube a 2.811 palabras (≈21,6 min) y debes acelerar el conectivo de las slides 7, 9 y 13 o recortar sobre la marcha.
+Los tres bloques `[OPCIONAL]` (202 palabras: 5 tareas en slide 5 = 56, cierre mística/Hölderlin en slide 11 = 47, Mou Zongsan/noodiversidad en slide 12 = 99) son **colchón de seguridad**, no texto del reloj base: solo se dicen si te sobra tiempo, y se recortan primero si vas atrasado. Si los dices TODOS, el total sube a ≈2.801 palabras (≈21,5 min) y debes acelerar el conectivo de las slides 7, 9 y 13 o recortar sobre la marcha.
 
 ### Tabla slide → tiempo → palabras
 
@@ -323,7 +329,7 @@ Los tres bloques `[OPCIONAL]` (220 palabras: 5 tareas en slide 5 = 74, cierre m�
 | 2 | Bergson | 01:00–02:30 | 1.5 | 212 | — |
 | 3 | Wiener · Simondon · Kant | 02:30–04:30 | 2.0 | 259 | — |
 | 4 | Dreyfus · Heidegger | 04:30–05:30 | 1.0 | 187 | — |
-| 5 | Exp. 1 · Protocolo | 05:30–07:00 | 1.5 | 121 | +74 |
+| 5 | Exp. 1 · Protocolo | 05:30–07:00 | 1.5 | 139 | +56 |
 | 6 | Exp. 1 · Resultados | 07:00–08:30 | 1.5 | 227 | — |
 | 7 | 13 teorías urbanas | 08:30–10:00 | 1.5 | 159 | — |
 | 8 | Galería viva | 10:00–11:30 | 1.5 | 179 | — |
@@ -333,6 +339,6 @@ Los tres bloques `[OPCIONAL]` (220 palabras: 5 tareas en slide 5 = 74, cierre m�
 | 11 | Lectura filosófica | 16:00–17:30 | 1.5 | 204 | +47 |
 | 12 | Urban AI | 17:30–19:00 | 1.5 | 176 | +99 |
 | 13+14 | Tesis + Cierre | 19:00–20:00 | 1.0 | 166 | — |
-| | **TOTAL** | **20:00** | **20.0** | **2.591** | **+220 = 2.811** |
+| | **TOTAL** | **20:00** | **20.0** | **2.599** | **+202 ≈ 2.801** |
 
 > Nota de ritmo: la slide 3 (259, en su slot de 2 min) y la 6/10b (227/203) son las más densas; di las cifras despacio y aligera el conectivo. Las slides 5, 11 y 12 ya descargan su exceso en los bloques `[OPCIONAL]`: con ellos dichos quedan en 195/251/275, sin ellos en 121/204/176.

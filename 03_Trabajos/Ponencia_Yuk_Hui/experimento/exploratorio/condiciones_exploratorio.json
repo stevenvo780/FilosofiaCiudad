@@ -1,0 +1,18 @@
+{
+  "tipo": "EXPLORATORIO - no canónico",
+  "fecha": "2026-06-12",
+  "plataforma": "kratos",
+  "hardware": "RTX 5070 Ti 16 GB + RTX 2060 6 GB + RAM (80B repartido)",
+  "modelos": [
+    "devstral:24b",
+    "qwen3-coder:30b",
+    "qwen3-coder-next:q4_K_M"
+  ],
+  "nota_sujetos": "Modelos orientados a código; puede favorecerlos en tareas aritméticas. Declarado.",
+  "temperature": 0.2,
+  "num_predict": 6144,
+  "intentos_por_modelo": 2,
+  "timeout_http_s": 900,
+  "timeout_modelo_min": 120,
+  "diferencia_vs_canon": "Timeouts ampliados (canon: 300 s / 25 min). Prompts y opciones idénticos."
+}

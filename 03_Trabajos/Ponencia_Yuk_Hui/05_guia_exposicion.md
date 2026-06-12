@@ -6,8 +6,8 @@
 
 | A los… | Debo ir en… |
 |---|---|
-| **5:00** | fin de Dreyfus → entrando a Experimento 1 (slide 5) |
-| **10:00** | fin de Resultados Exp.1 → 13 teorías urbanas (slide 7) |
+| **5:30** | fin de Dreyfus → entrando a Experimento 1 (slide 5) |
+| **10:00** | fin de 13 teorías (slide 7) → galería viva (slide 8) |
 | **15:00** | fin de Heatmap (slide 10) → entrando a Costo (slide 10b) |
 | **20:00** | tesis + cierre + pregunta de debate |
 
@@ -90,7 +90,7 @@
 - ⚡*[pausa 2 seg]*
 - Salto de régimen: local a frontera. Sonnet **noventa**, Opus **setenta**.
 - Ni la frontera toca el cien. Opus < Sonnet.
-- Opus falló la suma de cuadrados: **651.397.404** vs exacto **651.396.404**.
+- Opus falló la suma de cuadrados en ambos intentos: **651.397.404** y **651.400.404** vs exacto **651.396.404**.
 - Matiz honesto: la retícula (2.700.000 rutas) la aciertan los seis — es memorizable.
 - T6 = cero estructural: no se mueve con ningún tamaño. Corazón del argumento.
 
@@ -122,7 +122,7 @@
 - 13 teorías → **39 preguntas**, tres por teoría: dos cerradas, una emergente.
 - Mismos seis sujetos, una sola pasada.
 - ⚡*[señalar la curva global]*
-- Exactitud: 3B **38,5**; medianos **77–79**; Sonnet **89,7**; Opus **92,3**.
+- Exactitud: 3B **38,5**; medianos **77–80**; Sonnet **89,7**; Opus **92,3**.
 - Aquí la escala ordena más limpio; Opus supera a Sonnet por poco.
 - ¿Contradice al Exp.1? No: muchas cerradas son fórmulas memorizables.
 - El techo no cambia: nadie toca el cien del cómputo puro.
@@ -170,6 +170,7 @@
 - ◦ *[OPCIONAL]* «la mecánica exigirá una mística»; Hölderlin: donde está el peligro crece lo que salva.
 
 ### [17:30–19:00] Slide 12 — Urban AI
+- ⚡*[fragment pendiente: callout «emergente 75–83%» — avanzarlo al decir gestiona/gobierna]*
 - Llevemos esto a la ciudad. La smart city promete reducir la urbe a sensores y cálculo.
 - → decir: *Hui no tematiza la ciudad; la traslación mundo→ciudad y gobernar/gestionar son mías*.
 - Lo que Hui sí dice: el mundo se reduce a datos, *mathesis universalis*, *Gestell*.
@@ -199,7 +200,7 @@
 
 ## 📎 Anexos (solo si preguntan) — qué responder con cada uno
 
-- **Anexo A · Gradiente Exp.1 (6×6):** «el grande no siempre gana» → Opus 3 fallos en 10 (T1, T2, T5); T3 verde para los seis; 32B con timeouts >600 s.
+- **Anexo A · Gradiente Exp.1 (6×6):** «el grande no siempre gana» → Opus 3 fallos en 10 (T1 ×1, T5 ×2); T2 lo falló Sonnet; T3 verde para los seis; 32B con timeouts >600 s.
 - **Anexo A2 · Aciertos por tarea:** T3 columna verde = régimen memorizable; T1/T4/T5 = colapso local; T6 sin casilla (no hay verdad).
 - **Anexo B · Detalle T6:** si dudan de la divergencia → foco por modelo (repartidor/niño/acompañante; qwen3:14b alucinó «mujer mayor»). Relevancia sin unicidad.
 - **Anexo C · Cerrada vs emergente:** si cuestionan «el grande siempre gana» → Sonnet 83 % supera a Opus 75 % en emergentes; cómputo puro 100 % en las tres columnas.

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Yuk Hui — Sobre el límite de la inteligencia artificial</title>
 
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1a2b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
   <!-- reveal.js 5.x vendorizado local (funciona offline; copia de jsdelivr @5) -->
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
   <link rel="stylesheet" href="vendor/reveal/theme/black.css">
@@ -920,7 +921,7 @@
       </section>
 
       <!-- ============ 7 — LO QUE YA SABEMOS COMPUTAR (1.5 min) ============ -->
-      <section data-auto-animate>
+      <section data-auto-animate data-ambient="deriva" data-ambient-opts='{"densidad":10,"opNac":0.12}'>
         <p class="eje-label" data-id="lbl2">Lo que ya sabemos computar</p>
         <h2 data-id="t2">13 teorías urbanas clásicas — validadas, exactas</h2>
         <div class="callout fragment fade-up" style="right:2%;top:68%;">
@@ -943,7 +944,7 @@
         </div>
         <p class="anim-fadeup" style="text-align:center;font-size:0.8em;margin-top:0.7em;">
           Un portátil las corre <strong>todas, exactas, en minutos.</strong> El conocimiento urbano clásico <em>ya está disponible.</em>
-          <span style="display:block;font-size:0.78em;color:var(--texto-tenue);margin-top:0.25em;">8 de las 13 abren su simulación viva — <span style="color:var(--acento);">click ▸</span></span>
+          <span style="display:block;font-size:0.78em;color:var(--texto-tenue);margin-top:0.25em;">8 de las 13 abren su simulación viva — <span style="color:var(--acento);">clic ▸</span></span>
         </p>
 
         <aside class="notes">
@@ -1007,10 +1008,10 @@
         <p class="eje-label" data-id="lbl3">Experimento 2 · Banco de teorías</p>
         <h2 data-id="t3">Los 6 sujetos contra 39 preguntas</h2>
         <div class="grafico-fila">
-          <img class="anim-scalein" src="assets/teorias_exactitud_global.png" alt="Exactitud global por sujeto sobre 39 preguntas: 3B 38.5%, 14B 76.9%, 20B 79.5%, 32B 76.9%, Sonnet 89.7%, Opus 92.3%">
+          <img class="anim-scalein" src="assets/teorias_exactitud_global.png" alt="Exactitud global por sujeto sobre 39 preguntas: 3B 38,5%, 14B 76,9%, 20B 79,5%, 32B 76,9%, Sonnet 89,7%, Opus 92,3%">
           <div class="grafico-lectura">
             <p class="fragment"><strong>39 preguntas</strong> derivadas de las 13 teorías · 3 por teoría · forma cerrada + emergente.</p>
-            <p class="fragment">Aquí la escala <em>sí</em> ordena más: 3B <span class="destaca">38.5%</span> → frontera <span class="destaca">~90%</span>. Opus 92.3% &gt; Sonnet 89.7%.</p>
+            <p class="fragment">Aquí la escala <em>sí</em> ordena más: 3B <span class="destaca">38,5%</span> → frontera <span class="destaca">~90%</span>. Opus 92,3% &gt; Sonnet 89,7%.</p>
             <p class="fragment">Pero <strong>nadie llega al 100%</strong> del cómputo puro — la verdad sigue del lado del algoritmo.</p>
           </div>
         </div>
@@ -1073,7 +1074,7 @@
         <p class="eje-label">Experimento 2 · Costo</p>
         <h2 style="border:0;text-align:center;margin-bottom:0.25em;">¿Cuánto cuesta saber esto?</h2>
         <img class="img-costo anim-scalein" src="assets/costo_por_respuesta_correcta.png"
-             alt="Costo por respuesta correcta, escala logarítmica: Python local 7.6×10⁻⁶ USD; locales 0.000147 a 0.0018 USD; Sonnet 0.007–0.041 USD; Opus 0.013–0.070 USD">
+             alt="Costo por respuesta correcta, escala logarítmica: Python local 7,6×10⁻⁶ USD; locales 0,000147 a 0,0018 USD; Sonnet 0,007–0,041 USD; Opus 0,013–0,070 USD">
         <p class="anim-fadeup" style="text-align:center;font-size:0.74em;color:var(--texto-tenue);max-width:84%;margin:0.35em auto 0;">
           <strong>Cuatro órdenes de magnitud</strong> separan al cómputo puro de la frontera. El límite no es <em>epistémico</em>: es económico y político.
         </p>
@@ -1292,9 +1293,9 @@
           locales se desploman; no monótono (3B 20%, 14B 20%, 20B 40%, 32B 20%). El 32B sufrió
           timeouts de más de 600 s en T2 y T4, y en T4–T6 faltaron datos: cuentan como fallo. El
           salto está en API: Sonnet 90%, Opus 70%. Dentro de la frontera el grande no gana: Opus
-          falló T5 los dos intentos (651.397.404 y 651.400.404 vs. 651.396.404), un intento de T1 y
-          uno de T2 —3 fallos en 10, 70%. No hay «el grande es mejor»: hay no-determinismo y un techo
-          categorial bajo el 100% trivial de Python.
+          falló T5 los dos intentos (651.397.404 y 651.400.404 vs. 651.396.404) y un intento de T1
+          —3 fallos en 10, 70%—; el único fallo de Sonnet fue una ruta no mínima en T2. No hay «el
+          grande es mejor»: hay no-determinismo y un techo categorial bajo el 100% trivial de Python.
         </aside>
       </section>
 
@@ -1366,12 +1367,12 @@
             <th>Sujeto</th><th>Global (39)</th><th>Forma cerrada (27)</th><th>Emergente (12)</th>
           </tr></thead>
           <tbody>
-          <tr><td class="autor">qwen2.5:3b</td><td class="no">38.5% · 15/39</td><td>55.6% · 15/27</td><td class="no">0% · 0/12</td></tr>
-          <tr><td class="autor">qwen3:14b</td><td>76.9% · 30/39</td><td class="ok">92.6% · 25/27</td><td>41.7% · 5/12</td></tr>
-          <tr><td class="autor">gpt-oss:20b</td><td>79.5% · 31/39</td><td class="ok">92.6% · 25/27</td><td>50% · 6/12</td></tr>
-          <tr><td class="autor">qwen3:32b</td><td>76.9% · 30/39</td><td>88.9% · 24/27</td><td>50% · 6/12</td></tr>
-          <tr><td class="autor">claude-sonnet</td><td class="ok">89.7% · 35/39</td><td class="ok">92.6% · 25/27</td><td class="ok">83.3% · 10/12</td></tr>
-          <tr><td class="autor">claude-opus</td><td class="ok">92.3% · 36/39</td><td class="ok">100% · 27/27</td><td>75% · 9/12</td></tr>
+          <tr><td class="autor">qwen2.5:3b</td><td class="no">38,5% · 15/39</td><td>55,6% · 15/27</td><td class="no">0% · 0/12</td></tr>
+          <tr><td class="autor">qwen3:14b</td><td>76,9% · 30/39</td><td class="ok">92,6% · 25/27</td><td>41,7% · 5/12</td></tr>
+          <tr><td class="autor">gpt-oss:20b</td><td>79,5% · 31/39</td><td class="ok">92,6% · 25/27</td><td>50% · 6/12</td></tr>
+          <tr><td class="autor">qwen3:32b</td><td>76,9% · 30/39</td><td>88,9% · 24/27</td><td>50% · 6/12</td></tr>
+          <tr><td class="autor">claude-sonnet</td><td class="ok">89,7% · 35/39</td><td class="ok">92,6% · 25/27</td><td class="ok">83,3% · 10/12</td></tr>
+          <tr><td class="autor">claude-opus</td><td class="ok">92,3% · 36/39</td><td class="ok">100% · 27/27</td><td>75% · 9/12</td></tr>
           <tr><td><strong>Cómputo puro</strong></td><td class="ok"><strong>100%</strong></td><td class="ok"><strong>100%</strong></td><td class="ok"><strong>100%</strong></td></tr>
           </tbody>
         </table>
