@@ -479,7 +479,7 @@
     /* ===== Botón global de tesis (persiste entre slides) ===== */
     .tesis-btn {
       position: fixed;
-      bottom: 14px;
+      top: 14px;   /* arriba: abajo chocaba con las flechas de navegación de reveal */
       right: 16px;
       z-index: 60;
       display: inline-flex;
@@ -503,7 +503,7 @@
       transform: translateY(-1px);
     }
     .tesis-btn .flecha { font-size: 0.9em; }
-    @media (max-width: 700px) { .tesis-btn { bottom: 10px; right: 10px; font-size: 11px; } }
+    @media (max-width: 700px) { .tesis-btn { top: 10px; right: 10px; font-size: 11px; } }
     @media (prefers-reduced-motion: reduce) { .tesis-btn { transition: none; } .tesis-btn:hover { transform: none; } }
 
     /* ===== Callout flotante en espacios muertos ===== */
