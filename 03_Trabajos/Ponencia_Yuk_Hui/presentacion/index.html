@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Yuk Hui — Sobre el límite de la inteligencia artificial</title>
 
-  <!-- reveal.js 5.x desde CDN (jsdelivr) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+  <!-- reveal.js 5.x vendorizado local (funciona offline; copia de jsdelivr @5) -->
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/theme/black.css">
 
   <style>
     /* ===== Tema oscuro personalizado: azul noche + acento ámbar ===== */
@@ -924,7 +924,7 @@
         <p class="eje-label" data-id="lbl2">Lo que ya sabemos computar</p>
         <h2 data-id="t2">13 teorías urbanas clásicas — validadas, exactas</h2>
         <div class="callout fragment fade-up" style="right:2%;top:68%;">
-          Un portátil corre las <b>13</b> en <b>64,7 s</b>: <em>$6,9×10⁻⁶</em> por respuesta.
+          Un portátil corre las <b>13</b> en <b>70,8 s</b>: <em>$7,6×10⁻⁶</em> por respuesta.
         </div>
         <div class="teorias-grid">
           <div class="t-chip con-viz" data-viz-chip="von_thunen" title="Ver simulación viva (Esc para cerrar)"><span class="t-n">von Thünen</span><span class="t-a">anillos de renta · 1826</span></div>
@@ -1073,7 +1073,7 @@
         <p class="eje-label">Experimento 2 · Costo</p>
         <h2 style="border:0;text-align:center;margin-bottom:0.25em;">¿Cuánto cuesta saber esto?</h2>
         <img class="img-costo anim-scalein" src="assets/costo_por_respuesta_correcta.png"
-             alt="Costo por respuesta correcta, escala logarítmica: Python local 6.9×10⁻⁶ USD; locales 0.000147 a 0.0018 USD; Sonnet 0.007–0.041 USD; Opus 0.013–0.070 USD">
+             alt="Costo por respuesta correcta, escala logarítmica: Python local 7.6×10⁻⁶ USD; locales 0.000147 a 0.0018 USD; Sonnet 0.007–0.041 USD; Opus 0.013–0.070 USD">
         <p class="anim-fadeup" style="text-align:center;font-size:0.74em;color:var(--texto-tenue);max-width:84%;margin:0.35em auto 0;">
           <strong>Cuatro órdenes de magnitud</strong> separan al cómputo puro de la frontera. El límite no es <em>epistémico</em>: es económico y político.
         </p>
@@ -1081,8 +1081,8 @@
 
         <aside class="notes">
           [1 min] Pongamos precio al conocimiento. Eje vertical logarítmico, costo por respuesta
-          correcta. Abajo del todo, el cómputo puro de Python: 6,9 por diez a la menos seis dólares
-          —siete millonésimas de dólar— por respuesta correcta; tiempo medido con perf_counter,
+          correcta. Abajo del todo, el cómputo puro de Python: 7,6 por diez a la menos seis dólares
+          —siete coma seis millonésimas de dólar— por respuesta correcta; tiempo medido con perf_counter,
           energía estimada a 25 vatios porque RAPL no era legible sin sudo, así que ese número es
           estimado, lo digo en voz alta. Los cuatro modelos locales en la GPU: de 0,000147 dólares
           el 3B a 0,0018 dólares el 32B —costo medido, tiempo y potencia de la RTX 5070 Ti
@@ -1093,7 +1093,7 @@
           lectura: del cómputo puro a Opus hay cuatro órdenes de magnitud —del orden de diez mil
           veces más caro— para llegar a una respuesta que sigue por debajo del 100% que Python da
           gratis y exacto. Conecto con la tesis: el conocimiento urbano clásico es prácticamente
-          gratis de ejecutar —un portátil corre las trece teorías en 64,7 segundos—; el costo de la
+          gratis de ejecutar —un portátil corre las trece teorías en 70,8 segundos—; el costo de la
           IA no compra verdad epistémica que el algoritmo no diera ya. Ese costo es material,
           energético y político: quién paga, quién posee la GPU, a costa de qué soberanía. La
           asimetría de costos ilustra, en clave económica, el argumento de Hui.
@@ -1396,8 +1396,8 @@
   <a class="tesis-btn" href="../tesis/index.html" target="_blank" rel="noopener"
      title="Abrir la tesis completa en una pestaña nueva">Tesis <span class="flecha">↗</span></a>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="vendor/reveal/reveal.js"></script>
+  <script src="vendor/reveal/plugin/notes/notes.js"></script>
   <script>
     Reveal.initialize({
       hash: true,

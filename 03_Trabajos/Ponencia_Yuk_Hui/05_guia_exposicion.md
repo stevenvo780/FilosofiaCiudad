@@ -15,7 +15,7 @@
 
 1. **Exp.1 frontera:** Sonnet **90** · Opus **70** · Python **100** (Opus < Sonnet)
 2. **Curva NO monótona:** 3B **20** · 14B **20** · 20B **40** · 32B **20**
-3. **Cuatro órdenes de magnitud:** Python **$6,9×10⁻⁶** (siete millonésimas) vs Opus **$0,013–0,070**
+3. **Cuatro órdenes de magnitud:** Python **$7,6×10⁻⁶** (siete coma seis millonésimas) vs Opus **$0,013–0,070**
 
 > NUNCA recortar: **T6 = ∅** y los **cuatro órdenes de magnitud**.
 
@@ -100,8 +100,8 @@
 - Las implementé todas, semillas fijas, cada una pasa su validación.
 - Schelling converge en 14 a 0,75; Christaller k=3; Zipf pendiente −1.
 - ⚡*[click: abrir chip Schelling — si responde; si no, seguir]*
-- ⚡*[señalar el callout]* un portátil corre las trece, exactas, en **64,7 segundos**.
-- Y son **$6,9×10⁻⁶** por respuesta — siete millonésimas de dólar.
+- ⚡*[señalar el callout]* un portátil corre las trece, exactas, en **70,8 segundos**.
+- Y son **$7,6×10⁻⁶** por respuesta — siete coma seis millonésimas de dólar.
 - El conocimiento urbano ya existe y es barato.
 - La pregunta es qué hacemos con lo que ya sabemos.
 
@@ -143,7 +143,7 @@
 ### [15:00–16:00] Slide 10b — Costo
 - Pongamos precio al conocimiento.
 - ⚡*[señalar la imagen, escala logarítmica]*
-- Abajo: Python **$6,9×10⁻⁶** (siete millonésimas) por respuesta correcta.
+- Abajo: Python **$7,6×10⁻⁶** (siete coma seis millonésimas) por respuesta correcta.
 - → decir: *tiempo medido; energía estimada a 25 W (RAPL sin permisos)*.
 - Locales en GPU: de **$0,000147** (3B) a **$0,0018** (32B). Medido; tarifa estimada.
 - → decir: *frontera son rangos: la API no devuelve tokens reales*.

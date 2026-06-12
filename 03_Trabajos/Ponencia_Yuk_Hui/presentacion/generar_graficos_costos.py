@@ -119,7 +119,7 @@ def grafico_costo_por_correcta():
 
     # Etiquetas encima de cada barra — derivadas de los valores leídos
     etiquetas_centros = [
-        "$6.9×10⁻⁶",
+        f"${py_cpr*1e6:.1f}×10⁻⁶",
         f"${q3b_cpr:.6f}",
         f"${q14_cpr:.6f}",
         f"${gpt_cpr:.6f}",
@@ -188,7 +188,7 @@ def grafico_tiempo_por_via():
 
     # Tiempos en segundos (medidos excepto API)
     tiempos = np.array([
-        64.717,    # python local  — medido
+        70.786,    # python local  — medido
         159.8,     # qwen2.5:3b   — medido
         483.9,     # qwen3:14b    — medido
         1111.1,    # gpt-oss:20b  — medido
@@ -223,7 +223,7 @@ def grafico_tiempo_por_via():
     ax.set_xticklabels(vias, fontsize=10.5, color=FG)
 
     # Etiquetas sobre barras medidas
-    etiquetas = ["64.7s", "159.8s", "483.9s", "1 111s", "3 683s", "", ""]
+    etiquetas = ["70.8s", "159.8s", "483.9s", "1 111s", "3 683s", "", ""]
     for i, (t, lbl) in enumerate(zip(tiempos, etiquetas)):
         if not np.isnan(t) and lbl:
             ax.text(x[i], t * 1.3, lbl, ha="center", va="bottom",

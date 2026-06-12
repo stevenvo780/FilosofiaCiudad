@@ -9,7 +9,7 @@
 ## Cinco consejos de entrega
 
 1. **Respiración:** antes de la portada, una inhalación lenta por la nariz (4 seg) y suelta; reancla la respiración en cada cambio de eje (slides 5, 7, 12) para no acelerar al entusiasmarte con las cifras.
-2. **Ritmo:** ~130 palabras por minuto; las cifras (90/70, cuatro órdenes de magnitud, $6,9×10⁻⁶) van DESPACIO y con pausa después — son los anclajes; el texto conectivo puede ir más ágil.
+2. **Ritmo:** ~130 palabras por minuto; las cifras (90/70, cuatro órdenes de magnitud, $7,6×10⁻⁶) van DESPACIO y con pausa después — son los anclajes; el texto conectivo puede ir más ágil.
 3. **Cuándo mirar a la audiencia:** mira la pantalla solo al señalar un dato concreto (curva, heatmap, cifra); el resto del tiempo a los ojos. En los marcadores de honestidad («esto es mi lectura», «esto es estimado») mira de frente: ahí ganas credibilidad.
 4. **Si se cae la demo viva (viz/chips):** no la persigas. Di «la versión interactiva está en el QR del cierre» y narra el dato de respaldo escrito en el bloque (cada slide de datos lleva sus cifras textuales). El argumento NO depende de la animación.
 5. **Cómo cortar si vas atrasado:** recorta SOLO lo marcado `[OPCIONAL — recortar si vas atrasado]`. En orden de sacrificio: (a) los dos cierres de la slide 11 (mística/Hölderlin), (b) la enumeración fila a fila del protocolo en la slide 5, (c) Mou Zongsan/noodiversidad en la slide 12 (ya queda enunciada la tesis). Nunca recortes la cifra T6 = ∅ ni los cuatro órdenes de magnitud.
@@ -151,7 +151,7 @@ Las implementé todas como simulaciones reproducibles, con semillas fijas, y cad
 
 Lo que quiero que quede es la asimetría de costo.
 
-*[señalar el callout]* Un portátil corre las trece, exactas, en 64,7 segundos. Y eso son 6,9 por diez a la menos seis dólares por respuesta —siete millonésimas de dólar—, sin GPU de centro de datos.
+*[señalar el callout]* Un portátil corre las trece, exactas, en 70,8 segundos. Y eso son 7,6 por diez a la menos seis dólares por respuesta —siete coma seis millonésimas de dólar—, sin GPU de centro de datos.
 
 El conocimiento urbano formalizable ya existe, y es barato. La pregunta no es si necesitamos un modelo más grande para saber esto —no lo necesitamos—. La pregunta es qué hacemos con lo que ya sabemos.
 
@@ -229,7 +229,7 @@ Pongamos precio al conocimiento.
 
 *[señalar la imagen de costo, escala logarítmica]*
 
-Abajo del todo, el cómputo puro de Python: 6,9 por diez a la menos seis dólares —siete millonésimas— por respuesta correcta. Y aquí lo digo en voz alta: el tiempo está medido con perf_counter, pero la energía está estimada, a 25 vatios, porque RAPL no era legible sin permisos. Ese número es estimado, no medido.
+Abajo del todo, el cómputo puro de Python: 7,6 por diez a la menos seis dólares —siete coma seis millonésimas— por respuesta correcta. Y aquí lo digo en voz alta: el tiempo está medido con perf_counter, pero la energía está estimada, a 25 vatios, porque RAPL no era legible sin permisos. Ese número es estimado, no medido.
 
 Los cuatro modelos locales en la GPU: de 0,000147 dólares el 3B a 0,0018 el 32B. Costo medido —tiempo y potencia de la RTX 5070 Ti, 281,5 vatios bajo carga—; la tarifa eléctrica es estimada.
 
